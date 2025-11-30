@@ -26,4 +26,4 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--with-openssl \
 	--with-libidn2)
 
-include lfs.port.mk
+include /usr/share/mk/lfs.port.mk
