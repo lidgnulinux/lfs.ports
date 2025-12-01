@@ -12,7 +12,7 @@ content:
 
 search:
 	@find /var/lib/mk/ \
-		-name "*${PKG}*.mk" \
+		-name "*${q}*.mk" \
 		-printf '%f\n' \
 		| cut -d "-" -f 1,2 \
 		| awk -F "-" '{print $$1,$$2}'
