@@ -30,9 +30,15 @@ help:
    \033[1msearch, s q=query\033[0m		search package. \n\
    \033[1mview, v PKG=package\033[0m		view package Makefile. \n"
 
+info:
+	@find /var/lib/mk/ \
+		-name "${PKG}-*.mk" \
+		-exec grep COMM -A 9 {} \;
+
 # target alias
 l: list
 c: content
 s: search
 v: view
 h: help
+i: info
