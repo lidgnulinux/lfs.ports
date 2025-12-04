@@ -1,0 +1,11 @@
+--- bleachbit-5.0.2/Makefile	2025-10-20 07:45:38.000000000 +0700
++++ bleachbit-5.0.2/Makefile.new	2025-12-04 09:39:21.262311711 +0700
+@@ -11,7 +11,7 @@
+ 
+ .PHONY: clean install tests build tests-with-sudo lint delete_windows_files pretty
+ 
+-prefix ?= /usr/local
++prefix ?= /usr
+ bindir ?= $(prefix)/bin
+ datadir ?= $(prefix)/share
+ 
