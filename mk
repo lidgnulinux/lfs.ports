@@ -42,11 +42,18 @@ install:
 	echo "make directory for $(shell basename -s .tar.gz ${PKG})"
 	mkdir /usr/pkg/$(shell basename -s .tar.gz ${PKG})
 
-	echo "extracting & grafting package archive ${PKG}"
+	@echo "extracting & grafting package archive ${PKG}"
 	${TAR} -xf ${PKG} -C /usr/pkg/$(shell basename -s .tar.gz ${PKG})
+	@echo "before that, let's check if we need pruning for ${PKG}"
+ifeq ($(P),1)
+	@echo "Oh, P=1 is specified. Let's do pruning"
+	graft -p -D -u -t / /usr/pkg/$(shell basename -s .tar.gz ${PKG})
+else
+	@echo "P=1 isn't specified, no pruning performed."
+endif
 	graft -i -P -t / /usr/pkg/$(shell basename -s .tar.gz ${PKG})
 
-	echo "Run post-install target if available"
+	@echo "Run post-install target if available"
 	@if $(MAKE) -f /usr/pkg/${package}/var/lib/mk/${package}.mk -n post-install > /dev/null; then \
 		$(MAKE) -f /usr/pkg/${package}/var/lib/mk/${package}.mk post-install; \
 	else \
