@@ -47,6 +47,21 @@ upgrade package.
 \f[B]v \f[I]PKG=package\f[R], \f[B]view \f[I]PKG=package\f[R]
 view package Makefile information.
 
+.SH NOTES
+Before trying to use this package manager :
+.RE
+.TP
+1. It will cause a conflict with your current package manager.
+.RE
+.TP
+2. If you previously built a package from source, you need to pass P=1 env when installing package to prune any conflict.
+.RE
+	e.g \f[B]/path/to/mk a P=1 /path/to/package.tar.gz
+.RE
+.TP
+3. Make sure you already have busybox package as fallback utility.
+.TP
+
 .SH AUTHORS
 Ahmad Raniri \c
 .MT lidgnulinux@gmail.com
