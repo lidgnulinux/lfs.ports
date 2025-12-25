@@ -1,0 +1,13 @@
+diff --git a/meson.build b/meson.build
+index f9fe4e7..5a6255b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -876,7 +876,7 @@ caca_opt = get_option('caca').require(
+     get_option('gpl'),
+     error_message: 'the build is not GPL!',
+ )
+-caca = dependency('caca', version: '>= 0.99.beta18', required: caca_opt)
++caca = dependency('caca', version: '>= 0.99', required: caca_opt)
+ features += {'caca': caca.found()}
+ if features['caca']
+     dependencies += caca
