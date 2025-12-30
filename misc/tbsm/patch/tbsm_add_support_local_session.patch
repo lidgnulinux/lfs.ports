@@ -1,0 +1,11 @@
+--- tbsm/src/tbsm	2025-12-30 16:51:27.203940560 +0700
++++ tbsm/src/tbsm.new	2025-12-30 16:56:35.352926821 +0700
+@@ -54,7 +54,7 @@
+ declare -r configDir="${XDG_CONFIG_HOME:-${HOME}/.config}/${myName}"
+ 
+ declare -r installPfad=""
+-declare    sessionPfads="/usr/share/xsessions:/usr/share/wayland-sessions"
++declare    sessionPfads="/usr/share/xsessions:/usr/share/wayland-sessions:/home/$USER/.local/share/wayland-sessions"
+ declare    runInTTY="yes"         # When unset we have no tty, glas is half full
+ declare    XserverArg="@Xdisplay@ -nolisten tcp"  # @Xdisplay@ will replaced by number of tty
+ declare    protectedVerbose
