@@ -1,14 +1,14 @@
 COMMENT = Building blocks for modern GNOME applications
-VERSION = 1.8.2
+VERSION = 1.8.3
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libadwaita
 HOMEPAGE = https://gitlab.gnome.org/GNOME/libadwaita
-ARCHIVE = libadwaita-1.8.2.tar.xz
-LINK = https://download.gnome.org/sources/libadwaita/1.8/libadwaita-1.8.2.tar.xz
+ARCHIVE = libadwaita-1.8.3.tar.xz
+LINK = https://download.gnome.org/sources/libadwaita/1.8/libadwaita-1.8.3.tar.xz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = libadwaita-1.8.2
+BUILDDIR = libadwaita-1.8.3
 BUILD_OPTION = -Dexamples=false -Dgtk_doc=false
 
 prepare:
