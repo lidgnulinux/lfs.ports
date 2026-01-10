@@ -1,0 +1,63 @@
+Upstream: https://sourceware.org/pipermail/gdb-patches/2025-October/221579.html
+
+diff --git a/gdb/gcore.in b/gdb/gcore.in
+index 0c40e5a54cd..81125a5a6a0 100644
+--- a/gdb/gcore.in
++++ b/gdb/gcore.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/sh
+ 
+ #   Copyright (C) 2003-2024 Free Software Foundation, Inc.
+ 
+@@ -25,17 +25,18 @@ prefix=core
+ 
+ # When the -a option is present, this may hold additional commands
+ # to ensure gdb dumps all mappings (OS dependent).
+-dump_all_cmds=()
++use_coredump_filter=
++dump_excluded_mappings=
+ 
+-data_directory_opt=()
++data_directory=
+ 
+ while getopts :ao:d: opt; do
+     case "$opt" in
+         a)
+-            case "$OSTYPE" in
+-                linux*)
+-                    dump_all_cmds=("-ex" "set use-coredump-filter off")
+-                    dump_all_cmds+=("-ex" "set dump-excluded-mappings on")
++            case "$(uname -s)" in
++                Linux)
++                    use_coredump_filter="off"
++                    dump_excluded_mappings="on"
+                     ;;
+             esac
+             ;;
+@@ -43,7 +44,7 @@ while getopts :ao:d: opt; do
+             prefix=$OPTARG
+             ;;
+         d)
+-            data_directory_opt=("--data-directory" "$OPTARG")
++            data_directory="$OPTARG"
+             ;;
+         *)
+             echo "usage:  @GCORE_TRANSFORM_NAME@ [-a] [-o prefix] [-d data-directory] pid1 [pid2...pidN]"
+@@ -103,10 +104,11 @@ do
+ 	# `</dev/null' to avoid touching interactive terminal if it is
+ 	# available but not accessible as GDB would get stopped on SIGTTIN.
+ 	"$binary_path/@GDB_TRANSFORM_NAME@" </dev/null \
+-            "${data_directory_opt[@]}" \
++            ${data_directory:+--data-directory "$data_directory"} \
+ 	    --nx --batch --readnever -iex 'set debuginfod enabled off' \
+ 	    -ex "set pagination off" -ex "set height 0" -ex "set width 0" \
+-	    "${dump_all_cmds[@]}" \
++            ${use_coredump_filter:+"-ex"} ${use_coredump_filter:+"set use-coredump-filter ${use_coredump_filter}"} \
++	    ${dump_excluded_mappings:+"-ex"} ${dump_excluded_mappings:+"set dump-excluded-mappings ${dump_excluded_mappings}"} \
+ 	    -ex "attach $pid" -ex "gcore $prefix.$pid" -ex detach -ex quit
+ 
+ 	if [ -r "$prefix.$pid" ] ; then
+-- 
+2.51.0
+
