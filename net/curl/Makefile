@@ -1,6 +1,6 @@
 COMMENT = URL retrival utility and library
-VERSION = 8.17.0
-REVISION = 1
+VERSION = 8.18.0
+REVISION = 0
 CATEGORIES = net
 PKGNAME = curl
 HOMEPAGE = https://curl.se/
@@ -9,8 +9,6 @@ ARCHIVE = curl-${VERSION}.tar.xz
 SRCCD = archive
 BUILD = make
 BUILDDIR = curl-${VERSION}
-BUILD_OPTION =
-MKINST = yes
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--libdir=/usr/lib \
@@ -22,12 +20,13 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--with-ca-path=/etc/ssl/certs \
 	--without-libssh2 \
 	--with-openssl \
-	--with-libidn2)
+	--with-libidn2 \
+	--build=x86_64-pc-linux-musl)
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/reg-19408.patch
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/reg-19383.patch 
 
 post_build:
+
+post-install:
 
 include /usr/share/mk/lfs.port.mk
