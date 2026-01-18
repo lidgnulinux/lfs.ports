@@ -23,7 +23,7 @@ search:
 view:
 	@find /var/lib/mk/ \
 		-name "${PKG}-*.mk" \
-		-exec less -c {} \;
+		-exec less -x2 -c {} \;
 
 help:
 	@echo -e "\n\
