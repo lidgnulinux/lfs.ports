@@ -1,0 +1,11 @@
+--- hyprpicker-0.3.0/CMakeLists.txt	2024-05-14 22:13:12.000000000 +0700
++++ hyprpicker-0.3.0/CMakeLists.txt.new	2026-01-23 16:58:57.938547962 +0700
+@@ -97,7 +97,7 @@
+ target_link_libraries(hyprpicker PkgConfig::deps)
+ 
+ target_link_libraries(hyprpicker
+-        OpenGL
++        GL
+         GLESv2
+         pthread
+         ${CMAKE_THREAD_LIBS_INIT}
