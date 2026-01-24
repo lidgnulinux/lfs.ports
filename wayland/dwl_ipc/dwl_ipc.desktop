@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=dwl_ipc
+Comment=dwm for Wayland with ipc patch applied.
+Exec=dwl_ipc
+Type=Application
