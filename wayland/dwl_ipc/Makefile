@@ -1,6 +1,6 @@
-COMMENT = dwm for Wayland with ipc patch and gaps (optional) 
+COMMENT = dwm for Wayland with ipc patch and gaps + foreign-toplevel (optional) 
 VERSION = v0.8.c9b11a49c
-REVISION = 2
+REVISION = 3
 CATEGORIES = wayland
 PKGNAME = dwl_ipc
 HOMEPAGE = https://codeberg.org/dwl/dwl
@@ -19,6 +19,14 @@ ifeq ($(GAPS),YES)
 	patch -p1 -d ${BUILDDIR} -i $(PWD)/patch/optional-gaps-commit.9b11a49c.patch
 else
 	@echo "skipping applying gaps patch."
+endif
+
+ifeq ($(FOREIGN),YES)
+	@echo "applying foreign-toplevel patch."
+	patch -p1 -d ${BUILDDIR} -i $(PWD)/patch/optional-foreign_toplevel-commit.9b11a49c.patch
+	cp -r protocols/wlr-foreign-toplevel-management-unstable-v1.xml ${BUILDDIR}/protocols/
+else
+	@echo "skipping applying foreign-toplevel patch."
 endif
 
 config:
