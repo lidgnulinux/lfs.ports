@@ -1,5 +1,5 @@
 COMMENT = X11 client-side library
-VERSION = 1.8.12
+VERSION = 1.8.13
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libX11
