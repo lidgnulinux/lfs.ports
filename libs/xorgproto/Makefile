@@ -1,10 +1,10 @@
 COMMENT = X Window System Unified Protocol
-VERSION = 2024.1
+VERSION = 2025.1
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = xorgproto
 HOMEPAGE = https://www.x.org
-ARCHIVE = xorgproto-${VERSION}.tar.gz
+ARCHIVE = xorgproto-${VERSION}.tar.xz
 LINK = https://www.x.org/releases/individual/proto/${ARCHIVE}
 SRCCD = archive
 BUILD = meson
