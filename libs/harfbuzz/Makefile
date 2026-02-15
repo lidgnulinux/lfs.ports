@@ -1,14 +1,14 @@
 COMMENT = An OpenType text shaping engine.
-VERSION = 12.2.0
+VERSION = 12.3.2
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = harfbuzz
 HOMEPAGE = https://www.freedesktop.org/wiki/Software/HarfBuzz/
-ARCHIVE = harfbuzz-12.2.0.tar.xz
-LINK = https://github.com/harfbuzz/harfbuzz/releases/download/12.2.0/harfbuzz-12.2.0.tar.xz
+ARCHIVE = harfbuzz-12.3.2.tar.xz
+LINK = https://github.com/harfbuzz/harfbuzz/releases/download/12.3.2/harfbuzz-12.3.2.tar.xz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = harfbuzz-12.2.0
+BUILDDIR = harfbuzz-12.3.2
 BUILD_OPTION = --buildtype=release \
 	--default-library=both \
 	-Ddocs=disabled \
