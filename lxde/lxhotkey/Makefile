@@ -1,14 +1,14 @@
-COMMENT = Extremely fast and lightweight file manager
-VERSION = 1.4.0
+COMMENT = Keyboard shortcuts configurator (part of LXDE)
+VERSION = 0.1.2
 REVISION = 0
 CATEGORIES = xapps
-PKGNAME = pcmanfm
-HOMEPAGE = https://github.com/lxde/pcmanfm
-ARCHIVE = 1.4.0.tar.gz
-LINK = https://github.com/lxde/pcmanfm/archive/refs/tags/1.4.0.tar.gz
+PKGNAME = lxhotkey
+HOMEPAGE = https://github.com/lxde/lxhotkey
+ARCHIVE = 0.1.2.tar.gz
+LINK = https://github.com/lxde/lxhotkey/archive/refs/tags/0.1.2.tar.gz
 SRCCD = archive
 BUILD = make
-BUILDDIR = pcmanfm-1.4.0
+BUILDDIR = lxhotkey-0.1.2
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
@@ -22,7 +22,6 @@ prepare:
 	autoreconf -fi ${BUILDDIR}
 
 post_build:
-	install -Dm644 pcmanfm.appdata.xml package/usr/share/metainfo/pcmanfm.appdata.xml
 
 post-install:
 

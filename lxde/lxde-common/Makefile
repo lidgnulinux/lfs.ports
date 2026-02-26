@@ -1,19 +1,18 @@
-COMMENT = Extremely fast and lightweight file manager
-VERSION = 1.4.0
+COMMENT = Common files of the LXDE Desktop
+VERSION = 0.99.3
 REVISION = 0
 CATEGORIES = xapps
-PKGNAME = pcmanfm
-HOMEPAGE = https://github.com/lxde/pcmanfm
-ARCHIVE = 1.4.0.tar.gz
-LINK = https://github.com/lxde/pcmanfm/archive/refs/tags/1.4.0.tar.gz
+PKGNAME = lxde_common
+HOMEPAGE = https://github.com/lxde/lxde-common
+ARCHIVE = 0.99.3.tar.gz
+LINK = https://github.com/lxde/lxde-common/archive/refs/tags/0.99.3.tar.gz
 SRCCD = archive
 BUILD = make
-BUILDDIR = pcmanfm-1.4.0
+BUILDDIR = lxde-common-0.99.3
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
-	--with-gtk=3 \
 	--build=x86_64-pc-linux-musl)
 MAKEOPT =
 
@@ -22,7 +21,6 @@ prepare:
 	autoreconf -fi ${BUILDDIR}
 
 post_build:
-	install -Dm644 pcmanfm.appdata.xml package/usr/share/metainfo/pcmanfm.appdata.xml
 
 post-install:
 

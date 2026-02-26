@@ -1,0 +1,31 @@
+diff -pru obconf-2.0.4/src/appearance.c obconf-2.0.4.patch/src/appearance.c
+--- obconf-2.0.4/src/appearance.c       2025-04-02 15:31:29.634490956 +0200
++++ obconf-2.0.4.patch/src/appearance.c 2025-04-02 15:31:23.957803372 +0200
+@@ -17,6 +17,7 @@
+    See the COPYING file for a copy of the GNU General Public License.
+ */
+ 
++#include "ctype.h"
+ #include "main.h"
+ #include "tree.h"
+ #include "preview_update.h"
+diff -pru obconf-2.0.4/src/desktops.h obconf-2.0.4.patch/src/desktops.h
+--- obconf-2.0.4/src/desktops.h 2025-04-02 15:31:32.801169288 +0200
++++ obconf-2.0.4.patch/src/desktops.h   2025-04-02 15:31:23.957803372 +0200
+@@ -24,5 +24,6 @@
+ 
+ void desktops_setup_num(GtkWidget *w);
+ void desktops_setup_names(GtkWidget *w);
++void desktops_setup_tab();
+ 
+ #endif
+diff -pru obconf-2.0.4/src/main.c obconf-2.0.4.patch/src/main.c
+--- obconf-2.0.4/src/main.c     2025-04-02 15:31:36.217848539 +0200
++++ obconf-2.0.4.patch/src/main.c       2025-04-02 15:31:23.961136718 +0200
+@@ -26,6 +26,7 @@
+ #include "mouse.h"
+ #include "desktops.h"
+ #include "dock.h"
++#include "moveresize.h"
+ #include "preview_update.h"
+ #include "gettext.h"

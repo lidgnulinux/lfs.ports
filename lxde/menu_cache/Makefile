@@ -1,16 +1,15 @@
 COMMENT = Caching mechanism for freedesktop.org compliant menus
-VERSION = 1.1.0
+VERSION = 1.1.1
 REVISION = 0
-CATEGORIES = misc
+CATEGORIES = libs
 PKGNAME = menu_cache
 HOMEPAGE = https://lxde.org/
-ARCHIVE = menu-cache-1.1.0.tar.xz
-LINK = https://downloads.sourceforge.net/lxde/menu-cache-1.1.0.tar.xz
+ARCHIVE = 1.1.1.tar.gz
+LINK = https://github.com/lxde/menu-cache/archive/refs/tags/1.1.1.tar.gz
 SRCCD = archive
 BUILD = make
-BUILDDIR = menu-cache-1.1.0
-BUILD_OPTION =
-AUTO_CONF = (cd ${BUILDDIR} && ./configure \
+BUILDDIR = menu-cache-1.1.1
+AUTO_CONF = (cd ${BUILDDIR} && ./autogen.sh && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
@@ -20,7 +19,6 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/menu-cache-1.1.0-0001-Support-gcc10-compilation.patch
 
 post_build:
 
