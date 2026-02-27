@@ -1,0 +1,15 @@
+--- obconf-2.0.4/src/main.c	2013-08-12 04:18:18.000000000 +0700
++++ obconf-2.0.4/src/main.c.new	2026-02-27 08:36:09.381479077 +0700
+@@ -131,8 +132,10 @@
+         else if (!strcmp(argv[i], "--tab")) {
+             if (i == argc - 1) /* no args left */
+                 g_printerr(_("--tab requires an argument\n"));
+-            else
+-                obc_tab = MAX(atoi(argv[++i]) - 1, 0);
++            else {
++                obc_tab = atoi(argv[++i]) - 1;
++                obc_tab = MAX(obc_tab, 0);
++            }
+         }
+         else
+             obc_theme_install = argv[i];
