@@ -1,6 +1,6 @@
 COMMENT = Modular Wayland compositor library
-VERSION = 0.20.c436bcf9a
-_WLR = 436bcf9a4755b24f7fadc100ba8deaa7f343ba86
+VERSION = 0.20.c6d9aa175
+_WLR = 6d9aa17572c12cc22d2c9f7f0afc3e942a699d2a
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = wlroots_git
@@ -15,5 +15,7 @@ BUILD_OPTION = -Dexamples=false -Dxwayland=enabled
 prepare:
 
 post_build:
+
+post-install:
 
 include /usr/share/mk/lfs.port.mk

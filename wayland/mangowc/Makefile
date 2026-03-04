@@ -1,19 +1,20 @@
-COMMENT = wayland compositor base wlroots and scenefx(dwm but wayland)
-VERSION = git
+COMMENT = wayland compositor base wlroots and scenefx (dwm but wayland)
+VERSION = 0.12.5.c1e1d41e6
 REVISION = 0
 CATEGORIES = wayland
 PKGNAME = mangowc
 HOMEPAGE = https://github.com/DreamMaoMao/mangowc
-COMMIT = 30ab7c86b42808cac0464a2aba9b0f23a4b90ea0
+COMMIT = 1e1d41e626aa12057c03ec79ed11bcc5619f6748
 ARCHIVE = ${COMMIT}.tar.gz
 LINK = https://github.com/DreamMaoMao/mangowc/archive/${ARCHIVE}
 SRCCD = archive
 BUILD = meson
-BUILDDIR = mangowc-${COMMIT}
+BUILDDIR = mango-${COMMIT}
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/00_unknown-type-name-u_int32_t.patch 
 
 post_build:
+
+post-install:
 
 include /usr/share/mk/lfs.port.mk
