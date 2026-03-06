@@ -1,14 +1,14 @@
 COMMENT = Wayland stacking compositor
-VERSION = 0.9.3
+VERSION = 0.9.5
 REVISION = 0
 CATEGORIES = wayland
 PKGNAME = labwc
 HOMEPAGE = https://github.com/labwc/labwc
-ARCHIVE = labwc-0.9.3.tar.gz
-LINK = https://github.com/labwc/labwc/archive/0.9.3/labwc-0.9.3.tar.gz
+ARCHIVE = labwc-0.9.5.tar.gz
+LINK = https://github.com/labwc/labwc/archive/0.9.5/labwc-0.9.5.tar.gz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = labwc-0.9.3
+BUILDDIR = labwc-0.9.5
 BUILD_OPTION = -Dman-pages=enabled
 
 prepare:
