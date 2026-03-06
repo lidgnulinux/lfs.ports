@@ -47,10 +47,14 @@ else ifeq ($(BUILD),cmake)
 	@echo "Mode: Build Cmake"
 	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -B build -G Ninja -S ${BUILDDIR} ${BUILD_OPTION}
 	cmake --build build
+else ifeq ($(BUILD),bmake)
+	@echo "Mode: Build BSD Make"
+	${AUTO_CONF}
+	bmake -j4 -C ${BUILDDIR} PREFIX=${PREFIX} ${MAKEFLAGS} ${MAKEOPT}
 else ifeq ($(BUILD),custom)
 	$(MAKE) custom-build
 else
-	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', 'make', 'cmake', or 'custom')
+	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', 'make', 'cmake', bmake or 'custom')
 endif
 
 
@@ -77,13 +81,23 @@ else ifeq ($(BUILD),cmake)
 	install  -Dm644 $(PWD)/Makefile $(PWD)/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	tar -C package -cvf ${PACKAGE}.tar.gz .
+else ifeq ($(BUILD),bmake)
+	@echo "Mode: Package BSD Make"
+  ifeq ($(MKINST),no)
+		@echo "No need to install"
+  else
+		bmake -j4 -C ${BUILDDIR} PREFIX=${PREFIX} ${MAKEFLAGS} ${MAKEOPT} DESTDIR=${DESTDIR} install
+  endif
+	install  -Dm644 $(PWD)/Makefile $(PWD)/package/var/lib/mk/${PACKAGE}.mk
+	$(MAKE) post_build
+	tar -C package -cvf ${PACKAGE}.tar.gz .
 else ifeq ($(BUILD),custom)
 	@echo "Mode: Package Custom"
 	install -Dm644 $(PWD)/Makefile $(PWD)/pkg/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	tar -C pkg -cvf ${PACKAGE}.tar.gz .
 else
-	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', 'make', or 'cmake')
+	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', 'make', 'cmake', bmake or 'custom')
 endif
 
 
