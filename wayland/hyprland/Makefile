@@ -1,15 +1,15 @@
 COMMENT = Independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks.
-VERSION = 0.53.3
-_REV = dd220efe7b1e292415bd0ea7161f63df9c95bfd3
+VERSION = 0.54.1
+_REV = 4b07770b9ef1cceb2e6f56d33538aaffb9186b9c
 REVISION = 0
 CATEGORIES = wayland
 PKGNAME = hyprland
 HOMEPAGE = https://hyprland.org
-ARCHIVE = Hyprland-v0.53.3.tar.gz
-LINK = https://github.com/hyprwm/Hyprland/archive/v0.53.3/Hyprland-v0.53.3.tar.gz
+ARCHIVE = Hyprland-v0.54.1.tar.gz
+LINK = https://github.com/hyprwm/Hyprland/archive/v0.54.1/Hyprland-v0.54.1.tar.gz
 SRCCD = archive
 BUILD = make
-BUILDDIR = Hyprland-0.53.3
+BUILDDIR = Hyprland-0.54.1
 MAKEOPT = release 
 
 prepare:

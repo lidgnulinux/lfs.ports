@@ -1,0 +1,22 @@
+diff --git a/Makefile b/Makefile
+index 53b74d3..22235b9 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,5 @@
+ EXEC = wayst
+-INSTALL_DIR = /usr/local/bin
++INSTALL_DIR = ${DESTDIR}/${PREFIX}/bin
+ 
+ ARGS =
+ 
+--- wayst-faa577170048645114b4598386470315b1ba58e1/Makefile	2026-03-07 13:56:27.624862973 +0700
++++ wayst-faa577170048645114b4598386470315b1ba58e1/Makefile.new	2026-03-07 14:02:25.458854417 +0700
+@@ -102,7 +102,7 @@
+ 	$(RM) -f $(EXEC) $(OBJ) $(OBJ:.o=.d)
+ 
+ install:
+-	cp $(EXEC) $(INSTALL_DIR)/
++	install -Dm755 $(EXEC) -t $(INSTALL_DIR)/
+ 
+ uninstall:
+ 	$(RM) $(INSTALL_DIR)/$(EXEC)

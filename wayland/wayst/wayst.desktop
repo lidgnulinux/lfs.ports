@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Wayst
+Comment=A simple terminal emulator.
+TryExec=/usr/bin/wayst
+Exec=/usr/bin/wayst
+Icon=terminal-tango
+Type=Application
+Categories=Utility;TerminalEmulator;System;
