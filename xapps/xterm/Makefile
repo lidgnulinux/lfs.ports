@@ -1,5 +1,5 @@
 COMMENT = X Terminal Emulator
-VERSION = 404
+VERSION = 407
 REVISION = 0
 CATEGORIES = xapps
 PKGNAME = xterm
