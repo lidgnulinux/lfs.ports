@@ -2,7 +2,7 @@
 
 ## What's this ?
 
-Ports package build collection for LFS / linux distro in general. It's a collection of recipe to build package. Using Makefile and bsd.port.mk-like (I call it as lfs.port.mk). If you're familiar with `ports` from openbsd & freebsd, you would easily recognize it. There are 4 build types, `make`, `cmake`, `meson`, `bmake`, `muon` and `custom`.
+Ports package build collection for LFS / linux distro in general. It's a collection of recipe to build package. Using Makefile and bsd.port.mk-like (I call it as lfs.port.mk). If you're familiar with `ports` from openbsd & freebsd, you would easily recognize it. There are 6 build types, `make`, `cmake`, `meson`, `bmake`, `muon` and `custom`.
 
 
 ## How to use it ?

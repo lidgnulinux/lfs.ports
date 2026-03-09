@@ -19,9 +19,9 @@ If you want / need to write your own port build recipe, you can follow this guid
 
 1. Determine which build type.
 
-	There are 4 categories, `make`, `cmake`, `meson` and `custom`. You can easily know which build type by looking at the source code.
-	- If it has a `Makefile` in it, it means it's a `make` type.
-	- If it has a `meson.build` in it, it means it's a `meson` type.
+	There are 6 categories, `make`, `cmake`, `meson`, `bmake`, `muon` and `custom`. You can easily know which build type by looking at the source code.
+	- If it has a `Makefile` in it, it means it's a `make` type or probably a `bmake` type.
+	- If it has a `meson.build` in it, it means it's a `meson` type or a `muon` type (as alternative).
 	- If it has a `CmakeLists.txt` in it, it means it's a `cmake` type.
 	- if it have neither `Makefile`, `meson.build`, or `CmakeLists.txt` in it, you can use `custom` type. You need to specify build steps tho.
 
