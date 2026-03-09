@@ -51,6 +51,10 @@ else ifeq ($(BUILD),bmake)
 	@echo "Mode: Build BSD Make"
 	${AUTO_CONF}
 	bmake -j4 -C ${BUILDDIR} PREFIX=${PREFIX} ${MAKEFLAGS} ${MAKEOPT}
+else ifeq ($(BUILD),muon)
+	@echo "Mode: Build Muon"
+	mkdir b
+	cd b && muon build -Dprefix=/usr -Dlibdir=/usr/lib ${BUILD_OPTION} ../${BUILDDIR}
 else ifeq ($(BUILD),custom)
 	$(MAKE) custom-build
 else
@@ -91,6 +95,12 @@ else ifeq ($(BUILD),bmake)
 	install  -Dm644 $(PWD)/Makefile $(PWD)/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	tar -C package -cvf ${PACKAGE}.tar.gz .
+else ifeq ($(BUILD),muon)
+	@echo "Mode: Package Muon"
+	muon -C b install -d package
+	install  -Dm644 $(PWD)/Makefile $(PWD)/b/package/var/lib/mk/${PACKAGE}.mk
+	$(MAKE) post_build
+	tar -C b/package -cvf ${PACKAGE}.tar.gz .
 else ifeq ($(BUILD),custom)
 	@echo "Mode: Package Custom"
 	install -Dm644 $(PWD)/Makefile $(PWD)/pkg/var/lib/mk/${PACKAGE}.mk
