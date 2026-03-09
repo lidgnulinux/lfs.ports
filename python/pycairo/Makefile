@@ -1,14 +1,14 @@
 COMMENT = Python3 bindings for the cairo graphics library
-VERSION = 1.28.0
+VERSION = 1.29.0
 REVISION = 0
 CATEGORIES = python
 PKGNAME = pycairo
 HOMEPAGE = http://cairographics.org/pycairo/
-ARCHIVE = pycairo-1.28.0.tar.gz
-LINK = https://github.com/pygobject/pycairo/releases/download/v1.28.0/pycairo-1.28.0.tar.gz
+ARCHIVE = pycairo-1.29.0.tar.gz
+LINK = https://github.com/pygobject/pycairo/releases/download/v1.29.0/pycairo-1.29.0.tar.gz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = pycairo-1.28.0
+BUILDDIR = pycairo-1.29.0
 BUILD_OPTION = --libexecdir=/usr/libexec \
 	--bindir=/usr/bin \
 	--sbindir=/usr/sbin \
