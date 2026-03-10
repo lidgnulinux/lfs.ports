@@ -10,7 +10,7 @@ LINK = https://gitlab.freedesktop.org/wlroots/wlroots/-/archive/${_WLR}/wlroots-
 SRCCD = archive
 BUILD = muon
 BUILDDIR = wlroots-${_WLR}
-BUILD_OPTION = -Dexamples=false -Dxwayland=enabled
+BUILD_OPTION = -Dexamples=false -Dxwayland=enabled -Ddefault_library=both
 
 prepare:
 
