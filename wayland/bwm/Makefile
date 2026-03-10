@@ -1,6 +1,6 @@
 COMMENT = Wayland compositor based on bswpm, with floating, tiling and scrolling layouts. 
-VERSION = git.cf7129de6
-_REV = f7129de65cd3e485e49132a65cace6d37a258a36
+VERSION = git.c8704ecec
+_REV = 8704ececa30324d330675058edabf2747a33bef8
 REVISION = 0
 CATEGORIES = wayland
 PKGNAME = bwm
@@ -8,7 +8,7 @@ HOMEPAGE = https://github.com/dy-tea/bwm
 ARCHIVE = ${_REV}.tar.gz
 LINK = https://github.com/dy-tea/bwm/archive/${ARCHIVE}
 SRCCD = archive
-BUILD = meson
+BUILD = muon
 BUILDDIR = bwm-${_REV}
 BUILD_OPTION =
 
