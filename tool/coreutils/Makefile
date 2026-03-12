@@ -1,4 +1,4 @@
-COMMENT = The GNU core utilities (version 9.9).
+COMMENT = The GNU core utilities (version 9.10).
 VERSION = 9.10
 REVISION = 0
 CATEGORIES = tool
