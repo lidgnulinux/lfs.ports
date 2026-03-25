@@ -1,5 +1,5 @@
 COMMENT = URL retrival utility and library
-VERSION = 8.18.0
+VERSION = 8.19.0
 REVISION = 0
 CATEGORIES = net
 PKGNAME = curl
