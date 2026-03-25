@@ -1,11 +1,11 @@
 COMMENT = Fast, lightweight and minimalistic Wayland terminal emulator
-VERSION = 1.25.0
+VERSION = 1.26.0
 REVISION = 0
 CATEGORIES = wayland
 PKGNAME = foot
 HOMEPAGE = https://codeberg.org/dnkl/foot
-ARCHIVE = 1.25.0.tar.gz
-LINK = https://codeberg.org/dnkl/foot/archive/1.25.0.tar.gz
+ARCHIVE = 1.26.0.tar.gz
+LINK = https://codeberg.org/dnkl/foot/archive/1.26.0.tar.gz
 SRCCD = archive
 BUILD = meson
 BUILDDIR = foot
