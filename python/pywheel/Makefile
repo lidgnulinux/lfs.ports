@@ -1,6 +1,6 @@
 COMMENT = built-package format for Python
 VERSION = 0.46.1
-REVISION = 0
+REVISION = 1
 CATEGORIES = python
 PKGNAME = pywheel
 HOMEPAGE = https://github.com/pypa/wheel
@@ -17,6 +17,8 @@ custom-build:
 	cd ${BUILDDIR} && python3 -m installer --destdir "$(PWD)/pkg" dist/*.whl
 
 post_build:
+	mv pkg/usr/pkg/*/usr/* pkg/usr
+	rm -rf pkg/usr/pkg
 
 post-install:
 

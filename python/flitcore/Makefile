@@ -9,7 +9,7 @@ LINK = https://mirrors.kernel.org/slackware/slackware-current/source/l/python-fl
 SRCCD = archive
 BUILD = custom
 BUILDDIR = flit_core-${VERSION}
-PYTHONDIR = /usr/lib/python3.13/site-packages
+PYTHONDIR = /usr/lib/python3.14/site-packages
 
 prepare:
 

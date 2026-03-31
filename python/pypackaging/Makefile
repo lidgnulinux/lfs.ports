@@ -1,14 +1,14 @@
 COMMENT = Core utilities for Python3 packages
-VERSION = 25.0
+VERSION = 26.0
 REVISION = 0
 CATEGORIES = python
 PKGNAME = pypackaging
 HOMEPAGE = https://pypi.org/project/packaging
-ARCHIVE = packaging-25.0.tar.gz 
-LINK = https://files.pythonhosted.org/packages/source/p/packaging/packaging-25.0.tar.gz
+ARCHIVE = packaging-26.0.tar.gz 
+LINK = https://files.pythonhosted.org/packages/source/p/packaging/packaging-26.0.tar.gz
 SRCCD = archive
 BUILD = custom
-BUILDDIR = packaging-25.0
+BUILDDIR = packaging-26.0
 
 prepare:
 
@@ -18,6 +18,8 @@ custom-build:
 		--destdir "$(PWD)/pkg" dist/*.whl
 
 post_build:
+	mv pkg/usr/pkg/*/usr/* pkg/usr
+	rm -rf pkg/usr/pkg
 
 post-install:
 

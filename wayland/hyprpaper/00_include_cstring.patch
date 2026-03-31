@@ -1,0 +1,17 @@
+--- hyprpaper-0.8.3/src/ipc/HyprlandSocket.cpp	2026-01-29 22:50:46.000000000 +0700
++++ hyprpaper-0.8.3/src/ipc/HyprlandSocket.cpp.new	2026-03-22 06:23:32.483926548 +0700
+@@ -10,6 +10,7 @@
+ #include <format>
+ 
+ #include <hyprutils/memory/Casts.hpp>
++#include <cstring>
+ 
+ using namespace Hyprutils::Memory;
+ 
+@@ -83,4 +84,4 @@
+     close(SERVERSOCKET);
+ 
+     return reply;
+-}
+\ No newline at end of file
++}
