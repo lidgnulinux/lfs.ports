@@ -1,6 +1,6 @@
 COMMENT = i3-compatible window manager for Wayland 
-VERSION = 0.11.cfa497964.r7636
-_REV = fa497964fd55632beacf5f425e964ae4893e25b9
+VERSION = 0.13.c909a2ddb
+_REV = 909a2ddb5fff528e735341529a028d2ef21836db
 REVISION = 0
 CATEGORIES = wayland
 PKGNAME = sway
@@ -10,7 +10,7 @@ LINK = ${HOMEPAGE}/archive/${ARCHIVE}
 SRCCD = archive
 BUILD = meson
 BUILDDIR = sway-${_REV}
-BUILD_OPTION =
+BUILD_OPTION = -Dgdk-pixbuf=enabled -Dtray=enabled
 
 prepare:
 
