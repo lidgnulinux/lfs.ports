@@ -11,13 +11,14 @@ BUILD = custom
 BUILDDIR = loguru-0.7.3
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
 
 custom-build:
 	cd ${BUILDDIR} && python -m build --wheel --no-isolation
 	cd ${BUILDDIR} && python -m installer --destdir="$(PWD)/pkg" dist/*.whl
 
 post_build:
+	mv pkg/usr/pkg/*/usr/* pkg/usr
+	rm -rf pkg/usr/pkg
 
 post-install:
 

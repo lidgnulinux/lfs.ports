@@ -4,11 +4,11 @@ REVISION = 0
 CATEGORIES = libs
 PKGNAME = at_spi2_core
 HOMEPAGE = https://wiki.gnome.org/Accessibility/
-ARCHIVE = at-spi2-core-2.58.2.tar.xz
-LINK = https://download.gnome.org/sources/at-spi2-core/2.58/at-spi2-core-2.58.2.tar.xz
+ARCHIVE = at-spi2-core-2.59.90.tar.xz
+LINK = https://download.gnome.org/sources/at-spi2-core/2.59/at-spi2-core-2.59.90.tar.xz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = at-spi2-core-2.58.2
+BUILDDIR = at-spi2-core-2.59.90
 BUILD_OPTION = --buildtype=release \
 	-Dx11=enabled \
 	-Dintrospection=enabled \
