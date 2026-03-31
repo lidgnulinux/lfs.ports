@@ -1,5 +1,5 @@
 COMMENT = Input device library.
-VERSION = 1.30.0
+VERSION = 1.31.0
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libinput
@@ -18,5 +18,7 @@ BUILD_OPTION = -Dudev-dir=/lib/udev/ \
 prepare:
 
 post_build:
+
+post-install:
 
 include /usr/share/mk/lfs.port.mk
