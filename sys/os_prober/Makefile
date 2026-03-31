@@ -1,6 +1,6 @@
 COMMENT = Utility to detect other OSes on a set of drives
 VERSION = 1.84
-REVISION = 0
+REVISION = 1
 CATEGORIES = sys
 PKGNAME = os_prober
 HOMEPAGE = https://joeyh.name/code/os-prober/
@@ -22,7 +22,8 @@ post_build:
 	install -Dm755 ${BUILDDIR}/common.sh \
 		package/usr/share/os-prober/common.sh
 
-	for i in os-probes os-probes/mounted os-probes/init linux-boot-probes linux-boot-probes/mounted; do \
+	for i in os-probes os-probes/mounted os-probes/init \
+		linux-boot-probes linux-boot-probes/mounted; do \
 		install -Dm755 -t package/usr/lib/$$i ${BUILDDIR}/$$i/common/*; \
 		if [ -d ${BUILDDIR}/$$i/x86 ]; then \
 			cp -r ${BUILDDIR}/$$i/x86/* package/usr/lib/$$i; \
