@@ -1,6 +1,6 @@
 COMMENT = Introspection system for GObject-based libraries
 VERSION = 1.86.0
-REVISION = 0
+REVISION = 1
 CATEGORIES = libs
 PKGNAME = gobject_introspection
 HOMEPAGE = https://wiki.gnome.org/Projects/GObjectIntrospection/
@@ -9,7 +9,7 @@ LINK = https://download.gnome.org/sources/gobject-introspection/1.86/gobject-int
 SRCCD = archive
 BUILD = meson
 BUILDDIR = gobject-introspection-1.86.0
-BUILD_OPTION =
+BUILD_OPTION = -Dtests=false
 
 prepare:
 

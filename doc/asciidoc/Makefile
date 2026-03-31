@@ -21,6 +21,8 @@ prepare:
 	cd ${BUILDDIR} && autoconf
 
 post_build:
+	mv package/usr/pkg/*/usr/* package/usr
+	rm -rf package/usr/pkg
 
 post-install:
 
