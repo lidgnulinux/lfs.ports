@@ -1,14 +1,14 @@
 COMMENT = Portable Network Graphics library
-VERSION = 1.6.55
+VERSION = 1.6.56
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libpng
 HOMEPAGE = http://www.libpng.org
-ARCHIVE = libpng-1.6.55.tar.gz
-LINK = https://downloads.sourceforge.net/libpng/libpng-1.6.55.tar.gz
+ARCHIVE = libpng-1.6.56.tar.gz
+LINK = https://downloads.sourceforge.net/libpng/libpng-1.6.56.tar.gz
 SRCCD = archive
 BUILD = make
-BUILDDIR = libpng-1.6.55
+BUILDDIR = libpng-1.6.56
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
@@ -18,9 +18,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/libpng-1.6.54-apng.patch
-
-custom-build:
+	patch -p1 -d ${BUILDDIR} -i $(PWD)/libpng-1.6.55-apng.patch
 
 post_build:
 
