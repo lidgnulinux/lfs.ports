@@ -1,0 +1,11 @@
+--- wmacpi-2.4.old/libacpi.c	2020-05-03 19:30:36.000000000 +0700
++++ wmacpi-2.4/libacpi.c	2026-03-10 06:20:21.710553336 +0700
+@@ -526,7 +526,7 @@
+ 
+     /* get current rate of burn
+      * note that if it's on AC, this will report 0 */
+-    if (read_sysfs_file(info->name, "current_now", buf, sizeof(buf)) < 0)
++    if (read_sysfs_file(info->name, "power_now", buf, sizeof(buf)) < 0)
+ 	info->present_rate = -1;
+     else {
+ 	int rate;
