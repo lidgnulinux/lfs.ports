@@ -1,14 +1,14 @@
 COMMENT = S* Floating Window taskBar
-VERSION = 1.0_beta16.1
+VERSION = 1.0_beta17
 REVISION = 0
 CATEGORIES = wayland
 PKGNAME = sfwbar
 HOMEPAGE = https://github.com/LBCrion/sfwbar
-ARCHIVE = v1.0_beta16.1.tar.gz
-LINK = https://github.com/LBCrion/sfwbar/archive/refs/tags/v1.0_beta16.1.tar.gz
+ARCHIVE = v1.0_beta17.tar.gz
+LINK = https://github.com/LBCrion/sfwbar/archive/refs/tags/v1.0_beta17.tar.gz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = sfwbar-1.0_beta16.1
+BUILDDIR = sfwbar-1.0_beta17
 BUILD_OPTION = --buildtype=plain
 
 prepare:
