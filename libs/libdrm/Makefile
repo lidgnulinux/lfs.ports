@@ -1,10 +1,10 @@
 COMMENT = Userspace interface to kernel DRM services
-VERSION = 2.4.130
-REVISION = 0
+VERSION = 2.4.131
+REVISION = 1
 CATEGORIES = libs
 PKGNAME = libdrm
 HOMEPAGE = https://cgit.freedesktop.org/mesa/drm/
-ARCHIVE = libdrm-2.4.130.tar.xz
+ARCHIVE = libdrm-2.4.131.tar.xz
 LINK = https://dri.freedesktop.org/libdrm/${ARCHIVE}
 SRCCD = archive
 BUILD = meson
@@ -20,6 +20,6 @@ prepare:
 
 post_build:
 
-post_install:
+post-install:
 
 include /usr/share/mk/lfs.port.mk
