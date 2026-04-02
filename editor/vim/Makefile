@@ -1,5 +1,5 @@
 COMMENT = The ubiquitous text editor (tiny version).
-VERSION = 9.1.1957
+VERSION = 9.2.0280
 REVISION = 0
 CATEGORIES = editor
 PKGNAME = vim
@@ -8,8 +8,8 @@ ARCHIVE = ${PKGNAME}-${VERSION}.tar.gz
 LINK = https://github.com/vim/vim/archive/v${VERSION}/${ARCHIVE}
 SRCCD = archive
 BUILD = make
-BUILDDIR = ${PKGNAME}-${VERSION}
-AUTO_CONF = (cd ${BUILDDIR} && ./configure LIBS="-lffi" LDFLAGS="-static" \
+BUILDDIR = vim-${VERSION}
+AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr --libdir=/usr/lib \
 	--enable-gui=no --enable-multibyte \
 	--disable-netbeans --disable-gtktest \
