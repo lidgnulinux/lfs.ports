@@ -1,5 +1,5 @@
 COMMENT = Unprivileged sandboxing tool
-VERSION = 0.11.0
+VERSION = 0.11.1
 REVISION = 0
 CATEGORIES = tool
 PKGNAME = bubblewrap
@@ -10,6 +10,11 @@ SRCCD = archive
 BUILD = meson
 BUILDDIR = bubblewrap-${VERSION}
 BUILD_OPTION = "-Drequire_userns=true"
-MKINST = yes
+
+prepare:
+
+post_build:
+
+post-install:
 
 include /usr/share/mk/lfs.port.mk
