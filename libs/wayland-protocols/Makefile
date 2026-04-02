@@ -1,5 +1,5 @@
 COMMENT = Protocols and protocol extensions complementing the Wayland core protocol
-VERSION = 1.47
+VERSION = 1.48
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = wayland_protocols
@@ -10,6 +10,8 @@ SRCCD = archive
 BUILD = meson
 BUILDDIR = wayland-protocols-${VERSION}
 BUILD_OPTION = -Dtests=false
+
+prepare:
 
 post_build:
 
