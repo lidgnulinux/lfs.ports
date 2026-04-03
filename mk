@@ -35,7 +35,8 @@ help:
    \033[1minfo, i PKG=package\033[0m		view package information. \n\
    \033[1minstall, a PKG=package\033[0m	install package. \n\
    \033[1mremove, r PKG=<package path>\033[0m	remove package. \n\
-   \033[1mupgrade, u PKG=package\033[0m	upgrade package. \n"
+   \033[1mupgrade, u PKG=package\033[0m	upgrade package. \n\
+   \033[1minfo-archive, ia A=archive\033[0m	view archive info. \n"
 
 install:
 	echo "Installing package archive ${PKG}"
@@ -103,6 +104,10 @@ upgrade:
 		echo "No post-install target available."; \
 	fi
 
+info-archive:
+	@echo ""
+	@tar -xf ${A} ./var/lib/mk/ -O | sed -n '1,/BUILD \=/p'
+
 # target alias
 l: list
 c: content
@@ -113,3 +118,4 @@ a: install
 i: info
 r: remove
 u: upgrade
+ia: info-archive
