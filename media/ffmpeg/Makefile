@@ -1,15 +1,14 @@
 COMMENT = Complete and free Internet live audio and video broadcasting solution for Linux/Unix
-VERSION = 8.0.1
+VERSION = 8.1
 REVISION = 0
 CATEGORIES = media
 PKGNAME = ffmpeg
 HOMEPAGE = https://ffmpeg.org/
-ARCHIVE = ffmpeg-8.0.1.tar.xz
-LINK = https://ffmpeg.org/releases/ffmpeg-8.0.1.tar.xz
+ARCHIVE = ffmpeg-8.1.tar.xz
+LINK = https://ffmpeg.org/releases/ffmpeg-8.1.tar.xz
 SRCCD = archive
 BUILD = make
-BUILDDIR = ffmpeg-8.0.1
-BUILD_OPTION =
+BUILDDIR = ffmpeg-8.1
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--libdir=/usr/lib \
@@ -43,17 +42,17 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--enable-libx264 \
 	--enable-libxcb \
 	--enable-libxml2 \
+	--enable-pic \
 	--enable-pthreads \
 	--enable-shared \
-	--enable-vaapi \
 	--enable-libvorbis \
-	--disable-vdpau \
+	--enable-vaapi \
+	--enable-vdpau \
 	--enable-version3 \
-	--disable-vulkan \
+	--enable-vulkan \
 	--enable-asm \
 	--enable-libssh \
 	--enable-libpulse \
-	--disable-ffplay \
 	--disable-openssl)
 MAKEOPT =
 
