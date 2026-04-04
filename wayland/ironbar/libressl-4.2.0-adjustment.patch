@@ -1,0 +1,14 @@
+--- ironbar-0.18.0/Cargo.lock	2025-12-18 05:03:07.000000000 +0700
++++ ironbar-0.18.0/Cargo.lock.new	2026-04-04 12:46:44.513005176 +0700
+@@ -2501,9 +2501,9 @@
+ 
+ [[package]]
+ name = "openssl-sys"
+-version = "0.9.107"
++version = "0.9.110"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "8288979acd84749c744a9014b4382d42b8f7b2592847b5afb2ed29e5d16ede07"
++checksum = "0a9f0075ba3c21b09f8e8b2026584b1d18d49388648f2fbbf3c97ea8deced8e2"
+ dependencies = [
+  "cc",
+  "libc",
