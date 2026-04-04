@@ -106,7 +106,7 @@ upgrade:
 
 info-archive:
 	@echo ""
-	@tar -xf ${A} ./var/lib/mk/ -O | sed -n '1,/BUILD \=/p'
+	@tar -xf ${A} ./var/lib/mk/ -O | make -f - info-package -s
 
 # target alias
 l: list
