@@ -105,7 +105,7 @@ else ifeq ($(BUILD),muon)
 	$(MAKE) post_build
 	tar -C b/package -cvf ${PACKAGE}.tar.gz .
 else ifeq ($(BUILD),cargo)
-	@echo "Mode: Package Custom"
+	@echo "Mode: Package Cargo"
 	install -Dm644 $(PWD)/Makefile $(PWD)/pkg/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	tar -C pkg -cvf ${PACKAGE}.tar.gz .
