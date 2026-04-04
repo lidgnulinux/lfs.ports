@@ -55,10 +55,13 @@ else ifeq ($(BUILD),muon)
 	@echo "Mode: Build Muon"
 	mkdir b
 	cd b && muon build -Dprefix=/usr -Dlibdir=/usr/lib ${BUILD_OPTION} ../${BUILDDIR}
+else ifeq ($(BUILD),cargo)
+	@echo "Mode: Build Cargo"
+	cargo build --release --manifest-path ${BUILDDIR}/Cargo.toml
 else ifeq ($(BUILD),custom)
 	$(MAKE) custom-build
 else
-	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', 'make', 'cmake', bmake or 'custom')
+	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', 'make', 'cmake', 'bmake', 'muon', 'cargo' or 'custom')
 endif
 
 
@@ -101,13 +104,18 @@ else ifeq ($(BUILD),muon)
 	install  -Dm644 $(PWD)/Makefile $(PWD)/b/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	tar -C b/package -cvf ${PACKAGE}.tar.gz .
+else ifeq ($(BUILD),cargo)
+	@echo "Mode: Package Custom"
+	install -Dm644 $(PWD)/Makefile $(PWD)/pkg/var/lib/mk/${PACKAGE}.mk
+	$(MAKE) post_build
+	tar -C pkg -cvf ${PACKAGE}.tar.gz .
 else ifeq ($(BUILD),custom)
 	@echo "Mode: Package Custom"
 	install -Dm644 $(PWD)/Makefile $(PWD)/pkg/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	tar -C pkg -cvf ${PACKAGE}.tar.gz .
 else
-	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', 'make', 'cmake', bmake or 'custom')
+	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', 'make', 'cmake', 'bmake', 'muon', 'cargo' or 'custom')
 endif
 
 
