@@ -1,14 +1,14 @@
 COMMENT = A library for layout and rendering of text.
-VERSION = 1.57.0
+VERSION = 1.57.1
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = pango
 HOMEPAGE = https://www.pango.org/Introduction/
-ARCHIVE = pango-1.57.0.tar.xz
-LINK = https://ftp.gnome.org/pub/gnome/sources/pango/1.57/pango-1.57.0.tar.xz
+ARCHIVE = pango-1.57.1.tar.xz
+LINK = https://ftp.gnome.org/pub/gnome/sources/pango/1.57/pango-1.57.1.tar.xz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = pango-1.57.0
+BUILDDIR = pango-1.57.1
 BUILD_OPTION = --buildtype=release \
 	--strip \
 	--wrap-mode=nofallback \
