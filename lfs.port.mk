@@ -57,7 +57,7 @@ else ifeq ($(BUILD),muon)
 	cd b && muon build -Dprefix=/usr -Dlibdir=/usr/lib ${BUILD_OPTION} ../${BUILDDIR}
 else ifeq ($(BUILD),cargo)
 	@echo "Mode: Build Cargo"
-	cargo build --release --manifest-path ${BUILDDIR}/Cargo.toml
+	cargo build --release --manifest-path ${BUILDDIR}/Cargo.toml ${BUILD_OPTION}
 else ifeq ($(BUILD),custom)
 	$(MAKE) custom-build
 else
