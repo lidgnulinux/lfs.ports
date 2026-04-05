@@ -6,9 +6,9 @@ mk \- Makefile-based package manager.
 .SH SYNOPSIS
 \f[B]mk\f[R] [\f[B]achilrsuv\f[R]] 
 
-[\f[B]content \f[I]PKG=package\f[R]] [\f[B]help\f[R]] [\f[B]install \f[I]PKG=<package archive>\f[R]] [\f[B]info \f[I]PKG=package\f[R]] [\f[B]list\f[R]] [\f[B]remove \f[I]PKG=<package path>\f[R]] [\f[B]search \f[I]q=query\f[R]] [\f[B]upgrade \f[I]PKG=<package archive>\f[R]] [\f[B]view \f[I]PKG=package\f[R]]
+[\f[B]content \f[I]PKG=package\f[R]] [\f[B]help\f[R]] [\f[B]install \f[I]PKG=<package archive>\f[R]] [\f[B]info \f[I]PKG=package\f[R]] [\f[B]list\f[R]] [\f[B]remove \f[I]PKG=<package path>\f[R]] [\f[B]search \f[I]q=query\f[R]] [\f[B]upgrade \f[I]PKG=<package archive>\f[R]] [\f[B]view \f[I]PKG=package\f[R]] [\f[B]info-archive \f[I]A=archive\f[R]]
 .SH DESCRIPTION
-mk(1) is Makefile-based package manager, written in Makefile script. Its main function is to show informations about package, like name, version, installed files, etc. I made it to check installed packages on LFS (Linux From Scratch) Musl.
+mk(1) is Makefile-based package manager, written in Makefile script. Its main function is to install package(s) which built using lfs.ports, show informations about package, like name, version, installed files, etc. I made it to check installed packages on LFS (Linux From Scratch) Musl.
 .SH OPTIONS
 The following are the options that mk(1) accepts.
 .TP
@@ -46,6 +46,10 @@ upgrade package.
 .TP
 \f[B]v \f[I]PKG=package\f[R], \f[B]view \f[I]PKG=package\f[R]
 view package Makefile information.
+.RE
+.TP
+\f[B]ia \f[I]A=archive\f[R], \f[B]info-archive \f[I]A=archive\f[R]
+view archive information.
 
 .SH NOTES
 Before trying to use this package manager :
