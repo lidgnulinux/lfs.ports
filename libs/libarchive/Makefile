@@ -1,5 +1,5 @@
 COMMENT = Multi-format archive and compression library.
-VERSION = 3.8.4
+VERSION = 3.8.6
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libarchive
@@ -24,5 +24,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 prepare:
 
 post_build:
+
+post-install:
 
 include /usr/share/mk/lfs.port.mk
