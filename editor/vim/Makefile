@@ -1,5 +1,5 @@
 COMMENT = The ubiquitous text editor (tiny version).
-VERSION = 9.2.0280
+VERSION = 9.2.0315
 REVISION = 0
 CATEGORIES = editor
 PKGNAME = vim
@@ -11,13 +11,12 @@ BUILD = make
 BUILDDIR = vim-${VERSION}
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr --libdir=/usr/lib \
-	--enable-gui=no --enable-multibyte \
 	--disable-netbeans --disable-gtktest \
 	--disable-icon-cache-update \
 	--disable-desktop-database-update \
-	--with-features=huge \
+	--with-features=huge --enable-multibyte \
 	--with-compiledby="LFS musl" \
-	--without-x --build=x86_64-pc-linux-musl) 
+	--build=x86_64-pc-linux-musl) 
 
 prepare:
 
