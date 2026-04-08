@@ -1,14 +1,14 @@
 COMMENT = Operating system and container binary deployment and upgrades
-VERSION = 1.16.1
+VERSION = 1.16.4
 REVISION = 0
 CATEGORIES = tool
 PKGNAME = flatpak
 HOMEPAGE = https://github.com/flatpak/flatpak
-ARCHIVE = flatpak-1.16.1.tar.xz
-LINK = https://github.com/flatpak/flatpak/releases/download/1.16.1/flatpak-1.16.1.tar.xz
+ARCHIVE = flatpak-1.16.4.tar.xz
+LINK = https://github.com/flatpak/flatpak/releases/download/1.16.4/flatpak-1.16.4.tar.xz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = flatpak-1.16.1
+BUILDDIR = flatpak-1.16.4
 BUILD_OPTION = -Ddbus_config_dir=/usr/share/dbus-1/system.d \
 	-Dauto_sideloading=false \
 	-Ddocbook_docs=disabled \
