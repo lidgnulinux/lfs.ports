@@ -21,6 +21,11 @@ export RUSTFLAGS=-C target-feature=-crt-static
 prepare:
 
 post_build:
+	find build/package \
+		| xargs file \
+		| grep -e "executable" -e "shared object" \
+		| grep ELF | cut -f 1 -d : \
+		| xargs strip --strip-unneeded 2> /dev/null
 
 post-install:
 	@echo "run gdk-pixbuf-query-loaders as the build suggest."
