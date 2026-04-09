@@ -9,10 +9,15 @@ ARCHIVE = cwm-${VERSION}.tar.gz
 SRCCD = archive
 BUILD = make
 BUILDDIR = cwm-${VERSION}
-MKINST = yes
 BUILD_OPTION =
+
+prepare:
 
 post_build:
 	install -Dm644 cwm.desktop package/usr/share/xsessions/cwm.desktop 
+	$(MAKE) strip
+
+post-install:
 
 include /usr/share/mk/lfs.port.mk
+include strip.mk
