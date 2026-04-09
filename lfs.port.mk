@@ -31,9 +31,6 @@ endif
 extract:
 	tar -xvf ${ARCHIVE} 
 
-# prepare:
-# 	${PREPARE}
-
 build:
 ifeq ($(BUILD),meson)
 	@echo "Mode: Build Meson"
@@ -45,7 +42,8 @@ else ifeq ($(BUILD),make)
 	make -j4 -C ${BUILDDIR} PREFIX=${PREFIX} ${MAKEFLAGS} ${MAKEOPT}
 else ifeq ($(BUILD),cmake)
 	@echo "Mode: Build Cmake"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -B build -G Ninja -S ${BUILDDIR} ${BUILD_OPTION}
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
+		-B build -G Ninja -S ${BUILDDIR} ${BUILD_OPTION}
 	cmake --build build
 else ifeq ($(BUILD),bmake)
 	@echo "Mode: Build BSD Make"
@@ -61,7 +59,8 @@ else ifeq ($(BUILD),cargo)
 else ifeq ($(BUILD),custom)
 	$(MAKE) custom-build
 else
-	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', 'make', 'cmake', 'bmake', 'muon', 'cargo' or 'custom')
+	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', \
+		'make', 'cmake', 'bmake', 'muon', 'cargo' or 'custom')
 endif
 
 
@@ -77,7 +76,8 @@ else ifeq ($(BUILD),make)
   ifeq ($(MKINST),no)
 		@echo "No need to install"
   else
-		make -j4 -C ${BUILDDIR} PREFIX=${PREFIX} ${MAKEFLAGS} ${MAKEOPT} DESTDIR=${DESTDIR} install
+		make -j4 -C ${BUILDDIR} PREFIX=${PREFIX} ${MAKEFLAGS} \
+			${MAKEOPT} DESTDIR=${DESTDIR} install
   endif
 	install  -Dm644 $(PWD)/Makefile $(PWD)/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
@@ -93,7 +93,8 @@ else ifeq ($(BUILD),bmake)
   ifeq ($(MKINST),no)
 		@echo "No need to install"
   else
-		bmake -j4 -C ${BUILDDIR} PREFIX=${PREFIX} ${MAKEFLAGS} ${MAKEOPT} DESTDIR=${DESTDIR} install
+		bmake -j4 -C ${BUILDDIR} PREFIX=${PREFIX} ${MAKEFLAGS} \
+			${MAKEOPT} DESTDIR=${DESTDIR} install
   endif
 	install  -Dm644 $(PWD)/Makefile $(PWD)/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
@@ -115,7 +116,8 @@ else ifeq ($(BUILD),custom)
 	$(MAKE) post_build
 	tar -C pkg -cvf ${PACKAGE}.tar.gz .
 else
-	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', 'make', 'cmake', 'bmake', 'muon', 'cargo' or 'custom')
+	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', \
+		'make', 'cmake', 'bmake', 'muon', 'cargo' or 'custom')
 endif
 
 

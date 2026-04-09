@@ -13,5 +13,6 @@ else ifeq ($(BUILD),$(filter $(BUILD),cargo custom))
 else ifeq ($(BUILD),meson)
 	$(MAKE) DIR=$(PWD)/build/package do_strip
 else
-	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', 'make', 'cmake', 'bmake', 'muon', 'cargo' or 'custom')
+	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', \
+		'make', 'cmake', 'bmake', 'muon', 'cargo' or 'custom')
 endif
