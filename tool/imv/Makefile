@@ -9,7 +9,7 @@ LINK = https://git.sr.ht/~exec64/imv/archive/v5.0.1.tar.gz
 SRCCD = archive
 BUILD = meson
 BUILDDIR = imv-v5.0.1
-BUILD_OPTION = -Dwindows=wayland \
+BUILD_OPTION = -Dwindows=all \
 	-Dtest=disabled \
 	-Dunicode=grapheme
 
