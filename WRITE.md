@@ -72,3 +72,12 @@ post-install:
 
 include /usr/share/mk/lfs.port.mk
 ```
+
+1. Striping.
+
+	Striping executable and library are supported by using `STRIP` variable (STRIP=yes). We could add it to Makefile or just pass it as environment when running `make package`.
+
+```
+$ make STRIP=no package (it won't do striping).
+$ make STRIP=yes package (it will do striping).
+```

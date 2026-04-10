@@ -63,6 +63,12 @@ else
 		'make', 'cmake', 'bmake', 'muon', 'cargo' or 'custom')
 endif
 
+striping:
+ifeq ($(STRIP),no)
+	@echo "No need to strip"
+else
+	$(MAKE) strip
+endif
 
 package:
 ifeq ($(BUILD),meson)
@@ -70,6 +76,7 @@ ifeq ($(BUILD),meson)
 	meson install --no-rebuild -C build --destdir package
 	install  -Dm644 $(PWD)/Makefile $(PWD)/build/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
+	$(MAKE) striping
 	tar -C build/package -cvf ${PACKAGE}.tar.gz .
 else ifeq ($(BUILD),make)
 	@echo "Mode: Package Make"
@@ -81,12 +88,14 @@ else ifeq ($(BUILD),make)
   endif
 	install  -Dm644 $(PWD)/Makefile $(PWD)/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
+	$(MAKE) striping
 	tar -C package -cvf ${PACKAGE}.tar.gz .
 else ifeq ($(BUILD),cmake)
 	@echo "Mode: Package Cmake"
 	DESTDIR="package" cmake --install build
 	install  -Dm644 $(PWD)/Makefile $(PWD)/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
+	$(MAKE) striping
 	tar -C package -cvf ${PACKAGE}.tar.gz .
 else ifeq ($(BUILD),bmake)
 	@echo "Mode: Package BSD Make"
@@ -98,22 +107,26 @@ else ifeq ($(BUILD),bmake)
   endif
 	install  -Dm644 $(PWD)/Makefile $(PWD)/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
+	$(MAKE) striping
 	tar -C package -cvf ${PACKAGE}.tar.gz .
 else ifeq ($(BUILD),muon)
 	@echo "Mode: Package Muon"
 	muon -C b install -d package
 	install  -Dm644 $(PWD)/Makefile $(PWD)/b/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
+	$(MAKE) striping
 	tar -C b/package -cvf ${PACKAGE}.tar.gz .
 else ifeq ($(BUILD),cargo)
 	@echo "Mode: Package Cargo"
 	install -Dm644 $(PWD)/Makefile $(PWD)/pkg/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
+	$(MAKE) striping
 	tar -C pkg -cvf ${PACKAGE}.tar.gz .
 else ifeq ($(BUILD),custom)
 	@echo "Mode: Package Custom"
 	install -Dm644 $(PWD)/Makefile $(PWD)/pkg/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
+	$(MAKE) striping
 	tar -C pkg -cvf ${PACKAGE}.tar.gz .
 else
 	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', \
@@ -140,3 +153,5 @@ info-package:
 	@echo "Link		: $(LINK)"
 	@echo "Source code	: $(SRCCD)"
 	@echo "Build type	: $(BUILD)"
+
+include /usr/share/mk/strip.mk
