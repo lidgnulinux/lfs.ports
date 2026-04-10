@@ -1,14 +1,14 @@
 COMMENT = Mesa is an OpenGL compatible 3-D graphics library.
-VERSION = 25.3.0
+VERSION = 26.0.4
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = mesa
 HOMEPAGE = https://www.mesa3d.org/
-ARCHIVE = mesa-25.3.0.tar.xz
-LINK = https://mesa.freedesktop.org/archive/mesa-25.3.0.tar.xz
+ARCHIVE = mesa-26.0.4.tar.xz
+LINK = https://mesa.freedesktop.org/archive/mesa-26.0.4.tar.xz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = mesa-25.3.0
+BUILDDIR = mesa-26.0.4
 BUILD_OPTION = --buildtype=release \
 	--strip \
 	-Ddri-drivers-path=/usr/lib/dri \
@@ -28,7 +28,7 @@ BUILD_OPTION = --buildtype=release \
 	-Db_lto=false \
 	-Dmicrosoft-clc=disabled \
 	-Dgallium-rusticl=false \
-	-Dgallium-extra-hud=true \
+	-Dgallium-extra-hud=false \
 	-Dvideo-codecs=all
 
 CFLAGS = -O2 -g1
