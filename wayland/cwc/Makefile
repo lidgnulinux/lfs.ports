@@ -1,6 +1,6 @@
 COMMENT = Extensible Wayland compositor with dynamic window management
-VERSION = 0.4.0.dev.c4de6dcb
-_REV = c4de6dcb89a9960b0a69e00ecbf83fe2875f9fd3
+VERSION = 0.4.0.dev.cd7493bae
+_REV = d7493bae3745886a5acf370d2dca0aeebaa3e475
 REVISION = 0
 CATEGORIES = wayland
 PKGNAME = cwc

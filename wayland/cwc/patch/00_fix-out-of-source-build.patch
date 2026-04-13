@@ -5,7 +5,7 @@
  
  for p in sys.argv[1:-1]:
 -    path = re.sub("[^0-9a-zA-Z]+", "_", p)
-+    path = re.sub("[^0-9a-zA-Z]+", "_",p.removeprefix('../cwcwm-c4de6dcb89a9960b0a69e00ecbf83fe2875f9fd3'))
++    path = re.sub("[^0-9a-zA-Z]+", "_",p.removeprefix('../cwcwm-d7493bae3745886a5acf370d2dca0aeebaa3e475'))
  
      with open(p, "rb") as f:
          data = f.read()

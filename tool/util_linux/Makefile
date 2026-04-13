@@ -1,14 +1,14 @@
 COMMENT = Random collection of Linux utilities
-VERSION = 2.41.3
+VERSION = 2.42
 REVISION = 0
 CATEGORIES = tool
 PKGNAME = util_linux
 HOMEPAGE = https://git.kernel.org/cgit/utils/util-linux/util-linux.git
-ARCHIVE = util-linux-2.41.3.tar.xz
-LINK = https://www.kernel.org/pub/linux/utils/util-linux/v2.41/util-linux-2.41.3.tar.xz
+ARCHIVE = util-linux-2.42.tar.xz
+LINK = https://www.kernel.org/pub/linux/utils/util-linux/v2.42/util-linux-2.42.tar.xz
 SRCCD = archive
 BUILD = make
-BUILDDIR = util-linux-2.41.3
+BUILDDIR = util-linux-2.42
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
@@ -35,6 +35,7 @@ MAKEOPT =
 prepare:
 	cp -r $(PWD)/ttydefaults.h ${BUILDDIR}/include
 	patch -p1 -d ${BUILDDIR} -i $(PWD)/utmps.patch
+	patch -p1 -d ${BUILDDIR} -i $(PWD)/fix_AT_HANDLE_FID_musl.patch 
 
 post_build:
 
