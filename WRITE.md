@@ -19,12 +19,13 @@ If you want / need to write your own port build recipe, you can follow this guid
 
 1. Determine which build type.
 
-	There are 7 categories, `make`, `cmake`, `meson`, `bmake`, `muon`, `cargo` and `custom`. You can easily know which build type by looking at the source code.
+	There are 8 categories, `make`, `cmake`, `meson`, `bmake`, `muon`, `cargo`, `zig` and `custom`. You can easily know which build type by looking at the source code.
 	- If it has a `Makefile` in it, it means it's a `make` type or probably a `bmake` type.
 	- If it has a `meson.build` in it, it means it's a `meson` type or a `muon` type (as alternative).
 	- If it has a `CmakeLists.txt` in it, it means it's a `cmake` type.
 	- If it has a `Cargo.toml` or `Cargo.lock` in it, it means it's a `cargo` type.
-	- if it have neither `Makefile`, `meson.build`, `CmakeLists.txt`, `Cargo.toml` or `Cargo.lock` in it, you can use `custom` type. You need to specify build steps tho.
+	- If it has a `build.zig` in it, it means it's a `zig` type.
+	- if it have neither `Makefile`, `meson.build`, `CmakeLists.txt`, `Cargo.toml` & `Cargo.lock`, or `build.zig` in it, you can use `custom` type. You need to specify build steps tho.
 
 1. Add build option(s).
 

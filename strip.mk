@@ -8,11 +8,11 @@ do_strip:
 strip:
 ifeq ($(BUILD),$(filter $(BUILD),make bmake cmake))
 	$(MAKE) DIR=$(PWD)/package do_strip
-else ifeq ($(BUILD),$(filter $(BUILD),cargo custom))
+else ifeq ($(BUILD),$(filter $(BUILD),cargo zig custom))
 	$(MAKE) DIR=$(PWD)/pkg do_strip
 else ifeq ($(BUILD),meson)
 	$(MAKE) DIR=$(PWD)/build/package do_strip
 else
 	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', \
-		'make', 'cmake', 'bmake', 'muon', 'cargo' or 'custom')
+		'make', 'cmake', 'bmake', 'muon', 'cargo', 'zig' or 'custom')
 endif

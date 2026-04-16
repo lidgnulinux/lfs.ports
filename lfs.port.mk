@@ -56,11 +56,14 @@ else ifeq ($(BUILD),muon)
 else ifeq ($(BUILD),cargo)
 	@echo "Mode: Build Cargo"
 	cargo build --release --manifest-path ${BUILDDIR}/Cargo.toml ${BUILD_OPTION}
+else ifeq ($(BUILD),zig)
+	@echo "Mode: Build Zig"
+	DESTDIR="build" ${ZIGPATH}/zig build --build-file ${BUILDDIR}/build.zig ${BUILD_OPTION}
 else ifeq ($(BUILD),custom)
 	$(MAKE) custom-build
 else
 	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', \
-		'make', 'cmake', 'bmake', 'muon', 'cargo' or 'custom')
+		'make', 'cmake', 'bmake', 'muon', 'cargo', 'zig' or 'custom')
 endif
 
 striping:
@@ -122,6 +125,12 @@ else ifeq ($(BUILD),cargo)
 	$(MAKE) post_build
 	$(MAKE) striping
 	tar -C pkg -cvf ${PACKAGE}.tar.gz .
+else ifeq ($(BUILD),zig)
+	@echo "Mode: Package Zig"
+	install -Dm644 $(PWD)/Makefile $(PWD)/pkg/var/lib/mk/${PACKAGE}.mk
+	$(MAKE) post_build
+	$(MAKE) striping
+	tar -C pkg -cvf ${PACKAGE}.tar.gz .
 else ifeq ($(BUILD),custom)
 	@echo "Mode: Package Custom"
 	install -Dm644 $(PWD)/Makefile $(PWD)/pkg/var/lib/mk/${PACKAGE}.mk
@@ -130,7 +139,7 @@ else ifeq ($(BUILD),custom)
 	tar -C pkg -cvf ${PACKAGE}.tar.gz .
 else
 	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', \
-		'make', 'cmake', 'bmake', 'muon', 'cargo' or 'custom')
+		'make', 'cmake', 'bmake', 'muon', 'cargo', 'zig' or 'custom')
 endif
 
 
