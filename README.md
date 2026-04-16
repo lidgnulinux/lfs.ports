@@ -2,14 +2,14 @@
 
 ## What's this ?
 
-Ports package build collection for LFS / linux distro in general. It's a collection of recipe to build package. Using Makefile and bsd.port.mk-like (I call it as lfs.port.mk). If you're familiar with `ports` from openbsd & freebsd, you would easily recognize it. There are 7 build types, `make`, `cmake`, `meson`, `bmake`, `muon`, `cargo` and `custom`.
+Ports package build collection for LFS / linux distro in general. It's a collection of recipe to build package. Using Makefile and bsd.port.mk-like (I call it as lfs.port.mk). If you're familiar with `ports` from openbsd & freebsd, you would easily recognize it. There are 7 build types, `make`, `cmake`, `meson`, `bmake`, `muon`, `cargo`, `zig` and `custom`.
 
 
 ## How to use it ?
 
 You could easily use it, but before that, you should have these requirements :
 - wget, to download source code. You could change it with your tool downloader.
-- build tools, like compiler (I use gcc mainly), make, meson, cmake, bmake, and muon.
+- build tools, like compiler (I use gcc mainly), make, meson, cmake, bmake, muon and zig.
 - tar, to create tar.gz package archive.
 - [graft](https://peters.gormand.com.au/Home/tools/graft), to do grafting. 
 - text editor.
@@ -17,7 +17,7 @@ You could easily use it, but before that, you should have these requirements :
 
 After you have those requirements, let's build our package !
 
-1. Copy `lfs.port.mk` to `/usr/share/mk` directory.
+1. Copy `lfs.port.mk` & `strip.mk` to `/usr/share/mk` directory.
 1. Pick a template package, for example `iceauth`. 
 1. Run these commands :
 
