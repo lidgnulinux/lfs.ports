@@ -1,14 +1,14 @@
 COMMENT = Fast C++ logging library
-VERSION = 1.16.0
+VERSION = 1.17.0
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = spdlog
 HOMEPAGE = https://github.com/gabime/spdlog
-ARCHIVE = spdlog-v1.16.0.tar.gz
-LINK = https://github.com/gabime/spdlog/archive/v1.16.0/spdlog-v1.16.0.tar.gz
+ARCHIVE = spdlog-v1.17.0.tar.gz
+LINK = https://github.com/gabime/spdlog/archive/v1.17.0/spdlog-v1.17.0.tar.gz
 SRCCD = archive
 BUILD = cmake
-BUILDDIR = spdlog-1.16.0
+BUILDDIR = spdlog-1.17.0
 BUILD_OPTION = -DSPDLOG_BUILD_BENCH=OFF \
 	-DSPDLOG_BUILD_TESTS=OFF \
 	-DSPDLOG_SANITIZE_ADDRESS=OFF \

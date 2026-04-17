@@ -1,14 +1,15 @@
 COMMENT = Highly customizable Wayland bar for Sway and Wlroots based compositors
-VERSION = 0.14.0
+VERSION = 0.15.0.c3a321d93
+_REV = 3a321d934dda790f8ce8dc76d8e545abe1ec3251
 REVISION = 0
 CATEGORIES = wayland
 PKGNAME = waybar
 HOMEPAGE = https://github.com/Alexays/Waybar/
-ARCHIVE = Waybar-0.14.0.tar.gz
-LINK = https://github.com/Alexays/Waybar/archive/0.14.0/Waybar-0.14.0.tar.gz
+ARCHIVE = ${_REV}.tar.gz
+LINK = https://github.com/Alexays/Waybar/archive/${ARCHIVE}
 SRCCD = archive
 BUILD = meson
-BUILDDIR = Waybar-0.14.0
+BUILDDIR = Waybar-${_REV}
 BUILD_OPTION = -Ddefault_library=shared \
 	-Ddbusmenu-gtk=enabled \
 	-Dlibevdev=disabled \

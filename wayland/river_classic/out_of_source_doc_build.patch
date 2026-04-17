@@ -1,0 +1,11 @@
+--- river-classic/build.zig	2026-04-03 14:41:57.000000000 +0700
++++ river-classic/build.zig.new	2026-04-16 16:30:13.299911397 +0700
+@@ -259,7 +259,7 @@
+         inline for (.{ "river", "riverctl", "rivertile" }) |page| {
+             // Workaround for https://github.com/ziglang/zig/issues/16369
+             // Even passing a buffer to std.Build.Step.Run appears to be racy and occasionally deadlocks.
+-            const scdoc = b.addSystemCommand(&.{ "/bin/sh", "-c", "scdoc < doc/" ++ page ++ ".1.scd" });
++            const scdoc = b.addSystemCommand(&.{ "/bin/sh", "-c", "scdoc < river-classic/doc/" ++ page ++ ".1.scd" });
+             // This makes the caching work for the Workaround, and the extra argument is ignored by /bin/sh.
+             scdoc.addFileArg(b.path("doc/" ++ page ++ ".1.scd"));
+ 
