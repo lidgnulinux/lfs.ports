@@ -1,0 +1,19 @@
+--- src/server.c	2025-06-11 06:43:46.081080100 +0700
++++ src/server.c.new	2025-06-11 06:43:29.246970489 +0700
+@@ -22,6 +22,7 @@
+ #include <wlr/types/wlr_server_decoration.h>
+ #include <wlr/types/wlr_xdg_output_v1.h>
+ #include <wlr/types/wlr_xdg_shell.h>
++#include <wlr/types/wlr_viewporter.h>
+ 
+ #ifdef HAVE_LAYERSHELL
+ #include <wlr/types/wlr_layer_shell_v1.h>
+@@ -865,6 +866,8 @@
+   server->new_output.notify = new_output_handler;
+   wl_signal_add(&server->backend->events.new_output, &server->new_output);
+ 
++  wlr_viewporter_create(server->display);
++
+ #ifdef HAVE_GAMMACONTROL
+   wlr_gamma_control_manager_v1_create(server->display);
+ #endif
