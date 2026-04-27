@@ -1,0 +1,68 @@
+diff -urdN river-classic/river/command/move.zig river-classic.edit/river/command/move.zig
+--- river-classic/river/command/move.zig	2026-04-03 14:41:57.000000000 +0700
++++ river-classic.edit/river/command/move.zig	2026-04-27 07:52:42.110827735 +0700
+@@ -75,6 +75,53 @@
+     apply(view);
+ }
+ 
++pub fn split(
++    seat: *Seat,
++    args: []const [:0]const u8,
++    _: *?[]const u8,
++) Error!void {
++    if (args.len < 2) return Error.NotEnoughArguments;
++    if (args.len > 2) return Error.TooManyArguments;
++
++    const direction = std.meta.stringToEnum(PhysicalDirection, args[1]) orelse
++        return Error.InvalidPhysicalDirection;
++
++    const view = getView(seat) orelse return;
++    const output = view.pending.output orelse return;
++    // const border_width = server.config.border_width;
++    var output_width: c_int = math.maxInt(c_int);
++    var output_height: c_int = math.maxInt(c_int);
++    output.wlr_output.effectiveResolution(&output_width, &output_height);
++    switch (direction) {
++        .up => {
++        view.pending.box.x = 0;
++        view.pending.box.y = 0;
++        view.pending.box.width = output_width;
++        view.pending.box.height = @divFloor(output_height, 2);
++        },
++        .down => {
++        view.pending.box.x = 0;
++        view.pending.box.y = @divFloor(output_height, 2);
++        view.pending.box.width = output_width;
++        view.pending.box.height = @divFloor(output_height, 2);
++        },
++        .left => {
++        view.pending.box.x = 0;
++        view.pending.box.y = 0;
++        view.pending.box.width = @divFloor(output_width, 2);
++        view.pending.box.height = output_height;
++        },
++        .right => {
++        view.pending.box.x = @divFloor(output_width ,2);
++        view.pending.box.y = 0;
++        view.pending.box.width = @divFloor(output_width, 2);
++        view.pending.box.height = output_height;
++        },
++    }
++
++    apply(view);
++}
++
+ pub fn resize(
+     seat: *Seat,
+     args: []const [:0]const u8,
+diff -urdN river-classic/river/command.zig river-classic.edit/river/command.zig
+--- river-classic/river/command.zig	2026-04-03 14:41:57.000000000 +0700
++++ river-classic.edit/river/command.zig	2026-04-27 07:52:42.111460168 +0700
+@@ -88,6 +88,7 @@
+         .{ "snap",                      @import("command/move.zig").snap },
+         .{ "spawn",                     @import("command/spawn.zig").spawn },
+         .{ "spawn-tagmask",             @import("command/tags.zig").spawnTagmask },
++        .{ "split",                      @import("command/move.zig").split },
+         .{ "swap",                      @import("command/view_operations.zig").swap},
+         .{ "toggle-float",              @import("command/toggle_float.zig").toggleFloat },
+         .{ "toggle-focused-tags",       @import("command/tags.zig").toggleFocusedTags },
