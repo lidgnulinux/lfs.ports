@@ -1,6 +1,6 @@
 COMMENT = i3-compatible window manager for Wayland 
-VERSION = 0.13.c909a2ddb
-_REV = 909a2ddb5fff528e735341529a028d2ef21836db
+VERSION = 0.13.c0bf87311
+_REV = 0bf8731114f8b74d97066cd1d480ed1aad735163
 REVISION = 0
 CATEGORIES = wayland
 PKGNAME = sway

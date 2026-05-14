@@ -1,14 +1,14 @@
 COMMENT = openrc (dependency-based init system)
-VERSION = 0.63
+VERSION = 0.63.1
 REVISION = 0
 CATEGORIES = sys
 PKGNAME = openrc
 HOMEPAGE = https://github.com/OpenRC/openrc
-ARCHIVE = 0.63.tar.gz
-LINK = https://github.com/OpenRC/openrc/archive/0.63.tar.gz
+ARCHIVE = 0.63.1.tar.gz
+LINK = https://github.com/OpenRC/openrc/archive/0.63.1.tar.gz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = openrc-0.63
+BUILDDIR = openrc-0.63.1
 BUILD_OPTION = -Dbash-completions=true \
 	-Dpkgconfig=true \
 	-Dpam=false \

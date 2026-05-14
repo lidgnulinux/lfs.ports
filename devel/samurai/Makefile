@@ -1,5 +1,5 @@
 COMMENT = ninja-compatible build tool written in C
-VERSION = 1.2
+VERSION = 1.3
 REVISION = 0
 CATEGORIES = devel
 PKGNAME = samurai
