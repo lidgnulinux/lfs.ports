@@ -1,14 +1,14 @@
 COMMENT = a blazing fast wayland wallpaper utility with IPC controls
-VERSION = 0.8.3
+VERSION = 0.8.4
 REVISION = 0
 CATEGORIES = wayland
 PKGNAME = hyprpaper
 HOMEPAGE = https://github.com/hyprwm/hyprpaper
-ARCHIVE = hyprpaper-0.8.3.tar.gz
-LINK = https://github.com/hyprwm/hyprpaper/archive/v0.8.3/hyprpaper-0.8.3.tar.gz
+ARCHIVE = hyprpaper-0.8.4.tar.gz
+LINK = https://github.com/hyprwm/hyprpaper/archive/v0.8.4/hyprpaper-0.8.4.tar.gz
 SRCCD = archive
 BUILD = cmake
-BUILDDIR = hyprpaper-0.8.3
+BUILDDIR = hyprpaper-0.8.4
 BUILD_OPTION = -D CMAKE_BUILD_TYPE=Release
 
 prepare:

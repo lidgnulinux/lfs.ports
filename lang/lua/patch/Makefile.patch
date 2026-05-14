@@ -1,0 +1,23 @@
+--- lua-5.5.0/Makefile	2025-06-26 20:04:37.000000000 +0700
++++ lua-5.5.0/Makefile.new	2026-05-09 13:13:44.362915484 +0700
+@@ -10,13 +10,13 @@
+ # so take care if INSTALL_TOP is not an absolute path. See the local target.
+ # You may want to make INSTALL_LMOD and INSTALL_CMOD consistent with
+ # LUA_ROOT, LUA_LDIR, and LUA_CDIR in luaconf.h.
+-INSTALL_TOP= /usr/local
+-INSTALL_BIN= $(INSTALL_TOP)/bin
+-INSTALL_INC= $(INSTALL_TOP)/include
+-INSTALL_LIB= $(INSTALL_TOP)/lib
+-INSTALL_MAN= $(INSTALL_TOP)/man/man1
+-INSTALL_LMOD= $(INSTALL_TOP)/share/lua/$V
+-INSTALL_CMOD= $(INSTALL_TOP)/lib/lua/$V
++INSTALL_TOP= /usr
++INSTALL_BIN= ${DESTDIR}/$(INSTALL_TOP)/bin
++INSTALL_INC= ${DESTDIR}/$(INSTALL_TOP)/include
++INSTALL_LIB= ${DESTDIR}/$(INSTALL_TOP)/lib
++INSTALL_MAN= ${DESTDIR}/$(INSTALL_TOP)/man/man1
++INSTALL_LMOD= ${DESTDIR}/$(INSTALL_TOP)/share/lua/$V
++INSTALL_CMOD= ${DESTDIR}/$(INSTALL_TOP)/lib/lua/$V
+ 
+ # How to install. If your install program does not support "-p", then
+ # you may have to run ranlib on the installed liblua.a.

@@ -1,14 +1,14 @@
 COMMENT = A fast and consistent wire protocol for IPC
-VERSION = 0.3.0
-REVISION = 1
+VERSION = 0.3.1
+REVISION = 0
 CATEGORIES = libs
 PKGNAME = hyprwire
 HOMEPAGE = https://github.com/hyprwm/hyprwire
-ARCHIVE = hyprwire-0.3.0.tar.gz
-LINK = https://github.com/hyprwm/hyprwire/archive/v0.3.0/hyprwire-0.3.0.tar.gz
+ARCHIVE = hyprwire-0.3.1.tar.gz
+LINK = https://github.com/hyprwm/hyprwire/archive/v0.3.1/hyprwire-0.3.1.tar.gz
 SRCCD = archive
 BUILD = cmake
-BUILDDIR = hyprwire-0.3.0
+BUILDDIR = hyprwire-0.3.1
 BUILD_OPTION = -Wno-dev
 
 prepare:

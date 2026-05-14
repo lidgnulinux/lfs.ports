@@ -1,6 +1,6 @@
 COMMENT = The official implementation library for the hypr config language.
 VERSION = 0.6.8
-REVISION = 1
+REVISION = 2
 CATEGORIES = libs
 PKGNAME = hyprlang
 HOMEPAGE = https://hyprland.org/hyprlang/

@@ -1,9 +1,9 @@
 --- aquamarine-0.10.0/CMakeLists.txt	2025-11-24 01:33:09.000000000 +0700
 +++ aquamarine-0.10.0/CMakeLists.txt.new	2026-02-09 18:03:24.388306697 +0700
-@@ -67,7 +67,7 @@
+@@ -70,7 +70,7 @@
    PRIVATE "./src" "./src/include" "./protocols" "${CMAKE_BINARY_DIR}")
  set_target_properties(aquamarine PROPERTIES VERSION ${AQUAMARINE_VERSION}
-                                             SOVERSION 9)
+                                             SOVERSION 10)
 -target_link_libraries(aquamarine OpenGL::EGL OpenGL::OpenGL PkgConfig::deps)
 +target_link_libraries(aquamarine OpenGL::EGL OpenGL::GL PkgConfig::deps)
  
