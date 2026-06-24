@@ -1,5 +1,5 @@
 COMMENT = Message Digest functions from BSD systems
-VERSION = 1.1.0
+VERSION = 1.2.0
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libmd

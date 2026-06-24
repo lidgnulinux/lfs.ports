@@ -1,0 +1,19 @@
+--- hikari/src/server.c	2026-05-27 07:46:22.580481184 +0700
++++ hikari/src/server.c.new	2026-05-27 07:49:44.923022021 +0700
+@@ -26,6 +26,7 @@
+ #include <wlr/types/wlr_subcompositor.h>
+ #include <wlr/types/wlr_xdg_output_v1.h>
+ #include <wlr/types/wlr_xdg_shell.h>
++#include <wlr/types/wlr_viewporter.h>
+ 
+ #ifdef HAVE_LAYERSHELL
+ #include <wlr/types/wlr_layer_shell_v1.h>
+@@ -997,6 +998,8 @@
+   wl_signal_add(
+       &server->output_layout->events.change, &server->output_layout_change);
+ 
++  wlr_viewporter_create(server->display);
++
+ #ifdef HAVE_GAMMACONTROL
+   wlr_gamma_control_manager_v1_create(server->display);
+ #endif

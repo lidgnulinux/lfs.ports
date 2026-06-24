@@ -1,24 +1,27 @@
 COMMENT = Stacking Wayland compositor with additional tiling capabilities
-VERSION = 2.3.3
-REVISION = 0
+VERSION = 3.0.1.c2f0f6d73
+REVISION = 1
 CATEGORIES = wayland
 PKGNAME = hikari
-HOMEPAGE = https://hub.darcs.net/raichoo/hikari
-ARCHIVE = hikari-2.3.3.tar.gz
-LINK = https://hikari.acmelabs.space/releases/hikari-2.3.3.tar.gz
+HOMEPAGE = https://codeberg.org/thomasadam/hikari
+ARCHIVE = 2f0f6d7387c58cbc72220d9ebc0802f2e97308d9.tar.gz
+LINK = https://codeberg.org/thomasadam/hikari/archive/${ARCHIVE}
 SRCCD = archive
 BUILD = bmake
-BUILDDIR = hikari-2.3.3
-MAKEOPT = WITH_ALL=1 ETC_PREFIX=/ PREFIX=/usr VERSION="${VERSION}"
-export PKG_CONFIG_PATH=/usr/lib/wlroots0.16/pkgconfig
+BUILDDIR = hikari
+MAKEOPT = WITH_ALL=YES
+MKINST = no
 STRIP = no
 
 prepare:
+	patch -p1 -d hikari -i $(PWD)/00_musl_attempt_fix.diff
+	patch -p1 -d hikari -i $(PWD)/01_add_viewporter.diff
 
 post_build:
+	install -Dm755 ${BUILDDIR}/hikari package/usr/bin/hikari
+	install -Dm755 ${BUILDDIR}/hikari-unlocker package/usr/bin/hikari-unlocker
+	cp -r ${BUILDDIR}/etc package/etc
 
 post-install:
-	@echo "Need to patch the binary, so it would point to /usr/lib/wlroots0.16/libwlroots.so.11"
-	patchelf --replace-needed libwlroots.so.10 /usr/lib/wlroots0.16/libwlroots.so.11 /usr/bin/hikari
 
 include /usr/share/mk/lfs.port.mk

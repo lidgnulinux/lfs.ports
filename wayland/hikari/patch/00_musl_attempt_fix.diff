@@ -1,0 +1,1506 @@
+diff -urdN hikari/hikari_unlocker.c hikari.new/hikari_unlocker.c
+--- hikari/hikari_unlocker.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/hikari_unlocker.c	2026-05-24 09:40:23.255381908 +0700
+@@ -18,7 +18,7 @@
+ conversation_handler(int num_msg,
+     const struct pam_message **msg,
+     struct pam_response **resp,
+-    __unused void *data)
++    MY_UNUSED void *data)
+ {
+   struct pam_response *pam_reply = calloc(num_msg, sizeof(struct pam_response));
+ 
+diff -urdN hikari/include/hikari/compat.h hikari.new/include/hikari/compat.h
+--- hikari/include/hikari/compat.h	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/include/hikari/compat.h	2026-05-24 09:39:23.568455404 +0700
+@@ -1,8 +1,8 @@
+ #if !defined(HIKARI_COMPAT_H)
+ #define HIKARI_COMPAT_H
+ 
+-#ifndef __unused
+-#define __unused __attribute__ ((__unused__))
++#ifndef MY_UNUSED
++#define MY_UNUSED __attribute__ ((__unused__))
+ #endif
+ 
+ #endif
+diff -urdN hikari/src/configuration.c hikari.new/src/configuration.c
+--- hikari/src/configuration.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/configuration.c	2026-05-24 09:43:36.004619125 +0700
+@@ -809,7 +809,7 @@
+ }
+ 
+ static bool
+-parse_action(__unused const char *action_name,
++parse_action(MY_UNUSED const char *action_name,
+     const ucl_object_t *action_obj,
+     const char **command)
+ {
+diff -urdN hikari/src/cursor.c hikari.new/src/cursor.c
+--- hikari/src/cursor.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/cursor.c	2026-05-24 09:41:15.801056342 +0700
+@@ -228,7 +228,7 @@
+ }
+ 
+ static void
+-frame_handler(__unused struct wl_listener *listener, __unused void *data)
++frame_handler(MY_UNUSED struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   (void)listener;
+   (void)data;
+diff -urdN hikari/src/decoration.c hikari.new/src/decoration.c
+--- hikari/src/decoration.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/decoration.c	2026-05-24 09:43:22.142064970 +0700
+@@ -13,7 +13,7 @@
+ }
+ 
+ static void
+-request_mode_handler(struct wl_listener *listener, __unused void *data)
++request_mode_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_decoration *decoration =
+       wl_container_of(listener, decoration, request_mode);
+@@ -28,7 +28,7 @@
+ }
+ 
+ static void
+-surface_commit_handler(struct wl_listener *listener, __unused void *data)
++surface_commit_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_decoration *decoration =
+       wl_container_of(listener, decoration, surface_configure);
+@@ -48,7 +48,7 @@
+ }
+ 
+ static void
+-destroy_handler(struct wl_listener *listener, __unused void *data)
++destroy_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_decoration *decoration =
+       wl_container_of(listener, decoration, destroy);
+diff -urdN hikari/src/dnd_mode.c hikari.new/src/dnd_mode.c
+--- hikari/src/dnd_mode.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/dnd_mode.c	2026-05-24 09:45:00.380877265 +0700
+@@ -22,7 +22,7 @@
+ 
+ static void
+ key_handler(
+-    __unused struct hikari_keyboard *keyboard, struct wlr_keyboard_key_event *event)
++    MY_UNUSED struct hikari_keyboard *keyboard, struct wlr_keyboard_key_event *event)
+ {
+   if (event->state == WL_KEYBOARD_KEY_STATE_RELEASED) {
+     hikari_server_enter_normal_mode(NULL);
+@@ -30,7 +30,7 @@
+ }
+ 
+ static void
+-modifiers_handler(__unused struct hikari_keyboard *keyboard)
++modifiers_handler(MY_UNUSED struct hikari_keyboard *keyboard)
+ {
+   return;
+ }
+@@ -59,7 +59,7 @@
+ 
+ static void
+ button_handler(
+-    __unused struct hikari_cursor *cursor, struct wlr_pointer_button_event *event)
++    MY_UNUSED struct hikari_cursor *cursor, struct wlr_pointer_button_event *event)
+ {
+   wlr_seat_pointer_notify_button(
+       hikari_server.seat, event->time_msec, event->button, event->state);
+diff -urdN hikari/src/geometry.c hikari.new/src/geometry.c
+--- hikari/src/geometry.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/geometry.c	2026-05-24 09:47:00.368604908 +0700
+@@ -196,7 +196,7 @@
+ 
+ void
+ hikari_geometry_position_top_left(
+-    __unused struct wlr_box *geometry, struct wlr_box *usable_area, int *x, int *y)
++    MY_UNUSED struct wlr_box *geometry, struct wlr_box *usable_area, int *x, int *y)
+ {
+   *x = usable_area->x;
+   *y = usable_area->y;
+diff -urdN hikari/src/group_assign_mode.c hikari.new/src/group_assign_mode.c
+--- hikari/src/group_assign_mode.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/group_assign_mode.c	2026-05-24 09:45:32.803329559 +0700
+@@ -263,7 +263,7 @@
+ }
+ 
+ static void
+-modifiers_handler(__unused struct hikari_keyboard *keyboard)
++modifiers_handler(MY_UNUSED struct hikari_keyboard *keyboard)
+ {
+   return;
+ }
+@@ -300,14 +300,14 @@
+ }
+ 
+ static void
+-button_handler(__unused struct hikari_cursor *cursor,
+-    __unused struct wlr_pointer_button_event *event)
++button_handler(MY_UNUSED struct hikari_cursor *cursor,
++    MY_UNUSED struct wlr_pointer_button_event *event)
+ {
+   return;
+ }
+ 
+ static void
+-cursor_move(__unused uint32_t time_msec)
++cursor_move(MY_UNUSED uint32_t time_msec)
+ {
+   return;
+ }
+diff -urdN hikari/src/input_grab_mode.c hikari.new/src/input_grab_mode.c
+--- hikari/src/input_grab_mode.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/input_grab_mode.c	2026-05-24 09:44:47.334065909 +0700
+@@ -78,7 +78,7 @@
+ 
+ static void
+ button_handler(
+-    __unused struct hikari_cursor *cursor, struct wlr_pointer_button_event *event)
++    MY_UNUSED struct hikari_cursor *cursor, struct wlr_pointer_button_event *event)
+ {
+   wlr_seat_pointer_notify_button(
+       hikari_server.seat, event->time_msec, event->button, event->state);
+@@ -120,7 +120,7 @@
+ }
+ 
+ void
+-hikari_input_grab_mode_enter(__unused struct hikari_view *view)
++hikari_input_grab_mode_enter(MY_UNUSED struct hikari_view *view)
+ {
+   hikari_server.mode = (struct hikari_mode *)&hikari_server.input_grab_mode;
+ }
+diff -urdN hikari/src/keyboard.c hikari.new/src/keyboard.c
+--- hikari/src/keyboard.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/keyboard.c	2026-05-24 09:41:47.129219366 +0700
+@@ -38,7 +38,7 @@
+ }
+ 
+ static void
+-modifiers_handler(struct wl_listener *listener, __unused void *data)
++modifiers_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_keyboard *keyboard =
+       wl_container_of(listener, keyboard, modifiers);
+@@ -49,7 +49,7 @@
+ }
+ 
+ static void
+-destroy_handler(struct wl_listener *listener, __unused void *data)
++destroy_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_keyboard *keyboard =
+       wl_container_of(listener, keyboard, destroy);
+@@ -68,7 +68,7 @@
+ };
+ 
+ static void
+-match_keycode(__unused struct xkb_keymap *keymap, xkb_keycode_t key, void *data)
++match_keycode(MY_UNUSED struct xkb_keymap *keymap, xkb_keycode_t key, void *data)
+ {
+   struct keycode_matcher_state *matcher_state = data;
+   xkb_keysym_t keysym = xkb_state_key_get_one_sym(matcher_state->state, key);
+diff -urdN hikari/src/layer_shell.c hikari.new/src/layer_shell.c
+--- hikari/src/layer_shell.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/layer_shell.c	2026-05-24 09:48:10.683954037 +0700
+@@ -352,7 +352,7 @@
+ }
+ 
+ static void
+-commit_handler(struct wl_listener *listener, __unused void *data)
++commit_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_layer *layer = wl_container_of(listener, layer, commit);
+   struct wlr_box old_geometry = layer->geometry;
+@@ -392,7 +392,7 @@
+ }
+ 
+ static void
+-destroy_handler(struct wl_listener *listener, __unused void *data)
++destroy_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_layer *layer = wl_container_of(listener, layer, destroy);
+ 
+@@ -437,7 +437,7 @@
+ }
+ 
+ static void
+-map_handler(struct wl_listener *listener, __unused void *data)
++map_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_layer *layer = wl_container_of(listener, layer, map);
+ 
+@@ -481,7 +481,7 @@
+ }
+ 
+ static void
+-unmap_handler(struct wl_listener *listener, __unused void *data)
++unmap_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_layer *layer = wl_container_of(listener, layer, unmap);
+ 
+@@ -556,7 +556,7 @@
+ }
+ 
+ static void
+-destroy_popup_handler(struct wl_listener *listener, __unused void *data)
++destroy_popup_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_layer_popup *layer_popup =
+       wl_container_of(listener, layer_popup, destroy);
+@@ -571,7 +571,7 @@
+ }
+ 
+ static void
+-map_popup_handler(struct wl_listener *listener, __unused void *data)
++map_popup_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_layer_popup *layer_popup =
+       wl_container_of(listener, layer_popup, map);
+@@ -584,7 +584,7 @@
+ }
+ 
+ static void
+-unmap_popup_handler(struct wl_listener *listener, __unused void *data)
++unmap_popup_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_layer_popup *layer_popup =
+       wl_container_of(listener, layer_popup, unmap);
+@@ -597,7 +597,7 @@
+ }
+ 
+ static void
+-commit_popup_handler(struct wl_listener *listener, __unused void *data)
++commit_popup_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_layer_popup *layer_popup =
+       wl_container_of(listener, layer_popup, commit);
+@@ -606,7 +606,7 @@
+ }
+ 
+ static void
+-new_popup_popup_handler(struct wl_listener *listener, __unused void *data)
++new_popup_popup_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_layer_popup *layer_popup =
+       wl_container_of(listener, layer_popup, new_popup);
+@@ -624,7 +624,7 @@
+ }
+ 
+ static void
+-new_popup_handler(struct wl_listener *listener, __unused void *data)
++new_popup_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_layer *layer = wl_container_of(listener, layer, new_popup);
+ 
+@@ -678,7 +678,7 @@
+ static void
+ for_each_surface(struct hikari_node *node,
+     void (*func)(struct wlr_surface *, int, int, void *),
+-    __unused void *data)
++    MY_UNUSED void *data)
+ {
+   struct hikari_layer *layer = (struct hikari_layer *)node;
+ 
+diff -urdN hikari/src/layout_select_mode.c hikari.new/src/layout_select_mode.c
+--- hikari/src/layout_select_mode.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/layout_select_mode.c	2026-05-24 09:46:25.920648845 +0700
+@@ -67,14 +67,14 @@
+ }
+ 
+ static void
+-modifiers_handler(__unused struct hikari_keyboard *keyboard)
++modifiers_handler(MY_UNUSED struct hikari_keyboard *keyboard)
+ {
+   return;
+ }
+ 
+ static void
+ button_handler(
+-    __unused struct hikari_cursor *cursor, __unused struct wlr_pointer_button_event *event)
++    MY_UNUSED struct hikari_cursor *cursor, MY_UNUSED struct wlr_pointer_button_event *event)
+ {
+   return;
+ }
+@@ -91,7 +91,7 @@
+ }
+ 
+ static void
+-cursor_move(__unused uint32_t time_msec)
++cursor_move(MY_UNUSED uint32_t time_msec)
+ {
+   return;
+ }
+diff -urdN hikari/src/lock_indicator.c hikari.new/src/lock_indicator.c
+--- hikari/src/lock_indicator.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/lock_indicator.c	2026-05-24 09:42:19.768328932 +0700
+@@ -170,7 +170,7 @@
+ 
+ void
+ hikari_lock_indicator_damage(
+-    __unused struct hikari_lock_indicator *lock_indicator)
++    MY_UNUSED struct hikari_lock_indicator *lock_indicator)
+ {
+   assert(lock_indicator != NULL);
+ 
+diff -urdN hikari/src/lock_mode.c hikari.new/src/lock_mode.c
+--- hikari/src/lock_mode.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/lock_mode.c	2026-05-24 09:43:07.992061416 +0700
+@@ -239,14 +239,14 @@
+ }
+ 
+ static void
+-modifiers_handler(__unused struct hikari_keyboard *keyboard)
++modifiers_handler(MY_UNUSED struct hikari_keyboard *keyboard)
+ {
+   return;
+ }
+ 
+ static void
+ button_handler(
+-    __unused struct hikari_cursor *cursor, __unused struct wlr_pointer_button_event *event)
++    MY_UNUSED struct hikari_cursor *cursor, MY_UNUSED struct wlr_pointer_button_event *event)
+ {
+   return;
+ }
+@@ -295,13 +295,13 @@
+ }
+ 
+ static void
+-cursor_move(__unused uint32_t time_msec)
++cursor_move(MY_UNUSED uint32_t time_msec)
+ {
+   return;
+ }
+ 
+ static int
+-disable_outputs_handler(__unused void *data)
++disable_outputs_handler(MY_UNUSED void *data)
+ {
+   assert(hikari_server_in_lock_mode());
+ 
+@@ -327,7 +327,7 @@
+ }
+ 
+ void
+-hikari_lock_mode_fini(__unused struct hikari_lock_mode *lock_mode)
++hikari_lock_mode_fini(MY_UNUSED struct hikari_lock_mode *lock_mode)
+ {
+   munlock(input_buffer, BUFFER_SIZE);
+ }
+diff -urdN hikari/src/mark_assign_mode.c hikari.new/src/mark_assign_mode.c
+--- hikari/src/mark_assign_mode.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/mark_assign_mode.c	2026-05-24 09:44:07.045614846 +0700
+@@ -170,7 +170,7 @@
+ }
+ 
+ static void
+-modifiers_handler(__unused struct hikari_keyboard *keyboard)
++modifiers_handler(MY_UNUSED struct hikari_keyboard *keyboard)
+ {
+   return;
+ }
+@@ -206,13 +206,13 @@
+ 
+ static void
+ button_handler(
+-    __unused struct hikari_cursor *cursor, __unused struct wlr_pointer_button_event *event)
++    MY_UNUSED struct hikari_cursor *cursor, MY_UNUSED struct wlr_pointer_button_event *event)
+ {
+   return;
+ }
+ 
+ static void
+-cursor_move(__unused uint32_t time_msec)
++cursor_move(MY_UNUSED uint32_t time_msec)
+ {
+   return;
+ }
+diff -urdN hikari/src/mark_select_mode.c hikari.new/src/mark_select_mode.c
+--- hikari/src/mark_select_mode.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/mark_select_mode.c	2026-05-24 09:45:21.603640011 +0700
+@@ -46,7 +46,7 @@
+ }
+ 
+ static void
+-modifiers_handler(__unused struct hikari_keyboard *keyboard)
++modifiers_handler(MY_UNUSED struct hikari_keyboard *keyboard)
+ {
+   return;
+ }
+@@ -59,13 +59,13 @@
+ 
+ static void
+ button_handler(
+-    __unused struct hikari_cursor *cursor, __unused struct wlr_pointer_button_event *event)
++    MY_UNUSED struct hikari_cursor *cursor, MY_UNUSED struct wlr_pointer_button_event *event)
+ {
+   return;
+ }
+ 
+ static void
+-cursor_move(__unused uint32_t time_msec)
++cursor_move(MY_UNUSED uint32_t time_msec)
+ {
+   return;
+ }
+diff -urdN hikari/src/move_mode.c hikari.new/src/move_mode.c
+--- hikari/src/move_mode.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/move_mode.c	2026-05-24 09:42:51.554626140 +0700
+@@ -41,12 +41,12 @@
+ }
+ 
+ static void
+-modifiers_handler(__unused struct hikari_keyboard *keyboard)
++modifiers_handler(MY_UNUSED struct hikari_keyboard *keyboard)
+ {
+ }
+ 
+ static void
+-cursor_move(__unused uint32_t time_msec)
++cursor_move(MY_UNUSED uint32_t time_msec)
+ {
+   double lx = hikari_server.cursor.wlr_cursor->x;
+   double ly = hikari_server.cursor.wlr_cursor->y;
+@@ -75,7 +75,7 @@
+ 
+ static void
+ button_handler(
+-    __unused struct hikari_cursor *cursor, struct wlr_pointer_button_event *event)
++    MY_UNUSED struct hikari_cursor *cursor, struct wlr_pointer_button_event *event)
+ {
+   if (event->state == WL_POINTER_BUTTON_STATE_RELEASED) {
+     hikari_server_enter_normal_mode(NULL);
+diff -urdN hikari/src/normal_mode.c hikari.new/src/normal_mode.c
+--- hikari/src/normal_mode.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/normal_mode.c	2026-05-24 09:44:16.897939627 +0700
+@@ -75,7 +75,7 @@
+ 
+ #ifndef NDEBUG
+ static void
+-dump_debug(__unused struct hikari_server *server)
++dump_debug(MY_UNUSED struct hikari_server *server)
+ {
+   struct hikari_view *view;
+   printf("---------------------------------------------------------------------"
+diff -urdN hikari/src/output.c hikari.new/src/output.c
+--- hikari/src/output.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/output.c	2026-05-24 09:46:03.532079821 +0700
+@@ -166,7 +166,7 @@
+ }
+ 
+ static void
+-needs_frame_handler(struct wl_listener *listener, __unused void *data)
++needs_frame_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_output *output = wl_container_of(listener, output, needs_frame);
+ 
+@@ -338,7 +338,7 @@
+ }
+ 
+ static void
+-destroy_handler(struct wl_listener *listener, __unused void *data)
++destroy_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_output *output = wl_container_of(listener, output, destroy);
+ 
+diff -urdN hikari/src/pointer.c hikari.new/src/pointer.c
+--- hikari/src/pointer.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/pointer.c	2026-05-24 09:46:34.703973938 +0700
+@@ -9,7 +9,7 @@
+ #include <hikari/compat.h>
+ 
+ static void
+-destroy_handler(struct wl_listener *listener, __unused void *data)
++destroy_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_pointer *pointer = wl_container_of(listener, pointer, destroy);
+ 
+diff -urdN hikari/src/renderer.c hikari.new/src/renderer.c
+--- hikari/src/renderer.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/renderer.c	2026-05-24 09:45:50.964885016 +0700
+@@ -626,7 +626,7 @@
+ 
+ static void
+ send_frame_done(
+-    struct wlr_surface *surface, __unused int sx, __unused int sy, void *data)
++    struct wlr_surface *surface, MY_UNUSED int sx, MY_UNUSED int sy, void *data)
+ {
+   assert(surface != NULL);
+ 
+@@ -665,7 +665,7 @@
+ 
+ void
+ hikari_renderer_damage_frame_handler(
+-    struct wl_listener *listener, __unused void *data)
++    struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_output *output =
+       wl_container_of(listener, output, damage_frame);
+diff -urdN hikari/src/resize_mode.c hikari.new/src/resize_mode.c
+--- hikari/src/resize_mode.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/resize_mode.c	2026-05-24 09:48:29.685056571 +0700
+@@ -32,7 +32,7 @@
+ 
+ static void
+ key_handler(
+-    __unused struct hikari_keyboard *keyboard, struct wlr_keyboard_key_event *event)
++    MY_UNUSED struct hikari_keyboard *keyboard, struct wlr_keyboard_key_event *event)
+ {
+   if (event->state == WL_KEYBOARD_KEY_STATE_RELEASED) {
+     hikari_server_enter_normal_mode(NULL);
+@@ -40,13 +40,13 @@
+ }
+ 
+ static void
+-modifiers_handler(__unused struct hikari_keyboard *keyboard)
++modifiers_handler(MY_UNUSED struct hikari_keyboard *keyboard)
+ {
+   return;
+ }
+ 
+ static void
+-cursor_move(__unused uint32_t time_msec)
++cursor_move(MY_UNUSED uint32_t time_msec)
+ {
+   struct hikari_view *focus_view = hikari_server.workspace->focus_view;
+ 
+@@ -69,7 +69,7 @@
+ 
+ static void
+ button_handler(
+-    __unused struct hikari_cursor *cursor, struct wlr_pointer_button_event *event)
++    MY_UNUSED struct hikari_cursor *cursor, struct wlr_pointer_button_event *event)
+ {
+   if (event->state == WL_POINTER_BUTTON_STATE_RELEASED) {
+     hikari_server_enter_normal_mode(NULL);
+diff -urdN hikari/src/server.c hikari.new/src/server.c
+--- hikari/src/server.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/server.c	2026-05-24 09:47:23.481194937 +0700
+@@ -85,7 +85,7 @@
+ 
+ static void
+ add_keyboard(
+-    __unused struct hikari_server *server, struct wlr_input_device *device)
++    MY_UNUSED struct hikari_server *server, struct wlr_input_device *device)
+ {
+   struct hikari_keyboard *keyboard =
+       hikari_malloc(sizeof(struct hikari_keyboard));
+@@ -105,7 +105,7 @@
+ 
+ static void
+ add_switch(
+-    __unused struct hikari_server *server, struct wlr_input_device *device)
++    MY_UNUSED struct hikari_server *server, struct wlr_input_device *device)
+ {
+   struct hikari_switch *swtch = hikari_malloc(sizeof(struct hikari_switch));
+ 
+@@ -511,7 +511,7 @@
+ 
+ static void
+ server_decoration_mode_handler(
+-    struct wl_listener *listener, __unused void *data)
++    struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_view_decoration *decoration =
+       wl_container_of(listener, decoration, mode);
+@@ -528,7 +528,7 @@
+ 
+ static void
+ server_decoration_destroy_handler(
+-    struct wl_listener *listener, __unused void *data)
++    struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_view_decoration *decoration =
+       wl_container_of(listener, decoration, destroy);
+@@ -540,7 +540,7 @@
+ }
+ 
+ static void
+-server_decoration_handler(__unused struct wl_listener *listener, void *data)
++server_decoration_handler(MY_UNUSED struct wl_listener *listener, void *data)
+ {
+   struct wlr_server_decoration *wlr_decoration = data;
+   struct wlr_xdg_surface *xdg_surface =
+@@ -569,7 +569,7 @@
+ 
+ static void
+ new_toplevel_decoration_handler(
+-    __unused struct wl_listener *listener, void *data)
++    MY_UNUSED struct wl_listener *listener, void *data)
+ {
+   struct wlr_xdg_toplevel_decoration_v1 *wlr_decoration = data;
+ 
+@@ -600,7 +600,7 @@
+ }
+ 
+ static void
+-start_drag_handler(__unused struct wl_listener *listener, __unused void *data)
++start_drag_handler(MY_UNUSED struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct wlr_surface *surface;
+   struct hikari_workspace *workspace;
+@@ -688,7 +688,7 @@
+ #ifdef HAVE_LAYERSHELL
+ static void
+ new_layer_shell_surface_handler(
+-    __unused struct wl_listener *listener, void *data)
++    MY_UNUSED struct wl_listener *listener, void *data)
+ {
+   struct wlr_layer_surface_v1 *wlr_layer_surface =
+       (struct wlr_layer_surface_v1 *)data;
+@@ -758,14 +758,14 @@
+ }
+ 
+ static void
+-output_manager_apply_handler(__unused struct wl_listener *listener, void *data)
++output_manager_apply_handler(MY_UNUSED struct wl_listener *listener, void *data)
+ {
+   struct wlr_output_configuration_v1 *config = data;
+   output_manager_apply_config(config, false);
+ }
+ 
+ static void
+-output_manager_test_handler(__unused struct wl_listener *listener, void *data)
++output_manager_test_handler(MY_UNUSED struct wl_listener *listener, void *data)
+ {
+   struct wlr_output_configuration_v1 *config = data;
+   output_manager_apply_config(config, true);
+@@ -788,7 +788,7 @@
+ struct hikari_server hikari_server;
+ 
+ static void
+-output_layout_change_handler(struct wl_listener *listener, __unused void *data)
++output_layout_change_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_server *server =
+       wl_container_of(listener, server, output_layout_change);
+@@ -832,7 +832,7 @@
+ }
+ 
+ static bool
+-drop_privileges(__unused struct hikari_server *server)
++drop_privileges(MY_UNUSED struct hikari_server *server)
+ {
+   if (getuid() != geteuid() || getgid() != getegid()) {
+     if (setuid(getuid()) != 0 || setgid(getgid()) != 0) {
+@@ -1047,7 +1047,7 @@
+ }
+ 
+ static void
+-sig_handler(__unused int signal)
++sig_handler(MY_UNUSED int signal)
+ {
+   hikari_server_terminate(NULL);
+ }
+@@ -1075,7 +1075,7 @@
+ }
+ 
+ static int
+-shutdown_handler(__unused void *data)
++shutdown_handler(MY_UNUSED void *data)
+ {
+   struct hikari_server *server = &hikari_server;
+ 
+@@ -1106,7 +1106,7 @@
+ }
+ 
+ void
+-hikari_server_terminate(__unused void *arg)
++hikari_server_terminate(MY_UNUSED void *arg)
+ {
+   struct hikari_server *server = &hikari_server;
+ 
+@@ -1207,13 +1207,13 @@
+ }
+ 
+ void
+-hikari_server_lock(__unused void *arg)
++hikari_server_lock(MY_UNUSED void *arg)
+ {
+   hikari_lock_mode_enter();
+ }
+ 
+ void
+-hikari_server_reload(__unused void *arg)
++hikari_server_reload(MY_UNUSED void *arg)
+ {
+   hikari_configuration_reload(hikari_server.config_path);
+ }
+@@ -1246,7 +1246,7 @@
+     return view;                                                               \
+   }                                                                            \
+                                                                                \
+-  void hikari_server_cycle_##name##_view(__unused void *arg)                   \
++  void hikari_server_cycle_##name##_view(MY_UNUSED void *arg)                   \
+   {                                                                            \
+     struct hikari_view *view;                                                  \
+                                                                                \
+@@ -1263,7 +1263,7 @@
+ #undef CYCLE_VIEW
+ 
+ #define CYCLE_ACTION(n)                                                        \
+-  void hikari_server_cycle_##n(__unused void *arg)                             \
++  void hikari_server_cycle_##n(MY_UNUSED void *arg)                             \
+   {                                                                            \
+     struct hikari_view *view;                                                  \
+                                                                                \
+@@ -1288,7 +1288,7 @@
+ #undef CYCLE_ACTION
+ 
+ #define CYCLE_WORKSPACE(link)                                                  \
+-  void hikari_server_cycle_##link##_workspace(__unused void *arg)              \
++  void hikari_server_cycle_##link##_workspace(MY_UNUSED void *arg)              \
+   {                                                                            \
+     struct hikari_workspace *workspace = hikari_server.workspace;              \
+     struct hikari_workspace *link = hikari_workspace_##link(workspace);        \
+@@ -1322,7 +1322,7 @@
+ }
+ 
+ void
+-hikari_server_enter_normal_mode(__unused void *arg)
++hikari_server_enter_normal_mode(MY_UNUSED void *arg)
+ {
+   struct hikari_server *server = &hikari_server;
+ 
+@@ -1334,7 +1334,7 @@
+ }
+ 
+ void
+-hikari_server_enter_sheet_assign_mode(__unused void *arg)
++hikari_server_enter_sheet_assign_mode(MY_UNUSED void *arg)
+ {
+   assert(hikari_server.workspace != NULL);
+ 
+@@ -1351,7 +1351,7 @@
+ }
+ 
+ void
+-hikari_server_enter_move_mode(__unused void *arg)
++hikari_server_enter_move_mode(MY_UNUSED void *arg)
+ {
+   struct hikari_view *focus_view = hikari_server.workspace->focus_view;
+ 
+@@ -1365,7 +1365,7 @@
+ }
+ 
+ void
+-hikari_server_enter_resize_mode(__unused void *arg)
++hikari_server_enter_resize_mode(MY_UNUSED void *arg)
+ {
+   struct hikari_view *focus_view = hikari_server.workspace->focus_view;
+ 
+@@ -1379,7 +1379,7 @@
+ }
+ 
+ void
+-hikari_server_enter_group_assign_mode(__unused void *arg)
++hikari_server_enter_group_assign_mode(MY_UNUSED void *arg)
+ {
+   struct hikari_view *focus_view = hikari_server.workspace->focus_view;
+ 
+@@ -1391,7 +1391,7 @@
+ }
+ 
+ void
+-hikari_server_enter_input_grab_mode(__unused void *arg)
++hikari_server_enter_input_grab_mode(MY_UNUSED void *arg)
+ {
+   struct hikari_workspace *workspace = hikari_server.workspace;
+   struct hikari_view *focus_view = workspace->focus_view;
+@@ -1406,19 +1406,19 @@
+ }
+ 
+ void
+-hikari_server_enter_mark_select_mode(__unused void *arg)
++hikari_server_enter_mark_select_mode(MY_UNUSED void *arg)
+ {
+   hikari_mark_select_mode_enter(false);
+ }
+ 
+ void
+-hikari_server_enter_mark_select_switch_mode(__unused void *arg)
++hikari_server_enter_mark_select_switch_mode(MY_UNUSED void *arg)
+ {
+   hikari_mark_select_mode_enter(true);
+ }
+ 
+ void
+-hikari_server_enter_layout_select_mode(__unused void *arg)
++hikari_server_enter_layout_select_mode(MY_UNUSED void *arg)
+ {
+   struct hikari_workspace *workspace = hikari_server.workspace;
+   struct hikari_view *focus_view = workspace->focus_view;
+@@ -1431,7 +1431,7 @@
+ }
+ 
+ void
+-hikari_server_enter_mark_assign_mode(__unused void *arg)
++hikari_server_enter_mark_assign_mode(MY_UNUSED void *arg)
+ {
+   assert(hikari_server.workspace != NULL);
+ 
+@@ -1448,14 +1448,14 @@
+ }
+ 
+ void
+-hikari_server_execute_command(__unused void *arg)
++hikari_server_execute_command(MY_UNUSED void *arg)
+ {
+   const char *command = arg;
+   hikari_command_execute(command);
+ }
+ 
+ void
+-hikari_server_reset_sheet_layout(__unused void *arg)
++hikari_server_reset_sheet_layout(MY_UNUSED void *arg)
+ {
+   struct hikari_layout *layout = hikari_server.workspace->sheet->layout;
+ 
+@@ -1467,7 +1467,7 @@
+ }
+ 
+ void
+-hikari_server_layout_restack_append(__unused void *arg)
++hikari_server_layout_restack_append(MY_UNUSED void *arg)
+ {
+   struct hikari_workspace *workspace = hikari_server.workspace;
+   struct hikari_sheet *sheet = workspace->sheet;
+@@ -1486,7 +1486,7 @@
+ }
+ 
+ void
+-hikari_server_layout_restack_prepend(__unused void *arg)
++hikari_server_layout_restack_prepend(MY_UNUSED void *arg)
+ {
+   struct hikari_workspace *workspace = hikari_server.workspace;
+   struct hikari_sheet *sheet = workspace->sheet;
+@@ -1505,7 +1505,7 @@
+ }
+ 
+ void
+-hikari_server_layout_sheet(__unused void *arg)
++hikari_server_layout_sheet(MY_UNUSED void *arg)
+ {
+   char layout_register = (intptr_t)arg;
+ 
+@@ -1518,7 +1518,7 @@
+ }
+ 
+ void
+-hikari_server_session_change_vt(__unused void *arg)
++hikari_server_session_change_vt(MY_UNUSED void *arg)
+ {
+   const intptr_t vt = (intptr_t)arg;
+   assert(vt >= 1 && vt <= 12);
+@@ -1550,7 +1550,7 @@
+ }
+ 
+ void
+-hikari_server_show_mark(__unused void *arg)
++hikari_server_show_mark(MY_UNUSED void *arg)
+ {
+   assert(arg != NULL);
+ 
+@@ -1561,7 +1561,7 @@
+ }
+ 
+ void
+-hikari_server_switch_to_mark(__unused void *arg)
++hikari_server_switch_to_mark(MY_UNUSED void *arg)
+ {
+   assert(arg != NULL);
+ 
+@@ -1627,28 +1627,28 @@
+ }
+ 
+ void
+-hikari_server_move_view_up(__unused void *arg)
++hikari_server_move_view_up(MY_UNUSED void *arg)
+ {
+   const int step = hikari_configuration->step;
+   move_view(0, -step);
+ }
+ 
+ void
+-hikari_server_move_view_down(__unused void *arg)
++hikari_server_move_view_down(MY_UNUSED void *arg)
+ {
+   const int step = hikari_configuration->step;
+   move_view(0, step);
+ }
+ 
+ void
+-hikari_server_move_view_left(__unused void *arg)
++hikari_server_move_view_left(MY_UNUSED void *arg)
+ {
+   const int step = hikari_configuration->step;
+   move_view(-step, 0);
+ }
+ 
+ void
+-hikari_server_move_view_right(__unused void *arg)
++hikari_server_move_view_right(MY_UNUSED void *arg)
+ {
+   const int step = hikari_configuration->step;
+   move_view(step, 0);
+@@ -1683,35 +1683,35 @@
+ }
+ 
+ void
+-hikari_server_decrease_view_size_down(__unused void *arg)
++hikari_server_decrease_view_size_down(MY_UNUSED void *arg)
+ {
+   const int step = hikari_configuration->step;
+   move_resize_view(0, step, 0, -step);
+ }
+ 
+ void
+-hikari_server_decrease_view_size_right(__unused void *arg)
++hikari_server_decrease_view_size_right(MY_UNUSED void *arg)
+ {
+   const int step = hikari_configuration->step;
+   move_resize_view(step, 0, -step, 0);
+ }
+ 
+ void
+-hikari_server_increase_view_size_up(__unused void *arg)
++hikari_server_increase_view_size_up(MY_UNUSED void *arg)
+ {
+   const int step = hikari_configuration->step;
+   move_resize_view(0, -step, 0, step);
+ }
+ 
+ void
+-hikari_server_increase_view_size_left(__unused void *arg)
++hikari_server_increase_view_size_left(MY_UNUSED void *arg)
+ {
+   const int step = hikari_configuration->step;
+   move_resize_view(-step, 0, step, 0);
+ }
+ 
+ void
+-hikari_server_lower_group(__unused void *arg)
++hikari_server_lower_group(MY_UNUSED void *arg)
+ {
+   struct hikari_view *focus_view = hikari_server.workspace->focus_view;
+ 
+@@ -1726,7 +1726,7 @@
+ }
+ 
+ void
+-hikari_server_raise_group(__unused void *arg)
++hikari_server_raise_group(MY_UNUSED void *arg)
+ {
+   struct hikari_view *focus_view = hikari_server.workspace->focus_view;
+ 
+@@ -1740,7 +1740,7 @@
+ }
+ 
+ void
+-hikari_server_only_group(__unused void *arg)
++hikari_server_only_group(MY_UNUSED void *arg)
+ {
+   struct hikari_view *focus_view = hikari_server.workspace->focus_view;
+ 
+@@ -1760,7 +1760,7 @@
+ }
+ 
+ void
+-hikari_server_hide_group(__unused void *arg)
++hikari_server_hide_group(MY_UNUSED void *arg)
+ {
+   struct hikari_view *focus_view = hikari_server.workspace->focus_view;
+ 
+@@ -1777,7 +1777,7 @@
+ 
+ #ifndef NDEBUG
+ void
+-hikari_server_toggle_damage_tracking(__unused void *arg)
++hikari_server_toggle_damage_tracking(MY_UNUSED void *arg)
+ {
+   hikari_server.track_damage = !hikari_server.track_damage;
+ 
+diff -urdN hikari/src/sheet.c hikari.new/src/sheet.c
+--- hikari/src/sheet.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/sheet.c	2026-05-24 09:47:40.000410759 +0700
+@@ -93,7 +93,7 @@
+ static struct hikari_view *
+ single_layout(struct wlr_box *frame,
+     struct hikari_view *first,
+-    __unused int nr_of_views,
++    MY_UNUSED int nr_of_views,
+     bool *center)
+ {
+   hikari_view_tile(first, frame, *center);
+@@ -102,10 +102,10 @@
+ }
+ 
+ static struct hikari_view *
+-empty_layout(__unused struct wlr_box *frame,
++empty_layout(MY_UNUSED struct wlr_box *frame,
+     struct hikari_view *first,
+-    __unused int nr_of_views,
+-    __unused bool *center)
++    MY_UNUSED int nr_of_views,
++    MY_UNUSED bool *center)
+ {
+   (void)frame;
+   (void)nr_of_views;
+diff -urdN hikari/src/sheet_assign_mode.c hikari.new/src/sheet_assign_mode.c
+--- hikari/src/sheet_assign_mode.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/sheet_assign_mode.c	2026-05-24 09:47:57.506082014 +0700
+@@ -84,7 +84,7 @@
+ 
+ static void
+ handle_keysym(
+-    __unused struct hikari_keyboard *keyboard, __unused uint32_t keycode, xkb_keysym_t sym)
++    MY_UNUSED struct hikari_keyboard *keyboard, MY_UNUSED uint32_t keycode, xkb_keysym_t sym)
+ {
+   struct hikari_sheet_assign_mode *mode = get_mode();
+   struct hikari_workspace *workspace = hikari_server.workspace;
+@@ -176,7 +176,7 @@
+ }
+ 
+ static void
+-modifiers_handler(__unused struct hikari_keyboard *keyboard)
++modifiers_handler(MY_UNUSED struct hikari_keyboard *keyboard)
+ {
+   return;
+ }
+@@ -204,13 +204,13 @@
+ 
+ static void
+ button_handler(
+-    __unused struct hikari_cursor *cursor, __unused struct wlr_pointer_button_event *event)
++    MY_UNUSED struct hikari_cursor *cursor, MY_UNUSED struct wlr_pointer_button_event *event)
+ {
+   return;
+ }
+ 
+ static void
+-cursor_move(__unused uint32_t time_msec)
++cursor_move(MY_UNUSED uint32_t time_msec)
+ {
+   return;
+ }
+diff -urdN hikari/src/switch.c hikari.new/src/switch.c
+--- hikari/src/switch.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/switch.c	2026-05-24 09:44:27.718426609 +0700
+@@ -22,7 +22,7 @@
+ }
+ 
+ static void
+-destroy_handler(struct wl_listener *listener, __unused void *data)
++destroy_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_switch *swtch = wl_container_of(listener, swtch, destroy);
+ 
+@@ -30,7 +30,7 @@
+ }
+ 
+ static void
+-toggle_handler(struct wl_listener *listener, __unused void *data)
++toggle_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_switch *swtch = wl_container_of(listener, swtch, toggle);
+ 
+diff -urdN hikari/src/view.c hikari.new/src/view.c
+--- hikari/src/view.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/view.c	2026-05-24 09:47:47.005809626 +0700
+@@ -412,7 +412,7 @@
+ 
+ static void
+ foreign_toplevel_request_activate_handler(
+-    struct wl_listener *listener, __unused void *data)
++    struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_view *view =
+       wl_container_of(listener, view, foreign_toplevel_request_activate);
+@@ -424,7 +424,7 @@
+ 
+ static void
+ foreign_toplevel_request_close_handler(
+-    struct wl_listener *listener, __unused void *data)
++    struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_view *view =
+       wl_container_of(listener, view, foreign_toplevel_request_close);
+@@ -434,7 +434,7 @@
+ 
+ static void
+ foreign_toplevel_request_maximize_handler(
+-    struct wl_listener *listener, __unused void *data)
++    struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_view *view =
+       wl_container_of(listener, view, foreign_toplevel_request_maximize);
+@@ -446,7 +446,7 @@
+ 
+ static void
+ foreign_toplevel_request_fullscreen_handler(
+-    struct wl_listener *listener, __unused void *data)
++    struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_view *view =
+       wl_container_of(listener, view, foreign_toplevel_request_fullscreen);
+@@ -458,7 +458,7 @@
+ 
+ static void
+ foreign_toplevel_request_minimize_handler(
+-    struct wl_listener *listener, __unused void *data)
++    struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_view *view =
+       wl_container_of(listener, view, foreign_toplevel_request_minimize);
+@@ -541,7 +541,7 @@
+ void
+ hikari_view_init(struct hikari_view *view,
+     bool child,
+-    __unused struct hikari_workspace *workspace)
++    MY_UNUSED struct hikari_workspace *workspace)
+ {
+ #if !defined(NDEBUG)
+   printf("VIEW INIT %p\n", view);
+@@ -1225,7 +1225,7 @@
+ 
+ static void
+ queue_tile(struct hikari_view *view,
+-    __unused struct hikari_layout *layout,
++    MY_UNUSED struct hikari_layout *layout,
+     struct hikari_tile *tile,
+     bool center)
+ {
+@@ -1743,7 +1743,7 @@
+ }
+ 
+ static void
+-destroy_subsurface_handler(struct wl_listener *listener, __unused void *data)
++destroy_subsurface_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_view_subsurface *view_subsurface =
+       wl_container_of(listener, view_subsurface, destroy);
+@@ -1813,7 +1813,7 @@
+ }
+ 
+ static void
+-commit_child_handler(struct wl_listener *listener, __unused void *data)
++commit_child_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_view_child *view_child =
+       wl_container_of(listener, view_child, commit);
+diff -urdN hikari/src/xdg_view.c hikari.new/src/xdg_view.c
+--- hikari/src/xdg_view.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/xdg_view.c	2026-05-24 09:46:46.299929397 +0700
+@@ -31,7 +31,7 @@
+ request_fullscreen_handler(struct wl_listener *listener, void *data);
+ 
+ static void
+-set_title_handler(struct wl_listener *listener, __unused void *data)
++set_title_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xdg_view *xdg_view =
+       wl_container_of(listener, xdg_view, set_title);
+@@ -41,7 +41,7 @@
+ }
+ 
+ static void
+-commit_handler(struct wl_listener *listener, __unused void *data)
++commit_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xdg_view *xdg_view =
+       wl_container_of(listener, xdg_view, commit);
+@@ -123,7 +123,7 @@
+ }
+ 
+ static void
+-first_map(struct hikari_xdg_view *xdg_view, __unused bool *focus)
++first_map(struct hikari_xdg_view *xdg_view, MY_UNUSED bool *focus)
+ {
+   struct wlr_xdg_surface *xdg_surface = xdg_view->surface;
+   assert(xdg_surface->role == WLR_XDG_SURFACE_ROLE_TOPLEVEL);
+@@ -173,7 +173,7 @@
+ }
+ 
+ static void
+-map(struct hikari_view *view, __unused bool focus)
++map(struct hikari_view *view, MY_UNUSED bool focus)
+ {
+ #if !defined(NDEBUG)
+   printf("XDG MAP %p\n", view);
+@@ -200,7 +200,7 @@
+ }
+ 
+ static void
+-map_handler(struct wl_listener *listener, __unused void *data)
++map_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xdg_view *xdg_view = wl_container_of(listener, xdg_view, map);
+ 
+@@ -234,7 +234,7 @@
+ }
+ 
+ static void
+-unmap_handler(struct wl_listener *listener, __unused void *data)
++unmap_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xdg_view *xdg_view = wl_container_of(listener, xdg_view, unmap);
+ 
+@@ -282,7 +282,7 @@
+ }
+ 
+ static void
+-destroy_handler(struct wl_listener *listener, __unused void *data)
++destroy_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xdg_view *xdg_view =
+       wl_container_of(listener, xdg_view, destroy);
+@@ -318,7 +318,7 @@
+ static void
+ for_each_surface(struct hikari_node *node,
+     void (*func)(struct wlr_surface *, int, int, void *),
+-    __unused void *data)
++    MY_UNUSED void *data)
+ {
+   struct hikari_xdg_view *xdg_view = (struct hikari_xdg_view *)node;
+ 
+@@ -326,7 +326,7 @@
+ }
+ 
+ static void
+-destroy_popup_handler(struct wl_listener *listener, __unused void *data)
++destroy_popup_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+ #if !defined(NDEBUG)
+   printf("DESTROY POPUP\n");
+@@ -351,7 +351,7 @@
+ popup_unconstrain(struct hikari_xdg_popup *popup);
+ 
+ static void
+-popup_commit_handler(struct wl_listener *listener, __unused void *data)
++popup_commit_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xdg_popup *popup = wl_container_of(listener, popup, commit);
+ 
+@@ -366,7 +366,7 @@
+ }
+ 
+ static void
+-new_popup_popup_handler(struct wl_listener *listener, __unused void *data)
++new_popup_popup_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xdg_popup *xdg_popup =
+       wl_container_of(listener, xdg_popup, new_popup);
+@@ -377,7 +377,7 @@
+ }
+ 
+ static void
+-new_popup_handler(struct wl_listener *listener, __unused void *data)
++new_popup_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xdg_view *xdg_view =
+       wl_container_of(listener, xdg_view, new_popup);
+@@ -388,7 +388,7 @@
+ }
+ 
+ static void
+-popup_map(struct wl_listener *listener, __unused void *data)
++popup_map(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+ #if !defined(NDEBUG)
+   printf("POPUP MAP\n");
+@@ -403,7 +403,7 @@
+ }
+ 
+ static void
+-popup_unmap(struct wl_listener *listener, __unused void *data)
++popup_unmap(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+ #if !defined(NDEBUG)
+   printf("POPUP UNMAP\n");
+@@ -477,7 +477,7 @@
+ }
+ 
+ static void
+-request_fullscreen_handler(struct wl_listener *listener, __unused void *data)
++request_fullscreen_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xdg_view *xdg_view =
+       wl_container_of(listener, xdg_view, request_fullscreen);
+diff -urdN hikari/src/xwayland_unmanaged_view.c hikari.new/src/xwayland_unmanaged_view.c
+--- hikari/src/xwayland_unmanaged_view.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/xwayland_unmanaged_view.c	2026-05-24 09:47:10.272338892 +0700
+@@ -33,7 +33,7 @@
+ }
+ 
+ static void
+-commit_handler(struct wl_listener *listener, __unused void *data)
++commit_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xwayland_unmanaged_view *xwayland_unmanaged_view =
+       wl_container_of(listener, xwayland_unmanaged_view, commit);
+@@ -55,7 +55,7 @@
+ }
+ 
+ static void
+-map_handler(struct wl_listener *listener, __unused void *data)
++map_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xwayland_unmanaged_view *xwayland_unmanaged_view =
+       wl_container_of(listener, xwayland_unmanaged_view, map);
+@@ -99,7 +99,7 @@
+ }
+ 
+ static void
+-unmap_handler(struct wl_listener *listener, __unused void *data)
++unmap_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xwayland_unmanaged_view *xwayland_unmanaged_view =
+       wl_container_of(listener, xwayland_unmanaged_view, unmap);
+@@ -112,7 +112,7 @@
+ }
+ 
+ static void
+-destroy_handler(struct wl_listener *listener, __unused void *data)
++destroy_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xwayland_unmanaged_view *xwayland_unmanaged_view =
+       wl_container_of(listener, xwayland_unmanaged_view, destroy);
+@@ -138,7 +138,7 @@
+ }
+ 
+ static void
+-request_configure_handler(struct wl_listener *listener, __unused void *data)
++request_configure_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xwayland_unmanaged_view *xwayland_unmanaged_view =
+       wl_container_of(listener, xwayland_unmanaged_view, request_configure);
+@@ -167,14 +167,14 @@
+ }
+ 
+ static void
+-focus(__unused struct hikari_node *node)
++focus(MY_UNUSED struct hikari_node *node)
+ {
+   return;
+ }
+ 
+ static void
+ hikari_xwayland_unmanaged_view_associate_handler(
+-    struct wl_listener *listener, __unused void *data)
++    struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xwayland_unmanaged_view *xwayland_unmanaged_view =
+       wl_container_of(listener, xwayland_unmanaged_view, associate);
+@@ -189,7 +189,7 @@
+ 
+ static void
+ hikari_xwayland_unmanaged_view_dissociate_handler(
+-    struct wl_listener *listener, __unused void *data)
++    struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xwayland_unmanaged_view *xwayland_unmanaged_view =
+       wl_container_of(listener, xwayland_unmanaged_view, dissociate);
+diff -urdN hikari/src/xwayland_view.c hikari.new/src/xwayland_view.c
+--- hikari/src/xwayland_view.c	2026-03-22 04:05:27.000000000 +0700
++++ hikari.new/src/xwayland_view.c	2026-05-24 09:46:15.903188207 +0700
+@@ -69,7 +69,7 @@
+ }
+ 
+ static void
+-commit_handler(struct wl_listener *listener, __unused void *data)
++commit_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xwayland_view *xwayland_view =
+       wl_container_of(listener, xwayland_view, commit);
+@@ -126,7 +126,7 @@
+ }
+ 
+ static void
+-set_title_handler(struct wl_listener *listener, __unused void *data)
++set_title_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xwayland_view *xwayland_view =
+       wl_container_of(listener, xwayland_view, set_title);
+@@ -149,7 +149,7 @@
+ }
+ 
+ static void
+-first_map(struct hikari_xwayland_view *xwayland_view, __unused bool *focus)
++first_map(struct hikari_xwayland_view *xwayland_view, MY_UNUSED bool *focus)
+ {
+   struct hikari_view *view = (struct hikari_view *)xwayland_view;
+   struct wlr_xwayland_surface *xwayland_surface = xwayland_view->surface;
+@@ -179,7 +179,7 @@
+ }
+ 
+ static void
+-map(struct hikari_view *view, __unused bool focus)
++map(struct hikari_view *view, MY_UNUSED bool focus)
+ {
+ #if !defined(NDEBUG)
+   printf("XWAYLAND MAP %p\n", view);
+@@ -196,7 +196,7 @@
+ }
+ 
+ static void
+-map_handler(struct wl_listener *listener, __unused void *data)
++map_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xwayland_view *xwayland_view =
+       wl_container_of(listener, xwayland_view, map);
+@@ -227,7 +227,7 @@
+ }
+ 
+ static void
+-unmap_handler(struct wl_listener *listener, __unused void *data)
++unmap_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xwayland_view *xwayland_view =
+       wl_container_of(listener, xwayland_view, unmap);
+@@ -236,7 +236,7 @@
+ }
+ 
+ static void
+-destroy_handler(struct wl_listener *listener, __unused void *data)
++destroy_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xwayland_view *xwayland_view =
+       wl_container_of(listener, xwayland_view, destroy);
+@@ -266,7 +266,7 @@
+ }
+ 
+ static void
+-request_configure_handler(struct wl_listener *listener, __unused void *data)
++request_configure_handler(struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xwayland_view *xwayland_view =
+       wl_container_of(listener, xwayland_view, request_configure);
+@@ -347,7 +347,7 @@
+ static void
+ for_each_surface(struct hikari_node *node,
+     void (*func)(struct wlr_surface *, int, int, void *),
+-    __unused void *data)
++    MY_UNUSED void *data)
+ {
+   struct hikari_view *view = (struct hikari_view *)node;
+   struct wlr_surface *surface = view->surface;
+@@ -389,7 +389,7 @@
+ 
+ static void
+ xwayland_view_associate_handler(
+-    struct wl_listener *listener, __unused void *data)
++    struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xwayland_view *xwayland_view =
+       wl_container_of(listener, xwayland_view, associate);
+@@ -402,7 +402,7 @@
+ 
+ static void
+ xwayland_view_dissociate_handler(
+-    struct wl_listener *listener, __unused void *data)
++    struct wl_listener *listener, MY_UNUSED void *data)
+ {
+   struct hikari_xwayland_view *xwayland_view =
+       wl_container_of(listener, xwayland_view, dissociate);

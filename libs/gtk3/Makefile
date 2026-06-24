@@ -1,14 +1,14 @@
 COMMENT = The version 3 of the GTK+ toolkit.
-VERSION = 3.24.51
+VERSION = 3.24.52
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = gtk3
 HOMEPAGE = https://www.gtk.org
-ARCHIVE = gtk-3.24.51.tar.xz
-LINK = https://download.gnome.org/sources/gtk/3.24/gtk-3.24.51.tar.xz
+ARCHIVE = gtk-3.24.52.tar.xz
+LINK = https://download.gnome.org/sources/gtk/3.24/gtk-3.24.52.tar.xz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = gtk-3.24.51
+BUILDDIR = gtk-3.24.52
 BUILD_OPTION = --buildtype=release \
 	--strip \
 	-Dcolord=no \
