@@ -1,16 +1,15 @@
 COMMENT = Netscape portable runtime functions.
-VERSION = 4.38.2
+VERSION = 4.39
 REVISION = 0
 CATEGORIES = net
 PKGNAME = nspr
 HOMEPAGE = https://www.mozilla.org/projects/nspr/about-nspr.html
-ARCHIVE = nspr-4.38.2.tar.gz
-LINK = https://archive.mozilla.org/pub/nspr/releases/v4.38.2/src/${ARCHIVE}
+ARCHIVE = nspr-4.39.tar.gz
+LINK = https://archive.mozilla.org/pub/nspr/releases/v4.39/src/${ARCHIVE}
 SRCCD = archive
 BUILD = make
 BUILDDIR = nspr-${VERSION}
 BUILD_OPTION = 
-MKINST = yes
 AUTO_CONF = (cd ${BUILDDIR} && ./nspr/configure \
 	--prefix=/usr \
 	--libdir=/usr/lib \
@@ -21,6 +20,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./nspr/configure \
 
 prepare:
 	sed -i '/^RELEASE/s|^|#|' ${BUILDDIR}/nspr/pr/src/misc/Makefile.in
+	sed -i 's|$$(LIBRARY) ||' ${BUILDDIR}/nspr/config/rules.mk
 
 post_build:
 
