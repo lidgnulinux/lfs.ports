@@ -1,6 +1,6 @@
 COMMENT = Highly customizable Wayland bar for Sway and Wlroots based compositors
-VERSION = 0.15.0.c3a321d93
-_REV = 3a321d934dda790f8ce8dc76d8e545abe1ec3251
+VERSION = 0.15.0.c05945748
+_REV = 05945748dccce28bf96d26d8f64a9e69a8dd49ba
 REVISION = 0
 CATEGORIES = wayland
 PKGNAME = waybar
@@ -22,7 +22,7 @@ BUILD_OPTION = -Ddefault_library=shared \
 	-Drfkill=enabled \
 	-Dsndio=enabled \
 	-Dsystemd=disabled \
-	-Dwireplumber=disabled \
+	-Dwireplumber=enabled \
 	-Dupower_glib=enabled \
 	-Dtests=disabled
 
