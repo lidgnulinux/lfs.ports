@@ -1,6 +1,6 @@
 COMMENT = Cross-platform open-source make system.
-VERSION = 4.2.3
-_V= 4.2
+VERSION = 4.3.3
+_V= 4.3
 REVISION = 0
 CATEGORIES = devel
 PKGNAME = cmake
