@@ -1,14 +1,14 @@
 COMMENT = busybox
-VERSION = 20260323
+VERSION = 1.38
 REVISION = 0
 CATEGORIES = sys
 PKGNAME = busybox
 HOMEPAGE = https://busybox.net
-ARCHIVE = busybox-20260323.tar.bz2
-LINK = https://busybox.net/downloads/snapshots/busybox-20260323.tar.bz2
+ARCHIVE = busybox-1.38.0.tar.bz2
+LINK = https://busybox.net/downloads/busybox-1.38.0.tar.bz2
 SRCCD = archive
 BUILD = make
-BUILDDIR = busybox
+BUILDDIR = busybox-1.38.0
 MAKEOPT = CONFIG_PREFIX=$(PWD)/package/opt
 MAKEFLAGS += -j1
 
