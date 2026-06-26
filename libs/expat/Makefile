@@ -1,14 +1,14 @@
 COMMENT = XML Parser library written in C
-VERSION = 2.7.5
+VERSION = 2.8.2
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = expat
 HOMEPAGE = https://libexpat.github.io/
-ARCHIVE = expat-2.7.5.tar.bz2
-LINK = https://downloads.sourceforge.net/project/expat/expat/2.7.5/expat-2.7.5.tar.bz2
+ARCHIVE = expat-2.8.2.tar.bz2
+LINK = https://downloads.sourceforge.net/project/expat/expat/2.8.2/expat-2.8.2.tar.bz2
 SRCCD = archive
 BUILD = make
-BUILDDIR = expat-2.7.5
+BUILDDIR = expat-2.8.2
 BUILD_OPTION =
 AUTO_CONF = (cd ${BUILDDIR} && ./configure --prefix=/usr \
 	--sysconfdir=/etc \

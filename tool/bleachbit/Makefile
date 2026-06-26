@@ -1,5 +1,5 @@
 COMMENT = Deletes unneeded files to free disk space and maintain privacy
-VERSION = 5.0.2
+VERSION = 6.0.1
 REVISION = 0
 CATEGORIES = tool
 PKGNAME = bleachbit
@@ -11,6 +11,7 @@ BUILD = make
 BUILDDIR = bleachbit-${VERSION}
 BUILD_OPTION = 
 MAKEOPT = "prefix=/usr"
+STRIP = no
 
 prepare:
 
