@@ -4,19 +4,21 @@ REVISION = 0
 CATEGORIES = python
 PKGNAME = psutil
 HOMEPAGE = https://github.com/giampaolo/psutil
-ARCHIVE = python-psutil-7.2.2.tar.gz
-LINK = https://github.com/giampaolo/psutil/archive/release-7.2.2/python-psutil-7.2.2.tar.gz
+ARCHIVE = psutil-7.2.2.tar.gz
+LINK = https://files.pythonhosted.org/packages/source/p/psutil/psutil-7.2.2.tar.gz
 SRCCD = archive
 BUILD = custom
-BUILDDIR = psutil-release-7.2.2
+BUILDDIR = psutil-7.2.2
 
 prepare:
 
 custom-build:
-	cd ${BUILDDIR} && python -m build --wheel --no-isolation
-	cd ${BUILDDIR} && python -m installer --destdir="$(PWD)/pkg" dist/*.whl
+	cd ${BUILDDIR} && unshare -n python3 -m build --wheel --no-isolation
+	cd ${BUILDDIR} && python3 -m installer --destdir "$(PWD)/pkg" dist/*.whl
 
 post_build:
+	mv pkg/usr/pkg/*/usr/* pkg/usr
+	rm -rf pkg/usr/pkg
 
 post-install:
 

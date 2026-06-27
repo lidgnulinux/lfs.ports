@@ -11,9 +11,11 @@ list:
 		| awk -F "-" '{print $$1,$$2}' | sort
 
 content:
+	@echo ""
 	@find /usr/pkg/${PKG}-* -printf '${PKG} : /%P\n'| sed 1d
 
 search:
+	@echo ""
 	@find /var/lib/mk/ \
 		-name "*${q}*.mk" \
 		-printf '%f\n' \
