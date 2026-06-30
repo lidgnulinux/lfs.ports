@@ -1,14 +1,14 @@
 COMMENT = GStreamer streaming media framework base plug-ins
-VERSION = 1.26.9
+VERSION = 1.28.3
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = gst_plugins_base
 HOMEPAGE = https://gstreamer.freedesktop.org
-ARCHIVE = gst-plugins-base-1.26.9.tar.xz
-LINK = https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.26.9.tar.xz
+ARCHIVE = gst-plugins-base-1.28.3.tar.xz
+LINK = https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.28.3.tar.xz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = gst-plugins-base-1.26.9
+BUILDDIR = gst-plugins-base-1.28.3
 BUILD_OPTION = -Dalsa=enabled \
 	-Dintrospection=enabled \
 	-Dpackage-name="GStreamer base plug-ins (Linux From Scratch)" \

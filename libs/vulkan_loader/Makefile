@@ -1,14 +1,14 @@
 COMMENT = Vulkan Installable Client Driver (ICD) Loader
-VERSION = 1.4.321.0
+VERSION = 1.4.347
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = vulkan_loader
 HOMEPAGE = https://www.khronos.org/vulkan
-ARCHIVE = vulkan-loader-sdk-1.4.321.0.tar.gz
-LINK = https://github.com/khronosgroup/vulkan-loader/archive/refs/tags/vulkan-sdk-1.4.321.0/vulkan-loader-sdk-1.4.321.0.tar.gz
+ARCHIVE = v1.4.347.tar.gz
+LINK = https://github.com/khronosgroup/vulkan-loader/archive/refs/tags/v1.4.347.tar.gz
 SRCCD = archive
 BUILD = cmake
-BUILDDIR = Vulkan-Loader-vulkan-sdk-1.4.321.0
+BUILDDIR = Vulkan-Loader-1.4.347
 BUILD_OPTION = -DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_INSTALL_SYSCONFDIR=/etc \
 	-DCMAKE_INSTALL_DATADIR=share \
