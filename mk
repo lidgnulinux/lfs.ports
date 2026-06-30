@@ -64,6 +64,7 @@ endif
 	fi
 
 info:
+	@echo ""
 	@find /var/lib/mk/ \
 		-name "${PKG}-*.mk" \
 		-exec $(MAKE) -f {} info-package -s \;
