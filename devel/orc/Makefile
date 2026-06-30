@@ -1,15 +1,15 @@
 COMMENT = Oil Run-time Compiler
-VERSION = 0.4.41
+VERSION = 0.4.42
 REVISION = 0
 CATEGORIES = devel
 PKGNAME = orc
 HOMEPAGE = https://gstreamer.freedesktop.org/modules/orc.html
-ARCHIVE = orc-0.4.41.tar.xz
-LINK = https://gstreamer.freedesktop.org/src/orc/orc-0.4.41.tar.xz
+ARCHIVE = orc-0.4.42.tar.xz
+LINK = https://gstreamer.freedesktop.org/src/orc/orc-0.4.42.tar.xz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = orc-0.4.41
-BUILD_OPTION = -Dorc-test=disabled -Dgtk_doc=disabled
+BUILDDIR = orc-0.4.42
+BUILD_OPTION = -Dorc-test=disabled -Dhotdoc=disabled
 
 prepare:
 
