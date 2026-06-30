@@ -1,5 +1,5 @@
-COMMENT = The Bourne Again SHell (version 5.3.3).
-VERSION = 5.3.3
+COMMENT = The Bourne Again SHell (version 5.3.15).
+VERSION = 5.3.15
 _V= 5.3
 REVISION = 0
 CATEGORIES = shell
@@ -19,11 +19,8 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure --prefix=/usr \
 	--build=x86_64-pc-linux-musl) 
 
 prepare:
+	patch -Np1 -d ${BUILDDIR} < bash-noinfo.patch
 	for i in patch/*; do patch -Np0 -d ${BUILDDIR} < $(PWD)/$$i; done
-
-just-install:
-	make -j4 -C ${BUILDDIR} PREFIX=${PREFIX} install
-	install  -Dm644 Makefile /var/lib/mk/${PKGNAME}@${CATEGORIES}.mk
 
 post_build:
 
