@@ -1,0 +1,10 @@
+Some packages which need to be rebuilt after perl upgrade :
+
+- perl_xml_parser
+- archive_zip
+- getopt_argvfile
+- module_scandeps
+- par_dist
+- par
+- par_packer
+- graft_bin
