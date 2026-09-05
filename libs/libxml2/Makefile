@@ -1,6 +1,6 @@
 COMMENT = XML parsing library, version 2
-VERSION = 2.15.3
-REVISION = 1
+VERSION = 2.15.4
+REVISION = 0
 CATEGORIES = libs
 PKGNAME = libxml2
 HOMEPAGE = https://gitlab.gnome.org/GNOME/libxml2
