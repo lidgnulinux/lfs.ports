@@ -1,6 +1,6 @@
 COMMENT = The GNU core utilities (version 9.11).
 VERSION = 9.11
-REVISION = 0
+REVISION = 1
 CATEGORIES = tool
 PKGNAME = coreutils
 HOMEPAGE = https://www.gnu.org/software/coreutils
