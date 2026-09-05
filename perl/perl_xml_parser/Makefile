@@ -1,14 +1,14 @@
 COMMENT = A perl module for parsing XML documents
-VERSION = 2.47
+VERSION = 2.59
 REVISION = 0
 CATEGORIES = perl
 PKGNAME = perl_xml_parser
 HOMEPAGE = https://metacpan.org/release/XML-Parser/
-ARCHIVE = XML-Parser-2.47.tar.gz
-LINK = https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.47.tar.gz
+ARCHIVE = XML-Parser-${VERSION}.tar.gz
+LINK = https://cpan.metacpan.org/authors/id/T/TO/TODDR/${ARCHIVE}
 SRCCD = archive
 BUILD = custom
-BUILDDIR = XML-Parser-2.47
+BUILDDIR = XML-Parser-${VERSION}
 CFLAGS = $(perl -MConfig -E 'say $Config{ccflags}')
 export CFLAGS
 
