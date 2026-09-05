@@ -1,0 +1,12 @@
+First installation :
+
+- Make sure to use P=1 to prune any conflict / overwrite, if you already built & installed coreutils from source !
+
+
+Upgrading :
+
+Make sure you have coreutils-like utility (busybox, toybox, uutils) as fallback. If you don't have any of them, just pass this env PATH variable :
+
+env PATH=package/usr/bin:package/bin 
+
+Why ? because lfs.ports will unlink all coreutils package content, remove package directory before extracting the package archive & link it to "/".
