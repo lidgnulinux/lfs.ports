@@ -1,6 +1,6 @@
 COMMENT = Access control list utilities
 VERSION = 2.4.0
-REVISION = 0
+REVISION = 1
 CATEGORIES = tool
 PKGNAME = acl
 HOMEPAGE = https://savannah.nongnu.org/projects/acl
