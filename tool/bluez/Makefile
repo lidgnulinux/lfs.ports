@@ -1,14 +1,14 @@
 COMMENT = Tools for the Bluetooth protocol stack
-VERSION = 5.86
+VERSION = 5.87
 REVISION = 0
 CATEGORIES = tool
 PKGNAME = bluez
 HOMEPAGE = https://www.bluez.org/
-ARCHIVE = bluez-5.86.tar.xz
-LINK = https://www.kernel.org/pub/linux/bluetooth/bluez-5.86.tar.xz
+ARCHIVE = bluez-${VERSION}.tar.xz
+LINK = https://www.kernel.org/pub/linux/bluetooth/bluez-${VERSION}.tar.xz
 SRCCD = archive
 BUILD = make
-BUILDDIR = bluez-5.86
+BUILDDIR = bluez-${VERSION}
 BUILD_OPTION =
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
@@ -30,8 +30,6 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
-	autoreconf -vfi ${BUILDDIR}
 
 post_build:
 	make -j4 -C ${BUILDDIR} PREFIX=${PREFIX} ${MAKEFLAGS} ${MAKEOPT} DESTDIR=${DESTDIR} install-pluginLTLIBRARIES
