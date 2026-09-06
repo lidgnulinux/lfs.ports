@@ -1,6 +1,6 @@
 COMMENT = Reference implementation of the iCalendar format
 VERSION = 3.0.20
-REVISION = 0
+REVISION = 1
 CATEGORIES = libs
 PKGNAME = libical
 HOMEPAGE = https://libical.github.io/libical/
