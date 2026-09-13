@@ -1,0 +1,61 @@
+diff -urdN ergo-27c5052832b782c5015e5b9a0dba469296e6149a/src/state.c ergo-27c5052832b782c5015e5b9a0dba469296e6149a.new/src/state.c
+--- ergo-27c5052832b782c5015e5b9a0dba469296e6149a/src/state.c	2025-12-18 21:32:41.000000000 +0700
++++ ergo-27c5052832b782c5015e5b9a0dba469296e6149a.new/src/state.c	2026-09-12 17:06:57.485096585 +0700
+@@ -77,9 +77,11 @@
+ 	state->anchor = ZWLR_LAYER_SURFACE_V1_ANCHOR_TOP;
+ 	state->right = false;
+ 	state->item_count = 0;
+-	const char *usage = "Usage: ergo [-br] [-f font] [-N color] [-n color] [-S color] [-s color]\n";
++	state->margin_x = 0;
++	state->margin_y = 0;
++	const char *usage = "Usage: ergo [-br] [-f font] [-N color] [-n color] [-S color] [-s color] [-x X] [-y Y] [-w width]\n";
+ 	int opt;
+-	while ((opt = getopt(argc, argv, "hbrf:N:n:S:s:")) != -1) {
++	while ((opt = getopt(argc, argv, "hbrf:N:n:S:s:x:y:w:")) != -1) {
+ 		switch (opt) {
+ 			case 'r':
+ 				state->right = true;
+@@ -110,6 +112,15 @@
+ 					fprintf(stderr, "Invalid select foreground color: %s", optarg);
+ 				}
+ 				break;
++			case 'w':
++				state->width = atoi(optarg);
++				break;
++			case 'x':
++				state->margin_x = atoi(optarg);
++				break;
++			case 'y':
++				state->margin_y = atoi(optarg);
++				break;
+ 			default:
+ 				fprintf(stderr, "%s", usage);
+ 				exit(EXIT_FAILURE);
+diff -urdN ergo-27c5052832b782c5015e5b9a0dba469296e6149a/src/state.h ergo-27c5052832b782c5015e5b9a0dba469296e6149a.new/src/state.h
+--- ergo-27c5052832b782c5015e5b9a0dba469296e6149a/src/state.h	2025-12-18 21:32:41.000000000 +0700
++++ ergo-27c5052832b782c5015e5b9a0dba469296e6149a.new/src/state.h	2026-09-12 16:47:23.528019213 +0700
+@@ -18,6 +18,8 @@
+ 	bool right;
+ 	int width, height;
+ 	uint32_t normal_bg, normal_fg, select_bg, select_fg;
++	int margin_x;
++	int margin_y;
+ 	char *font;
+ 	char *items[BUFSIZ];
+ 	int item_count;
+diff -urdN ergo-27c5052832b782c5015e5b9a0dba469296e6149a/src/wayland.c ergo-27c5052832b782c5015e5b9a0dba469296e6149a.new/src/wayland.c
+--- ergo-27c5052832b782c5015e5b9a0dba469296e6149a/src/wayland.c	2025-12-18 21:32:41.000000000 +0700
++++ ergo-27c5052832b782c5015e5b9a0dba469296e6149a.new/src/wayland.c	2026-09-12 16:50:40.202032175 +0700
+@@ -91,6 +91,12 @@
+ 	zwlr_layer_surface_v1_set_anchor(state->zwlr_layer_surface_v1,
+ 		ZWLR_LAYER_SURFACE_V1_ANCHOR_LEFT | ZWLR_LAYER_SURFACE_V1_ANCHOR_RIGHT | state->anchor
+ 	);
++	zwlr_layer_surface_v1_set_margin(state->zwlr_layer_surface_v1,
++		state->margin_y,
++		0,
++		state->margin_y,
++		state->margin_x
++	);
+ 	zwlr_layer_surface_v1_set_size(state->zwlr_layer_surface_v1, state->width, state->height);
+ 	zwlr_layer_surface_v1_set_exclusive_zone(state->zwlr_layer_surface_v1, state->height);
+ 	zwlr_layer_surface_v1_add_listener(state->zwlr_layer_surface_v1, &zwlr_layer_surface_v1_listener, state);

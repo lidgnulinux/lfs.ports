@@ -14,6 +14,9 @@ MAKEOPT =
 override PREFIX = $(PWD)/package/usr
 
 prepare:
+	patch -p1 -d ${BUILDDIR} -i $(PWD)/00_ergo_add_margin.patch
+	patch -p1 -d ${BUILDDIR} -i $(PWD)/00_ergo_add_border.patch
+	patch -p1 -d ${BUILDDIR} -i $(PWD)/00_ergo_set_height_higher.patch
 
 post_build:
 

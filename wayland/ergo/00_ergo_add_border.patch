@@ -1,0 +1,67 @@
+diff -urdN ergo-27c5052832b782c5015e5b9a0dba469296e6149a/src/render.c ergo-27c5052832b782c5015e5b9a0dba469296e6149a.border/src/render.c
+--- ergo-27c5052832b782c5015e5b9a0dba469296e6149a/src/render.c	2025-12-18 21:32:41.000000000 +0700
++++ ergo-27c5052832b782c5015e5b9a0dba469296e6149a.border/src/render.c	2026-09-13 16:15:52.651802568 +0700
+@@ -40,6 +40,19 @@
+ 	cairo_set_source_u32(cairo, state->normal_bg);
+ 	cairo_paint(cairo);
+ 
++	if (state->border_width > 0) {
++		cairo_set_source_u32(cairo, state->border_color);
++		cairo_set_line_width(cairo, state->border_width);
++		cairo_rectangle(
++			cairo,
++			state->border_width / 2.0,
++			state->border_width / 2.0,
++			state->width - state->border_width,
++			state->height - state->border_width
++		);
++		cairo_stroke(cairo);
++	}
++
+ 	PangoLayout *layout = pango_cairo_create_layout(cairo);
+ 	PangoFontDescription *desc = pango_font_description_from_string(state->font);
+ 	pango_layout_set_font_description(layout, desc);
+diff -urdN ergo-27c5052832b782c5015e5b9a0dba469296e6149a/src/state.c ergo-27c5052832b782c5015e5b9a0dba469296e6149a.border/src/state.c
+--- ergo-27c5052832b782c5015e5b9a0dba469296e6149a/src/state.c	2026-09-13 16:19:31.420239803 +0700
++++ ergo-27c5052832b782c5015e5b9a0dba469296e6149a.border/src/state.c	2026-09-13 16:17:50.828632664 +0700
+@@ -79,9 +79,11 @@
+ 	state->item_count = 0;
+ 	state->margin_x = 0;
+ 	state->margin_y = 0;
+-	const char *usage = "Usage: ergo [-br] [-f font] [-N color] [-n color] [-S color] [-s color] [-x X] [-y Y] [-w width]\n";
++	state->border_color = 0x00000000;
++	state->border_width = 0;
++	const char *usage = "Usage: ergo [-br] [-f font] [-N color] [-n color] [-S color] [-s color] [-x X] [-y Y] [-w width] [-B color] [-W size]\n";
+ 	int opt;
+-	while ((opt = getopt(argc, argv, "hbrf:N:n:S:s:x:y:w:")) != -1) {
++	while ((opt = getopt(argc, argv, "hbrf:N:n:S:s:x:y:w:B:W:")) != -1) {
+ 		switch (opt) {
+ 			case 'r':
+ 				state->right = true;
+@@ -121,6 +123,14 @@
+ 			case 'y':
+ 				state->margin_y = atoi(optarg);
+ 				break;
++			case 'B':
++				if (!parse_color(optarg, &state->border_color)) {
++					fprintf(stderr, "Invalid border color: %s", optarg);
++				}
++				break;
++			case 'W':
++				state->border_width = atoi(optarg);
++				break;
+ 			default:
+ 				fprintf(stderr, "%s", usage);
+ 				exit(EXIT_FAILURE);
+diff -urdN ergo-27c5052832b782c5015e5b9a0dba469296e6149a/src/state.h ergo-27c5052832b782c5015e5b9a0dba469296e6149a.border/src/state.h
+--- ergo-27c5052832b782c5015e5b9a0dba469296e6149a/src/state.h	2026-09-13 16:19:31.420621147 +0700
++++ ergo-27c5052832b782c5015e5b9a0dba469296e6149a.border/src/state.h	2026-09-13 16:06:43.562156686 +0700
+@@ -24,6 +24,8 @@
+ 	char *items[BUFSIZ];
+ 	int item_count;
+ 	int anchor;
++	uint32_t border_color;
++	int border_width;
+ };
+ 
+ struct state *state_init(int argc, char *argv[]);

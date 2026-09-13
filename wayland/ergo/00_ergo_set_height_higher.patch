@@ -1,0 +1,12 @@
+diff -urdN ergo-27c5052832b782c5015e5b9a0dba469296e6149a/src/state.c ergo-27c5052832b782c5015e5b9a0dba469296e6149a.height/src/state.c
+--- ergo-27c5052832b782c5015e5b9a0dba469296e6149a/src/state.c	2026-09-13 16:30:36.659835453 +0700
++++ ergo-27c5052832b782c5015e5b9a0dba469296e6149a.height/src/state.c	2026-09-13 16:26:20.864449232 +0700
+@@ -140,7 +140,7 @@
+ 		fprintf(stderr, "%s", usage);
+ 		exit(EXIT_FAILURE);
+ 	}
+-  state->height = get_font_height(state->font) + 2;
++  state->height = get_font_height(state->font) + 8;
+   wayland_init(state);
+   return state;
+ }
