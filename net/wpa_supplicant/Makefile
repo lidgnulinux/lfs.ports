@@ -1,6 +1,6 @@
 COMMENT = IEEE 802.1X/WPA supplicant wireless client.
-VERSION = 2.11
-REVISION = 1
+VERSION = 2.12
+REVISION = 0
 CATEGORIES = net
 PKGNAME = wpa_supplicant
 HOMEPAGE = https://w1.fi/wpa_supplicant/
