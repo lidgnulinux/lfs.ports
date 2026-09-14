@@ -35,7 +35,7 @@ After you have those requirements, let's build our package !
 	$ make download
 	$ make extract
 	$ make prepare
-	$ make build
+	$ make build		# you may need to pass -j <number of jobs> to speed up the build. For bmake build type, you need to use -j as MAKEFLAGS.
 	$ make package
 	```
 
