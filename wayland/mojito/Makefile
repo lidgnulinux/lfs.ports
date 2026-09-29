@@ -1,5 +1,5 @@
 COMMENT = a minimal, lemonbar-compatible status bar for Wayland compositors.
-VERSION = 0.c91c59d43
+VERSION = 0.c5e6a307e
 REVISION = 0
 CATEGORIES = wayland
 PKGNAME = mojito
