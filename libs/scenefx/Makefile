@@ -1,5 +1,5 @@
 COMMENT = A drop-in replacement for the wlroots scene API
-VERSION = 0.4.1
+VERSION = 0.5
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = scenefx
@@ -12,7 +12,10 @@ BUILDDIR = scenefx-${VERSION}
 BUILD_OPTION = -Dexamples=false
 
 prepare:
+	patch -p1 -d ${BUILDDIR} -i $(PWD)/add-missing-include-for__always_inline.patch
 
 post_build:
+
+post-install:
 
 include /usr/share/mk/lfs.port.mk
