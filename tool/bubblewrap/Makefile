@@ -1,5 +1,5 @@
 COMMENT = Unprivileged sandboxing tool
-VERSION = 0.12.0
+VERSION = 0.13.0
 REVISION = 0
 CATEGORIES = tool
 PKGNAME = bubblewrap
