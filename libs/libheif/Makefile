@@ -1,14 +1,14 @@
 COMMENT = ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
-VERSION = 1.21.2
+VERSION = 1.23.5
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libheif
 HOMEPAGE = https://www.libde265.org/
-ARCHIVE = libheif-1.21.2.tar.gz
-LINK = https://github.com/strukturag/libheif/releases/download/v1.21.2/libheif-1.21.2.tar.gz
+ARCHIVE = libheif-${VERSION}.tar.gz
+LINK = https://github.com/strukturag/libheif/releases/download/v${VERSION}/libheif-${VERSION}.tar.gz
 SRCCD = archive
 BUILD = cmake
-BUILDDIR = libheif-1.21.2
+BUILDDIR = libheif-${VERSION}
 BUILD_OPTION = -DCMAKE_SKIP_INSTALL_RPATH=ON \
 	-DCMAKE_VERBOSE_MAKEFILE=ON \
 	-DBUILD_TESTING=OFF \
@@ -60,7 +60,6 @@ BUILD_OPTION = -DCMAKE_SKIP_INSTALL_RPATH=ON \
 	-DWITH_GDK_PIXBUF=OFF
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
 
 post_build:
 
