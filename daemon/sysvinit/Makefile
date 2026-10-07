@@ -1,14 +1,14 @@
-COMMENT = The System V init (version 3.15).
-VERSION = 3.15
+COMMENT = The System V init (version ${VERSION}).
+VERSION = 3.18
 REVISION = 0
 CATEGORIES = daemon
 PKGNAME = sysvinit
 HOMEPAGE = https://savannah.nongnu.org/projects/sysvinit
-ARCHIVE = 3.15.tar.gz
-LINK = https://github.com/slicer69/sysvinit/archive/refs/tags/3.15.tar.gz
+ARCHIVE = ${VERSION}.tar.gz
+LINK = https://codeberg.org/thejessesmith/sysvinit/archive/${VERSION}.tar.gz
 SRCCD = archive
 BUILD = make
-BUILDDIR = sysvinit-3.15
+BUILDDIR = sysvinit
 MAKEOPT = ROOT=$(PWD)/package
 CPPFLAGS = -D_FORTIFY_SOURCE=1
 export CPPFLAGS
@@ -19,5 +19,9 @@ prepare:
 post_build:
 
 post-install:
+
+_install:
+	$(MAKE) -C ${BUILDDIR} PREFIX=/usr install 
+	install  -Dm644 $(PWD)/Makefile /var/lib/mk/${PACKAGE}.mk
 
 include /usr/share/mk/lfs.port.mk
