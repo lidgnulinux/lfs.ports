@@ -1,6 +1,6 @@
 COMMENT = Utilities to work with and produce manuals, ASCII text, and on-line documentation from a single source file
 VERSION = 7.3
-REVISION = 0
+REVISION = 1
 CATEGORIES = tool
 PKGNAME = texinfo
 HOMEPAGE = https://www.gnu.org/software/texinfo/
