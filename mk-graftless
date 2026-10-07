@@ -1,0 +1,88 @@
+#!/usr/bin/make -f
+
+package=$(shell basename -s .tar.gz ${PKG})
+TAR=/usr/bin/tar
+
+list:
+	@find /var/lib/mk/ \
+		-name "*.mk" \
+		-printf '%f\n' \
+		| cut -d "-" -f 1,2 \
+		| awk -F "-" '{print $$1,$$2}' | sort
+
+content:
+	@echo ""
+	@find /usr/pkg/${PKG}-* -printf '${PKG} : /%P\n'| sed 1d
+
+search:
+	@echo ""
+	@find /var/lib/mk/ \
+		-name "*${q}*.mk" \
+		-printf '%f\n' \
+		| cut -d "-" -f 1,2 \
+		| awk -F "-" '{print $$1,$$2}'
+
+view:
+	@find /var/lib/mk/ \
+		-name "${PKG}-*.mk" \
+		-exec less -x2 -c {} \;
+
+help:
+	@echo -e "\n\
+   \033[1mA Makefile-based package manager.\033[0m \n\
+   \n\
+   \033[1mhelp, h\033[0m			show this help. \n\
+   \033[1mlist, l\033[0m			show installed packages. \n\
+   \033[1mcontent, c PKG=package\033[0m	show package contents. \n\
+   \033[1msearch, s q=query\033[0m		search package. \n\
+   \033[1mview, v PKG=package\033[0m		view package Makefile. \n\
+   \033[1minfo, i PKG=package\033[0m		view package information. \n\
+   \033[1minstall, a PKG=package\033[0m	install package. \n\
+   \033[1mremove, r PKG=<package path>\033[0m	remove package. \n\
+   \033[1mupgrade, u PKG=package\033[0m	upgrade package. \n\
+   \033[1minfo-archive, ia A=archive\033[0m	view archive info. \n"
+
+install:
+	@echo "Installing package archive ${PKG}"
+
+	@echo "extracting package archive ${PKG}"
+	${TAR} -C / -xf ${PKG} --keep-directory-symlink
+
+	@echo "Run post-install target if available"
+	@if $(MAKE) -f /var/lib/mk/${package}.mk -n post-install > /dev/null; then \
+		$(MAKE) -f /var/lib/mk/${package}.mk post-install; \
+	else \
+		echo "No post-install target available."; \
+	fi
+
+info:
+	@echo ""
+	@find /var/lib/mk/ \
+		-name "${PKG}-*.mk" \
+		-exec $(MAKE) -f {} info-package -s \;
+
+test:
+	echo "$(shell basename -s .list ${PKG})"
+
+remove:
+	@echo "Uninstalling package $(shell basename -s .list ${PKG})"
+	@echo "removing the $(shell basename -s .list ${PKG}) package files ..."
+	@xargs -P 2 rm -v < ${PKG}
+	@echo "removing log file."
+	@rm ${PKG}
+
+info-archive:
+	@echo ""
+	@tar -xf ${A} ./var/lib/mk/ -O | make -f - info-package -s
+
+# target alias
+l: list
+c: content
+s: search
+v: view
+h: help
+a: install
+i: info
+r: remove
+u: upgrade
+ia: info-archive
