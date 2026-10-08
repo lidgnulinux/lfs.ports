@@ -21,14 +21,14 @@ You could easily use it, but before that, you should have these requirements :
 - wget, to download source code. You could change it with your tool downloader.
 - build tools, like compiler (I use gcc mainly), make, meson, cmake, bmake, muon and zig.
 - tar, to create tar.gz package archive.
-- [graft](https://peters.gormand.com.au/Home/tools/graft), to do grafting. 
+- [graft](https://peters.gormand.com.au/Home/tools/graft) (will be deprecated soon), to do grafting.
 - text editor.
 - patch, to do patching (if needed)
 
 After you have those requirements, let's build our package !
 
-1. Copy `lfs.port.mk` & `strip.mk` to `/usr/share/mk` directory.
-1. Pick a template package, for example `iceauth`. 
+1. Copy `lfs.port.mk` & `strip.mk` to `/usr/share/mk` directory. For experimental use, you may copy `port.mk` to try to build package which suited for [mk-graftless](https://github.com/lidgnulinux/lfs.ports/blob/main/mk-graftless).
+1. Pick a template package, for example `iceauth`.
 1. Run these commands :
 
 	```
@@ -36,7 +36,7 @@ After you have those requirements, let's build our package !
 	$ make extract
 	$ make prepare
 	$ make build		# you may need to pass -j <number of jobs> to speed up the build. For bmake build type, you need to use -j as MAKEFLAGS.
-	$ make package
+	$ make package	# you may need to use "unshare -r make package" if you get error in stripping.
 	```
 
 	Explanation :
