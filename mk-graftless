@@ -2,6 +2,7 @@
 
 package=$(shell basename -s .tar.gz ${PKG})
 TAR=/usr/bin/tar
+LIST=$(wildcard /var/log/mk/$(shell basename -s .tar.gz ${PKG} | cut -d "-" -f 1)-*.list)
 
 list:
 	@find /var/lib/mk/ \
@@ -12,7 +13,7 @@ list:
 
 content:
 	@echo ""
-	@find /usr/pkg/${PKG}-* -printf '${PKG} : /%P\n'| sed 1d
+	@cat /var/log/mk/${PKG}-*list
 
 search:
 	@echo ""
@@ -46,8 +47,8 @@ install:
 	@echo "Installing package archive ${PKG}"
 
 	@echo "extracting package archive ${PKG}"
-	${TAR} -C / -xf ${PKG} --keep-directory-symlink
-
+	@${TAR} -C / -xf ${PKG} --keep-directory-symlink
+	@echo ""
 	@echo "Run post-install target if available"
 	@if $(MAKE) -f /var/lib/mk/${package}.mk -n post-install > /dev/null; then \
 		$(MAKE) -f /var/lib/mk/${package}.mk post-install; \
@@ -61,15 +62,33 @@ info:
 		-name "${PKG}-*.mk" \
 		-exec $(MAKE) -f {} info-package -s \;
 
-test:
-	echo "$(shell basename -s .list ${PKG})"
-
 remove:
 	@echo "Uninstalling package $(shell basename -s .list ${PKG})"
 	@echo "removing the $(shell basename -s .list ${PKG}) package files ..."
+	@echo ""
 	@xargs -P 2 rm -v < ${PKG}
+	@echo ""
 	@echo "removing log file."
-	@rm ${PKG}
+	@rm -v ${PKG}
+
+upgrade:
+	@echo "Installing upgrade package archive ${PKG}"
+	@echo "removing previous package files."
+	@xargs -P 2 rm < $(LIST)
+	@echo ""
+	@echo "removing log file."
+	@rm -v $(LIST)
+	@echo ""
+	@echo "extracting package archive ${PKG}"
+	@${TAR} -C / -xf ${PKG} --keep-directory-symlink
+	@echo ""
+
+	echo "Run post-install target if available"
+	@if $(MAKE) -f /var/lib/mk/${package}.mk -n post-install > /dev/null; then \
+		$(MAKE) -f /var/lib/mk/${package}.mk post-install; \
+	else \
+		echo "No post-install target available."; \
+	fi
 
 info-archive:
 	@echo ""
