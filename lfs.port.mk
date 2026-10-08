@@ -80,6 +80,12 @@ ifeq ($(BUILD),meson)
 	install  -Dm644 $(PWD)/Makefile $(PWD)/build/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	$(MAKE) striping
+  ifeq ($(GRAFT),no)
+		@cd package; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/package/var/log/mk/${PACKAGE}.list
+  else
+		@echo "The package will use graft for installation"
+  endif
 	tar -C build/package -cvf ${PACKAGE}.tar.gz .
 else ifeq ($(BUILD),make)
 	@echo "Mode: Package Make"
@@ -92,6 +98,12 @@ else ifeq ($(BUILD),make)
 	install  -Dm644 $(PWD)/Makefile $(PWD)/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	$(MAKE) striping
+  ifeq ($(GRAFT),no)
+		@cd package; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/package/var/log/mk/${PACKAGE}.list
+  else
+		@echo "The package will use graft for installation"
+  endif
 	tar -C package -cvf ${PACKAGE}.tar.gz .
 else ifeq ($(BUILD),cmake)
 	@echo "Mode: Package Cmake"
@@ -99,6 +111,12 @@ else ifeq ($(BUILD),cmake)
 	install  -Dm644 $(PWD)/Makefile $(PWD)/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	$(MAKE) striping
+  ifeq ($(GRAFT),no)
+		@cd package; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/package/var/log/mk/${PACKAGE}.list
+  else
+		@echo "The package will use graft for installation"
+  endif
 	tar -C package -cvf ${PACKAGE}.tar.gz .
 else ifeq ($(BUILD),bmake)
 	@echo "Mode: Package BSD Make"
@@ -111,6 +129,12 @@ else ifeq ($(BUILD),bmake)
 	install  -Dm644 $(PWD)/Makefile $(PWD)/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	$(MAKE) striping
+  ifeq ($(GRAFT),no)
+		@cd package; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/package/var/log/mk/${PACKAGE}.list
+  else
+		@echo "The package will use graft for installation"
+  endif
 	tar -C package -cvf ${PACKAGE}.tar.gz .
 else ifeq ($(BUILD),muon)
 	@echo "Mode: Package Muon"
@@ -118,24 +142,48 @@ else ifeq ($(BUILD),muon)
 	install  -Dm644 $(PWD)/Makefile $(PWD)/b/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	$(MAKE) striping
+  ifeq ($(GRAFT),no)
+		@cd b/package; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/b/package/var/log/mk/${PACKAGE}.list
+  else
+		@echo "The package will use graft for installation"
+  endif
 	tar -C b/package -cvf ${PACKAGE}.tar.gz .
 else ifeq ($(BUILD),cargo)
 	@echo "Mode: Package Cargo"
 	install -Dm644 $(PWD)/Makefile $(PWD)/pkg/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	$(MAKE) striping
+  ifeq ($(GRAFT),no)
+		@cd pkg; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/pkg/var/log/mk/${PACKAGE}.list
+  else
+		@echo "The package will use graft for installation"
+  endif
 	tar -C pkg -cvf ${PACKAGE}.tar.gz .
 else ifeq ($(BUILD),zig)
 	@echo "Mode: Package Zig"
 	install -Dm644 $(PWD)/Makefile $(PWD)/pkg/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	$(MAKE) striping
+  ifeq ($(GRAFT),no)
+		@cd pkg; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/pkg/var/log/mk/${PACKAGE}.list
+  else
+		@echo "The package will use graft for installation"
+  endif
 	tar -C pkg -cvf ${PACKAGE}.tar.gz .
 else ifeq ($(BUILD),custom)
 	@echo "Mode: Package Custom"
 	install -Dm644 $(PWD)/Makefile $(PWD)/pkg/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	$(MAKE) striping
+  ifeq ($(GRAFT),no)
+		@cd pkg; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/pkg/var/log/mk/${PACKAGE}.list
+  else
+		@echo "The package will use graft for installation"
+  endif
 	tar -C pkg -cvf ${PACKAGE}.tar.gz .
 else
 	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', \
