@@ -81,8 +81,8 @@ ifeq ($(BUILD),meson)
 	$(MAKE) post_build
 	$(MAKE) striping
   ifeq ($(GRAFT),no)
-		@cd package; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
-		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/package/var/log/mk/${PACKAGE}.list
+		@cd build/package; find . -type f | sed 's|^.||' > ../../${PACKAGE}.list
+		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/build/package/var/log/mk/${PACKAGE}.list
   else
 		@echo "The package will use graft for installation"
   endif
@@ -143,7 +143,7 @@ else ifeq ($(BUILD),muon)
 	$(MAKE) post_build
 	$(MAKE) striping
   ifeq ($(GRAFT),no)
-		@cd b/package; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+		@cd b/package; find . -type f | sed 's|^.||' > ../../${PACKAGE}.list
 		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/b/package/var/log/mk/${PACKAGE}.list
   else
 		@echo "The package will use graft for installation"
