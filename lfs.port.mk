@@ -4,7 +4,7 @@ SYSCONFDIR=/etc
 LIBEXECDIR=/usr/libexec
 BINDIR=/usr/bin
 PACKAGE = ${PKGNAME}-${VERSION}-${REVISION}@${CATEGORIES}
-DESTDIR = $(PWD)/package
+DESTDIR = $(CURDIR)/package
 
 download:
 ifeq ($(SRCCD),archive)
@@ -73,118 +73,142 @@ else
 	$(MAKE) strip
 endif
 
-package:
-ifeq ($(BUILD),meson)
+_package_meson:
 	@echo "Mode: Package Meson"
 	meson install --no-rebuild -C build --destdir package
-	install  -Dm644 $(PWD)/Makefile $(PWD)/build/package/var/lib/mk/${PACKAGE}.mk
+	install -Dm644 $(CURDIR)/Makefile $(CURDIR)/build/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	$(MAKE) striping
-  ifeq ($(GRAFT),no)
-		@cd build/package; find . -type f | sed 's|^.||' > ../../${PACKAGE}.list
-		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/build/package/var/log/mk/${PACKAGE}.list
-  else
-		@echo "The package will use graft for installation"
-  endif
-	tar -C build/package -cvf ${PACKAGE}.tar.gz .
-else ifeq ($(BUILD),make)
+ifeq ($(GRAFT),no)
+	@cd $(CURDIR)/build/package; find . -type f | sed 's|^.||' > ../../${PACKAGE}.list
+	@install -Dm644 $(CURDIR)/${PACKAGE}.list $(CURDIR)/build/package/var/log/mk/${PACKAGE}.list
+else
+	@echo "The package will use graft for installation"
+endif
+	tar -C $(CURDIR)/build/package -cvf ${PACKAGE}.tar.gz .
+
+_package_make:
 	@echo "Mode: Package Make"
-  ifeq ($(MKINST),no)
-		@echo "No need to install"
-  else
-		make -C ${BUILDDIR} PREFIX=${PREFIX} ${MAKEFLAGS} \
-			${MAKEOPT} DESTDIR=${DESTDIR} install
-  endif
-	install  -Dm644 $(PWD)/Makefile $(PWD)/package/var/lib/mk/${PACKAGE}.mk
+ifeq ($(MKINST),no)
+	@echo "No need to install"
+else
+	make -C ${BUILDDIR} PREFIX=${PREFIX} ${MAKEFLAGS} \
+		${MAKEOPT} DESTDIR=${DESTDIR} install
+endif
+	install -Dm644 $(CURDIR)/Makefile $(CURDIR)/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	$(MAKE) striping
-  ifeq ($(GRAFT),no)
-		@cd package; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
-		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/package/var/log/mk/${PACKAGE}.list
-  else
-		@echo "The package will use graft for installation"
-  endif
-	tar -C package -cvf ${PACKAGE}.tar.gz .
-else ifeq ($(BUILD),cmake)
+ifeq ($(GRAFT),no)
+	@cd $(CURDIR)/package; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+	@install -Dm644 $(CURDIR)/${PACKAGE}.list $(CURDIR)/package/var/log/mk/${PACKAGE}.list
+else
+	@echo "The package will use graft for installation"
+endif
+	tar -C $(CURDIR)/package -cvf ${PACKAGE}.tar.gz .
+
+_package_cmake:
 	@echo "Mode: Package Cmake"
 	DESTDIR="package" cmake --install build
-	install  -Dm644 $(PWD)/Makefile $(PWD)/package/var/lib/mk/${PACKAGE}.mk
+	install -Dm644 $(CURDIR)/Makefile $(CURDIR)/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	$(MAKE) striping
-  ifeq ($(GRAFT),no)
-		@cd package; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
-		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/package/var/log/mk/${PACKAGE}.list
-  else
-		@echo "The package will use graft for installation"
-  endif
-	tar -C package -cvf ${PACKAGE}.tar.gz .
-else ifeq ($(BUILD),bmake)
+ifeq ($(GRAFT),no)
+	@cd $(CURDIR)/package; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+	@install -Dm644 $(CURDIR)/${PACKAGE}.list $(CURDIR)/package/var/log/mk/${PACKAGE}.list
+else
+	@echo "The package will use graft for installation"
+endif
+	tar -C $(CURDIR)/package -cvf ${PACKAGE}.tar.gz .
+
+_package_bmake:
 	@echo "Mode: Package BSD Make"
-  ifeq ($(MKINST),no)
-		@echo "No need to install"
-  else
-		bmake -C ${BUILDDIR} PREFIX=${PREFIX} ${MAKEFLAGS} \
-			${MAKEOPT} DESTDIR=${DESTDIR} install
-  endif
-	install  -Dm644 $(PWD)/Makefile $(PWD)/package/var/lib/mk/${PACKAGE}.mk
+ifeq ($(MKINST),no)
+	@echo "No need to install"
+else
+	bmake -C ${BUILDDIR} PREFIX=${PREFIX} ${MAKEFLAGS} \
+		${MAKEOPT} DESTDIR=${DESTDIR} install
+endif
+	install -Dm644 $(CURDIR)/Makefile $(CURDIR)/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	$(MAKE) striping
-  ifeq ($(GRAFT),no)
-		@cd package; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
-		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/package/var/log/mk/${PACKAGE}.list
-  else
-		@echo "The package will use graft for installation"
-  endif
-	tar -C package -cvf ${PACKAGE}.tar.gz .
-else ifeq ($(BUILD),muon)
+ifeq ($(GRAFT),no)
+	@cd $(CURDIR)/package; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+	@install -Dm644 $(CURDIR)/${PACKAGE}.list $(CURDIR)/package/var/log/mk/${PACKAGE}.list
+else
+	@echo "The package will use graft for installation"
+endif
+	tar -C $(CURDIR)/package -cvf ${PACKAGE}.tar.gz .
+
+_package_muon:
 	@echo "Mode: Package Muon"
 	muon -C b install -d package
-	install  -Dm644 $(PWD)/Makefile $(PWD)/b/package/var/lib/mk/${PACKAGE}.mk
+	install -Dm644 $(CURDIR)/Makefile $(CURDIR)/b/package/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	$(MAKE) striping
-  ifeq ($(GRAFT),no)
-		@cd b/package; find . -type f | sed 's|^.||' > ../../${PACKAGE}.list
-		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/b/package/var/log/mk/${PACKAGE}.list
-  else
-		@echo "The package will use graft for installation"
-  endif
-	tar -C b/package -cvf ${PACKAGE}.tar.gz .
-else ifeq ($(BUILD),cargo)
+ifeq ($(GRAFT),no)
+	@cd $(CURDIR)/b/package; find . -type f | sed 's|^.||' > ../../${PACKAGE}.list
+	@install -Dm644 $(CURDIR)/${PACKAGE}.list $(CURDIR)/b/package/var/log/mk/${PACKAGE}.list
+else
+	@echo "The package will use graft for installation"
+endif
+	tar -C $(CURDIR)/b/package -cvf ${PACKAGE}.tar.gz .
+
+_package_cargo:
 	@echo "Mode: Package Cargo"
-	install -Dm644 $(PWD)/Makefile $(PWD)/pkg/var/lib/mk/${PACKAGE}.mk
+	install -Dm644 $(CURDIR)/Makefile $(CURDIR)/pkg/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	$(MAKE) striping
-  ifeq ($(GRAFT),no)
-		@cd pkg; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
-		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/pkg/var/log/mk/${PACKAGE}.list
-  else
-		@echo "The package will use graft for installation"
-  endif
-	tar -C pkg -cvf ${PACKAGE}.tar.gz .
-else ifeq ($(BUILD),zig)
+ifeq ($(GRAFT),no)
+	@cd $(CURDIR)/pkg; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+	@install -Dm644 $(CURDIR)/${PACKAGE}.list $(CURDIR)/pkg/var/log/mk/${PACKAGE}.list
+else
+	@echo "The package will use graft for installation"
+endif
+	tar -C $(CURDIR)/pkg -cvf ${PACKAGE}.tar.gz .
+
+_package_zig:
 	@echo "Mode: Package Zig"
-	install -Dm644 $(PWD)/Makefile $(PWD)/pkg/var/lib/mk/${PACKAGE}.mk
+	install -Dm644 $(CURDIR)/Makefile $(CURDIR)/pkg/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	$(MAKE) striping
-  ifeq ($(GRAFT),no)
-		@cd pkg; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
-		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/pkg/var/log/mk/${PACKAGE}.list
-  else
-		@echo "The package will use graft for installation"
-  endif
-	tar -C pkg -cvf ${PACKAGE}.tar.gz .
-else ifeq ($(BUILD),custom)
+ifeq ($(GRAFT),no)
+	@cd $(CURDIR)/pkg; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+	@install -Dm644 $(CURDIR)/${PACKAGE}.list $(CURDIR)/pkg/var/log/mk/${PACKAGE}.list
+else
+	@echo "The package will use graft for installation"
+endif
+	tar -C $(CURDIR)/pkg -cvf ${PACKAGE}.tar.gz .
+
+_package_custom:
 	@echo "Mode: Package Custom"
-	install -Dm644 $(PWD)/Makefile $(PWD)/pkg/var/lib/mk/${PACKAGE}.mk
+	install -Dm644 $(CURDIR)/Makefile $(CURDIR)/pkg/var/lib/mk/${PACKAGE}.mk
 	$(MAKE) post_build
 	$(MAKE) striping
-  ifeq ($(GRAFT),no)
-		@cd pkg; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
-		@install -Dm644 $(PWD)/${PACKAGE}.list $(PWD)/pkg/var/log/mk/${PACKAGE}.list
-  else
-		@echo "The package will use graft for installation"
-  endif
-	tar -C pkg -cvf ${PACKAGE}.tar.gz .
+ifeq ($(GRAFT),no)
+	@cd $(CURDIR)/pkg; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+	@install -Dm644 $(CURDIR)/${PACKAGE}.list $(CURDIR)/pkg/var/log/mk/${PACKAGE}.list
+else
+	@echo "The package will use graft for installation"
+endif
+	tar -C $(CURDIR)/pkg -cvf ${PACKAGE}.tar.gz .
+
+package:
+ifeq ($(BUILD),meson)
+	$(MAKE) _package_meson
+else ifeq ($(BUILD),make)
+	$(MAKE) _package_make
+else ifeq ($(BUILD),cmake)
+	$(MAKE) _package_cmake
+else ifeq ($(BUILD),bmake)
+	$(MAKE) _package_bmake
+else ifeq ($(BUILD),muon)
+	$(MAKE) _package_muon
+else ifeq ($(BUILD),cargo)
+	$(MAKE) _package_cargo
+else ifeq ($(BUILD),zig)
+	$(MAKE) _package_zig
+else ifeq ($(BUILD),custom)
+	$(MAKE) _package_custom
 else
 	$(error Unknown BUILD: ${BUILD}. Valid options are 'meson', \
 		'make', 'cmake', 'bmake', 'muon', 'cargo', 'zig' or 'custom')
