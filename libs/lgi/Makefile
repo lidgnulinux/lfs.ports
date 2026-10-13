@@ -15,7 +15,7 @@ MAKEOPT =	LUA_INCDIR=/usr/include/luajit-2.1 \
 	LUA_SHAREDIR=/usr/share/lua/5.1
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 	install -Dm 755 ${BUILDDIR}/tools/dump-typelib.lua \

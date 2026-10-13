@@ -35,9 +35,9 @@ prepare:
 doc:
 	mkdir -p package/usr/share/man/man5
 	$(MAKE) -C ${BUILDDIR} prefix=/usr man
-	$(MAKE) -C ${BUILDDIR} prefix=/usr install-man DESTDIR="$(PWD)/package"
-	find ${BUILDDIR}/Documentation -name "*.1" -exec cp -r {} $(PWD)/package/usr/share/man/man1 \;
-	find ${BUILDDIR}/Documentation -name "*.5" -exec cp -r {} $(PWD)/package/usr/share/man/man5 \;
+	$(MAKE) -C ${BUILDDIR} prefix=/usr install-man DESTDIR="$(CURDIR)/package"
+	find ${BUILDDIR}/Documentation -name "*.1" -exec cp -r {} $(CURDIR)/package/usr/share/man/man1 \;
+	find ${BUILDDIR}/Documentation -name "*.5" -exec cp -r {} $(CURDIR)/package/usr/share/man/man5 \;
 
 post_build:
 	$(MAKE) doc

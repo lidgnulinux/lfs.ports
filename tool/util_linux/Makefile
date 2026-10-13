@@ -33,9 +33,9 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	cp -r $(PWD)/ttydefaults.h ${BUILDDIR}/include
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/utmps.patch
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/fix_AT_HANDLE_FID_musl.patch 
+	cp -r $(CURDIR)/ttydefaults.h ${BUILDDIR}/include
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/utmps.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/fix_AT_HANDLE_FID_musl.patch 
 
 post_build:
 

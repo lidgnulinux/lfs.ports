@@ -16,7 +16,7 @@ prepare:
 
 custom-build:
 	cd ${BUILDDIR} && python -m build --wheel --no-isolation
-	cd ${BUILDDIR} && python -m installer --destdir="$(PWD)/pkg" dist/*.whl
+	cd ${BUILDDIR} && python -m installer --destdir="$(CURDIR)/pkg" dist/*.whl
 
 post_build:
 

@@ -20,7 +20,7 @@ BUILD_OPTION = -DCMAKE_BUILD_TYPE=MinSizeRel \
 prepare:
 	sed -i '/examples/d;/third_party/d' ${BUILDDIR}/CMakeLists.txt
 	sed -i '/build-version/d' ${BUILDDIR}/glslc/CMakeLists.txt
-	cp -r "$(PWD)/build-version.inc" ${BUILDDIR}/glslc/src/build-version.inc
+	cp -r "$(CURDIR)/build-version.inc" ${BUILDDIR}/glslc/src/build-version.inc
 
 post_build:
 

@@ -16,9 +16,9 @@ prepare:
 
 custom-build:
 	make -C ${BUILDDIR} prefix=/usr man
-	make -C ${BUILDDIR} prefix=/usr install-man DESTDIR="$(PWD)/pkg"
-	find ${BUILDDIR}/Documentation -name "*.1" -exec cp -r {} $(PWD)/pkg/usr/share/man/man1 \; 
-	find ${BUILDDIR}/Documentation -name "*.5" -exec cp -r {} $(PWD)/pkg/usr/share/man/man5 \; 
+	make -C ${BUILDDIR} prefix=/usr install-man DESTDIR="$(CURDIR)/pkg"
+	find ${BUILDDIR}/Documentation -name "*.1" -exec cp -r {} $(CURDIR)/pkg/usr/share/man/man1 \; 
+	find ${BUILDDIR}/Documentation -name "*.5" -exec cp -r {} $(CURDIR)/pkg/usr/share/man/man5 \; 
 
 post_build:
 

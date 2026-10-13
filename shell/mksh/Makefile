@@ -13,7 +13,7 @@ BUILD_OPTION =
 MAKEOPT =
 
 prepare:
-	mkdir $(PWD)/pkg
+	mkdir $(CURDIR)/pkg
 
 custom-build:
 	cd ${BUILDDIR} && sh Build.sh -r

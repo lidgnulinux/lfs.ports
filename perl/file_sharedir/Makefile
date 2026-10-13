@@ -16,10 +16,10 @@ prepare:
 custom-build:
 	cd ${BUILDDIR} && PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 	make -C ${BUILDDIR}
-	make -C ${BUILDDIR} PREFIX=/usr DESTDIR=$(PWD)/pkg install
+	make -C ${BUILDDIR} PREFIX=/usr DESTDIR=$(CURDIR)/pkg install
 
 post_build:
-	find $(PWD)/pkg \( -name perllocal.pod -o -name .packlist \) -delete
+	find $(CURDIR)/pkg \( -name perllocal.pod -o -name .packlist \) -delete
 
 post-install:
 

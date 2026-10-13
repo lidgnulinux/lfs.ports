@@ -12,7 +12,7 @@ BUILDDIR = wpa_supplicant-${VERSION}/wpa_supplicant
 MAKEOPT = "BINDIR=/usr/sbin"
 
 prepare:
-	cat $(PWD)/config > ${BUILDDIR}/.config
+	cat $(CURDIR)/config > ${BUILDDIR}/.config
 
 post_build:
 	install -Dm644 ${BUILDDIR}/wpa_supplicant.conf \

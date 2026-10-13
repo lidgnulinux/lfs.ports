@@ -14,7 +14,7 @@ BUILD = custom
 BUILDDIR = Font-Awesome-7.1.0
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 custom-build:
 	install -d "pkg/usr/share/fonts/WOFF2"

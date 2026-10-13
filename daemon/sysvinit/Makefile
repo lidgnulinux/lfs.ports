@@ -9,12 +9,12 @@ LINK = https://codeberg.org/thejessesmith/sysvinit/archive/${VERSION}.tar.gz
 SRCCD = archive
 BUILD = make
 BUILDDIR = sysvinit
-MAKEOPT = ROOT=$(PWD)/package
+MAKEOPT = ROOT=$(CURDIR)/package
 CPPFLAGS = -D_FORTIFY_SOURCE=1
 export CPPFLAGS
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 
@@ -22,6 +22,6 @@ post-install:
 
 _install:
 	$(MAKE) -C ${BUILDDIR} PREFIX=/usr install 
-	install  -Dm644 $(PWD)/Makefile /var/lib/mk/${PACKAGE}.mk
+	install  -Dm644 $(CURDIR)/Makefile /var/lib/mk/${PACKAGE}.mk
 
 include /usr/share/mk/lfs.port.mk

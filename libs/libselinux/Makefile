@@ -12,7 +12,7 @@ BUILDDIR = libselinux-${VERSION}
 MAKEOPT = SHLIBDIR="/usr/lib" FTS_LDLIBS="-lfts"
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/lfs64.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/lfs64.patch
 
 post_build:
 

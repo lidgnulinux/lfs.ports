@@ -14,7 +14,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
 	--build=x86_64-pc-linux-musl)
-MAKEOPT = all BUILD_ROOT="$(PWD)/package"
+MAKEOPT = all BUILD_ROOT="$(CURDIR)/package"
 
 prepare:
 

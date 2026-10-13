@@ -14,7 +14,7 @@ MAKEOPT = TOPDIR=/ \
 	ETCDIR=/usr/sbin \
 	LIBDIR=/usr/lib \
 	KSHELL="/bin/sh -" \
-	DESTDIR="$(PWD)/package"
+	DESTDIR="$(CURDIR)/package"
 
 prepare:
 

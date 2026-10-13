@@ -30,8 +30,8 @@ MAKEOPT =
 prepare:
 
 post_build:
-	mv $(PWD)/package/etc/sudoers $(PWD)/package/etc/sudoers.new
-	mv $(PWD)/package/etc/sudoers.dist $(PWD)/package/etc/sudoers.dist.new
+	mv $(CURDIR)/package/etc/sudoers $(CURDIR)/package/etc/sudoers.new
+	mv $(CURDIR)/package/etc/sudoers.dist $(CURDIR)/package/etc/sudoers.dist.new
 
 post-install:
 

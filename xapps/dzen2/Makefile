@@ -14,7 +14,7 @@ MKINST = yes
 BUILD_OPTION =
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/0001-Enable-Xinerama-and-XPM.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/0001-Enable-Xinerama-and-XPM.patch
 
 post_build:
 	make -j4 -C ${BUILDDIR}/gadgets  

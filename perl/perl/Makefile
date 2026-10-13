@@ -26,7 +26,7 @@ AUTO_CONF = (cd ${BUILDDIR} && sh ./Configure -des \
 MAKEOPT = BUILD_ZLIB=False BUILD_BZIP2=0
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

@@ -17,7 +17,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	patch -Np1 -d ${BUILDDIR} -i $(PWD)/nasm-3.01-musl.patch
+	patch -Np1 -d ${BUILDDIR} -i $(CURDIR)/nasm-3.01-musl.patch
 
 post_build:
 

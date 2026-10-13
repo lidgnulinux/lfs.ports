@@ -19,7 +19,7 @@ MAKEOPT =
 
 prepare:
 	rm ${BUILDDIR}/tests/gpgme/setup.scm
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 	cd ${BUILDDIR}; autoreconf -vif
 
 post_build:

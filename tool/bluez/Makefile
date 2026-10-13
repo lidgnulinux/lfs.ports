@@ -36,7 +36,7 @@ post_build:
 	install -D -m644 ${BUILDDIR}/src/main.conf package/etc/bluetooth/main.conf
 	install -Dm755 ${BUILDDIR}/tools/btmgmt -t package/usr/bin/
 	install -Dm755 ${BUILDDIR}/attrib/gatttool -t package/usr/bin/
-	install -Dm644 $(PWD)/org.bluez.obex.service package/usr/share/dbus-1/services/org.bluez.obex.service
+	install -Dm644 $(CURDIR)/org.bluez.obex.service package/usr/share/dbus-1/services/org.bluez.obex.service
 
 post-install:
 

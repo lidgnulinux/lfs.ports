@@ -12,7 +12,7 @@ BUILDDIR = zathura-pdf-mupdf-0.4.4
 BUILD_OPTION =
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

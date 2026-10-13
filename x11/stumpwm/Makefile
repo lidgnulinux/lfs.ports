@@ -13,7 +13,7 @@ AUTO_CONF = (cd ${BUILDDIR} && autoconf && ./configure \
 	--prefix=/usr \
 	--with-module-dir=/usr/share/stumpwm/contrib)
 MAKEOPT =
-export destdir = $(PWD)/package
+export destdir = $(CURDIR)/package
 STRIP = no
 
 prepare:
@@ -25,7 +25,7 @@ post_build:
 		${BUILDDIR}/{sample-stumpwmrc.lisp,README.md}
 	cp -vr ${BUILDDIR}/stumpwm_html package/usr/share/doc/${PKGNAME}/html
 
-	install -vDm644 -t package/usr/share/xsessions $(PWD)/stumpwm.desktop
+	install -vDm644 -t package/usr/share/xsessions $(CURDIR)/stumpwm.desktop
 	rm package/usr/share/info/dir
 
 post-install:

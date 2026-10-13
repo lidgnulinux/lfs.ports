@@ -11,7 +11,7 @@ prepare:
 	mkdir -p pkg/lib/firmware
 
 custom-build:
-	cp -r $(PWD)/ath3k-1.fw pkg/lib/firmware/
+	cp -r $(CURDIR)/ath3k-1.fw pkg/lib/firmware/
 
 post_build:
 

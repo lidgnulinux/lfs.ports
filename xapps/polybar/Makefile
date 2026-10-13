@@ -32,9 +32,9 @@ prepare:
 	mv ${BUILDDIR}/xpp-${_xppver} ${BUILDDIR}/lib/xpp
 	mv ${BUILDDIR}/i3ipcpp-${_i3ipcppver} ${BUILDDIR}/lib/i3ipcpp
 
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/fix-version.patch
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/fix-gcc-15-uint-errors.patch
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/fix-modules-cmake-version.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/fix-version.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/fix-gcc-15-uint-errors.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/fix-modules-cmake-version.patch
 
 post_build:
 

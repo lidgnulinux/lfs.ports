@@ -15,7 +15,7 @@ DEF = -DACORN_FTYPE_NFS -DWILD_STOP_AT_DIR -DLARGE_FILE_SUPPORT \
 MAKEOPT = -f unix/Makefile CF="-I. ${DEF}" prefix=/usr unzips
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

@@ -12,7 +12,7 @@ BUILDDIR = iproute2-6.18.0
 MAKEOPT = NETNS_RUN_DIR=/run/netns SBINDIR=/usr/sbin
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

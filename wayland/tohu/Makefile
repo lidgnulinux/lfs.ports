@@ -11,7 +11,7 @@ LINK = ${HOMEPAGE}/archive/${ARCHIVE}
 BUILD = make
 BUILDDIR = tohu-${_SHA}
 EDITOR = vim
-export destdir = $(PWD)/package
+export destdir = $(CURDIR)/package
 STRIP = no
 
 prepare:
@@ -20,7 +20,7 @@ prepare:
 	cp -r Makefile.build ${BUILDDIR}/Makefile
 
 enable_libinput:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/00_add_libinput_support_v2.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/00_add_libinput_support_v2.patch
 
 post_build:
 

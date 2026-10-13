@@ -12,7 +12,7 @@ BUILDDIR = xdg-desktop-portal-wlr-0.8.2
 BUILD_OPTION = -Dsd-bus-provider=libelogind
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/default-systemd-user_unit_dir.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/default-systemd-user_unit_dir.patch
 
 post_build:
 	install -Dm644 config build/package/etc/xdg/xdg-desktop-portal-wlr/config

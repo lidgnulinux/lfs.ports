@@ -14,7 +14,7 @@ prepare:
 
 custom-build:
 	cd ${BUILDDIR} && python3 -m flit_core.wheel
-	cd ${BUILDDIR} && python3 -m installer --destdir "$(PWD)/pkg" dist/*.whl
+	cd ${BUILDDIR} && python3 -m installer --destdir "$(CURDIR)/pkg" dist/*.whl
 
 post_build:
 	mv pkg/usr/pkg/*/usr/* pkg/usr

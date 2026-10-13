@@ -19,7 +19,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--build=x86_64-pc-linux-musl)
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/0001-resolving-service-none.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/0001-resolving-service-none.patch
 
 
 post_build:

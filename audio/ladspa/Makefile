@@ -12,13 +12,13 @@ BUILDDIR = ladspa_sdk_1.17/src
 MAKEOPT =
 
 prepare:
-	patch -p1 -d ${BUILDDIR} < $(PWD)/fix-memleak-in-plugin-scanning.patch
+	patch -p1 -d ${BUILDDIR} < $(CURDIR)/fix-memleak-in-plugin-scanning.patch
 
 custom-build:
 	make -C ${BUILDDIR} targets
-	make -C ${BUILDDIR} INSTALL_PLUGINS_DIR="$(PWD)/pkg/usr/lib/ladspa/" \
-		INSTALL_INCLUDE_DIR="$(PWD)/pkg/usr/include/" \
-		INSTALL_BINARY_DIR="$(PWD)/pkg/usr/bin/" install
+	make -C ${BUILDDIR} INSTALL_PLUGINS_DIR="$(CURDIR)/pkg/usr/lib/ladspa/" \
+		INSTALL_INCLUDE_DIR="$(CURDIR)/pkg/usr/include/" \
+		INSTALL_BINARY_DIR="$(CURDIR)/pkg/usr/bin/" install
 
 post_build:
 

@@ -25,7 +25,7 @@ MAKEOPT =
 export CFLAGS=-lobstack
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/musl-realpath.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/musl-realpath.patch
 	echo "${VERSION}" > ${BUILDDIR}/.dist-version
 	autoreconf -vif ${BUILDDIR}
 

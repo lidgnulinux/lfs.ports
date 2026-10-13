@@ -12,7 +12,7 @@ BUILDDIR = luajit2-2.1-20251030
 MAKEOPT = XCFLAGS="-DLUAJIT_ENABLE_LUA52COMPAT -DLUAJIT_NUMMODE=2"
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

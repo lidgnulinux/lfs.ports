@@ -20,7 +20,7 @@ prepare:
 	$(MAKE) -C ${BUILDDIR} defconfig
 
 install:
-	install -D -m755 $(PWD)/${BUILDDIR}/toybox $(PWD)/package/usr/bin/toybox
+	install -D -m755 $(CURDIR)/${BUILDDIR}/toybox $(CURDIR)/package/usr/bin/toybox
 
 post_build:
 

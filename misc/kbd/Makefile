@@ -18,7 +18,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 	sed -i '/RESIZECONS_PROGS=/s/yes/no/' ${BUILDDIR}/configure
 	sed -i 's/resizecons.8 //' ${BUILDDIR}/docs/man/man8/Makefile.in
 

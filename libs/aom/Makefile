@@ -14,8 +14,8 @@ BUILD_OPTION = -DBUILD_SHARED_LIBS=True \
 	-DENABLE_TESTS="OFF"
 
 prepare:
-	patch -p1 -d ${BUILDDIR} < $(PWD)/posix-implicit.patch
-	patch -p1 -d ${BUILDDIR} < $(PWD)/libaom-3.13.1-nasm3-1.patch 
+	patch -p1 -d ${BUILDDIR} < $(CURDIR)/posix-implicit.patch
+	patch -p1 -d ${BUILDDIR} < $(CURDIR)/libaom-3.13.1-nasm3-1.patch 
 
 post_build:
 

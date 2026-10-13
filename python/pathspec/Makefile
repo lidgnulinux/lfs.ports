@@ -13,7 +13,7 @@ BUILDDIR = pathspec-1.0.3
 prepare:
 
 custom-build:
-	cd ${BUILDDIR} && python3 setup.py install --root="$(PWD)/pkg"
+	cd ${BUILDDIR} && python3 setup.py install --root="$(CURDIR)/pkg"
 
 post_build:
 

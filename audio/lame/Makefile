@@ -24,13 +24,13 @@ MAKEOPT =
 prepare:
 	mkdir -p ${BUILDDIR}/libmp3lame/i386/.libs
 	sed -i -e '/define sp/s/+/ + /g' ${BUILDDIR}/libmp3lame/i386/nasm.h
-	patch -p1 -d ${BUILDDIR} < $(PWD)/id3tagfix.patch
+	patch -p1 -d ${BUILDDIR} < $(CURDIR)/id3tagfix.patch
 
 	cd ${BUILDDIR} && aclocal && automake --force --add-missing
 
 post_build:
 	mkdir -p package/usr/lib/pkgconfig
-	cp -r $(PWD)/lame.pc package/usr/lib/pkgconfig/lame.pc
+	cp -r $(CURDIR)/lame.pc package/usr/lib/pkgconfig/lame.pc
 
 post-install:
 

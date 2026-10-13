@@ -15,7 +15,7 @@ BUILDDIR = net-tools-2.10
 MAKEOPT =
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 	cat > ${BUILDDIR}/config.make <<EOF
 	# I18N=0

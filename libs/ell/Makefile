@@ -18,7 +18,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	patch -p1 -i $(PWD)/use-libgen-basename.patch -d ${BUILDDIR}
+	patch -p1 -i $(CURDIR)/use-libgen-basename.patch -d ${BUILDDIR}
 
 post_build:
 

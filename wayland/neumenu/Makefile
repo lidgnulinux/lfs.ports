@@ -10,8 +10,8 @@ BUILDDIR = neumenu
 MAKEOPT =
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/fix_pixman_linking.patch
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/fix_conflicting_neumenu_path.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/fix_pixman_linking.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/fix_conflicting_neumenu_path.patch
 	vim ${BUILDDIR}/config.def.h
 
 post_build:

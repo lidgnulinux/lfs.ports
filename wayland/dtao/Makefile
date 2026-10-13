@@ -14,7 +14,7 @@ MAKEOPT =
 DOC = 1
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/00_add_position.patch 
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/00_add_position.patch 
 
 post_build:
 ifeq ($(DOC),1)

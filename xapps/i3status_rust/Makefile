@@ -13,7 +13,7 @@ RUSTFLAGS = -C target-feature=-crt-static
 export RUSTFLAGS
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 custom-build:
 	cd ${BUILDDIR} && cargo build --release

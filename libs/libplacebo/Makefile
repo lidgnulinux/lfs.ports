@@ -20,7 +20,7 @@ BUILD_OPTION = -Dbackend_max_links=4 \
 	-Dvulkan=enabled
 
 prepare:
-	patch -p1 -d ${BUILDDIR} < "$(PWD)/glslang-deps.patch"
+	patch -p1 -d ${BUILDDIR} < "$(CURDIR)/glslang-deps.patch"
 
 post_build:
 

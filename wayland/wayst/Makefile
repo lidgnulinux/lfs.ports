@@ -13,11 +13,11 @@ BUILDDIR = wayst-${_REV}
 MAKEOPT =
 
 prepare:
-	patch ${BUILDDIR}/Makefile < $(PWD)/default_not_local_install.patch
+	patch ${BUILDDIR}/Makefile < $(CURDIR)/default_not_local_install.patch
 
 post_build:
 	mkdir -p package/usr/share/applications
-	install -Dm644 $(PWD)/wayst.desktop -t package/usr/share/applications/
+	install -Dm644 $(CURDIR)/wayst.desktop -t package/usr/share/applications/
 
 post-install:
 

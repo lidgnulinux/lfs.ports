@@ -21,7 +21,7 @@ BUILD_OPTION = -Ddefault_library=both \
 	-Dzlib=enabled
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/musl-stacksize.patch 
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/musl-stacksize.patch 
 
 post_build:
 

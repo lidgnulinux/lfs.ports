@@ -16,7 +16,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure --prefix=/usr \
 	--build=x86_64-pc-linux-musl)
 
 prepare:
-	for i in patch/*; do patch -Np0 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -Np0 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 	sed -i '/MV.*old/d' ${BUILDDIR}/Makefile.in
 	sed -i '/{OLDSUFF}/c:' ${BUILDDIR}/support/shlib-install
 

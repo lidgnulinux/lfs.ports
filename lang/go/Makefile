@@ -13,11 +13,11 @@ export GOARCH = amd64
 export GO_LDFLAGS = -buildmode=pie
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 custom-build:
 	cd ${BUILDDIR}/src; GOOS="linux" \
-		GOPATH="$(PWD)" \
+		GOPATH="$(CURDIR)" \
 		GOROOT="go" \
 		GOBIN="${GOROOT}"/bin \
 		GOROOT_FINAL=/usr/lib/go \

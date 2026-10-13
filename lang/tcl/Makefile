@@ -18,7 +18,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--with-system-sqlite \
 	--enable-64bit \
 	--build=x86_64-pc-linux-musl)
-MAKEOPT = INSTALL_ROOT="$(PWD)/package"
+MAKEOPT = INSTALL_ROOT="$(CURDIR)/package"
 
 prepare:
 	rm -r ${BUILDDIR}/../pkgs/sqlite3*
@@ -28,7 +28,7 @@ post_build:
 	install -Dm644 ${BUILDDIR}/../license.terms \
 		package/usr/share/licenses/tcl/LICENSE
 	find package -name '*Config.sh' -print0 | \
-		xargs -0 sed -i -e "s#$(PWD)#/sources#"
+		xargs -0 sed -i -e "s#$(CURDIR)#/sources#"
 
 post-install:
 

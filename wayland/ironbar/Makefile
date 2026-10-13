@@ -12,7 +12,7 @@ BUILDDIR = ironbar-0.18.0
 export RUSTFLAGS = -C target-feature=-crt-static
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/libressl-4.2.0-adjustment.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/libressl-4.2.0-adjustment.patch
 
 post_build:
 	install -Dm 755 ${BUILDDIR}/target/release/ironbar pkg/usr/bin/ironbar

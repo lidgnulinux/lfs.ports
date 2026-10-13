@@ -39,7 +39,7 @@ prepare:
 		-exec sed -i 's/getspnam\.3 / /' {} \;
 	find ${BUILDDIR}/man -type f -name Makefile.in \
 		-exec sed -i 's/passwd\.5 / /'   {} \;
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/missing-header.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/missing-header.patch
 
 post_build:
 	mv package/etc/pam.d/login package/etc/pam.d/login.new	

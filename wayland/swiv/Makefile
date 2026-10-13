@@ -13,7 +13,7 @@ BUILDDIR = swiv-${_SHA}
 STRIP = no
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/00_makefile_fix.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/00_makefile_fix.patch
 
 post_build:
 

@@ -18,7 +18,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/libpng-1.6.55-apng.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/libpng-1.6.55-apng.patch
 
 post_build:
 

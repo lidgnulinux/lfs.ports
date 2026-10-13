@@ -12,7 +12,7 @@ BUILDDIR = v4l-utils-1.32.0
 BUILD_OPTION = -Dv4l2-tracer=disabled
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

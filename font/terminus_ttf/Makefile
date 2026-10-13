@@ -16,7 +16,7 @@ prepare:
 
 custom-build:
 	cd ${BUILDDIR}; \
-		for i in *.ttf; do install -Dm 644 $$i $(PWD)/pkg/usr/share/fonts/TTF/$$i; done
+		for i in *.ttf; do install -Dm 644 $$i $(CURDIR)/pkg/usr/share/fonts/TTF/$$i; done
 
 post_build:
 

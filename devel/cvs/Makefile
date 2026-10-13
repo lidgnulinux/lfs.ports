@@ -22,7 +22,7 @@ MAKEOPT =
 export CFLAGS=-DUSE_LIBBSD
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 	autoreconf -fi ${BUILDDIR}
 
 post_build:

@@ -14,7 +14,7 @@ BUILD_OPTION = -Dtest_pam=false \
 	-Dbench=false
 
 prepare:
-	patch -d ${BUILDDIR} -i $(PWD)/unsupported_dlvsym_musl_fix-1.4.3.diff
+	patch -d ${BUILDDIR} -i $(CURDIR)/unsupported_dlvsym_musl_fix-1.4.3.diff
 
 post_build:
 

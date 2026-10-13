@@ -10,7 +10,7 @@ SRCCD = archive
 BUILD = make
 BUILDDIR = bc-7.1.0
 AUTO_CONF = (cd ${BUILDDIR} && PREFIX=/usr \
-	DESTDIR="$(PWD)/package" \
+	DESTDIR="$(CURDIR)/package" \
 	./configure -GN)
 MAKEOPT =
 

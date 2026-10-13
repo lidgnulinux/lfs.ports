@@ -19,7 +19,7 @@ BUILD_OPTION = --summary all \
 	-Dxwayland
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/out_of_source_adjustment.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/out_of_source_adjustment.patch
 
 post_build:
 	cp -a build/* pkg

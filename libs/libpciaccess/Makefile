@@ -12,7 +12,7 @@ BUILDDIR = libpciaccess-0.18.1
 BUILD_OPTION =
 
 prepare:
-	patch -p1 -d ${BUILDDIR}  -i $(PWD)/vgaarb-Check-snprintf-return-value.patch
+	patch -p1 -d ${BUILDDIR}  -i $(CURDIR)/vgaarb-Check-snprintf-return-value.patch
 
 post_build:
 

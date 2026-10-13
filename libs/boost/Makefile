@@ -11,13 +11,13 @@ BUILD = custom
 BUILDDIR = boost_1_84_0
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 custom-build:
 	cd ${BUILDDIR}; ./bootstrap.sh --prefix=/usr --with-python=python3 
 	cd ${BUILDDIR}; ./b2 stage -j3 threading=multi link=shared
-	cd ${BUILDDIR}; ./b2 --includedir=$(PWD)/pkg/usr/include \
-		--libdir=$(PWD)/pkg/usr/lib \
+	cd ${BUILDDIR}; ./b2 --includedir=$(CURDIR)/pkg/usr/include \
+		--libdir=$(CURDIR)/pkg/usr/lib \
 		install threading=multi link=shared
 
 post_build:

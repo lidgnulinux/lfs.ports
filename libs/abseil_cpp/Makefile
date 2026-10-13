@@ -15,7 +15,7 @@ BUILD_OPTION = -DCMAKE_SKIP_INSTALL_RPATH=ON \
 		-DABSL_BUILD_TEST_HELPERS=OFF
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

@@ -18,7 +18,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/gcc15.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/gcc15.patch
 
 post_build:
 

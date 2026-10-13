@@ -18,7 +18,7 @@ prepare:
 custom-build:
 	cd ${BUILDDIR}; perl Build.PL --installdirs=vendor
 	cd ${BUILDDIR}; ./Build
-	cd ${BUILDDIR}; ./Build install --destdir="$(PWD)/pkg"
+	cd ${BUILDDIR}; ./Build install --destdir="$(CURDIR)/pkg"
 
 post_build:
 	find pkg \( -name perllocal.pod -o -name .packlist \) -delete

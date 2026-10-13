@@ -25,7 +25,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/ignore.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/ignore.patch
 
 custom-build:
 

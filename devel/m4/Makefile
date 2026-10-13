@@ -17,7 +17,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--build=x86_64-pc-linux-musl)
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/format-security.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/format-security.patch
 
 post_build:
 

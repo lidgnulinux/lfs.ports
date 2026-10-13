@@ -15,7 +15,7 @@ BUILDDIR = glib-2.88.1
 CFLAGS = -ffat-lto-objects -O2
 CXXFLAGS = -O2
 CPPFLAGS = -O2
-_PREFIX = $(PWD)/boostrap-glib
+_PREFIX = $(CURDIR)/boostrap-glib
 export CFLAGS CXXFLAGS _PREFIX
 
 prepare:

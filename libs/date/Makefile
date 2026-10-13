@@ -16,7 +16,7 @@ BUILD_OPTION = -DBUILD_SHARED_LIBS=true \
 	-Wno-dev
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

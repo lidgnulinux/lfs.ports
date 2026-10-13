@@ -17,7 +17,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/patch/fix-pkgconfig-version.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/patch/fix-pkgconfig-version.patch
 	autoreconf -vif ${BUILDDIR}
 
 post_build:

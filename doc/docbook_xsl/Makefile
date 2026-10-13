@@ -11,7 +11,7 @@ BUILD = custom
 BUILDDIR = docbook-xsl-nons-1.79.2
 
 prepare:
-	patch -Np1 -d ${BUILDDIR} -i $(PWD)/765567_non-recursive_string_subst.patch
+	patch -Np1 -d ${BUILDDIR} -i $(CURDIR)/765567_non-recursive_string_subst.patch
 	mkdir -p pkg/usr/share/xml/docbook/xsl-stylesheets-nons-${VERSION}
 	mkdir -p pkg/etc/xml
 

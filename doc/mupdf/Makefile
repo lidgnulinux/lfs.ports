@@ -18,13 +18,13 @@ MAKEOPT = build=release \
 	libs apps
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 	for d in ${BUILDDIR}/thirdparty/*; do \
 		case "$${d##*/}" in \
 		extract|freeglut|lcms2) continue ;; \
 		*) rm -rf $$d ;; \
 		esac; done
-	sed "s/@@VERSION@@/${VERSION}/" $(PWD)/mupdf.pc.in > mupdf.pc
+	sed "s/@@VERSION@@/${VERSION}/" $(CURDIR)/mupdf.pc.in > mupdf.pc
 
 post_build:
 	install -D -m644 mupdf.pc -t package/usr/lib/pkgconfig/

@@ -16,7 +16,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--build=x86_64-pc-linux-musl)
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/gcc15-glibcxx-assertions.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/gcc15-glibcxx-assertions.patch
 
 post_build:
 	rm -rf package/usr/lib/charset.alias

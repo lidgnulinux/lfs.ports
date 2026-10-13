@@ -14,7 +14,7 @@ BUILD_OPTION = -Dwith-perl=no \
 	-Ddefault_library=both
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/perl-again.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/perl-again.patch
 
 post_build:
 

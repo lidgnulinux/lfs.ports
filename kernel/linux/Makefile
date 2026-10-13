@@ -36,7 +36,7 @@ pack:
 	cp -iv ${BUILDDIR}/arch/x86/boot/bzImage package/boot/vmlinuz-${_VERSION}-lfs-12.4
 	cp -iv ${BUILDDIR}/System.map package/boot/System.map-${_VERSION}
 	cp -iv ${BUILDDIR}/.config package/boot/config-${_VERSION} 
-	install -Dm644 $(PWD)/Makefile $(PWD)/package/var/lib/mk/${PACKAGE}.mk
+	install -Dm644 $(CURDIR)/Makefile $(CURDIR)/package/var/lib/mk/${PACKAGE}.mk
 	tar -C package -cvf ${PACKAGE}.tar.gz .
 
 post-install:

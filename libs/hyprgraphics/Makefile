@@ -12,7 +12,7 @@ BUILDDIR = hyprgraphics-0.5.1
 BUILD_OPTION =
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

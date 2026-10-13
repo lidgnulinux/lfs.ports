@@ -14,8 +14,8 @@ MKINST = no
 STRIP = no
 
 prepare:
-	patch -p1 -d hikari -i $(PWD)/00_musl_attempt_fix.diff
-	patch -p1 -d hikari -i $(PWD)/01_add_viewporter.diff
+	patch -p1 -d hikari -i $(CURDIR)/00_musl_attempt_fix.diff
+	patch -p1 -d hikari -i $(CURDIR)/01_add_viewporter.diff
 
 post_build:
 	install -Dm755 ${BUILDDIR}/hikari package/usr/bin/hikari

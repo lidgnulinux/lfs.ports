@@ -12,7 +12,7 @@ BUILDDIR = scenefx-${VERSION}
 BUILD_OPTION = -Dexamples=false
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/add-missing-include-for__always_inline.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/add-missing-include-for__always_inline.patch
 
 post_build:
 

@@ -17,8 +17,8 @@ prepare:
 
 custom-build:
 	install -Dm644 ${BUILDDIR}/unhinted/static/Roboto*.ttf -t pkg/usr/share/fonts/roboto/
-	install -Dm644 $(PWD)/45-roboto.conf -t pkg/etc/fonts/conf.avail/
-	install -Dm644 $(PWD)/45-roboto.conf -t pkg/etc/fonts/conf.d/
+	install -Dm644 $(CURDIR)/45-roboto.conf -t pkg/etc/fonts/conf.avail/
+	install -Dm644 $(CURDIR)/45-roboto.conf -t pkg/etc/fonts/conf.d/
 
 post_build:
 

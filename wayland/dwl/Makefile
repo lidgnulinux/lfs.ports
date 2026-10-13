@@ -12,7 +12,7 @@ BUILD = make
 BUILDDIR = dwl
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/00_vanity-gaps_commit_99cdc9a8.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/00_vanity-gaps_commit_99cdc9a8.patch
 
 post_build:
 	mv package/usr/bin/dwl package/usr/bin/dwl-gaps

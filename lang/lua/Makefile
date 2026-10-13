@@ -13,10 +13,10 @@ export ldpath = /usr/lib/lua5.5
 MAKEOPT = linux
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
-	install -Dm644 $(PWD)/lua5.5.pc -t package/usr/lib/pkgconfig
+	install -Dm644 $(CURDIR)/lua5.5.pc -t package/usr/lib/pkgconfig
 
 	ln -sv lua5.5.pc package/usr/lib/pkgconfig/lua5.5-c++.pc
 	ln -sv lua5.5.pc package/usr/lib/pkgconfig/lua-5.5-c++.pc

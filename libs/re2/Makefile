@@ -12,7 +12,7 @@ BUILDDIR = re2-2025-11-05
 MAKEOPT = prefix=/usr libdir=/usr/lib
 
 prepare:
-	for i in patch/*; do patch -p0 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p0 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 
