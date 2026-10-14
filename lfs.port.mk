@@ -85,7 +85,7 @@ ifeq ($(GRAFT),no)
 else
 	@echo "The package will use graft for installation"
 endif
-	tar -C $(CURDIR)/build/package -cvf ${PACKAGE}.tar.gz .
+	tar -C $(CURDIR)/build/package -cvf ${PACKAGE}.tar.gz --owner=0 --group=0 .
 
 _package_make:
 	@echo "Mode: Package Make"
@@ -104,7 +104,7 @@ ifeq ($(GRAFT),no)
 else
 	@echo "The package will use graft for installation"
 endif
-	tar -C $(CURDIR)/package -cvf ${PACKAGE}.tar.gz .
+	tar -C $(CURDIR)/package -cvf ${PACKAGE}.tar.gz --owner=0 --group=0 .
 
 _package_cmake:
 	@echo "Mode: Package Cmake"
@@ -118,7 +118,7 @@ ifeq ($(GRAFT),no)
 else
 	@echo "The package will use graft for installation"
 endif
-	tar -C $(CURDIR)/package -cvf ${PACKAGE}.tar.gz .
+	tar -C $(CURDIR)/package -cvf ${PACKAGE}.tar.gz --owner=0 --group=0 .
 
 _package_bmake:
 	@echo "Mode: Package BSD Make"
@@ -137,7 +137,7 @@ ifeq ($(GRAFT),no)
 else
 	@echo "The package will use graft for installation"
 endif
-	tar -C $(CURDIR)/package -cvf ${PACKAGE}.tar.gz .
+	tar -C $(CURDIR)/package -cvf ${PACKAGE}.tar.gz --owner=0 --group=0 .
 
 _package_muon:
 	@echo "Mode: Package Muon"
@@ -151,7 +151,7 @@ ifeq ($(GRAFT),no)
 else
 	@echo "The package will use graft for installation"
 endif
-	tar -C $(CURDIR)/b/package -cvf ${PACKAGE}.tar.gz .
+	tar -C $(CURDIR)/b/package -cvf ${PACKAGE}.tar.gz --owner=0 --group=0 .
 
 _package_cargo:
 	@echo "Mode: Package Cargo"
@@ -164,7 +164,7 @@ ifeq ($(GRAFT),no)
 else
 	@echo "The package will use graft for installation"
 endif
-	tar -C $(CURDIR)/pkg -cvf ${PACKAGE}.tar.gz .
+	tar -C $(CURDIR)/pkg -cvf ${PACKAGE}.tar.gz --owner=0 --group=0 .
 
 _package_zig:
 	@echo "Mode: Package Zig"
@@ -177,7 +177,7 @@ ifeq ($(GRAFT),no)
 else
 	@echo "The package will use graft for installation"
 endif
-	tar -C $(CURDIR)/pkg -cvf ${PACKAGE}.tar.gz .
+	tar -C $(CURDIR)/pkg -cvf ${PACKAGE}.tar.gz --owner=0 --group=0 .
 
 _package_custom:
 	@echo "Mode: Package Custom"
@@ -190,7 +190,7 @@ ifeq ($(GRAFT),no)
 else
 	@echo "The package will use graft for installation"
 endif
-	tar -C $(CURDIR)/pkg -cvf ${PACKAGE}.tar.gz .
+	tar -C $(CURDIR)/pkg -cvf ${PACKAGE}.tar.gz --owner=0 --group=0 .
 
 package:
 ifeq ($(BUILD),meson)
