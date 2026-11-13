@@ -1,6 +1,6 @@
 COMMENT = Terminal multiplexer.
 VERSION = 3.7c
-REVISION = 0
+REVISION = 1
 CATEGORIES = tool
 PKGNAME = tmux
 HOMEPAGE = https://tmux.github.io/
@@ -13,8 +13,9 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	)
 MAKEOPT =
+GRAFT = no
 
 prepare:
 

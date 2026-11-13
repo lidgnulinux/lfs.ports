@@ -4,15 +4,14 @@ REVISION = 0
 CATEGORIES = tool
 PKGNAME = duktape
 HOMEPAGE = https://duktape.org
-ARCHIVE = duktape-2.7.0.tar.xz
-LINK = https://duktape.org/duktape-2.7.0.tar.xz
+ARCHIVE = duktape-${VERSION}.tar.xz
+LINK = https://duktape.org/duktape-${VERSION}.tar.xz
 SRCCD = archive
 BUILD = make
-BUILDDIR = duktape-2.7.0
+BUILDDIR = duktape-${VERSION}
 MAKEOPT = -f ./Makefile.sharedlibrary INSTALL_PREFIX=/usr
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 	make -C ${BUILDDIR} -f ./Makefile.cmdline

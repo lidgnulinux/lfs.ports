@@ -9,8 +9,10 @@ LINK = https://downloads.sourceforge.net/acpiclient/${ARCHIVE}
 SRCCD = archive
 BUILD = make
 BUILDDIR = acpi-${VERSION}
-AUTO_CONF = (cd ${BUILDDIR} && ./configure LDFLAGS="-static" \
-	--prefix=/usr	--sysconfdir=/etc --mandir=/usr/share/man)
+AUTO_CONF = (cd ${BUILDDIR} && ./configure \
+	--prefix=/usr --sysconfdir=/etc --mandir=/usr/share/man)
+GRAFT = no
+STRIP = no
 
 prepare:
 

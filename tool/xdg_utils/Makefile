@@ -4,16 +4,15 @@ REVISION = 0
 CATEGORIES = tool
 PKGNAME = xdg_utils
 HOMEPAGE = https://www.freedesktop.org/wiki/Software/xdg-utils/
-ARCHIVE = xdg-utils-v1.2.1.tar.gz
-LINK = https://gitlab.freedesktop.org/xdg/xdg-utils/-/archive/v1.2.1/xdg-utils-v1.2.1.tar.gz
+ARCHIVE = xdg-utils-v${VERSION}.tar.gz
+LINK = https://gitlab.freedesktop.org/xdg/xdg-utils/-/archive/v${VERSION}/xdg-utils-v${VERSION}.tar.gz
 SRCCD = archive
 BUILD = make
-BUILDDIR = xdg-utils-v1.2.1
+BUILDDIR = xdg-utils-v${VERSION}
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT = XML_CATALOG_FILES=/etc/xml/catalog
 
 prepare:

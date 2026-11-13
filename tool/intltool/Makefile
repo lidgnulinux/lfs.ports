@@ -12,12 +12,14 @@ BUILDDIR = intltool-0.51.0
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT =
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/patch/intltool-0.51.0-perl-5.26.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/patch/intltool-merge-Create-cache-file-atomically.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/patch/intltool_distcheck-fix.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/patch/intltool-fixrace.patch
 
 post_build:
 

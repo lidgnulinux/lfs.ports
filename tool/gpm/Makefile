@@ -12,8 +12,10 @@ BUILDDIR = gpm-1.20.7
 AUTO_CONF = (cd ${BUILDDIR} && ./configure --prefix=/usr \
 	--sysconfdir=/etc \
 	--sysconfdir=/etc/gpm \
-	--build=x86_64-pc-linux-musl)
-MAKEOPT = CFLAGS="-fcommon" CPPFLAGS="-I${BUILDDIR}/src/headers"
+	)
+MAKEOPT =
+export CFLAGS= -fcommon
+export CPPFLAGS= -I${BUILDDIR}/src/headers
 
 prepare:
 	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done

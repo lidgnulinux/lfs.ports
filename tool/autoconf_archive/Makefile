@@ -1,6 +1,6 @@
 COMMENT = Collection of re-usable GNU Autoconf macros
-VERSION = 2024.10.16
-REVISION = 1
+VERSION = 2026.11.11
+REVISION = 0
 CATEGORIES = tool
 PKGNAME = autoconf_archive
 HOMEPAGE = https://www.gnu.org/software/autoconf-archive/
@@ -14,8 +14,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
-	--infodir=/usr/share/info/${PKGNAME} \
-	--build=x86_64-pc-linux-musl)
+	--infodir=/usr/share/info/${PKGNAME})
 MAKEOPT =
 STRIP = no
 

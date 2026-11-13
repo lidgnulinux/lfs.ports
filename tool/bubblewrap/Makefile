@@ -1,6 +1,6 @@
 COMMENT = Unprivileged sandboxing tool
-VERSION = 0.13.0
-REVISION = 0
+VERSION = 0.13.1
+REVISION = 1
 CATEGORIES = tool
 PKGNAME = bubblewrap
 HOMEPAGE = https://github.com/containers/bubblewrap
@@ -10,7 +10,6 @@ SRCCD = archive
 BUILD = meson
 BUILDDIR = bubblewrap-${VERSION}
 BUILD_OPTION = -Dtests=false
-export CFLAGS = -include /usr/include/linux/limits.h
 
 prepare:
 

@@ -10,7 +10,6 @@ LINK = https://github.com/khvzak/bluez-tools/archive/${ARCHIVE}
 SRCCD = archive
 BUILD = make
 BUILDDIR = bluez-tools-${_REV}
-BUILD_OPTION =
 AUTO_CONF = (cd ${BUILDDIR} && ./autogen.sh --prefix=/usr)
 MAKEOPT =
 
