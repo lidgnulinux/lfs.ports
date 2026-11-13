@@ -15,7 +15,6 @@ AUTO_CONF = (cd ${BUILDDIR} && \
 	./configure --prefix=/usr \
 	--sysconfdir=/etc \
 	--mandir=/usr/share/man \
-	--build=x86_64-pc-linux-musl \
 	--localstatedir=/var)
 
 prepare:

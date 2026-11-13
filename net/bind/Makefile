@@ -20,8 +20,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--enable-largefile \
 	--enable-linux-caps \
 	--enable-shared \
-	--disable-static \
-	--build=x86_64-pc-linux-musl)
+	--disable-static)
 MAKEOPT =
 export CFLAGS=-D_GNU_SOURCE
 

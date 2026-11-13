@@ -15,8 +15,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ac_cv_prog_swig_found=no ./configure \
 	--libdir=/usr/lib \
 	--without-python \
 	--without-python3 \
-	--enable-static \
-	--build=x86_64-pc-linux-musl)
+	--enable-static)
 MAKEOPT =
 
 prepare:

@@ -9,12 +9,10 @@ LINK = http://dist.schmorp.de/libev/Attic/libev-4.33.tar.gz
 SRCCD = archive
 BUILD = make
 BUILDDIR = libev-4.33
-BUILD_OPTION =
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT =
 
 prepare:

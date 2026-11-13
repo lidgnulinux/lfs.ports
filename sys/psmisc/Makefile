@@ -15,8 +15,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
 	--mandir=/usr/share/man \
-	--infodir=/usr/share/info \
-	--build=x86_64-pc-linux-musl)
+	--infodir=/usr/share/info)
 MAKEOPT =
 
 prepare:

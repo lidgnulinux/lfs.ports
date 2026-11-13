@@ -16,8 +16,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ../configure \
 	--enable-compressed-debug-sections=none \
 	--with-python=/usr/bin/python3 \
 	--with-system-zlib \
-	--with-system-readline \
-	--build=x86_64-pc-linux-musl)
+	--with-system-readline)
 MAKEOPT =
 
 prepare:

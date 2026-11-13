@@ -11,7 +11,6 @@ BUILD = make
 BUILDDIR = sed-4.9
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
-	--build=x86_64-pc-linux-musl \
 	--prefix=/usr \
 	--mandir=/usr/share/man \
 	--infodir=/usr/share/info \

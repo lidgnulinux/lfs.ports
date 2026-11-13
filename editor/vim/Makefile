@@ -15,8 +15,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--disable-icon-cache-update \
 	--disable-desktop-database-update \
 	--with-features=huge --enable-multibyte \
-	--with-compiledby="LFS musl" \
-	--build=x86_64-pc-linux-musl) 
+	--with-compiledby="LFS")
 
 prepare:
 

@@ -12,8 +12,7 @@ BUILDDIR = inotify-tools-4.23.9.0
 AUTO_CONF = (cd ${BUILDDIR} && autoreconf -vif && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT =
 
 prepare:

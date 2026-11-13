@@ -14,7 +14,6 @@ BUILD_OPTION = --with-sb-core-compression \
 	--fancy --with-sb-thread
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/musl-time64.patch
 
 custom-build:
 	cd ${BUILDDIR}; GNUMAKE=make ./make.sh sbcl --prefix=/usr ${BUILD_OPTION}

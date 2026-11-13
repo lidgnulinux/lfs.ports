@@ -23,8 +23,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ../configure \
 	--enable-64-bit-bfd \
 	--enable-new-dtags \
 	--with-system-zlib \
-	--enable-default-hash-style=gnu \
-	--build=x86_64-pc-linux-musl)
+	--enable-default-hash-style=gnu)
 MAKEOPT = tooldir=/usr
 
 prepare:

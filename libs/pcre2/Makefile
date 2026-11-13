@@ -18,8 +18,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
   --enable-pcre2-32 \
   --enable-pcre2grep-libz \
   --enable-pcre2grep-libbz2 \
-  --enable-pcre2test-libreadline \
-	--build=x86_64-pc-linux-musl)
+  --enable-pcre2test-libreadline)
 
 prepare:
 

@@ -12,8 +12,7 @@ BUILDDIR = quilt-0.69
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT = all BUILD_ROOT="$(CURDIR)/package"
 
 prepare:

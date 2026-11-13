@@ -15,8 +15,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure --prefix=/usr \
 	--libexecdir=/usr/libexec/bash \
 	--with-installed-readline \
 	--without-bash-malloc \
-	--enable-readline \
-	--build=x86_64-pc-linux-musl) 
+	--enable-readline)
 
 prepare:
 	patch -Np1 -d ${BUILDDIR} < bash-noinfo.patch

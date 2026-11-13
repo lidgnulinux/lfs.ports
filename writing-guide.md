@@ -62,8 +62,7 @@ If you want / need to write your own port build recipe, you can follow this guid
 	AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
-		--libdir=/usr/lib \
-		--build=x86_64-pc-linux-musl)
+		--libdir=/usr/lib)
 	
 	prepare:
 	

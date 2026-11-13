@@ -10,7 +10,6 @@ BUILDDIR = rill
 ZIGPATH = zig-x86_64-linux-0.15.2
 BUILD_OPTION = --prefix /usr \
 	--search-prefix /usr \
-	-Dtarget=x86_64-linux-musl \
 	--release=safe \
 	-Doptimize=ReleaseSafe
 

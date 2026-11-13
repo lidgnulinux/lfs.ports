@@ -16,8 +16,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--libexecdir=/usr/lib/xfce4 \
 	--localstatedir=/var \
 	--disable-static \
-	--disable-gtk-doc \
-	--build=x86_64-pc-linux-musl)
+	--disable-gtk-doc)
 MAKEOPT =
 
 prepare:

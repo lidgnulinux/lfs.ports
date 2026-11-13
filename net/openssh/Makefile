@@ -16,8 +16,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--with-default-path=/usr/bin \
 	--with-superuser-path=/usr/sbin:/usr/bin \
 	--with-privsep-path=/var/lib/sshd \
-	--with-pid-dir=/run \
-	--build=x86_64-pc-linux-musl)
+	--with-pid-dir=/run)
 MAKEOPT =
 
 prepare:

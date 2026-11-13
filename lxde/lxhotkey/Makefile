@@ -13,8 +13,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
-	--with-gtk=3 \
-	--build=x86_64-pc-linux-musl)
+	--with-gtk=3)
 MAKEOPT =
 
 prepare:

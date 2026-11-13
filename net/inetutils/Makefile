@@ -21,8 +21,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--disable-rexec \
 	--disable-rlogin \
 	--disable-rsh \
-	--disable-servers \
-	--build=x86_64-pc-linux-musl)
+	--disable-servers)
 MAKEOPT =
 
 prepare:

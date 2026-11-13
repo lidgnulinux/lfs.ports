@@ -11,8 +11,7 @@ BUILD = make
 BUILDDIR = findutils-4.10.0
 AUTO_CONF = (cd ${BUILDDIR} && ./configure LDFLAGS="-static"\
 	--prefix=/usr \
-	--localstatedir=/var/lib/locate \
-	--build=x86_64-pc-linux-musl)
+	--localstatedir=/var/lib/locate)
 
 prepare:
 

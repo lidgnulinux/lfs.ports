@@ -20,8 +20,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--enable-manpages \
 	--enable-rule-generator \
 	--enable-kmod \
-	--disable-selinux \
-	--build=x86_64-pc-linux-musl)
+	--disable-selinux)
 
 MAKEOPT =
 

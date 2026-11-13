@@ -15,8 +15,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--libdir=/usr/lib \
 	--mandir=/usr/share/man \
 	--infodir=/usr/share/info \
-	--with-pmdir=/usr/lib/perl5/vendor_perl \
-	--build=x86_64-pc-linux-musl)
+	--with-pmdir=/usr/lib/perl5/vendor_perl)
 MAKEOPT =
 
 prepare:

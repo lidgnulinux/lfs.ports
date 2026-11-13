@@ -12,8 +12,7 @@ BUILDDIR = xf86-video-nouveau-1.0.18
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT =
 
 prepare:

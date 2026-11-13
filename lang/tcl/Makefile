@@ -16,8 +16,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--libdir=/usr/lib \
 	--localstatedir=/var \
 	--with-system-sqlite \
-	--enable-64bit \
-	--build=x86_64-pc-linux-musl)
+	--enable-64bit)
 MAKEOPT = INSTALL_ROOT="$(CURDIR)/package"
 
 prepare:

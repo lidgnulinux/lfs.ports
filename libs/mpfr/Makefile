@@ -15,8 +15,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--libdir=/usr/lib \
 	--disable-maintainer-mode \
 	--enable-shared \
-	--enable-thread-safe \
-	--build=x86_64-pc-linux-musl)
+	--enable-thread-safe)
 MAKEOPT =
 
 prepare:

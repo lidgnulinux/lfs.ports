@@ -14,7 +14,6 @@ ZIGPATH = /usr/share/zig-0.16.0
 BUILD_OPTION = --summary all \
 	--prefix /usr \
 	--search-prefix /usr \
-	-Dtarget=x86_64-linux-musl \
 	-Doptimize=ReleaseSafe \
 	-Dxwayland
 

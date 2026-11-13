@@ -15,8 +15,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
 	--enable-modelock \
-	--disable-static \
-	--build=x86_64-pc-linux-musl)
+	--disable-static)
 MAKEOPT =
 
 prepare:

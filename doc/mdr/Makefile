@@ -8,7 +8,6 @@ ARCHIVE = mdr_linux_amd64
 LINK = https://github.com/MichaelMure/mdr/releases/download/v0.2.5/mdr_linux_amd64
 SRCCD = archive
 BUILD = custom
-MUSL = YES
 
 prepare:
 	mkdir -p pkg/usr/bin

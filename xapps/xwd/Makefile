@@ -9,12 +9,10 @@ LINK = https://xorg.freedesktop.org/archive/individual/app/xwd-1.0.9.tar.xz
 SRCCD = archive
 BUILD = make
 BUILDDIR = xwd-1.0.9
-BUILD_OPTION =
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT =
 
 prepare:

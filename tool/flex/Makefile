@@ -15,7 +15,6 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--libdir=/usr/lib \
 	--disable-static \
 	--enable-shared \
-	--build=x86_64-pc-linux-musl \
 	ac_cv_func_malloc_0_nonnull=yes \
 	ac_cv_func_realloc_0_nonnull=yes)
 

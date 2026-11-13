@@ -13,7 +13,6 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl \
 	--enable-static \
 	--with-gcc-arch=native \
 	--enable-pax_emutramp \

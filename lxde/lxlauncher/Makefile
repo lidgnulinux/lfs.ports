@@ -13,8 +13,7 @@ AUTO_CONF = (cd ${BUILDDIR} && autoreconf -fi && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
-	--enable-gtk3 \
-	--build=x86_64-pc-linux-musl)
+	--enable-gtk3)
 MAKEOPT =
 
 prepare:

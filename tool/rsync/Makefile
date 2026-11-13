@@ -19,8 +19,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--disable-lz4 \
 	--with-protected-args \
 	--without-included-zlib \
-	--without-included-popt \
-	--build=x86_64-pc-linux-musl)
+	--without-included-popt)
 MAKEOPT =
 
 prepare:

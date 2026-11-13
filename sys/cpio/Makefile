@@ -16,8 +16,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--enable-largefile \
 	--disable-mt \
 	--disable-rpath \
-	--disable-nls \
-	--build=x86_64-pc-linux-musl)
+	--disable-nls)
 MAKEOPT =
 
 prepare:

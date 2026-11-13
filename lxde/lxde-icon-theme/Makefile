@@ -10,8 +10,7 @@ BUILDDIR = lxde-icon-theme
 AUTO_CONF = (cd ${BUILDDIR} && ./autogen.sh && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT =
 
 prepare:

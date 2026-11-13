@@ -18,8 +18,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--without-sound \
 	--without-x \
 	--without-file-notification \
-	--with-native-compilation=no \
-	--build=x86_64-pc-linux-musl)
+	--with-native-compilation=no)
 MAKEOPT =
 
 prepare:

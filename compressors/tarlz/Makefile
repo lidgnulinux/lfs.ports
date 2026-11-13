@@ -11,8 +11,7 @@ BUILD = make
 BUILDDIR = tarlz-0.29
 BUILD_OPTION =
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
-	--prefix=/usr \
-	--build=x86_64-pc-linux-musl)
+	--prefix=/usr)
 MAKEOPT =
 
 prepare:

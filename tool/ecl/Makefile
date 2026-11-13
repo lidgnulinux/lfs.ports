@@ -18,8 +18,7 @@ AUTO_CONF = (cd ${BUILDDIR} && CFLAGS="-std=gnu17" ./configure \
 	--localstatedir=/var/state/ecl \
 	--enable-boehm=system \
 	--enable-gmp=system \
-	--enable-libatomic=system \
-	--build=x86_64-pc-linux-musl)
+	--enable-libatomic=system)
 MAKEOPT =
 
 prepare:

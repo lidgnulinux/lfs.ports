@@ -23,8 +23,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--with-env-editor \
 	--with-man \
 	--without-pam \
-	--disable-openssl \
-	--build=x86_64-pc-linux-musl)
+	--disable-openssl)
 MAKEOPT =
 
 prepare:

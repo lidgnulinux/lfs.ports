@@ -13,8 +13,7 @@ AUTO_CONF = (cd ${BUILDDIR} && CFLAGS="-fpermissive" ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
-	--disable-static \
-	--build=x86_64-pc-linux-musl)
+	--disable-static)
 MAKEOPT =
 
 prepare:

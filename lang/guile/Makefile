@@ -15,8 +15,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
 	--enable-static=no \
-	--disable-error-on-warning \
-	--build=x86_64-pc-linux-musl)
+	--disable-error-on-warning)
 MAKEOPT =
 STRIP = no
 

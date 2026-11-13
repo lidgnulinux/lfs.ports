@@ -12,8 +12,7 @@ BUILDDIR = lxmenu-data-0.1.7
 AUTO_CONF = (cd ${BUILDDIR} && autoreconf -fi && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT =
 
 prepare:

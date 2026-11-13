@@ -12,8 +12,7 @@ BUILDDIR = libqalculate-5.10.0
 AUTO_CONF = (cd ${BUILDDIR} && ./autogen.sh \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT =
 export LDFLAGS = -Wl,-z,stack-size=2097152
 export CXXFLAGS = -std=c++17 

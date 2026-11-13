@@ -15,8 +15,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--libdir=/usr/lib \
 	--runstatedir=/run \
 	--without-logger   \
-	--disable-static \
-	--build=x86_64-pc-linux-musl)
+	--disable-static)
 MAKEOPT =
 
 prepare:

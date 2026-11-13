@@ -18,7 +18,6 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--enable-fts4 \
 	--enable-fts5 \
 	--enable-session \
-	--build=x86_64-pc-linux-musl \
 	CPPFLAGS="-DSQLITE_ENABLE_FTS3=1 \
 		-DSQLITE_ENABLE_FTS4=1 \
 		-DSQLITE_ENABLE_COLUMN_METADATA=1 \

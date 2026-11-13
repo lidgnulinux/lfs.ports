@@ -12,8 +12,7 @@ BUILDDIR = bison-3.8.2
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 
 prepare:
 	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/gcc15-glibcxx-assertions.patch

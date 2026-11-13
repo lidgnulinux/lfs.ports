@@ -15,8 +15,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
 	--disable-nls \
-	--disable-pma \
-	--build=x86_64-pc-linux-musl)
+	--disable-pma)
 MAKEOPT =
 
 prepare:

@@ -15,8 +15,7 @@ AUTO_CONF = (cd ${BUILDDIR} && autoreconf -vif && ./configure \
 	--libdir=/usr/lib \
 	--infodir=/usr/share/info \
 	--localstatedir=/var \
-	--disable-schemas-compile \
-	--build=x86_64-pc-linux-musl)
+	--disable-schemas-compile)
 MAKEOPT =
 
 prepare:

@@ -17,8 +17,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--disable-static \
 	--with-zlib \
 	--with-jpeg \
-	--with-lcms2 \
-	--build=x86_64-pc-linux-musl)
+	--with-lcms2)
 MAKEOPT =
 
 prepare:

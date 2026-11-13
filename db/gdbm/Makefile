@@ -16,8 +16,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--enable-libgdbm-compat \
 	--disable-largefile \
 	--disable-dependency-tracking \
-	--enable-fast-install \
-	--build=x86_64-pc-linux-musl)
+	--enable-fast-install)
 MAKEOPT =
 
 prepare:

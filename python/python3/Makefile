@@ -15,8 +15,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--libdir=/usr/lib \
   --enable-shared \
   --with-system-expat \
-  --enable-optimizations \
-	--build=x86_64-pc-linux-musl)
+  --enable-optimizations)
 MAKEOPT =
 
 prepare:

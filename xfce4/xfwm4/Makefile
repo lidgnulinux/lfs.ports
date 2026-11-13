@@ -18,8 +18,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--enable-poswin \
 	--enable-startup-notification \
 	--enable-xpresent \
-	--enable-xsync \
-	--build=x86_64-pc-linux-musl)
+	--enable-xsync)
 MAKEOPT = 
 LDFLAGS = -Wl,--copy-dt-needed-entries
 export LDFLAGS

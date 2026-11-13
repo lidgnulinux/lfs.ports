@@ -12,8 +12,7 @@ BUILDDIR = make-4.4.1
 AUTO_CONF = (cd ${BUILDDIR} && ./configure LDFLAGS="-static" \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT =
 
 prepare:

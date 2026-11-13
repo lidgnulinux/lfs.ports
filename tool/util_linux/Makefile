@@ -28,14 +28,11 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--without-systemd \
 	--without-systemdsystemunitdir \
 	ADJTIME_PATH=/var/lib/hwclock/adjtime \
-	--docdir=/usr/share/doc/util-linux-2.41 \
-	--build=x86_64-pc-linux-musl)
+	--docdir=/usr/share/doc/util-linux-2.41)
 MAKEOPT =
 
 prepare:
 	cp -r $(CURDIR)/ttydefaults.h ${BUILDDIR}/include
-	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/utmps.patch
-	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/fix_AT_HANDLE_FID_musl.patch 
 
 post_build:
 

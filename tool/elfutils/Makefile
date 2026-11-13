@@ -20,8 +20,7 @@ AUTO_CONF = (cd ${BUILDDIR} && CFLAGS="-D_GNU_SOURCE -Wno-error -Wno-null-derefe
 	--disable-nls \
 	--disable-libdebuginfod \
 	--disable-debuginfod \
-	--with-zstd \
-	--build=x86_64-pc-linux-musl)
+	--with-zstd)
 MAKEOPT =
 
 prepare:

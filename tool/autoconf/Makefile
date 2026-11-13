@@ -12,8 +12,7 @@ BUILDDIR = autoconf-2.73
 BUILD_OPTION =
 AUTO_CONF = (cd ${BUILDDIR} && M4=/usr/bin/m4 ./configure \
 	--prefix=/usr \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT =
 STRIP = no
 

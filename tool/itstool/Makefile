@@ -12,8 +12,7 @@ BUILDDIR = itstool-2.0.7
 AUTO_CONF = (cd ${BUILDDIR} && ./configure PYTHON="/usr/bin/python3" \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT =
 
 prepare:

@@ -19,8 +19,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ../configure \
 	--enable-default-ssp \
 	--enable-host-pie \
 	--disable-fixincludes \
-	--enable-languages=c,c++,objc,obj-c++ \
-	--build=x86_64-pc-linux-musl)
+	--enable-languages=c,c++,objc,obj-c++)
 MAKEOPT =
 
 prepare:

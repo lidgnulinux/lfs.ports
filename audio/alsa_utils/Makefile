@@ -13,8 +13,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure --prefix=/usr \
 	--libdir=/usr/lib \
 	--disable-nls \
 	--disable-xmlto \
-	--with-alsactl-lock-dir=/run/lock \
-	--build=x86_64-pc-linux-musl)
+	--with-alsactl-lock-dir=/run/lock)
 
 prepare:
 	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done

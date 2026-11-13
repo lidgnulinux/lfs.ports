@@ -15,8 +15,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--libdir=/usr/lib \
 	--disable-rpath \
 	--disable-werror \
-	--disable-doc \
-	--build=x86_64-pc-linux-musl && \
+	--disable-doc && \
 	sed -i \
 		-e 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' \
 		-e 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool)

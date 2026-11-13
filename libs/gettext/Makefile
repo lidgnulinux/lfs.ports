@@ -12,8 +12,7 @@ BUILDDIR = gettext-1.0
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--libdir=/usr/lib \
-	--enable-shared=yes \
-	--build=x86_64-pc-linux-musl)
+	--enable-shared=yes)
 
 prepare:
 

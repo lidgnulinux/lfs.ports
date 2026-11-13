@@ -16,8 +16,7 @@ AUTO_CONF = (cd ${BUILDDIR} && \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
-	--without-selinux \
-	--build=x86_64-pc-linux-musl)
+	--without-selinux)
 
 prepare:
 

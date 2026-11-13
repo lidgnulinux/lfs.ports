@@ -13,8 +13,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
-	--enable-pciaccess \
-	--build=x86_64-pc-linux-musl)
+	--enable-pciaccess)
 MAKEOPT =
 
 prepare:

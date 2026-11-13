@@ -19,8 +19,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--disable-oss \
 	--enable-posix-shm=yes \
 	--enable-sse=auto \
-	--with-default-tmpdir=/tmp \
-	--build=x86_64-pc-linux-musl)
+	--with-default-tmpdir=/tmp)
 MAKEOPT =
 
 prepare:

@@ -12,8 +12,7 @@ BUILD = make
 BUILDDIR = light-${_REV}
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
-	--with-udev \
-	--build=x86_64-pc-linux-musl)
+	--with-udev)
 MAKEOPT =
 
 prepare:

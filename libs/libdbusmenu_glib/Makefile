@@ -19,8 +19,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--enable-tests \
 	--enable-vala \
 	--enable-introspection \
-	HAVE_VALGRIND_FALSE=''\
-	--build=x86_64-pc-linux-musl)
+	HAVE_VALGRIND_FALSE='')
 MAKEOPT =
 
 CFLAGS = -Wno-error

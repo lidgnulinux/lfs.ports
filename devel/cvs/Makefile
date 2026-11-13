@@ -16,8 +16,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--mandir=/usr/share/man \
 	--infodir=/usr/share/info \
 	--with-external-zlib \
-	--with-tmpdir=/tmp \
-	--build=x86_64-pc-linux-musl)
+	--with-tmpdir=/tmp)
 MAKEOPT =
 export CFLAGS=-DUSE_LIBBSD
 

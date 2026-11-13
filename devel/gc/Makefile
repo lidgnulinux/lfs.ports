@@ -17,8 +17,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--enable-static=yes \
 	--enable-shared=yes \
 	--enable-threads=posix \
-	--with-libatomic-ops=yes \
-	--build=x86_64-pc-linux-musl)
+	--with-libatomic-ops=yes)
 MAKEOPT =
 
 prepare:

@@ -19,13 +19,11 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--disable-dselect \
 	--disable-start-stop-daemon \
 	--disable-nls \
-	--disable-static \
-	--build=x86_64-pc-linux-musl)
+	--disable-static)
 MAKEOPT =
 export CFLAGS=-lobstack
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/musl-realpath.patch
 	echo "${VERSION}" > ${BUILDDIR}/.dist-version
 	autoreconf -vif ${BUILDDIR}
 

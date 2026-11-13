@@ -18,8 +18,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--with-openssl \
 	--with-zlib \
 	--with-xz \
-	--with-zstd \
-	--build=x86_64-pc-linux-musl)
+	--with-zstd)
 MAKEOPT =
 
 prepare:

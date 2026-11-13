@@ -20,8 +20,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--with-grap=/usr/bin/grap \
 	--with-systemdtmpfilesdir= \
 	--with-systemdsystemunitdir= \
-	--docdir=/usr/share/doc/man-db-2.13.1 \
-	--build=x86_64-pc-linux-musl)
+	--docdir=/usr/share/doc/man-db-2.13.1)
 MAKEOPT =
 
 prepare:

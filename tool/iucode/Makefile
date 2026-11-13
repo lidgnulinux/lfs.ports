@@ -10,8 +10,7 @@ SRCCD = archive
 BUILD = make
 BUILDDIR = iucode-tool-2.3.1
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
-	--prefix=/usr \
-	--build=x86_64-pc-linux-musl)
+	--prefix=/usr)
 MAKEOPT =
 
 prepare:

@@ -12,8 +12,7 @@ BUILDDIR = groff-1.23.0
 AUTO_CONF = (cd ${BUILDDIR} && PAGE=A4 ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT =
 
 prepare:

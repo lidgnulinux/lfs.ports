@@ -18,8 +18,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--mandir=/usr/share/man \
 	--infodir=/usr/share/info \
 	--localstatedir=/var \
-	--enable-telnet \
-	--build=x86_64-pc-linux-musl)
+	--enable-telnet)
 MAKEOPT =
 
 prepare:

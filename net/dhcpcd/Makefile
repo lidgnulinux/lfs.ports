@@ -18,8 +18,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--disable-privsep \
 	--runstatedir=/run \
 	--without-openssl \
-	--sysconfdir=/etc \
-	--build=x86_64-pc-linux-musl)
+	--sysconfdir=/etc)
 
 prepare:
 

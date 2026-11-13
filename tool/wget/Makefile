@@ -14,8 +14,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
 	--with-ssl=gnutls \
-	--with-metalink \
-	--build=x86_64-pc-linux-musl)
+	--with-metalink)
 MAKEOPT =
 
 prepare:

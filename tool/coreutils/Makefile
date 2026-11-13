@@ -19,8 +19,7 @@ AUTO_CONF = (cd ${BUILDDIR} && fu_cv_sys_stat_statvfs=n ./configure \
 	--without-libgmp \
 	--without-selinux \
 	--enable-single-binary-exceptions=env,fmt,sha512sum \
-	--disable-libcap \
-	--build=x86_64-pc-linux-musl)
+	--disable-libcap)
 MAKEOPT =
 
 prepare:

@@ -13,8 +13,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
-	--disable-gtk-doc \
-	--build=x86_64-pc-linux-musl)
+	--disable-gtk-doc)
 MAKEOPT =
 
 prepare:

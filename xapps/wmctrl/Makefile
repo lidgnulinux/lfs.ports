@@ -11,8 +11,7 @@ SRCCD = archive
 BUILD = make
 BUILDDIR = wmctrl-${_REV}
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
-	--prefix=/usr \
-	--build=x86_64-pc-linux-musl)
+	--prefix=/usr)
 MAKEOPT =
 
 prepare:

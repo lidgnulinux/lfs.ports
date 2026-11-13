@@ -25,8 +25,7 @@ AUTO_CONF = (cd ${BUILDDIR} && PERL=/usr/bin/perl ./configure \
 	--with-termlib=ncurses \
 	--with-editor="/usr/bin/vi" \
 	--with-browser="/usr/bin/xdg-open" \
-	--disable-w3mmailer \
-	--build=x86_64-pc-linux-musl)
+	--disable-w3mmailer)
 MAKEOPT =
 
 prepare:

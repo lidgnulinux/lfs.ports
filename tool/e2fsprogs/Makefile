@@ -23,8 +23,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--disable-uuidd \
 	--disable-libuuid \
 	--disable-libblkid \
-	--disable-nls \
-	--build=x86_64-pc-linux-musl)
+	--disable-nls)
 MAKEOPT =
 
 prepare:

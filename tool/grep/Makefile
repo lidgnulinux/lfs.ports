@@ -15,8 +15,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--bindir=/bin \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
-	--disable-nls \
-	--build=x86_64-pc-linux-musl)
+	--disable-nls)
 MAKEOPT =
 LDFLAGS = -static
 export LDFLAGS
