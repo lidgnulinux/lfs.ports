@@ -9,7 +9,6 @@ LINK = https://downloads.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.
 SRCCD = archive
 BUILD = make
 BUILDDIR = lame-3.100
-BUILD_OPTION =
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
@@ -17,8 +16,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--enable-nasm \
 	--disable-mp3x \
 	--enable-shared \
-	--with-pic \
-	--build=x86_64-pc-linux-musl)
+	--with-pic)
 MAKEOPT =
 
 prepare:
