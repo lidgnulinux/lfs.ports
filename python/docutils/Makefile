@@ -1,24 +1,23 @@
 COMMENT = Documentation Utilities for Python3
-VERSION = 0.22.2
+VERSION = 0.23
 REVISION = 0
 CATEGORIES = python
 PKGNAME = docutils
 HOMEPAGE = https://pypi.org/project/docutils
-ARCHIVE = docutils-0.22.2.tar.gz
-LINK = https://files.pythonhosted.org/packages/source/d/docutils/docutils-0.22.2.tar.gz
+ARCHIVE = docutils-${VERSION}.tar.gz
+LINK = https://files.pythonhosted.org/packages/source/d/docutils/docutils-${VERSION}.tar.gz
 SRCCD = archive
 BUILD = custom
-BUILDDIR = docutils-0.22.2
+BUILDDIR = docutils-${VERSION}
 
 prepare:
+	  sed -i '/^include =/,/]/d' ${BUILDDIR}/pyproject.toml
 
 custom-build:
-	cd ${BUILDDIR} && unshare -n python3 -m build --wheel --no-isolation
+	cd ${BUILDDIR} && python3 -m build --wheel --skip-dependency-check --no-isolation
 	cd ${BUILDDIR} && python3 -m installer --destdir "$(CURDIR)/pkg" dist/*.whl
 
 post_build:
-	mv pkg/usr/pkg/*/usr/* pkg/usr
-	rm -rf pkg/usr/pkg
 
 post-install:
 

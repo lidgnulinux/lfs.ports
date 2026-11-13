@@ -1,24 +1,23 @@
 COMMENT = Object-oriented approach to text processing
-VERSION = 3.3.2
+VERSION = 3.3.3
 REVISION = 0
 CATEGORIES = python
 PKGNAME = pyparsing
 HOMEPAGE = https://github.com/pyparsing/pyparsing
-ARCHIVE = pyparsing-3.3.2.tar.gz
-LINK = https://files.pythonhosted.org/packages/source/p/pyparsing/pyparsing-3.3.2.tar.gz
 SRCCD = archive
+ARCHIVE = pyparsing-${VERSION}.tar.gz
+LINK = https://files.pythonhosted.org/packages/source/p/pyparsing/${ARCHIVE}
 BUILD = custom
-BUILDDIR = pyparsing-3.3.2
+BUILDDIR = pyparsing-${VERSION} 
 
 prepare:
 
 custom-build:
-	cd ${BUILDDIR} && unshare -n python3 -m build --wheel --no-isolation
-	cd ${BUILDDIR} && python3 -m installer --destdir "$(CURDIR)/pkg" dist/*.whl
+	cd ${BUILDDIR}; gpep517 build-wheel --wheel-dir .dist \
+		--output-fd 3 3>&1 >&2
+	cd ${BUILDDIR}; python3 -m installer -d $(CURDIR)/pkg .dist/*.whl
 
 post_build:
-	mv pkg/usr/pkg/*/usr/* pkg/usr
-	rm -rf pkg/usr/pkg
 
 post-install:
 

@@ -18,8 +18,6 @@ custom-build:
 	cd ${BUILDDIR} && python3 -m installer --destdir "$(CURDIR)/pkg" dist/*.whl
 
 post_build:
-	mv pkg/usr/pkg/*/usr/* pkg/usr
-	rm -rf pkg/usr/pkg
 
 post-install:
 

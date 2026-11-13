@@ -1,14 +1,14 @@
 COMMENT = Call pyproject.toml-based build backend hooks
-VERSION = 1.2.0
+VERSION = 1.3.3
 REVISION = 0
 CATEGORIES = python
 PKGNAME = pyproject_hooks
 HOMEPAGE = https://pypi.org/project/pyproject_hooks
-ARCHIVE = pyproject_hooks-1.2.0.tar.gz
-LINK = https://mirrors.kernel.org/slackware/slackware-current/source/l/python-pyproject-hooks/pyproject_hooks-1.2.0.tar.gz
+ARCHIVE = pyproject_hooks-${VERSION}.tar.gz
+LINK = https://mirrors.kernel.org/slackware/slackware-current/source/l/python-pyproject-hooks/pyproject_hooks-${VERSION}.tar.gz
 SRCCD = archive
 BUILD = custom
-BUILDDIR = pyproject_hooks-1.2.0 
+BUILDDIR = pyproject_hooks-${VERSION} 
 
 prepare:
 
@@ -17,7 +17,6 @@ custom-build:
 	cd ${BUILDDIR} && python3 -m installer --destdir "$(CURDIR)/pkg" dist/*.whl
 
 post_build:
-	mv pkg/usr/pkg/*/usr/* pkg/usr
 
 post-install:
 
