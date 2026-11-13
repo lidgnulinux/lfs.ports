@@ -1,14 +1,14 @@
 COMMENT = dwm - dynamic window manager (gaps & barpadding patch applied)
 VERSION = 6.8
 REVISION = 4
-CATEGORIES = x11-wm
+CATEGORIES = x11
 PKGNAME = dwm
 HOMEPAGE = https://dwm.suckless.org
-ARCHIVE = dwm-6.8.tar.gz
-LINK = https://dl.suckless.org/dwm/dwm-6.8.tar.gz
+ARCHIVE = dwm-${VERSION}.tar.gz
+LINK = https://dl.suckless.org/dwm/dwm-${VERSION}.tar.gz
 SRCCD = archive
 BUILD = make
-BUILDDIR = dwm-6.8
+BUILDDIR = dwm-${VERSION}
 MAKEOPT = X11INC=/usr/include/X11 \
 	X11LIB=/usr/lib/X11 \
 	FREETYPEINC=/usr/include/freetype2

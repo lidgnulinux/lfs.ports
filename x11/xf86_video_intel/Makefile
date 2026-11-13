@@ -14,8 +14,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./autogen.sh \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
 	--enable-kms-only \
-	--enable-uxa \
-	--build=x86_64-pc-linux-musl)
+	--enable-uxa)
 MAKEOPT =
 
 prepare:

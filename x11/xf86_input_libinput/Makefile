@@ -1,6 +1,6 @@
 COMMENT = A libinput-based X driver.
 VERSION = 1.5.0
-REVISION = 0
+REVISION = 1
 CATEGORIES = x11
 PKGNAME = xf86_input_libinput
 HOMEPAGE = https://www.x.org
@@ -12,8 +12,7 @@ BUILDDIR = xf86-input-libinput-1.5.0
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT =
 
 prepare:
