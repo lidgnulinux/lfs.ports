@@ -1,18 +1,19 @@
 COMMENT = i3-compatible window manager for Wayland 
-VERSION = 0.13.c5bc72dee
-_REV = 5bc72dee4771a2d2d2648b8f69d30e0747f263f6
+VERSION = 1.12
 REVISION = 0
 CATEGORIES = wayland
 PKGNAME = sway
 HOMEPAGE = https://github.com/swaywm/sway
-ARCHIVE = ${_REV}.tar.gz
-LINK = ${HOMEPAGE}/archive/${ARCHIVE}
+ARCHIVE = sway-${VERSION}.tar.gz
+LINK = https://github.com/swaywm/sway/archive/${VERSION}/sway-${VERSION}.tar.gz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = sway-${_REV}
+BUILDDIR = sway-${VERSION}
 BUILD_OPTION = -Dgdk-pixbuf=enabled -Dtray=enabled
 
 prepare:
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/20f70a94b320edde1c292e3a5b763a29570224e5.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/libinput_fix.patch
 
 post_build:
 

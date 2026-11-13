@@ -11,7 +11,7 @@ SRCCD = archive
 BUILD = make
 BUILDDIR = dtao-${_SHA}
 MAKEOPT =
-DOC = 1
+DOC = 0
 
 prepare:
 	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/00_add_position.patch 
@@ -23,7 +23,7 @@ else
 	echo "no need to generate manual page."
 endif
 
-	install -Dm644 -t package/usr/share/man/man1 dtao.1
+	# install -Dm644 -t package/usr/share/man/man1 dtao.1
 
 post-install:
 
