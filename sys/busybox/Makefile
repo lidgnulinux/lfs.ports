@@ -1,6 +1,6 @@
 COMMENT = busybox
 VERSION = 1.38
-REVISION = 0
+REVISION = 1
 CATEGORIES = sys
 PKGNAME = busybox
 HOMEPAGE = https://busybox.net
@@ -11,6 +11,8 @@ BUILD = make
 BUILDDIR = busybox-1.38.0
 MAKEOPT = CONFIG_PREFIX=$(CURDIR)/package/opt
 MAKEFLAGS += -j1
+GRAFT = no
+STRIP = no
 
 prepare:
 	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
