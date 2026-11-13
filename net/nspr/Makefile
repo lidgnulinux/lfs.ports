@@ -15,7 +15,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./nspr/configure \
 	--libdir=/usr/lib \
 	--disable-debug \
 	--with-mozilla \
-	--build="x86_64-pc-linux-musl" \
+	--with-pthreads \
 	--enable-64bit)
 
 prepare:

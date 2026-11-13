@@ -12,6 +12,7 @@ BUILDDIR = make-ca-1.16.1
 MAKEOPT =
 
 prepare:
+	sed '/mktemp/s/-t //' -i ${BUILDDIR}/make-ca
 
 post_build:
 	install -vdm755 package/etc/ssl/local
