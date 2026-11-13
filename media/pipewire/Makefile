@@ -1,14 +1,14 @@
 COMMENT = Multimedia processing graphs
-VERSION = 1.6.8
+VERSION = 1.6.11
 REVISION = 0
 CATEGORIES = media
 PKGNAME = pipewire
 HOMEPAGE = https://pipewire.org/
-ARCHIVE = pipewire-1.6.8.tar.gz
-LINK = https://gitlab.freedesktop.org/PipeWire/pipewire/-/archive/1.6.8/pipewire-1.6.8.tar.gz
+ARCHIVE = pipewire-${VERSION}.tar.gz
+LINK = https://gitlab.freedesktop.org/PipeWire/pipewire/-/archive/${VERSION}/pipewire-${VERSION}.tar.gz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = pipewire-1.6.8
+BUILDDIR = pipewire-${VERSION}
 BUILD_OPTION = -Dlibjack-path=/usr/lib \
 	-Dlibv4l2-path=/usr/lib \
 	-Ddocs=disabled \
@@ -22,9 +22,13 @@ BUILD_OPTION = -Dlibjack-path=/usr/lib \
 	-Dlv2=disabled \
 	-Dlibcamera=disabled \
 	-Droc=disabled \
-	-Dlibsystemd=disabled \
 	-Dbluez5-codec-lc3=enabled \
 	-Dbluez5-backend-native-mm=disabled \
+	-Dsnap=disabled \
+	-Dsystemd-system-service=enabled \
+	-Dudevrulesdir=/usr/lib/udev/rules.d \
+	-Drlimits-install=false \
+	-Dselinux=disabled \
 	-Dsession-managers=[]
 
 prepare:
