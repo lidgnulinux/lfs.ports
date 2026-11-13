@@ -1,5 +1,5 @@
 COMMENT = X Window System Unified Protocol
-VERSION = 2025.1
+VERSION = 2026.1
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = xorgproto
@@ -14,7 +14,6 @@ BUILD_OPTION = -Dlegacy=true
 prepare:
 
 post_build:
-	rm build/package/usr/include/X11/extensions/vldXvMC.h
 
 post-install:
 

@@ -1,6 +1,6 @@
 COMMENT = The version 3 of the GTK+ toolkit.
 VERSION = 3.24.52
-REVISION = 0
+REVISION = 1
 CATEGORIES = libs
 PKGNAME = gtk3
 HOMEPAGE = https://www.gtk.org
@@ -10,7 +10,6 @@ SRCCD = archive
 BUILD = meson
 BUILDDIR = gtk-3.24.52
 BUILD_OPTION = --buildtype=release \
-	--strip \
 	-Dcolord=no \
 	-Dgtk_doc=false \
 	-Dman=false \

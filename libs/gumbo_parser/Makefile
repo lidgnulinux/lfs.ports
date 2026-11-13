@@ -1,11 +1,11 @@
 COMMENT = An HTML5 parsing library in pure C99
-VERSION = 0.13.2
+VERSION = 0.14.1
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = gumbo_parser
 HOMEPAGE = https://codeberg.org/grisha/gumbo-parser
-ARCHIVE = 0.13.2.tar.gz
-LINK = https://codeberg.org/grisha/gumbo-parser/archive/0.13.2.tar.gz
+ARCHIVE = ${VERSION}.tar.gz
+LINK = https://codeberg.org/grisha/gumbo-parser/archive/${VERSION}.tar.gz
 SRCCD = archive
 BUILD = meson
 BUILDDIR = gumbo-parser

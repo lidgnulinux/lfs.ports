@@ -1,14 +1,14 @@
 COMMENT = Wayland protocol extensions for Hyprland
-VERSION = 0.7.0
+VERSION = 0.8.0
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = hyprland_protocols
 HOMEPAGE = https://github.com/hyprwm/hyprland-protocols
-ARCHIVE = hyprland-protocols-v0.7.0.tar.gz
-LINK = https://github.com/hyprwm/hyprland-protocols/archive/v0.7.0/hyprland-protocols-v0.7.0.tar.gz
+ARCHIVE = hyprland-protocols-v${VERSION}.tar.gz
+LINK = https://github.com/hyprwm/hyprland-protocols/archive/v${VERSION}/hyprland-protocols-v${VERSION}.tar.gz
 SRCCD = archive
-BUILD = meson
-BUILDDIR = hyprland-protocols-0.7.0
+BUILD = cmake
+BUILDDIR = hyprland-protocols-${VERSION}
 BUILD_OPTION =
 
 prepare:

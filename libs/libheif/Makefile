@@ -1,5 +1,5 @@
 COMMENT = ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
-VERSION = 1.23.5
+VERSION = 1.23.6
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libheif

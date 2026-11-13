@@ -1,15 +1,15 @@
 COMMENT = Building blocks for modern GNOME applications
-VERSION = 1.9.2
+VERSION = 1.10.0
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libadwaita
 HOMEPAGE = https://gitlab.gnome.org/GNOME/libadwaita
-ARCHIVE = libadwaita-1.9.2.tar.xz
-LINK = https://download.gnome.org/sources/libadwaita/1.9/libadwaita-1.9.2.tar.xz
+ARCHIVE = libadwaita-${VERSION}.tar.xz
+LINK = https://download.gnome.org/sources/libadwaita/1.10/libadwaita-${VERSION}.tar.xz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = libadwaita-1.9.2
-BUILD_OPTION = -Dexamples=false -Dgtk_doc=false
+BUILDDIR = libadwaita-${VERSION}
+BUILD_OPTION = -Dexamples=false -Ddocumentation=false -Dtests=false
 
 prepare:
 

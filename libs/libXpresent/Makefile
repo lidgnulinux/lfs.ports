@@ -13,8 +13,6 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure --prefix=/usr --sysconfdir=/etc)
 
 prepare:
 
-custom-build:
-
 post_build:
 
 post-install:

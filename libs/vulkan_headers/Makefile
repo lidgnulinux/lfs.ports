@@ -1,14 +1,14 @@
 COMMENT = Vulkan header files
-VERSION = 1.4.347
+VERSION = 1.4.360
 REVISION = 1
 CATEGORIES = libs
 PKGNAME = vulkan_headers
 HOMEPAGE = https://www.khronos.org/vulkan
-ARCHIVE = v1.4.347.tar.gz
-LINK = https://github.com/khronosgroup/vulkan-headers/archive/refs/tags/v1.4.347.tar.gz
+ARCHIVE = v${VERSION}.tar.gz
+LINK = https://github.com/khronosgroup/vulkan-headers/archive/refs/tags/v${VERSION}.tar.gz
 SRCCD = archive
 BUILD = cmake
-BUILDDIR = Vulkan-Headers-1.4.347
+BUILDDIR = Vulkan-Headers-${VERSION}
 BUILD_OPTION = -DVULKAN_HEADERS_ENABLE_MODULE=OFF -DCMAKE_BUILD_TYPE=None
 STRIP = no
 

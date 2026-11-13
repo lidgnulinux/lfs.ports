@@ -12,12 +12,11 @@ BUILDDIR = libsass-3.6.6
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT =
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/patch/fix-pkgconfig-version.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/fix-pkgconfig-version.patch
 	autoreconf -vif ${BUILDDIR}
 
 post_build:

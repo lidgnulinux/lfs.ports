@@ -10,10 +10,12 @@ SRCCD = archive
 BUILD = cmake
 BUILDDIR = openjpeg-2.5.4
 BUILD_OPTION = -DCMAKE_BUILD_TYPE=Release \
-     -DCMAKE_SKIP_INSTALL_RPATH=YES \
-     -DBUILD_STATIC_LIBS=OFF
+	-DCMAKE_SKIP_INSTALL_RPATH=YES \
+	-DBUILD_STATIC_LIBS=OFF \
+	-DBUILD_DOC=off
 
 prepare:
+	find ${BUILDDIR}/thirdparty/ -mindepth 1 -maxdepth 1 -type d -exec rm -rf {} \;
 
 post_build:
 

@@ -9,15 +9,13 @@ LINK = https://github.com/kkos/oniguruma/archive/v6.9.10.tar.gz
 SRCCD = archive
 BUILD = make
 BUILDDIR = oniguruma-6.9.10
-BUILD_OPTION =
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--mandir=/usr/share/man \
 	--infodir=/usr/share/info \
 	--localstatedir=/var \
-	--enable-posix-api \
-	--build=x86_64-pc-linux-musl)
+	--enable-posix-api)
 
 prepare:
 	autoreconf -vfi ${BUILDDIR}

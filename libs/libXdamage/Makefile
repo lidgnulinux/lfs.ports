@@ -1,14 +1,14 @@
 COMMENT = X11 damaged region extension library
-VERSION = 1.1.6
+VERSION = 1.1.7
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libXdamage
 HOMEPAGE = https://xorg.freedesktop.org/
-ARCHIVE = libXdamage-1.1.6.tar.xz
+ARCHIVE = libXdamage-1.1.7.tar.xz
 LINK = https://www.x.org/releases/individual/lib/${ARCHIVE}
 SRCCD = archive
 BUILD = make
-BUILDDIR = libXdamage-1.1.6
+BUILDDIR = libXdamage-1.1.7
 AUTO_CONF = (cd ${BUILDDIR} && ./configure --prefix=/usr --sysconfdir=/etc)
 
 prepare:

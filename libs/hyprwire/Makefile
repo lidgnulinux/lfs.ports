@@ -12,7 +12,6 @@ BUILDDIR = hyprwire-0.3.1
 BUILD_OPTION = -Wno-dev
 
 prepare:
-	for i in patch/*; do patch -p0 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

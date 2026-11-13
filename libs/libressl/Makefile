@@ -1,27 +1,18 @@
 COMMENT = A version of the TLS/crypto stack.
-VERSION = 4.2.0
+VERSION = 4.4.0
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libressl
 HOMEPAGE = https://www.libressl.org
-ARCHIVE = libressl-4.2.0.tar.gz
-LINK = https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-4.2.0.tar.gz
+ARCHIVE = libressl-${VERSION}.tar.gz
+LINK = https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${VERSION}.tar.gz
 SRCCD = archive
-BUILD = make
-BUILDDIR = libressl-4.2.0
-AUTO_CONF = (cd ${BUILDDIR} && ./configure \
-	--prefix=/usr \
-	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--enable-hardening \
-	--enable-nc \
-	--with-openssldir=/etc/ssl \
-	--build=x86_64-pc-linux-musl)
-MAKEOPT =
+BUILD = cmake
+BUILDDIR = libressl-${VERSION}
+BUILD_OPTION = -DENABLE_HARDENING=TRUE -DENABLE_NC=TRUE \
+	-DOPENSSLDIR=/etc/ssl -DBUILD_SHARED_LIBS=TRUE 
 
 prepare:
-
-custom-build:
 
 post_build:
 

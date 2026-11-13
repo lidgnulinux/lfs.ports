@@ -1,20 +1,17 @@
 COMMENT = A library for reading and writing GIF images
-VERSION = 5.2.2
+VERSION = 6.1.3
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = giflib
 HOMEPAGE = https://sourceforge.net/projects/giflib/
-ARCHIVE = giflib-5.2.2.tar.gz
-LINK = https://downloads.sourceforge.net/sourceforge/giflib/giflib-5.2.2.tar.gz
+ARCHIVE = giflib-${VERSION}.tar.gz
+LINK = https://downloads.sourceforge.net/sourceforge/giflib/giflib-${VERSION}.tar.gz
 SRCCD = archive
 BUILD = make
-BUILDDIR = giflib-5.2.2
+BUILDDIR = giflib-${VERSION}
 MAKEOPT =
-CFLAGS = -fPIC
-export CFLAGS
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

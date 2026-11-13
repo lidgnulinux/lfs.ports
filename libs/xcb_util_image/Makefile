@@ -6,7 +6,6 @@ PKGNAME = xcb_util_image
 HOMEPAGE = https://xcb.freedesktop.org/
 ARCHIVE = xcb-util-image-0.4.1.tar.xz
 LINK = https://xcb.freedesktop.org/dist/xcb-util-image-0.4.1.tar.xz
-	
 SRCCD = archive
 BUILD = make
 BUILDDIR = xcb-util-image-0.4.1

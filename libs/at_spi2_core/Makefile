@@ -1,14 +1,14 @@
 COMMENT = Protocol definitions and daemon for D-Bus at-spi
-VERSION = 2.60.5
+VERSION = 2.62.1
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = at_spi2_core
 HOMEPAGE = https://wiki.gnome.org/Accessibility/
-ARCHIVE = at-spi2-core-2.60.5.tar.xz
-LINK = https://download.gnome.org/sources/at-spi2-core/2.60/at-spi2-core-2.60.5.tar.xz
+ARCHIVE = at-spi2-core-${VERSION}.tar.xz
+LINK = https://download.gnome.org/sources/at-spi2-core/2.62/at-spi2-core-${VERSION}.tar.xz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = at-spi2-core-2.60.5
+BUILDDIR = at-spi2-core-${VERSION}
 BUILD_OPTION = --buildtype=release \
 	-Dx11=enabled \
 	-Dintrospection=enabled \

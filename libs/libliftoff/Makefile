@@ -14,4 +14,6 @@ prepare:
 
 post_build:
 
+post-install:
+
 include /usr/share/mk/lfs.port.mk

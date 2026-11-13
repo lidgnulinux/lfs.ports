@@ -1,17 +1,18 @@
 COMMENT = GIO-style async APIs for most Flatpak portals
-VERSION = 0.9.1
+VERSION = 0.11.0
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libportal
 HOMEPAGE = https://github.com/flatpak/libportal
-ARCHIVE = 0.9.1.tar.gz
-LINK = https://github.com/flatpak/libportal/archive/refs/tags/0.9.1.tar.gz
+ARCHIVE = ${VERSION}.tar.gz
+LINK = https://github.com/flatpak/libportal/archive/refs/tags/${VERSION}.tar.gz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = libportal-0.9.1
+BUILDDIR = libportal-${VERSION}
 BUILD_OPTION = -Dbackend-gtk3=enabled \
 	-Dbackend-gtk4=enabled \
 	-Dbackend-qt5=disabled \
+	-Dbackend-qt6=disabled \
 	-Ddocs=false
 
 prepare:

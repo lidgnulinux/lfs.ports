@@ -1,5 +1,5 @@
 COMMENT = The C library for parsing and manipulating strings in JSON format.
-VERSION = 0.19-20260627
+VERSION = 0.19
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = json_c

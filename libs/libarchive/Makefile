@@ -1,5 +1,5 @@
 COMMENT = Multi-format archive and compression library.
-VERSION = 3.8.9
+VERSION = 3.8.10
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libarchive
@@ -18,8 +18,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--without-openssl \
 	--without-iconv \
 	--without-libiconv-prefix \
-	--with-nettle \
-	--build=x86_64-pc-linux-musl)
+	--with-nettle)
 
 prepare:
 

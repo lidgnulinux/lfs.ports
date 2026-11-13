@@ -11,9 +11,10 @@ BUILD = make
 BUILDDIR = readline-8.3
 AUTO_CONF = (cd ${BUILDDIR} && ./configure --prefix=/usr \
 	--libdir=/usr/lib \
-	--enable-static \
-	--enable-shared \
-	--build=x86_64-pc-linux-musl)
+	--disable-static \
+	--with-curses)
+GRAFT = no
+MAKEOPT = SHLIB_LIBS="-lncursesw"
 
 prepare:
 	for i in patch/*; do patch -Np0 -d ${BUILDDIR} -i $(CURDIR)/$$i; done

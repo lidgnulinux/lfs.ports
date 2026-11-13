@@ -1,18 +1,20 @@
-COMMENT = Libxmp is a library that renders module files to PCM data
-VERSION = 4.6.3
+COMMENT = Library for common extensions to the X11 protocol.
+VERSION = 1.3.7
 REVISION = 0
 CATEGORIES = libs
-PKGNAME = libxmp
-HOMEPAGE = https://github.com/libxmp/libxmp/
-ARCHIVE = libxmp-${VERSION}.tar.gz
-LINK = https://github.com/libxmp/libxmp/releases/download/libxmp-${VERSION}/${ARCHIVE}
+PKGNAME = libXext
+HOMEPAGE = https://www.x.org
+ARCHIVE = libXext-${VERSION}.tar.gz
+LINK = https://www.x.org/releases/individual/lib/${ARCHIVE}
 SRCCD = archive
-BUILD = cmake
-BUILDDIR = libxmp-${VERSION}
-BUILD_OPTION = -DCMAKE_BUILD_TYPE=None \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DBUILD_STATIC=OFF \
-		-DWITH_UNIT_TESTS=OFF
+BUILD = make
+BUILDDIR = libXext-${VERSION}
+AUTO_CONF = (cd ${BUILDDIR} && ./configure \
+	--prefix=/usr \
+	--sysconfdir=/etc \
+	--enable-static \
+	--with-xmlto \
+	--without-fop)
 
 prepare:
 

@@ -16,9 +16,7 @@ BUILD_OPTION = -Dsvg-backend=nanosvg \
 prepare:
 
 post_build:
-	$(MAKE) strip
 
 post-install:
 
 include /usr/share/mk/lfs.port.mk
-include strip.mk

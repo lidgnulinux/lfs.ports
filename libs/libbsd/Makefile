@@ -9,15 +9,16 @@ LINK = https://libbsd.freedesktop.org/releases/${ARCHIVE}
 SRCCD = archive
 BUILD = make
 BUILDDIR = libbsd-${VERSION}
-AUTO_CONF =  (cd ${BUILDDIR} && ./configure \
+AUTO_CONF =  (cd ${BUILDDIR} && autoreconf -vfi && \
+	CFLAGS+=' -ffat-lto-objects' ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--mandir=/usr/share/man \
 	--infodir=/usr/share/info \
 	--localstatedir=/var)
+GRAFT = no
 
 prepare:
-	cd ${BUILDDIR} && ./autogen
 
 post_build:
 

@@ -4,20 +4,20 @@ REVISION = 0
 CATEGORIES = libs
 PKGNAME = gnutls
 HOMEPAGE = https://gnutls.org/
-ARCHIVE = gnutls-3.8.13.tar.xz
-LINK = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.13.tar.xz
+ARCHIVE = gnutls-${VERSION}.tar.xz
+LINK = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/${ARCHIVE}
 SRCCD = archive
 BUILD = make
-BUILDDIR = gnutls-3.8.13
+BUILDDIR = gnutls-${VERSION}
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
 	--enable-static=no \
 	--enable-threads=posix \
-	--disable-valgrind-tests \
-	--build=x86_64-pc-linux-musl)
+	--disable-valgrind-tests)
 MAKEOPT =
+GRAFT = no
 
 prepare:
 

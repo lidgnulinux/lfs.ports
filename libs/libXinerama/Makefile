@@ -1,14 +1,14 @@
 COMMENT = X11 Xinerama extension library
-VERSION = 1.1.5
+VERSION = 1.1.6
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libXinerama
 HOMEPAGE = https://xorg.freedesktop.org/
-ARCHIVE = libXinerama-1.1.5.tar.xz
+ARCHIVE = libXinerama-1.1.6.tar.xz
 LINK = https://www.x.org/releases/individual/lib/${ARCHIVE}
 SRCCD = archive
 BUILD = make
-BUILDDIR = libXinerama-1.1.5
+BUILDDIR = libXinerama-1.1.6
 AUTO_CONF = (cd ${BUILDDIR} && ./configure --prefix=/usr --sysconfdir=/etc)
 
 prepare:

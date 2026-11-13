@@ -9,7 +9,8 @@ LINK = https://download.gnome.org/sources/libxml2/2.15/${ARCHIVE}
 SRCCD = archive
 BUILD = meson
 BUILDDIR = libxml2-${VERSION}
-BUILD_OPTION = -Dicu=enabled -Dlegacy=enabled -Dpython=enabled
+BUILD_OPTION = -Dicu=enabled -Dlegacy=enabled -Dpython=enabled \
+	-Ddocs=disabled
 
 prepare:
 

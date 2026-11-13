@@ -1,14 +1,14 @@
 COMMENT = Library for font configuration.
-VERSION = 2.18.1
+VERSION = 2.18.3
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = fontconfig
 HOMEPAGE = https://www.freedesktop.org/wiki/Software/fontconfig/
-ARCHIVE = fontconfig-2.18.1.tar.xz
-LINK = https://gitlab.freedesktop.org/api/v4/projects/890/packages/generic/fontconfig/2.18.1/fontconfig-2.18.1.tar.xz
+ARCHIVE = fontconfig-${VERSION}.tar.xz
+LINK = https://gitlab.freedesktop.org/api/v4/projects/890/packages/generic/fontconfig/${VERSION}/${ARCHIVE}
 SRCCD = archive
 BUILD = make
-BUILDDIR = fontconfig-2.18.1
+BUILDDIR = fontconfig-${VERSION}
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
@@ -16,13 +16,10 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--disable-static \
 	--enable-shared \
 	--disable-docs \
-	--disable-nls \
-	--build=x86_64-pc-linux-musl)
+	--disable-nls)
 MAKEOPT =
 
 prepare:
-
-custom-build:
 
 post_build:
 

@@ -5,7 +5,7 @@ CATEGORIES = libs
 PKGNAME = nghttp2
 HOMEPAGE = https://nghttp2.org/
 ARCHIVE = nghttp2-${VERSION}.tar.bz2
-LINK = https://github.com/nghttp2/nghttp2/releases/download/v${VERSION}/nghttp2-${VERSION}.tar.bz2
+LINK = https://github.com/nghttp2/nghttp2/releases/download/v${VERSION}/${ARCHIVE}
 SRCCD = archive
 BUILD = make
 BUILDDIR = nghttp2-${VERSION}
@@ -16,7 +16,6 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--enable-static=yes \
 	--enable-shared=yes \
 	--enable-lib-only \
-	--without-systemd \
 	--disable-examples \
 	--disable-http3 \
 	--without-jansson \
@@ -27,8 +26,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--without-libxml2 \
 	--without-mruby \
 	--without-neverbleed \
-	--without-cunit \
-	--build=x86_64-pc-linux-musl)
+	--without-cunit)
 MAKEOPT =
 
 prepare:

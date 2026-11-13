@@ -1,18 +1,17 @@
 COMMENT = Hyprland graphics / resource utilities
-VERSION = 0.5.1
+VERSION = 0.6.0
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = hyprgraphics
 HOMEPAGE = https://github.com/hyprwm/hyprgraphics
-ARCHIVE = hyprgraphics-v0.5.1.tar.gz
-LINK = https://github.com/hyprwm/hyprgraphics/archive/v0.5.1/hyprgraphics-v0.5.1.tar.gz
+ARCHIVE = hyprgraphics-v${VERSION}.tar.gz
+LINK = https://github.com/hyprwm/hyprgraphics/archive/v${VERSION}/hyprgraphics-v${VERSION}.tar.gz
 SRCCD = archive
 BUILD = cmake
-BUILDDIR = hyprgraphics-0.5.1
+BUILDDIR = hyprgraphics-${VERSION}
 BUILD_OPTION =
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

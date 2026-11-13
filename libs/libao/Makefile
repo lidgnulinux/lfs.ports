@@ -9,7 +9,6 @@ LINK = https://github.com/xiph/libao/archive/1.2.2.tar.gz
 SRCCD = archive
 BUILD = make
 BUILDDIR = libao-1.2.2
-BUILD_OPTION =
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
@@ -17,8 +16,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--disable-esd \
 	--disable-arts \
 	--enable-alsa-mmap \
-	--enable-pulse \
-	--build=x86_64-pc-linux-musl)
+	--enable-pulse)
 MAKEOPT =
 
 prepare:

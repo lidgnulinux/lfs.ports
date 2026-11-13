@@ -1,11 +1,11 @@
 COMMENT = Reference implementation of the Linux FUSE (Filesystem in Userspace) interface.
-VERSION = 3.18.2
+VERSION = 3.18.3
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = fuse3
 HOMEPAGE = https://github.com/libfuse/libfuse/
 ARCHIVE = fuse-${VERSION}.tar.gz
-LINK = https://github.com/libfuse/libfuse/releases/download/fuse-${VERSION}/fuse-${VERSION}.tar.gz
+LINK = https://github.com/libfuse/libfuse/releases/download/fuse-${VERSION}/${ARCHIVE}
 SRCCD = archive
 BUILD = meson
 BUILDDIR = fuse-${VERSION}
@@ -14,7 +14,6 @@ BUILD_OPTION = -Dinitscriptdir="" \
 	--sbindir=/sbin
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

@@ -1,21 +1,20 @@
 COMMENT = Basic cryptographic library.
-VERSION = 1.12.2
+VERSION = 1.12.4
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libgcrypt
 HOMEPAGE = https://www.gnupg.org
-ARCHIVE = libgcrypt-1.12.2.tar.bz2
-LINK = https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.12.2.tar.bz2
+ARCHIVE = libgcrypt-${VERSION}.tar.bz2
+LINK = https://www.gnupg.org/ftp/gcrypt/libgcrypt/${ARCHIVE}
 SRCCD = archive
 BUILD = make
-BUILDDIR = libgcrypt-1.12.2
+BUILDDIR = libgcrypt-${VERSION}
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
 	--disable-padlock-support \
-	--enable-static \
-	--build=x86_64-pc-linux-musl)
+	--enable-static)
 MAKEOPT =
 
 prepare:

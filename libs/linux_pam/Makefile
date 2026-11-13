@@ -1,6 +1,6 @@
 COMMENT = Linux PAM (Pluggable Authentication Modules for Linux)
-VERSION = 1.7.2
-REVISION = 0
+VERSION = 1.7.3
+REVISION = 1
 CATEGORIES = libs
 PKGNAME = linux_pam
 HOMEPAGE = https://www.kernel.org/pub/linux/libs/pam

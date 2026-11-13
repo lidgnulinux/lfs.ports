@@ -1,16 +1,16 @@
 COMMENT = GStreamer streaming media framework bad plug-ins
-VERSION = 1.28.3
-REVISION = 1
+VERSION = 1.28.7
+REVISION = 0
 CATEGORIES = libs
 PKGNAME = gst_plugins_bad
 HOMEPAGE = https://gstreamer.freedesktop.org/
-ARCHIVE = gst-plugins-bad-1.28.3.tar.xz
-LINK = https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.28.3.tar.xz
+ARCHIVE = gst-plugins-bad-${VERSION}.tar.xz
+LINK = https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-${VERSION}.tar.xz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = gst-plugins-bad-1.28.3
+BUILDDIR = gst-plugins-bad-${VERSION}
 BUILD_OPTION = -Dintrospection=enabled \
-	-Dpackage-name="GStreamer base plug-ins (Linux From Scratch)" \
+	-Dpackage-name="GStreamer base plug-ins (LFS Libre)" \
 	-Dtests="disabled" \
 	-Dgl="enabled"
 

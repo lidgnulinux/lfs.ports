@@ -1,5 +1,5 @@
 COMMENT = Kernel Evdev Device Wrapper Library
-VERSION = 1.13.6
+VERSION = 1.14.0
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libevdev

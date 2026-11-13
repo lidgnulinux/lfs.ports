@@ -1,21 +1,19 @@
 COMMENT = Alliance for Open Media (AOM) AV1 codec SDK
-VERSION = 3.13.1
+VERSION = 3.15.3
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = aom
 HOMEPAGE = https://aomedia.org/
-ARCHIVE = libaom-3.13.1.tar.gz
-LINK = https://storage.googleapis.com/aom-releases/libaom-3.13.1.tar.gz
+ARCHIVE = libaom-${VERSION}.tar.gz
+LINK = https://storage.googleapis.com/aom-releases/libaom-${VERSION}.tar.gz
 SRCCD = archive
 BUILD = cmake
-BUILDDIR = libaom-3.13.1
+BUILDDIR = libaom-${VERSION}
 BUILD_OPTION = -DBUILD_SHARED_LIBS=True \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DENABLE_TESTS="OFF"
 
 prepare:
-	patch -p1 -d ${BUILDDIR} < $(CURDIR)/posix-implicit.patch
-	patch -p1 -d ${BUILDDIR} < $(CURDIR)/libaom-3.13.1-nasm3-1.patch 
 
 post_build:
 

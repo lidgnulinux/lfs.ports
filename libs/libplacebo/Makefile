@@ -1,14 +1,14 @@
 COMMENT = Reusable library for GPU-accelerated video/image rendering
-VERSION = 7.360.1
+VERSION = 7.387.0
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libplacebo
 HOMEPAGE = https://code.videolan.org/videolan/libplacebo
-ARCHIVE = libplacebo-v7.360.1.tar.gz
-LINK = https://code.videolan.org/videolan/libplacebo/-/archive/v7.360.1/libplacebo-v7.360.1.tar.gz
+ARCHIVE = libplacebo-v${VERSION}.tar.gz
+LINK = https://code.videolan.org/videolan/libplacebo/-/archive/v${VERSION}/libplacebo-v${VERSION}.tar.gz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = libplacebo-v7.360.1
+BUILDDIR = libplacebo-v${VERSION}
 BUILD_OPTION = -Dbackend_max_links=4 \
 	-Ddemos=false \
 	-Ddovi=disabled \

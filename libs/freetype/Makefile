@@ -1,14 +1,14 @@
 COMMENT = TrueType font rendering library
-VERSION = 2.14.3
+VERSION = 2.15.0
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = freetype
 HOMEPAGE = https://www.freetype.org/
-ARCHIVE = freetype-2.14.3.tar.gz
-LINK = https://download.savannah.gnu.org/releases/freetype/freetype-2.14.3.tar.gz
+ARCHIVE = freetype-${VERSION}.tar.xz
+LINK = https://download.sourceforge.net/freetype/${ARCHIVE}
 SRCCD = archive
 BUILD = make
-BUILDDIR = freetype-2.14.3
+BUILDDIR = freetype-${VERSION}
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
@@ -18,13 +18,11 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--with-bzip2=yes \
 	--with-zlib=yes \
 	--with-png=yes \
-	--enable-freetype-config \
-	--build=x86_64-pc-linux-musl)
+	--enable-freetype-config)
 
 MAKEOPT =
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

@@ -12,10 +12,9 @@ BUILDDIR = ell-0.80
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--enable-glib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT =
+GRAFT = no
 
 prepare:
 	patch -p1 -i $(CURDIR)/use-libgen-basename.patch -d ${BUILDDIR}
