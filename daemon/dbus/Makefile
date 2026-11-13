@@ -14,12 +14,10 @@ BUILD_OPTION =
 prepare:
 
 post_build:
-	chmod 4750 build/package/usr/libexec/dbus-daemon-launch-helper
-	chown -h root:messagebus build/package/usr/libexec/dbus-daemon-launch-helper
 
 post-install:
 	/usr/bin/dbus-uuidgen --ensure
 	chmod 4750 /usr/libexec/dbus-daemon-launch-helper
-	chown -h root:messagebus /usr/libexec/dbus-daemon-launch-helper
+	chown root:messagebus /usr/libexec/dbus-daemon-launch-helper
 
 include /usr/share/mk/lfs.port.mk
