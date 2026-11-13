@@ -1,11 +1,11 @@
 COMMENT = Go programming language compiler
-VERSION = 1.26.5
-REVISION = 0
+VERSION = 1.27.3
+REVISION = 1
 CATEGORIES = lang
 PKGNAME = go
 HOMEPAGE = https://go.dev/
-ARCHIVE = go1.26.5.src.tar.gz
-LINK = https://go.dev/dl/go1.26.5.src.tar.gz
+ARCHIVE = go${VERSION}.src.tar.gz
+LINK = https://go.dev/dl/go${VERSION}.src.tar.gz
 SRCCD = archive
 BUILD = custom
 BUILDDIR = go
@@ -13,12 +13,11 @@ export GOARCH = amd64
 export GO_LDFLAGS = -buildmode=pie
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 custom-build:
 	cd ${BUILDDIR}/src; GOOS="linux" \
 		GOPATH="$(CURDIR)" \
-		GOROOT="go" \
+		GOROOT="$(CURDIR)/go" \
 		GOBIN="${GOROOT}"/bin \
 		GOROOT_FINAL=/usr/lib/go \
 		./make.bash -v

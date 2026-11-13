@@ -10,10 +10,12 @@ SRCCD = archive
 BUILD = make
 BUILDDIR = lua-5.5.0
 export ldpath = /usr/lib/lua5.5
-MAKEOPT = linux
+MAKEOPT = linux INSTALL_TOP=${DESTDIR}/usr INSTALL_DATA="cp -d" \
+	INSTALL_MAN=${DESTDIR}/usr/share/man/man1 \
+	TO_LIB="liblua.so liblua.so.5.5 liblua.so.5.5.0"
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/lua-5.5.0-shared_library-1.patch
 
 post_build:
 	install -Dm644 $(CURDIR)/lua5.5.pc -t package/usr/lib/pkgconfig
