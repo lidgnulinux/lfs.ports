@@ -80,7 +80,7 @@ _package_meson:
 	$(MAKE) post_build
 	$(MAKE) striping
 ifeq ($(GRAFT),no)
-	@cd $(CURDIR)/build/package; find . -type f | sed 's|^.||' > ../../${PACKAGE}.list
+	@cd $(CURDIR)/build/package; find -L . -type f | sed 's|^.||' > ../../${PACKAGE}.list
 	@install -Dm644 $(CURDIR)/${PACKAGE}.list $(CURDIR)/build/package/var/log/mk/${PACKAGE}.list
 else
 	@echo "The package will use graft for installation"
@@ -99,7 +99,7 @@ endif
 	$(MAKE) post_build
 	$(MAKE) striping
 ifeq ($(GRAFT),no)
-	@cd $(CURDIR)/package; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+	@cd $(CURDIR)/package; find -L . -type f | sed 's|^.||' > ../${PACKAGE}.list
 	@install -Dm644 $(CURDIR)/${PACKAGE}.list $(CURDIR)/package/var/log/mk/${PACKAGE}.list
 else
 	@echo "The package will use graft for installation"
@@ -113,7 +113,7 @@ _package_cmake:
 	$(MAKE) post_build
 	$(MAKE) striping
 ifeq ($(GRAFT),no)
-	@cd $(CURDIR)/package; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+	@cd $(CURDIR)/package; find -L . -type f | sed 's|^.||' > ../${PACKAGE}.list
 	@install -Dm644 $(CURDIR)/${PACKAGE}.list $(CURDIR)/package/var/log/mk/${PACKAGE}.list
 else
 	@echo "The package will use graft for installation"
@@ -132,7 +132,7 @@ endif
 	$(MAKE) post_build
 	$(MAKE) striping
 ifeq ($(GRAFT),no)
-	@cd $(CURDIR)/package; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+	@cd $(CURDIR)/package; find -L . -type f | sed 's|^.||' > ../${PACKAGE}.list
 	@install -Dm644 $(CURDIR)/${PACKAGE}.list $(CURDIR)/package/var/log/mk/${PACKAGE}.list
 else
 	@echo "The package will use graft for installation"
@@ -146,7 +146,7 @@ _package_muon:
 	$(MAKE) post_build
 	$(MAKE) striping
 ifeq ($(GRAFT),no)
-	@cd $(CURDIR)/b/package; find . -type f | sed 's|^.||' > ../../${PACKAGE}.list
+	@cd $(CURDIR)/b/package; find -L . -type f | sed 's|^.||' > ../../${PACKAGE}.list
 	@install -Dm644 $(CURDIR)/${PACKAGE}.list $(CURDIR)/b/package/var/log/mk/${PACKAGE}.list
 else
 	@echo "The package will use graft for installation"
@@ -159,7 +159,7 @@ _package_cargo:
 	$(MAKE) post_build
 	$(MAKE) striping
 ifeq ($(GRAFT),no)
-	@cd $(CURDIR)/pkg; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+	@cd $(CURDIR)/pkg; find -L . -type f | sed 's|^.||' > ../${PACKAGE}.list
 	@install -Dm644 $(CURDIR)/${PACKAGE}.list $(CURDIR)/pkg/var/log/mk/${PACKAGE}.list
 else
 	@echo "The package will use graft for installation"
@@ -172,7 +172,7 @@ _package_zig:
 	$(MAKE) post_build
 	$(MAKE) striping
 ifeq ($(GRAFT),no)
-	@cd $(CURDIR)/pkg; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+	@cd $(CURDIR)/pkg; find -L . -type f | sed 's|^.||' > ../${PACKAGE}.list
 	@install -Dm644 $(CURDIR)/${PACKAGE}.list $(CURDIR)/pkg/var/log/mk/${PACKAGE}.list
 else
 	@echo "The package will use graft for installation"
@@ -185,7 +185,7 @@ _package_custom:
 	$(MAKE) post_build
 	$(MAKE) striping
 ifeq ($(GRAFT),no)
-	@cd $(CURDIR)/pkg; find . -type f | sed 's|^.||' > ../${PACKAGE}.list
+	@cd $(CURDIR)/pkg; find -L . -type f | sed 's|^.||' > ../${PACKAGE}.list
 	@install -Dm644 $(CURDIR)/${PACKAGE}.list $(CURDIR)/pkg/var/log/mk/${PACKAGE}.list
 else
 	@echo "The package will use graft for installation"
