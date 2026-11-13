@@ -9,9 +9,10 @@ LINK = https://github.com/docbook/xslt10-stylesheets/releases/download/release/1
 SRCCD = archive
 BUILD = custom
 BUILDDIR = docbook-xsl-nons-1.79.2
+STRIP = no
 
 prepare:
-	patch -Np1 -d ${BUILDDIR} -i $(CURDIR)/765567_non-recursive_string_subst.patch
+	patch -Np1 -d ${BUILDDIR} -i $(CURDIR)/docbook-xsl-nons-1.79.2-stack_fix-1.patch
 	mkdir -p pkg/usr/share/xml/docbook/xsl-stylesheets-nons-${VERSION}
 	mkdir -p pkg/etc/xml
 
