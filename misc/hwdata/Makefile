@@ -1,21 +1,20 @@
 COMMENT = Hardware identification and configuration data
-VERSION = 0.404
+VERSION = 0.412
 REVISION = 0
 CATEGORIES = misc
 PKGNAME = hwdata
 HOMEPAGE = https://github.com/vcrhonek/hwdata
-ARCHIVE = v0.404.tar.gz
-LINK = https://github.com/vcrhonek/hwdata/archive/refs/tags/v0.404.tar.gz
+ARCHIVE = v0.412.tar.gz
+LINK = https://github.com/vcrhonek/hwdata/archive/refs/tags/v0.412.tar.gz
 SRCCD = archive
 BUILD = make
-BUILDDIR = hwdata-0.404
+BUILDDIR = hwdata-0.412
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
 	--datadir=/usr/share \
-	--disable-blacklist \
-	--build=x86_64-pc-linux-musl)
+	--disable-blacklist)
 MAKEOPT =
 
 prepare:
