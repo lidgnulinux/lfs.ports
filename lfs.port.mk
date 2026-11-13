@@ -5,6 +5,7 @@ LIBEXECDIR=/usr/libexec
 BINDIR=/usr/bin
 PACKAGE = ${PKGNAME}-${VERSION}-${REVISION}@${CATEGORIES}
 DESTDIR = $(CURDIR)/package
+GRAFT = no
 
 download:
 ifeq ($(SRCCD),archive)
