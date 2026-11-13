@@ -17,7 +17,7 @@ AUTO_CONF = (cd ${BUILDDIR} && CFLAGS="-fPIC" ./configure \
 MAKEOPT =
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/gnu89-inline.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/gnu89-inline.patch
 	autoreconf -vif ${BUILDDIR}
 
 post_build:

@@ -1,6 +1,6 @@
 COMMENT = Sophisticated ftp/http client
 VERSION = 4.9.3
-REVISION = 0
+REVISION = 1
 CATEGORIES = tool
 PKGNAME = lftp
 HOMEPAGE = https://lftp.tech
@@ -18,6 +18,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--disable-nls \
 	--disable-static \
 	--enable-threads=posix)
+GRAFT = no
 
 prepare:
 	autoreconf -vif ${BUILDDIR}

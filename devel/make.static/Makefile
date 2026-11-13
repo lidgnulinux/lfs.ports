@@ -17,7 +17,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure LDFLAGS="-static" \
 MAKEOPT =
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 	mv package/usr/bin/make package/usr/bin/make.static

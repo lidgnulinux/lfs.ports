@@ -1,24 +1,22 @@
 COMMENT = Python3 fast templating language
-VERSION = 1.3.10
+VERSION = 1.4.3
 REVISION = 0
 CATEGORIES = python
 PKGNAME = mako
 HOMEPAGE = https://www.makotemplates.org/
-ARCHIVE = mako-1.3.10.tar.gz
-LINK = https://files.pythonhosted.org/packages/source/M/Mako/mako-1.3.10.tar.gz
+ARCHIVE = mako-${VERSION}.tar.gz
+LINK = https://files.pythonhosted.org/packages/source/M/Mako/${ARCHIVE}
 SRCCD = archive
 BUILD = custom
-BUILDDIR = mako-1.3.10
+BUILDDIR = mako-${VERSION}
 
 prepare:
 
 custom-build:
-	cd ${BUILDDIR} && unshare -n python3 -m build --wheel --no-isolation
-	cd ${BUILDDIR} && python3 -m installer --destdir "$(PWD)/pkg" dist/*.whl
+	cd ${BUILDDIR} && python3 -m build --wheel --no-isolation
+	cd ${BUILDDIR} && python3 -m installer --destdir "$(CURDIR)/pkg" dist/*.whl
 
 post_build:
-	mv pkg/usr/pkg/*/usr/* pkg/usr
-	rm -rf pkg/usr/pkg
 
 post-install:
 

@@ -1,14 +1,14 @@
 COMMENT = Collection of tools, libraries, and tests for Vulkan shader compilation
-VERSION = 2025.3
+VERSION = 2026.1
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = shaderc
 HOMEPAGE = https://github.com/google/shaderc
-ARCHIVE = v2025.3.tar.gz
-LINK = https://github.com/google/shaderc/archive/v2025.3.tar.gz
+ARCHIVE = v${VERSION}.tar.gz
+LINK = https://github.com/google/shaderc/archive/v${VERSION}.tar.gz
 SRCCD = archive
 BUILD = cmake
-BUILDDIR = shaderc-2025.3
+BUILDDIR = shaderc-${VERSION}
 BUILD_OPTION = -DCMAKE_BUILD_TYPE=MinSizeRel \
 	-DCMAKE_CXX_FLAGS:STRING="-I/usr/include/glslang" \
 	-DBUILD_SHARED_LIBS=ON \
@@ -20,7 +20,7 @@ BUILD_OPTION = -DCMAKE_BUILD_TYPE=MinSizeRel \
 prepare:
 	sed -i '/examples/d;/third_party/d' ${BUILDDIR}/CMakeLists.txt
 	sed -i '/build-version/d' ${BUILDDIR}/glslc/CMakeLists.txt
-	cp -r "$(PWD)/build-version.inc" ${BUILDDIR}/glslc/src/build-version.inc
+	cp -r "$(CURDIR)/build-version.inc" ${BUILDDIR}/glslc/src/build-version.inc
 
 post_build:
 

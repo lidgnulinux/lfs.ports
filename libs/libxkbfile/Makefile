@@ -1,5 +1,5 @@
 COMMENT = X11 keyboard file manipulation library
-VERSION = 1.1.3
+VERSION = 1.2.0
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libxkbfile
@@ -7,9 +7,9 @@ HOMEPAGE = https://xorg.freedesktop.org/
 ARCHIVE = libxkbfile-${VERSION}.tar.xz
 LINK = https://www.x.org/releases/individual/lib/${ARCHIVE}
 SRCCD = archive
-BUILD = make
+BUILD = meson
 BUILDDIR = libxkbfile-${VERSION}
-AUTO_CONF = (cd ${BUILDDIR} && ./configure --prefix=/usr --sysconfdir=/etc)
+BUILD_OPTION = 
 
 prepare:
 

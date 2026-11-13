@@ -20,7 +20,7 @@ AUTO_CONF = (cd ${BUILDDIR} && CFLAGS="-fpermissive" ../dist/configure \
 MAKEOPT =
 
 prepare:
-	patch -p1 -d ${BUILDDIR}/../ -i $(PWD)/atomic.patch
+	patch -p1 -d ${BUILDDIR}/../ -i $(CURDIR)/atomic.patch
 
 post_build:
 

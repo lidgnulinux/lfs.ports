@@ -1,14 +1,14 @@
 COMMENT = Complete and free Internet live audio and video broadcasting solution for Linux/Unix
-VERSION = 8.1.2
-REVISION = 0
+VERSION = 9.0.2
+REVISION = 1
 CATEGORIES = media
 PKGNAME = ffmpeg
 HOMEPAGE = https://ffmpeg.org/
-ARCHIVE = ffmpeg-8.1.2.tar.xz
-LINK = https://ffmpeg.org/releases/ffmpeg-8.1.2.tar.xz
+ARCHIVE = ffmpeg-${VERSION}.tar.xz
+LINK = https://ffmpeg.org/releases/ffmpeg-${VERSION}.tar.xz
 SRCCD = archive
 BUILD = make
-BUILDDIR = ffmpeg-8.1.2
+BUILDDIR = ffmpeg-${VERSION}
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--libdir=/usr/lib \
@@ -47,7 +47,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--enable-shared \
 	--enable-libvorbis \
 	--enable-vaapi \
-	--enable-vdpau \
+	--disable-vdpau \
 	--enable-version3 \
 	--enable-vulkan \
 	--enable-asm \
@@ -57,7 +57,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

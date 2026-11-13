@@ -16,16 +16,16 @@ STRIP = no
 prepare:
 
 post_build:
-	install -vd $(PWD)/package/usr/share/common-lisp/source/${PKGNAME}
+	install -vd $(CURDIR)/package/usr/share/common-lisp/source/${PKGNAME}
 	cp -vr ${BUILDDIR}/../${PKGNAME}.asd ${BUILDDIR}/../alexandria-{1,2} \
-		$(PWD)/package/usr/share/common-lisp/source/${PKGNAME}
-	install -vDm644 -t $(PWD)/package/usr/share/doc/${pkgname} \
+		$(CURDIR)/package/usr/share/common-lisp/source/${PKGNAME}
+	install -vDm644 -t $(CURDIR)/package/usr/share/doc/${pkgname} \
 		${BUILDDIR}/../README
-	install -vDm644 -t $(PWD)/package/usr/share/doc/${pkgname} \
+	install -vDm644 -t $(CURDIR)/package/usr/share/doc/${pkgname} \
 		${BUILDDIR}/alexandria.html
 	install -vDm644 ${BUILDDIR}/alexandria.info \
-		$(PWD)/package/usr/share/info/${PKGNAME}.info
-	install -vDm644 -t $(PWD)/package/usr/share/licenses/ \
+		$(CURDIR)/package/usr/share/info/${PKGNAME}.info
+	install -vDm644 -t $(CURDIR)/package/usr/share/licenses/ \
 		${BUILDDIR}/../LICENCE
 
 post-install:

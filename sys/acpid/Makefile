@@ -18,7 +18,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	patch -d ${BUILDDIR} -i $(PWD)/lfs64.patch
+	patch -d ${BUILDDIR} -i $(CURDIR)/lfs64.patch
 
 post_build:
 

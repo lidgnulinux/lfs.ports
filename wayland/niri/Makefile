@@ -13,7 +13,7 @@ BUILD_OPTION = --no-default-features --features dbus,xdp-gnome-screencast
 export RUSTFLAGS = -C target-feature=-crt-static
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/niri-session.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/niri-session.patch
 
 post_build:
 	install -Dm755 ${BUILDDIR}/target/release/niri -t pkg/usr/bin/

@@ -1,7 +1,7 @@
 COMMENT = dwm for Wayland
-VERSION = 0.8.c99cdc9a8
-_SHA = 99cdc9a825ea54ead1415bea301996aef2e6af75
-REVISION = 0
+VERSION = 0.10.c0996407e
+_SHA = 0996407e3d736ea76f58e7a368b73964bb1ce1de
+REVISION = 1
 CATEGORIES = wayland
 PKGNAME = dwl
 HOMEPAGE = https://codeberg.org/dwl/dwl
@@ -12,7 +12,7 @@ BUILD = make
 BUILDDIR = dwl
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/00_vanity-gaps_commit_99cdc9a8.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/00_vanity-gaps_commit_0996407e.patch
 
 post_build:
 	mv package/usr/bin/dwl package/usr/bin/dwl-gaps
@@ -22,7 +22,7 @@ post_build:
 	mv package/usr/share/man/man1/dwl.1 \
 		package/usr/share/man/man1/dwl-gaps.1
 	mkdir -p package/usr/share/dwl
-	cp -r 00_vanity-gaps_commit_99cdc9a8.patch package/usr/share/dwl
+	cp -r 00_vanity-gaps_commit_0996407e.patch package/usr/share/dwl
 
 post-install:
 

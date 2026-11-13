@@ -14,7 +14,7 @@ prepare:
 
 custom-build:
 	cd ${BUILDDIR} && unshare -n python3 -m build --wheel --no-isolation
-	cd ${BUILDDIR} && python3 -m installer --destdir "$(PWD)/pkg" dist/*.whl
+	cd ${BUILDDIR} && python3 -m installer --destdir "$(CURDIR)/pkg" dist/*.whl
 
 post_build:
 	mv pkg/usr/pkg/*/usr/* pkg/usr

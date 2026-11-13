@@ -1,18 +1,17 @@
 COMMENT = X11 PCI access library
-VERSION = 0.18.1
+VERSION = 0.19
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libpciaccess
 HOMEPAGE = https://xorg.freedesktop.org/
-ARCHIVE = libpciaccess-0.18.1.tar.xz
-LINK = https://www.x.org/releases/individual/lib/libpciaccess-0.18.1.tar.xz
+ARCHIVE = libpciaccess-0.19.tar.xz
+LINK = https://www.x.org/releases/individual/lib/libpciaccess-0.19.tar.xz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = libpciaccess-0.18.1
+BUILDDIR = libpciaccess-0.19
 BUILD_OPTION =
 
 prepare:
-	patch -p1 -d ${BUILDDIR}  -i $(PWD)/vgaarb-Check-snprintf-return-value.patch
 
 post_build:
 

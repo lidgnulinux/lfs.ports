@@ -1,6 +1,6 @@
 COMMENT = Command line screen capture util 
 VERSION = 0.10.0
-REVISION = 0
+REVISION = 1
 CATEGORIES = xapps
 PKGNAME = scrot
 HOMEPAGE = https://github.com/dreamer/scrot
@@ -14,5 +14,7 @@ BUILD_OPTION = --buildtype=release
 prepare:
 
 post_build:
+
+post-install:
 
 include /usr/share/mk/lfs.port.mk

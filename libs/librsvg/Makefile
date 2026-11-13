@@ -1,14 +1,14 @@
 COMMENT = SAX-based renderer for SVG files into a GdkPixbuf
-VERSION = 2.62.3
-REVISION = 0
+VERSION = 2.63.4
+REVISION = 1
 CATEGORIES = libs
 PKGNAME = librsvg
 HOMEPAGE = https://gitlab.gnome.org/GNOME/librsvg
-ARCHIVE = librsvg-2.62.3.tar.xz
-LINK = https://download.gnome.org/sources/librsvg/2.62/librsvg-2.62.3.tar.xz
+ARCHIVE = librsvg-${VERSION}.tar.xz
+LINK = https://download.gnome.org/sources/librsvg/2.63/librsvg-${VERSION}.tar.xz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = librsvg-2.62.3
+BUILDDIR = librsvg-${VERSION}
 BUILD_OPTION = -Dintrospection=enabled \
 	-Dpixbuf=enabled \
 	-Dpixbuf-loader=enabled \
@@ -16,7 +16,6 @@ BUILD_OPTION = -Dintrospection=enabled \
 	-Dtests=false \
 	-Ddocs=disabled \
 	-Davif=enabled
-export RUSTFLAGS=-C target-feature=-crt-static
 
 prepare:
 

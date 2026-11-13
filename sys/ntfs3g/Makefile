@@ -21,7 +21,6 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--with-fuse=internal \
 	--without-hd \
 	--disable-ldconfig \
-	--build=x86_64-pc-linux-musl \
 	rootbindir=/usr/bin \
 	rootsbindir=/usr/sbin \
 	rootlibdir=/usr/lib)

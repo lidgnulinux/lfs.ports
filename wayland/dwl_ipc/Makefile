@@ -13,18 +13,18 @@ BUILDDIR = dwl
 EDITOR = vim
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/patch/ipc-commit.9b11a49c.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/patch/ipc-commit.9b11a49c.patch
 	cp -r protocols/dwl-ipc-unstable-v2.xml ${BUILDDIR}/protocols/
 ifeq ($(GAPS),YES)
 	@echo "applying gaps patch."
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/patch/optional-gaps-commit.9b11a49c.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/patch/optional-gaps-commit.9b11a49c.patch
 else
 	@echo "skipping applying gaps patch."
 endif
 
 ifeq ($(FOREIGN),YES)
 	@echo "applying foreign-toplevel patch."
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/patch/optional-foreign_toplevel-commit.9b11a49c.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/patch/optional-foreign_toplevel-commit.9b11a49c.patch
 	cp -r protocols/wlr-foreign-toplevel-management-unstable-v1.xml ${BUILDDIR}/protocols/
 else
 	@echo "skipping applying foreign-toplevel patch."
@@ -32,14 +32,14 @@ endif
 
 ifeq ($(MENU),YES)
 	@echo "applying menu patch."
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/patch/optional-menu-commit.9b11a49c.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/patch/optional-menu-commit.9b11a49c.patch
 else
 	@echo "skipping applying menu patch."
 endif
 
 ifeq ($(CENTER),YES)
 	@echo "applying always-center patch."
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/patch/optional-always_center-commit.9b11a49c.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/patch/optional-always_center-commit.9b11a49c.patch
 else
 	@echo "skipping applying always_center patch."
 endif

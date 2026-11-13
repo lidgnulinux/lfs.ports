@@ -5,7 +5,7 @@ CATEGORIES = tool
 PKGNAME = musl_util
 HOMEPAGE = https://musl.libc.org/
 BUILD = custom
-BUILDDIR = $(PWD)
+BUILDDIR = $(CURDIR)
 
 prepare:
 	mkdir -p pkg/usr/bin

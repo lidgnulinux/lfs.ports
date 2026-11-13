@@ -1,16 +1,16 @@
 COMMENT = Provides a standard for creating app stores across distributions
-VERSION = 1.1.3
+VERSION = 1.2.1
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = appstream
 HOMEPAGE = https://distributions.freedesktop.org/wiki/AppStream
-ARCHIVE = AppStream-1.1.3.tar.xz
-LINK = https://www.freedesktop.org/software/appstream/releases/AppStream-1.1.3.tar.xz
+ARCHIVE = AppStream-${VERSION}.tar.xz
+LINK = https://www.freedesktop.org/software/appstream/releases/AppStream-${VERSION}.tar.xz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = AppStream-1.1.3
+BUILDDIR = AppStream-${VERSION}
 BUILD_OPTION = -Dqt=false \
-	-Dsystemd=false \
+	-Dsystemd=true \
 	-Ddocs=false \
 	-Dman=false \
 	-Dapidocs=false \
@@ -20,7 +20,8 @@ BUILD_OPTION = -Dqt=false \
 	-Dapt-support=false \
 	-Dgir=true \
 	-Dblake3-support=false \
-	-Dcompose=true
+	-Dbash-completion=false \
+	-Dcompose=false
 
 prepare:
 

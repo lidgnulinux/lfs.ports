@@ -15,12 +15,11 @@ AUTO_CONF = (cd ${BUILDDIR} && pkgver=${VERSION} ./configure \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
 	--enable-shared \
-	--enable-static \
-	--build=x86_64-pc-linux-musl)
+	--enable-static)
 MAKEOPT =
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

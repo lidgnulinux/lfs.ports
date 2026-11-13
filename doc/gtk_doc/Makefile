@@ -1,26 +1,17 @@
 COMMENT = Documentation tool for public library API
-VERSION = 1.35.0
+VERSION = 1.37.0
 REVISION = 0
 CATEGORIES = doc
 PKGNAME = gtk_doc
 HOMEPAGE = https://wiki.gnome.org/DocumentationProject/GtkDoc
-ARCHIVE = gtk-doc-1.35.0.tar.gz
-LINK = https://gitlab.gnome.org/GNOME/gtk-doc/-/archive/1.35.0/gtk-doc-1.35.0.tar.gz
+ARCHIVE = gtk-doc-${VERSION}.tar.gz
+LINK = https://gitlab.gnome.org/GNOME/gtk-doc/-/archive/${VERSION}/gtk-doc-${VERSION}.tar.gz
 SRCCD = archive
-BUILD = make
-BUILDDIR = gtk-doc-1.35.0
-AUTO_CONF = (cd ${BUILDDIR} && ./configure \
-	--prefix=/usr \
-	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--with-highlight=highlight \
-	--build=x86_64-pc-linux-musl)
-MAKEOPT =
+BUILD = meson
+BUILDDIR = gtk-doc-${VERSION}
+BUILD_OPTION =
 
 prepare:
-	cd ${BUILDDIR} && ./autogen.sh
-
-custom-build:
 
 post_build:
 

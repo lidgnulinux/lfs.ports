@@ -10,8 +10,7 @@ SRCCD = archive
 BUILD = meson
 BUILDDIR = imv-v5.0.1
 BUILD_OPTION = -Dwindows=all \
-	-Dtest=disabled \
-	-Dunicode=grapheme
+	-Dtest=disabled
 
 prepare:
 

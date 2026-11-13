@@ -16,7 +16,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/socklen-t.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/socklen-t.patch
 
 post_build:
 

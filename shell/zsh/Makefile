@@ -29,7 +29,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 	cd ${BUILDDIR}/Completion/Unix/Command && rm -f _aap _apm \
 		_baz _bittorrent _bpython _ccal _cdcd _chkconfig _clay \
 		_cowsay _cplay _cssh _darcs _devtodo _dict _dsh _elfdump _elm \

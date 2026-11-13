@@ -1,12 +1,12 @@
 COMMENT = Collection of tools and libraries for many image formats
-VERSION = 7.1.2.30
+VERSION = 7.1.2.35
 _V = $(shell sed -E 's/(.*)\./\1-/'<<< ${VERSION})
 REVISION = 0
 CATEGORIES = tool
 PKGNAME = imagemagick
 HOMEPAGE = https://imagemagick.org/
 ARCHIVE = ImageMagick-${_V}.tar.xz
-LINK = https://download.imagemagick.org/archive/releases//ImageMagick-${_V}.tar.xz
+LINK = https://download.imagemagick.org/archive/releases/${ARCHIVE}
 SRCCD = archive
 BUILD = make
 BUILDDIR = ImageMagick-${_V}
@@ -23,9 +23,9 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--with-threads \
 	--with-tiff \
 	--with-x \
+	--with-jxl \
 	--with-xml \
-	--with-heic \
-	--build=x86_64-pc-linux-musl)
+	--with-heic)
 
 prepare:
 

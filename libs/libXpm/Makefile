@@ -1,5 +1,5 @@
 COMMENT = X11 pixmap library
-VERSION = 3.5.17
+VERSION = 3.5.20
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libXpm

@@ -1,5 +1,5 @@
 COMMENT = CLI for dealing with GitHub
-VERSION = 2.97.0
+VERSION = 2.99.0
 REVISION = 0
 CATEGORIES = tool
 PKGNAME = gh

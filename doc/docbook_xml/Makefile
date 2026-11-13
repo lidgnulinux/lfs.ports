@@ -5,9 +5,10 @@ CATEGORIES = doc
 PKGNAME = docbook_xml
 HOMEPAGE = https://scrollkeeper.sourceforge.net/docbook.shtml
 ARCHIVE = docbook-xml-4.5.zip
-LINK = https://www.docbook.org/xml/4.5/docbook-xml-4.5.zip
+LINK = https://archive.docbook.org/xml/4.5/docbook-xml-4.5.zip
 SRCCD = archive
 BUILD = custom
+STRIP = no
 
 prepare:
 	mkdir pkg source

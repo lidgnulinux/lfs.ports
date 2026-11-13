@@ -20,7 +20,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure --prefix=/usr \
 
 prepare:
 	patch -Np1 -d ${BUILDDIR} < bash-noinfo.patch
-	for i in patch/*; do patch -Np0 -d ${BUILDDIR} < $(PWD)/$$i; done
+	for i in patch/*; do patch -Np0 -d ${BUILDDIR} < $(CURDIR)/$$i; done
 
 post_build:
 

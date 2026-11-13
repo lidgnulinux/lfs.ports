@@ -13,7 +13,7 @@ OPTIONS = --ldflags="-X main.imageModulesDir=/lib/modules/ -X main.firmwareDir=/
 export GOFLAGS = -trimpath -modcacherw
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/fix-consolefonts.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/fix-consolefonts.patch
 
 custom-build:
 	cd ${BUILDDIR}/generator; go build ${OPTIONS}
@@ -25,7 +25,7 @@ docs:
 	cd ${BUILDDIR}/docs; md2html -i manpage.md -o booster.html
 
 post_build:
-	install -Dm644 $(PWD)/booster.yaml pkg/etc/booster.yaml
+	install -Dm644 $(CURDIR)/booster.yaml pkg/etc/booster.yaml
 	install -Dm644 ${BUILDDIR}/docs/booster.html \
 		pkg/usr/share/docs/booster/booster.html
 	install -Dm755 ${BUILDDIR}/generator/generator pkg/usr/bin/booster

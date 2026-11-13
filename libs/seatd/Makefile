@@ -1,6 +1,6 @@
 COMMENT = Minimal seat management daemon
-VERSION = 0.9.1
-REVISION = 0
+VERSION = 0.9.3
+REVISION = 2
 CATEGORIES = libs
 PKGNAME = seatd
 HOMEPAGE = https://sr.ht/~kennylevinsen/seatd/
@@ -9,8 +9,8 @@ LINK = https://git.sr.ht/~kennylevinsen/seatd/archive/${ARCHIVE}
 SRCCD = archive
 BUILD = meson
 BUILDDIR = seatd-${VERSION}
-BUILD_OPTION = -Dlibseat-seatd=enabled \
-	-Dlibseat-builtin=enabled \
+BUILD_OPTION = -Dserver=enabled \
+	-Dlibseat-seatd=enabled \
 	-Dman-pages=disabled \
 	-Dexamples=disabled
 

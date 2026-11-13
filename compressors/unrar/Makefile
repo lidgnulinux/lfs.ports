@@ -10,7 +10,7 @@ SRCCD = archive
 BUILD = make
 BUILDDIR = unrar
 MAKEOPT = -f makefile
-override DESTDIR = $(PWD)/package/usr
+override DESTDIR = $(CURDIR)/package/usr
 
 prepare:
 

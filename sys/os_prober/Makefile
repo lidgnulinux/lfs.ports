@@ -1,14 +1,14 @@
 COMMENT = Utility to detect other OSes on a set of drives
-VERSION = 1.84
-REVISION = 1
+VERSION = 1.85
+REVISION = 0
 CATEGORIES = sys
 PKGNAME = os_prober
 HOMEPAGE = https://joeyh.name/code/os-prober/
-ARCHIVE = os-prober_1.84.tar.xz
-LINK = https://deb.debian.org/debian/pool/main/o/os-prober/os-prober_1.84.tar.xz
+ARCHIVE = os-prober_${VERSION}.tar.xz
+LINK = https://deb.debian.org/debian/pool/main/o/os-prober/os-prober_${VERSION}.tar.xz
 SRCCD = archive
 BUILD = make
-BUILDDIR = os-prober-1.84
+BUILDDIR = os-prober-${VERSION}
 MAKEOPT = newns
 MKINST = no
 

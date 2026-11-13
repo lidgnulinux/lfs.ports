@@ -1,5 +1,5 @@
 COMMENT = X.Org X servers
-VERSION = 21.1.24
+VERSION = 21.1.25
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = xorg_server

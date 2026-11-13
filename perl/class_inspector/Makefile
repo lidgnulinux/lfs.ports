@@ -17,11 +17,8 @@ prepare:
 	cd ${BUILDDIR}; PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 
 post_build:
-	find $(PWD)/package \( -name perllocal.pod -o -name .packlist \) -delete
+	find $(CURDIR)/package \( -name perllocal.pod -o -name .packlist \) -delete
 
 post-install:
-
-test:
-	echo ${CFLAGS}
 
 include /usr/share/mk/lfs.port.mk

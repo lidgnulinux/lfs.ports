@@ -9,7 +9,6 @@ LINK = https://downloads.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.
 SRCCD = archive
 BUILD = make
 BUILDDIR = lame-3.100
-BUILD_OPTION =
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
@@ -17,20 +16,19 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--enable-nasm \
 	--disable-mp3x \
 	--enable-shared \
-	--with-pic \
-	--build=x86_64-pc-linux-musl)
+	--with-pic)
 MAKEOPT =
 
 prepare:
 	mkdir -p ${BUILDDIR}/libmp3lame/i386/.libs
 	sed -i -e '/define sp/s/+/ + /g' ${BUILDDIR}/libmp3lame/i386/nasm.h
-	patch -p1 -d ${BUILDDIR} < $(PWD)/id3tagfix.patch
+	patch -p1 -d ${BUILDDIR} < $(CURDIR)/id3tagfix.patch
 
 	cd ${BUILDDIR} && aclocal && automake --force --add-missing
 
 post_build:
 	mkdir -p package/usr/lib/pkgconfig
-	cp -r $(PWD)/lame.pc package/usr/lib/pkgconfig/lame.pc
+	cp -r $(CURDIR)/lame.pc package/usr/lib/pkgconfig/lame.pc
 
 post-install:
 

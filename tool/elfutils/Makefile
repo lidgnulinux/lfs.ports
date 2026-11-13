@@ -25,7 +25,7 @@ AUTO_CONF = (cd ${BUILDDIR} && CFLAGS="-D_GNU_SOURCE -Wno-error -Wno-null-derefe
 MAKEOPT =
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

@@ -14,19 +14,19 @@ MAKEOPT = linux V=${VERSION} \
 	-DLUA_COMPAT_ALL" \
 	RPATH="/usr/lib" \
 	LIB_LIBS="-lpthread -lm -ldl" \
-	INSTALL_TOP="$(PWD)/package"/usr \
-	INSTALL_INC="$(PWD)/package"/usr/include/lua5.2 \
-	INSTALL_LIB="$(PWD)/package"/usr/lib/lua5.2
+	INSTALL_TOP="$(CURDIR)/package"/usr \
+	INSTALL_INC="$(CURDIR)/package"/usr/include/lua5.2 \
+	INSTALL_LIB="$(CURDIR)/package"/usr/lib/lua5.2
 
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 	mv package/usr/bin/lua package/usr/bin/lua5.2
 	mv package/usr/bin/luac package/usr/bin/luac5.2
 
-	install -Dm644 $(PWD)/lua5.2.pc -t package/usr/lib/pkgconfig
+	install -Dm644 $(CURDIR)/lua5.2.pc -t package/usr/lib/pkgconfig
 	ln -sv lua5.2.pc package/usr/lib/pkgconfig/lua-5.2.pc
 
 post-install:

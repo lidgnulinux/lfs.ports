@@ -1,20 +1,19 @@
 COMMENT = A low-level cryptographic library.
-VERSION = 3.10.2
+VERSION = 4.0
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = nettle
 HOMEPAGE = https://www.lysator.liu.se/~nisse/nettle/
-ARCHIVE = nettle-3.10.2.tar.gz
-LINK = https://ftp.gnu.org/gnu/nettle/nettle-3.10.2.tar.gz
+ARCHIVE = nettle-${VERSION}.tar.gz
+LINK = https://ftp.gnu.org/gnu/nettle/${ARCHIVE}
 SRCCD = archive
 BUILD = make
-BUILDDIR = nettle-3.10.2
+BUILDDIR = nettle-${VERSION}
 BUILD_OPTION =
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT =
 
 prepare:

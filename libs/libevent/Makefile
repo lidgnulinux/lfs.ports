@@ -14,11 +14,12 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
 	--disable-libevent-regress \
-	--build=x86_64-pc-linux-musl)
+	)
 MAKEOPT =
+GRAFT = no
 
 prepare:
-	for i in patch/*; do patch -p0 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p0 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

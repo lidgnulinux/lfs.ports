@@ -1,14 +1,14 @@
 COMMENT = C API for USB device access.
-VERSION = 1.0.29
+VERSION = 1.0.30
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libusb
 HOMEPAGE = https://libusb.info/
-ARCHIVE = libusb-1.0.29.tar.bz2
-LINK = https://downloads.sourceforge.net/project/libusb/libusb-1.0/libusb-1.0.29/libusb-1.0.29.tar.bz2
+ARCHIVE = libusb-${VERSION}.tar.bz2
+LINK = https://downloads.sourceforge.net/project/libusb/libusb-1.0/libusb-${VERSION}/${ARCHIVE}
 SRCCD = archive
 BUILD = make
-BUILDDIR = libusb-1.0.29
+BUILDDIR = libusb-${VERSION}
 BUILD_OPTION =
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
@@ -16,8 +16,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--libdir=/usr/lib \
 	--enable-shared \
 	--disable-udev \
-	--enable-system-log \
-	--build=x86_64-pc-linux-musl)
+	--enable-system-log)
 MAKEOPT =
 
 prepare:

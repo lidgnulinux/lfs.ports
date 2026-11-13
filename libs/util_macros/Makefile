@@ -10,6 +10,7 @@ SRCCD = archive
 BUILD = make
 BUILDDIR = util-macros-${VERSION}
 AUTO_CONF = (cd ${BUILDDIR} && ./configure --prefix=/usr --libdir=/usr/lib) 
+STRIP = no
 
 prepare:
 

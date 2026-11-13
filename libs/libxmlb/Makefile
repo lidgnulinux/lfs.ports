@@ -1,5 +1,5 @@
 COMMENT = Library to help create and query binary XML blobs
-VERSION = 0.3.25
+VERSION = 0.3.29
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libxmlb

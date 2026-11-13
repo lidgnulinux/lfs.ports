@@ -20,10 +20,10 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
-	install -Dm644 $(PWD)/externally-managed \
+	install -Dm644 $(CURDIR)/externally-managed \
 		package/usr/lib/python$_basever/EXTERNALLY-MANAGED
 	ln -s python3 package/usr/bin/python
 	ln -s python3-config package/usr/bin/python-config

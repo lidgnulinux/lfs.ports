@@ -20,7 +20,7 @@ AUTO_CONF = (cd ${BUILDDIR} && autoreconf -vif && ./configure \
 MAKEOPT =
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/dont-rerun-plugin-tests.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/dont-rerun-plugin-tests.patch
 
 post_build:
 

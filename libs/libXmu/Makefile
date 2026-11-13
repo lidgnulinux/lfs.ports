@@ -1,5 +1,5 @@
 COMMENT = X11 miscellaneous micro-utility library
-VERSION = 1.2.1
+VERSION = 1.3.1
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libXmu
@@ -8,12 +8,11 @@ ARCHIVE = libXmu-${VERSION}.tar.xz
 LINK = https://www.x.org/releases/individual/lib/${ARCHIVE}
 SRCCD = archive
 BUILD = make
-BUILDDIR = libXmu-1.2.1
+BUILDDIR = libXmu-1.3.1
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--without-fop \
-	--build=x86_64-pc-linux-musl)
+	--without-fop)
 
 prepare:
 

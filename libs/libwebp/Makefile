@@ -15,9 +15,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--libdir=/usr/lib \
 	--enable-libwebpmux \
 	--enable-libwebpdemux \
-	--enable-libwebpdecoder \
-	--disable-tiff \
-	--build=x86_64-pc-linux-musl)
+	--enable-libwebpdecoder)
 MAKEOPT =
 
 prepare:

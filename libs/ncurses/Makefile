@@ -23,7 +23,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--sysconfdir=/etc)
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/cleanup-pkgconfig-ldflags.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/cleanup-pkgconfig-ldflags.patch
 
 post_build:
 	for lib in ncurses ncurses++ form panel menu; do \

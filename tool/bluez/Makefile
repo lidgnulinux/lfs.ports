@@ -15,9 +15,6 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
 	--libexecdir=/usr/libexec \
-	--with-systemdsystemunitdir=/usr/lib/systemd/system \
-	--with-systemduserunitdir=/usr/lib/systemd/user \
-	--disable-systemd \
 	--enable-library \
 	--enable-deprecated \
 	--enable-hid2hci \
@@ -25,8 +22,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--enable-sixaxis \
 	--enable-btpclient \
 	--enable-experimental \
-	--with-dbusconfdir=/usr/share \
-	--build=x86_64-pc-linux-musl)
+	--with-dbusconfdir=/usr/share)
 MAKEOPT =
 
 prepare:
@@ -36,7 +32,11 @@ post_build:
 	install -D -m644 ${BUILDDIR}/src/main.conf package/etc/bluetooth/main.conf
 	install -Dm755 ${BUILDDIR}/tools/btmgmt -t package/usr/bin/
 	install -Dm755 ${BUILDDIR}/attrib/gatttool -t package/usr/bin/
-	install -Dm644 $(PWD)/org.bluez.obex.service package/usr/share/dbus-1/services/org.bluez.obex.service
+	install -Dm644 $(CURDIR)/org.bluez.obex.service package/usr/share/dbus-1/services/org.bluez.obex.service
+	install -Dm644 ${BUILDDIR}/src/bluetooth.service -t package/usr/lib/systemd/system/
+	install -Dm644 ${BUILDDIR}/obexd/src/obex.service -t package/usr/lib/systemd/user/
+	install -Dm644 ${BUILDDIR}/tools/mpris-proxy.service -t package/usr/lib/systemd/user/
+	install -Dm644 ${BUILDDIR}/mesh/bluetooth-mesh.service -t package/usr/lib/systemd/system/
 
 post-install:
 

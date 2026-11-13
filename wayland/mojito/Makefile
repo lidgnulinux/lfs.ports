@@ -7,7 +7,7 @@ HOMEPAGE = https://git.sr.ht/~dlm/mojito
 SRCCD = git
 BUILD = make
 BUILDDIR = mojito
-MAKEOPT = PREFIX=$(PWD)/package/usr
+MAKEOPT = PREFIX=$(CURDIR)/package/usr
 
 prepare:
 

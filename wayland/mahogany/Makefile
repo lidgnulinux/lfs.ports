@@ -15,7 +15,7 @@ prepare:
 
 	curl -O https://beta.quicklisp.org/quicklisp.lisp
 
-	sbcl --noinform --load $(PWD)/quicklisp.lisp --eval \
+	sbcl --noinform --load $(CURDIR)/quicklisp.lisp --eval \
 		"(quicklisp-quickstart:install)"
 
 	sbcl --noinform --load "${HOME}/quicklisp/setup.lisp" \

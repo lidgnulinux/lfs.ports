@@ -1,5 +1,5 @@
 COMMENT = Input device library.
-VERSION = 1.31.2
+VERSION = 1.32.0
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libinput

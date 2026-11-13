@@ -10,8 +10,8 @@ SRCCD = archive
 BUILD = make
 BUILDDIR = OpenDoas-${VERSION}
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
-	--prefix=/usr \
-	--with-timestamp)
+	--prefix=/usr --with-timestamp)
+GRAFT = no
 	
 prepare:
 

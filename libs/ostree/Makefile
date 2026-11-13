@@ -1,14 +1,14 @@
 COMMENT = Operating system and container binary deployment and upgrades
-VERSION = 2025.7
+VERSION = 2026.4
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = ostree
 HOMEPAGE = https://github.com/ostreedev/ostree
-ARCHIVE = libostree-2025.7.tar.xz
-LINK = https://github.com/ostreedev/ostree/releases/download/v2025.7/libostree-2025.7.tar.xz
+ARCHIVE = libostree-${VERSION}.tar.xz
+LINK = https://github.com/ostreedev/ostree/releases/download/v${VERSION}/libostree-${VERSION}.tar.xz
 SRCCD = archive
 BUILD = make
-BUILDDIR = libostree-2025.7
+BUILDDIR = libostree-${VERSION}
 BUILD_OPTION =
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
@@ -20,15 +20,19 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--disable-gtk-doc \
 	--disable-static \
 	--disable-glibtest \
-	--without-soup3 \
+	--with-soup3 \
 	--without-openssl \
-	--with-curl \
-	--build=x86_64-pc-linux-musl)
+	--with-curl)
 MAKEOPT =
 
 prepare:
 
+trivial-httpd:
+	make -C ${BUILDDIR} PREFIX=/usr ostree-trivial-httpd 
+
 post_build:
+	install -Dm755 ${BUILDDIR}/ostree-trivial-httpd \
+		-t package/usr/lib/libostree/
 
 post-install:
 

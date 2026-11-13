@@ -4,11 +4,11 @@ REVISION = 0
 CATEGORIES = libs
 PKGNAME = libsoup3
 HOMEPAGE = https://wiki.gnome.org/Projects/libsoup
-ARCHIVE = libsoup-3.6.6.tar.xz
-LINK = https://download.gnome.org/sources/libsoup/3.6/libsoup-3.6.6.tar.xz
+ARCHIVE = libsoup-${VERSION}.tar.xz
+LINK = https://download.gnome.org/sources/libsoup/3.6/libsoup-${VERSION}.tar.xz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = libsoup-3.6.6
+BUILDDIR = libsoup-${VERSION}
 BUILD_OPTION = -Dtls_check=false \
 	-Dintrospection=enabled \
 	-Dvapi=enabled \

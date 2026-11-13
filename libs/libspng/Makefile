@@ -9,7 +9,8 @@ LINK = https://github.com/randy408/libspng/archive/refs/tags/v0.7.4.tar.gz
 SRCCD = archive
 BUILD = meson
 BUILDDIR = libspng-0.7.4
-BUILD_OPTION =
+BUILD_OPTION = -Denable_opt=true \
+	-Ddev_build=false
 
 prepare:
 

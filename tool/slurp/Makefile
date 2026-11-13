@@ -9,7 +9,7 @@ LINK = https://github.com/emersion/slurp/archive/v1.5.0/slurp-1.5.0.tar.gz
 SRCCD = archive
 BUILD = meson
 BUILDDIR = slurp-1.5.0
-BUILD_OPTION = -Dman-pages=disabled
+BUILD_OPTION =
 
 prepare:
 

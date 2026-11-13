@@ -1,5 +1,5 @@
 COMMENT = Application launcher for wlroots-based Wayland compositors
-VERSION = 1.14.1
+VERSION = 1.15.0
 REVISION = 0
 CATEGORIES = wayland
 PKGNAME = fuzzel

@@ -1,14 +1,14 @@
 COMMENT = Library for AppStream metadata
-VERSION = 0.8.3
+VERSION = 0.8.4
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = appstream_glib
 HOMEPAGE = https://people.freedesktop.org/~hughsient/appstream-glib/
-ARCHIVE = appstream-glib-0.8.3.tar.xz
-LINK = https://people.freedesktop.org/~hughsient/appstream-glib/releases/appstream-glib-0.8.3.tar.xz
+ARCHIVE = appstream-glib-${VERSION}.tar.xz
+LINK = https://github.com/hughsie/appstream-glib/releases/download/appstream_glib_0_8_4/${ARCHIVE}
 SRCCD = archive
 BUILD = meson
-BUILDDIR = appstream-glib-0.8.3
+BUILDDIR = appstream-glib-${VERSION}
 BUILD_OPTION = -Ddep11=true \
 	-Dbuilder=true \
 	-Drpm=false \

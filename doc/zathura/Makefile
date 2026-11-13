@@ -1,18 +1,19 @@
 COMMENT = zathura - highly customizable and functional document viewer
-VERSION = 2026.03.27
+VERSION = 2026.10.23
 REVISION = 0
 CATEGORIES = doc
 PKGNAME = zathura
 HOMEPAGE = https://pwmt.org/projects/zathura/
-ARCHIVE = zathura-2026.03.27.tar.xz
+ARCHIVE = zathura-${VERSION}.tar.xz
 LINK = https://pwmt.org/projects/zathura/download/${ARCHIVE}
 SRCCD = archive
 BUILD = meson
-BUILDDIR = zathura-2026.03.27
+BUILDDIR = zathura-${VERSION}
 BUILD_OPTION = -Dseccomp=enabled \
 	-Dlandlock=enabled \
 	-Dmanpages=disabled \
-	-Dtests=disabled \
+	-Dshell-completions=disabled \
+	-Dsynctex=disabled \
 	-Dconvert-icon=disabled
 
 prepare:

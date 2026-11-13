@@ -16,7 +16,7 @@ prepare:
 custom-build:
 	cd ${BUILDDIR} && unshare -n python3 -m flit_core.wheel
 	cd ${BUILDDIR} && python3 bootstrap_install.py --installdir \
-		$(PWD)/pkg${PYTHONDIR} dist/flit_core-*.whl
+		$(CURDIR)/pkg${PYTHONDIR} dist/flit_core-*.whl
 
 post_build:
 

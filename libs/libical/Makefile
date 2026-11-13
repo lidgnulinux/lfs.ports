@@ -1,18 +1,19 @@
 COMMENT = Reference implementation of the iCalendar format
-VERSION = 3.0.20
-REVISION = 1
+VERSION = 4.0.7
+REVISION = 0
 CATEGORIES = libs
 PKGNAME = libical
 HOMEPAGE = https://libical.github.io/libical/
-ARCHIVE = libical-3.0.20.tar.gz
-LINK = https://github.com/libical/libical/releases/download/v3.0.20/libical-3.0.20.tar.gz
+ARCHIVE = libical-${VERSION}.tar.gz
+LINK = https://github.com/libical/libical/releases/download/v${VERSION}/libical-${VERSION}.tar.gz
 SRCCD = archive
 BUILD = cmake
-BUILDDIR = libical-3.0.20
+BUILDDIR = libical-${VERSION}
 BUILD_OPTION = -DCMAKE_BUILD_TYPE=MinSizeRel \
-	-DSHARED_ONLY=true \
 	-DENABLE_GTK_DOC=false \
 	-DGOBJECT_INTROSPECTION=true \
+	-DLIBICAL_JAVA_BINDINGS=false \
+	-DLIBICAL_GLIB_BUILD_DOCS=False \
 	-DICAL_GLIB_VAPI=true
 
 prepare:

@@ -1,27 +1,24 @@
 COMMENT = interface to the Linux Kernel's syscall filtering mechanism
-VERSION = 2.6.0
+VERSION = 2.6.1
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libseccomp
 HOMEPAGE = https://github.com/seccomp/libseccomp
-ARCHIVE = libseccomp-2.6.0.tar.gz
-LINK = https://github.com/seccomp/libseccomp/releases/download/v2.6.0/libseccomp-2.6.0.tar.gz
+ARCHIVE = libseccomp-${VERSION}.tar.gz
+LINK = https://github.com/seccomp/libseccomp/releases/download/v${VERSION}/libseccomp-${VERSION}.tar.gz
 SRCCD = archive
 BUILD = make
-BUILDDIR = libseccomp-2.6.0
+BUILDDIR = libseccomp-${VERSION}
 BUILD_OPTION =
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--disable-python \
-	--build=x86_64-pc-linux-musl)
+	--mandir=/usr/share/man \
+	--infodir=/usr/share/info \
+	--libdir=/usr/lib)
 MAKEOPT =
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
-
-custom-build:
 
 post_build:
 

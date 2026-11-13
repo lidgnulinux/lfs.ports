@@ -19,7 +19,7 @@ custom-build:
 	cd ${BUILDDIR} && PERL_MM_USE_DEFAULT=1 \
 		perl -I. Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
 	make -C ${BUILDDIR}
-	make -C ${BUILDDIR} PREFIX=/usr DESTDIR=$(PWD)/pkg install
+	make -C ${BUILDDIR} PREFIX=/usr DESTDIR=$(CURDIR)/pkg install
 
 post_build:
 

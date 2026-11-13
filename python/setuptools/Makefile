@@ -15,7 +15,7 @@ prepare:
 	rm -f ${BUILDDIR}/setuptools/*.exe
 
 custom-build:
-	cd ${BUILDDIR} && python3 setup.py build install --root="$(PWD)/pkg"
+	cd ${BUILDDIR} && python3 setup.py build install --root="$(CURDIR)/pkg"
 
 post_build:
 	mv pkg/usr/pkg/*/usr/* pkg/usr

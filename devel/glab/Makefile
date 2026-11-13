@@ -15,7 +15,7 @@ OPTIONS = -X main.debugMode=false \
 	-X main.version=${VERSION}
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 custom-build:
 	cd ${BUILDDIR}; go build -ldflags "${OPTIONS}" \

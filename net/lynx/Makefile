@@ -1,5 +1,5 @@
 COMMENT = A text browser for the World Wide Web
-VERSION = 2.9.2
+VERSION = 2.9.3
 REVISION = 0
 CATEGORIES = net
 PKGNAME = lynx
@@ -20,8 +20,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--enable-locale-charset \
 	--enable-ipv6 \
 	--enable-japanese-utf8 \
-	--enable-nested-tables \
-	--build=x86_64-pc-linux-musl)
+	--enable-nested-tables)
 
 prepare:
 

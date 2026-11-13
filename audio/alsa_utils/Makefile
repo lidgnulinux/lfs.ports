@@ -17,7 +17,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure --prefix=/usr \
 	--build=x86_64-pc-linux-musl)
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

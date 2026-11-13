@@ -18,7 +18,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	for i in patch/*; do patch -p0 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p0 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 custom-build:
 

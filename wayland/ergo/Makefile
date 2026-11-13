@@ -11,12 +11,12 @@ SRCCD = archive
 BUILD = make
 BUILDDIR = ergo-${_REV}
 MAKEOPT =
-override PREFIX = $(PWD)/package/usr
+override PREFIX = $(CURDIR)/package/usr
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/00_ergo_add_margin.patch
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/00_ergo_add_border.patch
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/00_ergo_set_height_higher.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/00_ergo_add_margin.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/00_ergo_add_border.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/00_ergo_set_height_higher.patch
 
 post_build:
 

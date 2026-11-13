@@ -9,10 +9,9 @@ LINK = https://github.com/SELinuxProject/selinux/releases/download/${VERSION}/li
 SRCCD = archive
 BUILD = make
 BUILDDIR = libselinux-${VERSION}
-MAKEOPT = SHLIBDIR="/usr/lib" FTS_LDLIBS="-lfts"
+MAKEOPT = SHLIBDIR="/usr/lib"
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/lfs64.patch
 
 post_build:
 

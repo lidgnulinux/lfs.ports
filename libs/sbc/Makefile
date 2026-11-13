@@ -1,6 +1,6 @@
 COMMENT = Bluetooth Subband Codec (SBC) library
 VERSION = 2.1
-REVISION = 0
+REVISION = 1
 CATEGORIES = libs
 PKGNAME = sbc
 HOMEPAGE = https://www.bluez.org/
@@ -13,12 +13,11 @@ BUILD_OPTION =
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT =
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/gcc15.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/gcc15.patch
 
 post_build:
 

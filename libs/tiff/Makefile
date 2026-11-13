@@ -7,18 +7,9 @@ HOMEPAGE = https://www.simplesystems.org/libtiff/
 ARCHIVE = tiff-${VERSION}.tar.gz
 LINK = https://download.osgeo.org/libtiff/tiff-${VERSION}.tar.gz
 SRCCD = archive
-BUILD = make
+BUILD = cmake
 BUILDDIR = tiff-${VERSION}
-AUTO_CONF = (cd ${BUILDDIR} && ./configure \
-	--prefix=/usr \
-	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--enable-shared=yes \
-	--enable-cxx \
-	--enable-zstd \
-	--enable-lzma \
-	--build=x86_64-pc-linux-musl)
-MAKEOPT =
+BUILD_OPTION = -DCMAKE_BUILD_TYPE=None -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
 prepare:
 

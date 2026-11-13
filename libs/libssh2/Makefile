@@ -4,24 +4,20 @@ REVISION = 0
 CATEGORIES = libs
 PKGNAME = libssh2
 HOMEPAGE = https://www.libssh2.org
-ARCHIVE = libssh2-1.11.1.tar.gz
-LINK = https://www.libssh2.org/download/libssh2-1.11.1.tar.gz
+ARCHIVE = libssh2-${VERSION}.tar.gz
+LINK = https://www.libssh2.org/download/${ARCHIVE}
 SRCCD = archive
 BUILD = make
-BUILDDIR = libssh2-1.11.1
+BUILDDIR = libssh2-${VERSION}
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
 	--with-crypto=openssl \
-	--with-libz \
-	--build=x86_64-pc-linux-musl)
+	--with-libz)
 MAKEOPT =
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
-
-custom-build:
 
 post_build:
 

@@ -25,7 +25,7 @@ custom-build:
 		-Dnative_backtrace=disabled \
 		build
 	cd ${BUILDDIR} && ninja -C build
-	cd ${BUILDDIR} && DESTDIR=$(PWD)/pkg build/muon -C build install
+	cd ${BUILDDIR} && DESTDIR=$(CURDIR)/pkg build/muon -C build install
 
 post_build:
 

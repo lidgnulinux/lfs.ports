@@ -21,7 +21,7 @@ MAKEOPT = BUILD_OPT=1 \
 	USE_64=1
 
 prepare:
-	patch -Np2 -d ${BUILDDIR} -i $(PWD)/nss-standalone-1.patch 
+	patch -Np2 -d ${BUILDDIR} -i $(CURDIR)/nss-standalone-1.patch 
 
 post_build:
 	mkdir -v -p "package/usr/lib" \

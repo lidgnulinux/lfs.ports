@@ -20,7 +20,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ac_cv_prog_swig_found=no ./configure \
 MAKEOPT =
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/apply-disable.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/apply-disable.patch
 
 post_build:
 

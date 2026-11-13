@@ -7,12 +7,14 @@ HOMEPAGE = https://github.com/google/re2
 ARCHIVE = 2025-11-05.tar.gz
 LINK = https://github.com/google/re2/archive/2025-11-05.tar.gz
 SRCCD = archive
-BUILD = make
+BUILD = cmake
 BUILDDIR = re2-2025-11-05
-MAKEOPT = prefix=/usr libdir=/usr/lib
+BUILD_OPTION = -DCMAKE_BUILD_TYPE=None \
+	-DBUILD_SHARED_LIBS=ON \
+	-DRE2_USE_ICU=ON \
+	-DRE2_BUILD_TESTING=OFF
 
 prepare:
-	for i in patch/*; do patch -p0 -d ${BUILDDIR} -i $(PWD)/$$i; done
 
 post_build:
 

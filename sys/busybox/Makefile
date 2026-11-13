@@ -1,6 +1,6 @@
 COMMENT = busybox
 VERSION = 1.38
-REVISION = 0
+REVISION = 1
 CATEGORIES = sys
 PKGNAME = busybox
 HOMEPAGE = https://busybox.net
@@ -9,11 +9,13 @@ LINK = https://busybox.net/downloads/busybox-1.38.0.tar.bz2
 SRCCD = archive
 BUILD = make
 BUILDDIR = busybox-1.38.0
-MAKEOPT = CONFIG_PREFIX=$(PWD)/package/opt
+MAKEOPT = CONFIG_PREFIX=$(CURDIR)/package/opt
 MAKEFLAGS += -j1
+GRAFT = no
+STRIP = no
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 	make -C ${BUILDDIR} -j1 mrproper
 	make -C ${BUILDDIR} defconfig
 

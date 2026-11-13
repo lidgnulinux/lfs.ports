@@ -1,6 +1,6 @@
 COMMENT = Modular Wayland compositor library
 VERSION = 0.20.2
-REVISION = 0
+REVISION = 1
 CATEGORIES = libs
 PKGNAME = wlroots
 HOMEPAGE = https://gitlab.freedesktop.org/wlroots/wlroots

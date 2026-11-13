@@ -1,6 +1,3 @@
-.ONESHELL:
-SHELL := /bin/sh
-
 COMMENT = Libsass command line driver
 VERSION = 3.6.2
 REVISION = 0
@@ -16,14 +13,11 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
-	--disable-static \
-	--build=x86_64-pc-linux-musl)
+	--disable-static)
 MAKEOPT =
 
 prepare:
-	cat <<- __EOF__ > ${BUILDDIR}/version.sh
-	echo ${VERSION}
-	__EOF__
+	echo "echo ${VERSION}" > ${BUILDDIR}/version.sh
 
 	autoreconf -vif ${BUILDDIR}
 

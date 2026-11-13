@@ -12,18 +12,18 @@ BUILD = make
 BUILDDIR = lua-${VERSION}
 export ldpath = /usr/lib/lua5.4
 MAKEOPT = linux RPATH="/usr/lib" \
-	INSTALL_INC=$(PWD)/package/usr/include/lua5.4 \
-	INSTALL_LIB=$(PWD)/package/usr/lib/lua5.4
+	INSTALL_INC=$(CURDIR)/package/usr/include/lua5.4 \
+	INSTALL_LIB=$(CURDIR)/package/usr/lib/lua5.4
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 	sed -e "s|@MAJOR_VER@|${_VER}|g" \
 		-e "s|@MINOR_VER@|${VERSION}|g" \
-		-i $(PWD)/lua5.4.pc
+		-i $(CURDIR)/lua5.4.pc
 	sed -i 's/\/usr\/local/$$\{DESTDIR}\/usr/' ${BUILDDIR}/Makefile
 
 post_build:
-	install -Dm644 $(PWD)/lua5.4.pc -t package/usr/lib/pkgconfig
+	install -Dm644 $(CURDIR)/lua5.4.pc -t package/usr/lib/pkgconfig
 
 	ln -sv lua5.4.pc package/usr/lib/pkgconfig/lua5.4-c++.pc
 	ln -sv lua5.4.pc package/usr/lib/pkgconfig/lua-5.4-c++.pc

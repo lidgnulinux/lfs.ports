@@ -1,14 +1,14 @@
 COMMENT = Compact xserver to run under wayland for compatibility
-VERSION = 24.1.12
+VERSION = 26.0.99.903
 REVISION = 0
 CATEGORIES = xapps
 PKGNAME = xwayland
 HOMEPAGE = https://www.x.org/wiki
-ARCHIVE = xwayland-24.1.12.tar.xz
-LINK = https://xorg.freedesktop.org/archive/individual/xserver/xwayland-24.1.12.tar.xz
+ARCHIVE = xwayland-${VERSION}.tar.xz
+LINK = https://xorg.freedesktop.org/archive/individual/xserver/xwayland-${VERSION}.tar.xz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = xwayland-24.1.12
+BUILDDIR = xwayland-${VERSION}
 BUILD_OPTION = -Dxvfb=false -Dxdmcp=false
 
 prepare:

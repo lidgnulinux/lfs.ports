@@ -1,16 +1,15 @@
 COMMENT = An ICC-based CMM for color management.
-VERSION = 2.18
+VERSION = 2.20
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = lcms2
 HOMEPAGE = https://www.littlecms.com
-ARCHIVE = lcms2-2.18.tar.gz
-LINK = https://sourceforge.net/projects/lcms/files/lcms/2.18/lcms2-2.18.tar.gz
+ARCHIVE = lcms2-${VERSION}.tar.gz
+LINK = https://sourceforge.net/projects/lcms/files/lcms/${VERSION}/lcms2-${VERSION}.tar.gz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = lcms2-2.18
-BUILD_OPTION = --default-library=both \
-	-Dfastfloat=true \
+BUILDDIR = lcms2-${VERSION}
+BUILD_OPTION = -Dfastfloat=true \
 	-Dthreaded=true \
 	-Dutils=true \
 	-Djpeg=enabled \

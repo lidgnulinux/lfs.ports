@@ -1,14 +1,14 @@
 COMMENT = 80x86 assembler designed for portability and modularity
-VERSION = 3.01
+VERSION = 3.02
 REVISION = 0
 CATEGORIES = devel
 PKGNAME = nasm
 HOMEPAGE = https://www.nasm.us
-ARCHIVE = nasm-3.01.tar.xz
-LINK = https://www.nasm.us/pub/nasm/releasebuilds/3.01/nasm-3.01.tar.xz
+ARCHIVE = nasm-${VERSION}.tar.xz
+LINK = https://www.nasm.us/pub/nasm/releasebuilds/${VERSION}/${ARCHIVE}
 SRCCD = archive
 BUILD = make
-BUILDDIR = nasm-3.01
+BUILDDIR = nasm-${VERSION}
 BUILD_OPTION =
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
@@ -17,7 +17,6 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	patch -Np1 -d ${BUILDDIR} -i $(PWD)/nasm-3.01-musl.patch
 
 post_build:
 

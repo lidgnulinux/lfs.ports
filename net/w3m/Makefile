@@ -32,7 +32,7 @@ MAKEOPT =
 prepare:
 
 post_build:
-	make -C ${BUILDDIR} PREFIX=/usr DESTDIR="$(PWD)/package" \
+	make -C ${BUILDDIR} PREFIX=/usr DESTDIR="$(CURDIR)/package" \
 		HELP_ALLFILES="w3mhelp-w3m_en.html w3mhelp-w3m_ja.html" \
 		install-helpfile
 

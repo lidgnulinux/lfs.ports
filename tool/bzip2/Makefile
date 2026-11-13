@@ -14,7 +14,7 @@ override PREFIX="${DESTDIR}/usr"
 MAKEOPT =
 
 prepare:
-	patch -Np1 -d ${BUILDDIR} -i $(PWD)/bzip2-1.0.8-install_docs-1.patch
+	patch -Np1 -d ${BUILDDIR} -i $(CURDIR)/bzip2-1.0.8-install_docs-1.patch
 	sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' ${BUILDDIR}/Makefile
 	sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" ${BUILDDIR}/Makefile
 

@@ -1,5 +1,5 @@
 COMMENT = The shadow tool suite.
-VERSION = 4.20.0
+VERSION = 4.20.3
 REVISION = 0
 CATEGORIES = sys
 PKGNAME = shadow
@@ -13,36 +13,20 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
-	--disable-account-tools-setuid \
-	--disable-nls \
-	--enable-lastlog \
-	--without-audit \
-	--with-libpam \
-	--without-selinux \
-	--without-acl \
-	--without-attr \
-	--without-tcb \
-	--with-yescrypt \
-	--without-nscd \
+	--disable-static    \
 	--without-libbsd \
-	--without-group-name-max-length \
-	--with-fcaps \
-	--disable-logind \
-	--build=x86_64-pc-linux-musl)
-MAKEOPT =
+	--with-{b,yes}crypt)
+MAKEOPT = exec_prefix=/usr pamddir=
 
 prepare:
-	sed -i 's/groups$(EXEEXT) //' ${BUILDDIR}/src/Makefile.in
-	find ${BUILDDIR}/man -type f -name Makefile.in \
-		-exec sed -i 's/groups\.1 / /'   {} \;
-	find ${BUILDDIR}/man -type f -name Makefile.in \
-		-exec sed -i 's/getspnam\.3 / /' {} \;
-	find ${BUILDDIR}/man -type f -name Makefile.in \
-		-exec sed -i 's/passwd\.5 / /'   {} \;
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/missing-header.patch
+	find ${BUILDDIR}/man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \;
+	find ${BUILDDIR}/man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;
+	sed -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD YESCRYPT@' \
+		-e 's@/var/spool/mail@/var/mail@' \
+		-e '/PATH=/{s@/sbin:@@;s@/bin:@@}' \
+		-i ${BUILDDIR}/etc/login.defs 
 
 post_build:
-	mv package/etc/pam.d/login package/etc/pam.d/login.new	
 
 post-install:
 

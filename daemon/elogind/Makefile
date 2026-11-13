@@ -22,7 +22,7 @@ BUILD_OPTION = -Ddefault-kill-user-processes=false \
 	-Dcgroup-controller=elogind
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 	ln -s libelogind.pc build/package/usr/lib/pkgconfig/libsystemd.pc

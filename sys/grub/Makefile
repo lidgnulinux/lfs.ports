@@ -1,16 +1,15 @@
 COMMENT = Bootloader with support for Linux, Multiboot and more
-VERSION = 2.14
-REVISION = 1
+VERSION = 2.16
+REVISION = 0
 CATEGORIES = sys
 PKGNAME = grub
 HOMEPAGE = https://www.gnu.org/software/grub/
-ARCHIVE = grub-${VERSION}.tar.xz
-LINK = https://ftp.gnu.org/gnu/grub/grub-${VERSION}.tar.xz
+ARCHIVE = grub-grub-${VERSION}.tar.gz
+LINK = https://gitlab.freedesktop.org/gnu-grub/grub/-/archive/grub-${VERSION}/${ARCHIVE}
 SRCCD = archive
 BUILD = make
-BUILDDIR = grub-${VERSION}
+BUILDDIR = grub-grub-${VERSION}
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
-	ax_cv_check_ldflags___Wl___image_base_0x400000=no \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
@@ -19,12 +18,19 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--disable-werror \
 	--enable-grub-themes \
 	--enable-grub-mkfont \
-	--with-dejavufont=/usr/share/fonts/fonts/dejavu/DejaVuSans.ttf \
-	--build=x86_64-pc-linux-musl)
+	--with-dejavufont=/usr/share/fonts/fonts/dejavu/DejaVuSans.ttf)
 MAKEOPT =
+GNU_LIB = https://git.savannah.gnu.org/git/gnulib.git
+
+get_gnulib:
+	git clone ${GNU_LIB} 
+
+bootstrap:
+	cd ${BUILDDIR}; ./bootstrap \
+		--gnulib-srcdir=$(CURDIR)/gnulib \
+		--skip-po
 
 prepare:
-	cd ${BUILDDIR} && PYTHON=python3 sh ./autogen.sh
 
 post_build:
 

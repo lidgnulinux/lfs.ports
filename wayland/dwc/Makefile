@@ -14,7 +14,7 @@ MAKEOPT =
 EDITOR = vim
 
 enable_libinput:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/00_enable_libinput_touchpad.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/00_enable_libinput_touchpad.patch
 
 prepare:
 	${EDITOR} ${BUILDDIR}/config.def.h

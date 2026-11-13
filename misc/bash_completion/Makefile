@@ -1,19 +1,18 @@
 COMMENT = Command-line tab-completion for bash
-VERSION = 2.17.0
+VERSION = 2.18.0
 REVISION = 0
 CATEGORIES = misc
 PKGNAME = bash_completion
 HOMEPAGE = https://github.com/scop/bash-completion
-ARCHIVE = bash-completion-2.17.0.tar.xz
-LINK = https://github.com/scop/bash-completion/releases/download/2.17.0/bash-completion-2.17.0.tar.xz
+ARCHIVE = bash-completion-${VERSION}.tar.xz
+LINK = https://github.com/scop/bash-completion/releases/download/${VERSION}/bash-completion-${VERSION}.tar.xz
 SRCCD = archive
 BUILD = make
-BUILDDIR = bash-completion-2.17.0
+BUILDDIR = bash-completion-${VERSION}
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
-	--libdir=/usr/lib \
-	--build=x86_64-pc-linux-musl)
+	--libdir=/usr/lib)
 MAKEOPT =
 
 prepare:

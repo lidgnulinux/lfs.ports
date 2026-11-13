@@ -4,8 +4,8 @@ REVISION = 0
 CATEGORIES = libs
 PKGNAME = icu
 HOMEPAGE = https://icu.unicode.org/
-ARCHIVE = icu4c-78.3-sources.tgz
-LINK = https://github.com/unicode-org/icu/releases/download/release-78.3/icu4c-78.3-sources.tgz
+ARCHIVE = icu4c-${VERSION}-sources.tgz
+LINK = https://github.com/unicode-org/icu/releases/download/release-${VERSION}/${ARCHIVE}
 SRCCD = archive
 BUILD = make
 BUILDDIR = icu/source
@@ -16,11 +16,10 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure CC=gcc CXX=g++ \
 	--enable-static=yes \
 	--enable-shared=yes \
 	--enable-icu-config \
-	--disable-tests \
-	--build=x86_64-pc-linux-musl)
+	--disable-tests)
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

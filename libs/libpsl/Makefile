@@ -1,14 +1,14 @@
 COMMENT = A C library to handle the Public Suffix List.
-VERSION = 0.22.0
+VERSION = 0.23.3
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = libpsl
 HOMEPAGE = https://github.com/rockdaboot/libpsl
-ARCHIVE = libpsl-0.22.0.tar.gz
-LINK = https://github.com/rockdaboot/libpsl/releases/download/0.22.0/libpsl-0.22.0.tar.gz
+ARCHIVE = libpsl-${VERSION}.tar.gz
+LINK = https://github.com/rockdaboot/libpsl/releases/download/${VERSION}/${ARCHIVE}
 SRCCD = archive
 BUILD = meson
-BUILDDIR = libpsl-0.22.0
+BUILDDIR = libpsl-${VERSION}
 BUILD_OPTION = -Druntime=libidn2 --default-library=both
 
 prepare:

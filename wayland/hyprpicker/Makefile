@@ -15,7 +15,7 @@ BUILD_OPTION = -DCMAKE_BUILD_TYPE='None' \
 	-Wno-dev
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 	mkdir -p package/usr/share/man/

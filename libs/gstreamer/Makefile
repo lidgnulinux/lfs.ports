@@ -1,17 +1,17 @@
 COMMENT = GStreamer streaming media framework
-VERSION = 1.28.3
+VERSION = 1.28.7
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = gstreamer
 HOMEPAGE = https://gstreamer.freedesktop.org
-ARCHIVE = gstreamer-1.28.3.tar.xz
-LINK = https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.28.3.tar.xz
+ARCHIVE = gstreamer-${VERSION}.tar.xz
+LINK = https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-${VERSION}.tar.xz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = gstreamer-1.28.3
+BUILDDIR = gstreamer-${VERSION}
 BUILD_OPTION = -Dintrospection=enabled \
-	-Dbash-completion=enabled \
-	-Dpackage-name="GStreamer (LFS Musl)" \
+	-Dbash-completion=disabled \
+	-Dpackage-name="GStreamer (LFS Libre)" \
 	-Dtests=disabled \
 	-Dtools=enabled
 

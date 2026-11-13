@@ -12,6 +12,7 @@ BUILDDIR = unix-tree-2.2.1
 MAKEOPT = MANDIR="../package/usr/share/man"
 override PREFIX="../package/usr"
 override DESTDIR="../package/usr/bin"
+GRAFT = no
 
 prepare:
 

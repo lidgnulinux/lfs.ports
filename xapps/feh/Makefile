@@ -1,5 +1,5 @@
 COMMENT = A fast and light image viewer.
-VERSION = 3.11.3
+VERSION = 3.13.1
 REVISION = 0
 CATEGORIES = xapps
 PKGNAME = feh

@@ -1,14 +1,14 @@
 COMMENT = Khronos reference front-end for GLSL, ESSL, and sample SPIR-V generator
-VERSION = 1.4.321.0
+VERSION = 1.4.341.0
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = glslang
 HOMEPAGE = https://github.com/KhronosGroup/glslang
-ARCHIVE = vulkan-sdk-1.4.321.0.tar.gz
-LINK = https://github.com/KhronosGroup/glslang/archive/refs/tags/vulkan-sdk-1.4.321.0.tar.gz
+ARCHIVE = vulkan-sdk-${VERSION}.tar.gz
+LINK = https://github.com/KhronosGroup/glslang/archive/refs/tags/vulkan-sdk-${VERSION}.tar.gz
 SRCCD = archive
 BUILD = custom
-BUILDDIR = glslang-vulkan-sdk-1.4.321.0
+BUILDDIR = glslang-vulkan-sdk-${VERSION}
 
 prepare:
 

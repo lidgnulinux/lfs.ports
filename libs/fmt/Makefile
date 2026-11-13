@@ -1,36 +1,17 @@
 COMMENT = Open-source formatting library for C++
-VERSION = 12.1.0
+VERSION = 12.2.1
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = fmt
 HOMEPAGE = https://fmt.dev/latest/index.html
-ARCHIVE = fmt-12.1.0.zip
-LINK = https://github.com/fmtlib/fmt/releases/download/12.1.0/fmt-12.1.0.zip
+ARCHIVE = ${VERSION}.tar.gz
+LINK = https://github.com/fmtlib/fmt/archive/refs/tags/${ARCHIVE}
 SRCCD = archive
-BUILD = custom
-BUILDDIR = fmt-12.1.0
+BUILD = cmake
+BUILDDIR = fmt-${VERSION}
+BUILD_OPTION = -DBUILD_SHARED_LIBS=True -DCMAKE_BUILD_TYPE=None -G Ninja
 
 prepare:
-
-shared:
-	cmake -DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DBUILD_SHARED_LIBS=True \
-		-B build-shared -G Ninja -S \
-		${BUILDDIR}
-	cmake --build build-shared
-	DESTDIR=pkg cmake --install build-shared
-
-static:
-	cmake -DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=lib \
-		-DBUILD_SHARED_LIBS=False \
-		-B build-static -G Ninja -S \
-		${BUILDDIR}
-	cmake --build build-static
-	DESTDIR=pkg cmake --install build-static
-
-custom-build: shared static
 
 post_build:
 

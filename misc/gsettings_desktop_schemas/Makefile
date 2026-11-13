@@ -1,6 +1,6 @@
 COMMENT = A collection of GSettings schemas
-VERSION = 49.1
-V = 49
+VERSION = 51.0
+V = 51
 REVISION = 0
 CATEGORIES = misc
 PKGNAME = gsettings_desktop_schemas

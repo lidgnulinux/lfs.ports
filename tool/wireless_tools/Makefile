@@ -9,13 +9,13 @@ LINK = https://hewlettpackard.github.io/wireless-tools/wireless_tools.30.pre9.ta
 SRCCD = archive
 BUILD = make
 BUILDDIR = wireless_tools.30
-MAKEOPT = INSTALL_DIR=$(PWD)/package/usr/sbin \
-	INSTALL_LIB=$(PWD)/package/usr/lib \
-	INSTALL_INC=$(PWD)/package/usr/include \
-	INSTALL_MAN=$(PWD)/package/usr/share/man
+MAKEOPT = INSTALL_DIR=$(CURDIR)/package/usr/sbin \
+	INSTALL_LIB=$(CURDIR)/package/usr/lib \
+	INSTALL_INC=$(CURDIR)/package/usr/include \
+	INSTALL_MAN=$(CURDIR)/package/usr/share/man
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
+	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 

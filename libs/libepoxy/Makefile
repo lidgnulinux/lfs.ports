@@ -17,8 +17,6 @@ BUILD_OPTION = -Ddocs=false \
 
 prepare:
 
-custom-build:
-
 post_build:
 
 post-install:

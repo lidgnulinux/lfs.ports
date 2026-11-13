@@ -4,11 +4,11 @@ REVISION = 0
 CATEGORIES = libs
 PKGNAME = zlib_ng
 HOMEPAGE = https://github.com/zlib-ng/zlib-ng
-ARCHIVE = zlib-ng-2.3.3.tar.gz
-LINK = https://github.com/zlib-ng/zlib-ng/archive/2.3.3/zlib-ng-2.3.3.tar.gz
+ARCHIVE = zlib-ng-${VERSION}.tar.gz
+LINK = https://github.com/zlib-ng/zlib-ng/archive/${VERSION}/${ARCHIVE}
 SRCCD = archive
 BUILD = cmake
-BUILDDIR = zlib-ng-2.3.3
+BUILDDIR = zlib-ng-${VERSION}
 BUILD_OPTION = -DCMAKE_BUILD_TYPE=Release \
 	-DCMAKE_VERBOSE_MAKEFILE=ON \
 	-DWITH_DFLTCC_DEFLATE=ON \

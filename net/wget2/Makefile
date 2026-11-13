@@ -21,8 +21,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--enable-fuzzing \
 	--disable-manylibs \
 	--disable-nls \
-	--disable-rpath \
-	--build=x86_64-pc-linux-musl)
+	--disable-rpath)
 MAKEOPT =
 
 prepare:

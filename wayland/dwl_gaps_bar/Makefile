@@ -11,7 +11,7 @@ BUILD = make
 BUILDDIR = dwl
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/00_vanity-gaps_bar.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/00_vanity-gaps_bar.patch
 	cp -r drwl.h ${BUILDDIR}
 
 adjust:

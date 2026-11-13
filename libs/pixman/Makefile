@@ -11,8 +11,6 @@ BUILD = meson
 BUILDDIR = pixman-0.46.4
 BUILD_OPTION = --buildtype=release -Dtests=disabled \
 	-Ddefault_library=both -Ddemos=disabled
-LDFLAGS = -Wl,-z,stack-size=2097152
-export LDFLAGS
 
 prepare:
 

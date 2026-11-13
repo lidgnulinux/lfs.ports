@@ -6,7 +6,7 @@ PKGNAME = annotator
 HOMEPAGE = https://github.com/phase1geo/Annotator
 SRCCD = git
 BUILD = meson
-BUILDDIR = $(PWD)
+BUILDDIR = $(CURDIR)
 BUILD_OPTION =
 
 prepare:

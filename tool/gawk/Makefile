@@ -20,7 +20,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 MAKEOPT =
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/echild-strerror.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/echild-strerror.patch
 	sed -i ${BUILDDIR}/test/Makefile.in -e "/clos1way6/d"
 
 post_build:

@@ -1,6 +1,6 @@
 COMMENT = Fully feature complete YAML parser and emitter
 VERSION = 0.9.6
-REVISION = 1
+REVISION = 0
 CATEGORIES = libs
 PKGNAME = libfyaml
 HOMEPAGE = https://github.com/pantoniou/libfyaml

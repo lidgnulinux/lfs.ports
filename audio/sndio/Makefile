@@ -1,14 +1,14 @@
 COMMENT = Small audio and MIDI framework from the OpenBSD project
-VERSION = 1.10.0
+VERSION = 1.11.0
 REVISION = 0
 CATEGORIES = audio
 PKGNAME = sndio
 HOMEPAGE = https://sndio.org/
-ARCHIVE = sndio-1.10.0.tar.gz
-LINK = https://sndio.org/sndio-1.10.0.tar.gz
+ARCHIVE = sndio-${VERSION}.tar.gz
+LINK = https://sndio.org/sndio-${VERSION}.tar.gz
 SRCCD = archive
 BUILD = make
-BUILDDIR = sndio-1.10.0
+BUILDDIR = sndio-${VERSION}
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--enable-alsa \

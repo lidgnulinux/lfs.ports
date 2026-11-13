@@ -1,14 +1,14 @@
 COMMENT = Python bindings for the GObject library
-VERSION = 3.56.2
+VERSION = 3.58.1
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = pygobject3
 HOMEPAGE = https://wiki.gnome.org/Projects/PyGObject/
-ARCHIVE = pygobject-3.56.2.tar.gz
-LINK = https://download.gnome.org/sources/pygobject/3.56/pygobject-3.56.2.tar.gz
+ARCHIVE = pygobject-${VERSION}.tar.gz
+LINK = https://download.gnome.org/sources/pygobject/3.58/pygobject-${VERSION}.tar.gz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = pygobject-3.56.2
+BUILDDIR = pygobject-${VERSION}
 BUILD_OPTION =
 
 prepare:

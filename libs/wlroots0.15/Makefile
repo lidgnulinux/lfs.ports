@@ -15,7 +15,7 @@ BUILD_OPTION = --includedir /usr/include/wlroots0.15 \
 	-Dwerror=false \
 
 prepare:
-	patch -p2 -d ${BUILDDIR} -i $(PWD)/0001-fix-calloc-transposed-args.patch
+	patch -p2 -d ${BUILDDIR} -i $(CURDIR)/0001-fix-calloc-transposed-args.patch
 
 post_build:
 

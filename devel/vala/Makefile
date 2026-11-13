@@ -13,11 +13,9 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
-	--enable-valadoc \
-	--build=x86_64-pc-linux-musl)
+	--disable-valadoc)
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/0001-posix-Define-_XOPEN_SOURCE-_GNU_SOURCE-for-signal-fu.patch
 
 post_build:
 

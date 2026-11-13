@@ -17,12 +17,12 @@ BUILD_OPTION = -Dman=true \
 	-Dalsa=enabled \
 	-Dasyncns=enabled \
 	-Davahi=disabled \
-	-Dbluez5=enabled \
+	-Dbluez5=disabled \
 	-Ddbus=enabled \
-	-Dfftw=disabled \
+	-Dfftw=enabled \
 	-Dglib=enabled \
 	-Dgsettings=enabled \
-	-Dgtk=enabled \
+	-Dgtk=disabled \
 	-Dhal-compat=false \
 	-Dipv6=true \
 	-Djack=enabled \
@@ -32,7 +32,7 @@ BUILD_OPTION = -Dman=true \
 	-Dsamplerate=disabled \
 	-Dsoxr=enabled \
 	-Dspeex=enabled \
-	-Dsystemd=disabled \
+	-Dsystemd=enabled \
 	-Dudev=enabled \
 	-Dx11=enabled \
 	-Dudevrulesdir=/lib/udev/rules.d/ \
@@ -41,7 +41,6 @@ BUILD_OPTION = -Dman=true \
 	-Dstream-restore-clear-old-devices=true
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
 
 post_build:
 

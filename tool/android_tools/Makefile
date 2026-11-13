@@ -1,19 +1,17 @@
 COMMENT = Unofficial Cmake-based build system for android command line utilities.
-VERSION = 36.0.1
+VERSION = 37.0.0
 REVISION = 0
 CATEGORIES = tool
 PKGNAME = android_tools
 HOMEPAGE = https://github.com/nmeum/android-tools
-ARCHIVE = android-tools-${VERSION}.tar.xz
-LINK = https://github.com/nmeum/android-tools/releases/download/${VERSION}/android-tools-${VERSION}.tar.xz
 SRCCD = archive
+ARCHIVE = android-tools-${VERSION}p1.tar.xz
+LINK = https://github.com/nmeum/android-tools/releases/download/${VERSION}p1/${ARCHIVE}
 BUILD = cmake
-BUILDDIR = android-tools-${VERSION}
-BUILD_OPTION = -DANDROID_TOOLS_USE_BUNDLED_LIBUSB=ON -DCMAKE_BUILD_TYPE=None
-export LDFLAGS = -Wl,--copy-dt-needed-entries
+BUILDDIR = android-tools-${VERSION}p1
+BUILD_OPTION = -G Ninja -DCMAKE_BUILD_TYPE=None -DANDROID_TOOLS_ADB_ENABLE_MDNS=ON
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
 
 post_build:
 

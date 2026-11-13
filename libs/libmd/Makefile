@@ -9,8 +9,10 @@ LINK = https://archive.hadrons.org/software/libmd/${ARCHIVE}
 SRCCD = archive
 BUILD = make
 BUILDDIR = libmd-${VERSION}
-AUTO_CONF = (cd ${BUILDDIR} && ./configure --prefix=/usr --sysconfdir=/etc \
-	--mandir=/usr/share/man --infodir=/usr/share/info --localstatedir=/var)
+AUTO_CONF = (cd ${BUILDDIR} && ./configure --prefix=/usr \
+	--sysconfdir=/etc --mandir=/usr/share/man \
+	--infodir=/usr/share/info --localstatedir=/var)
+GRAFT = no
 
 prepare:
 

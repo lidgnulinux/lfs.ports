@@ -12,8 +12,8 @@ BUILDDIR = hyprpaper-0.8.4
 BUILD_OPTION = -D CMAKE_BUILD_TYPE=Release
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/00_include_cstring.patch
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/01_use_GL_over_OpenGL.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/00_include_cstring.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/01_use_GL_over_OpenGL.patch
 
 post_build:
 

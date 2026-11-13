@@ -17,7 +17,7 @@ BUILD_OPTION = -DBUILD_SHARED_LIBS=ON \
 	-DBUILD_TESTING=OFF
 
 prepare:
-	patch -p1 -d ${BUILDDIR} -i $(PWD)/CVE-2024-50612.patch
+	patch -p1 -d ${BUILDDIR} -i $(CURDIR)/CVE-2024-50612.patch
 
 post_build:
 

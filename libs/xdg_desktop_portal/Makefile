@@ -1,5 +1,5 @@
 COMMENT = Desktop integration portal
-VERSION = 1.21.2
+VERSION = 1.22.1
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = xdg_desktop_portal
@@ -9,21 +9,14 @@ LINK = https://github.com/flatpak/xdg-desktop-portal/releases/download/1.21.2/xd
 SRCCD = archive
 BUILD = meson
 BUILDDIR = xdg-desktop-portal-1.21.2
-BUILD_OPTION = -Dsystemd=disabled \
+BUILD_OPTION = -Dsystemd=enabled \
 	-Dman-pages=disabled \
 	-Dtests=disabled \
-	-Ddebug=true \
-	-Dsystemd-user-unit-dir=/trash
+	-Ddebug=true
 
 prepare:
 
 post_build:
-	install -Dm755 xdg-desktop-portal.initd \
-		build/package/etc/user/init.d/xdg-desktop-portal
-	install -Dm755 xdg-permission-store.initd \
-		build/package/etc/user/init.d/xdg-permission-store
-	install -Dm755 xdg-document-portal.initd \
-		build/package/etc/user/init.d/xdg-document-portal
 
 post-install:
 

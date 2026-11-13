@@ -9,7 +9,7 @@ LINK = https://github.com/protocolbuffers/protobuf/archive/refs/tags/v31.1.tar.g
 SRCCD = archive
 BUILD = cmake
 BUILDDIR = protobuf-31.1
-BUILD_OPTION = -DCMAKE_BUILD_TYPE=None \
+BUILD_OPTION = -G Ninja -DCMAKE_BUILD_TYPE=None \
 	-DBUILD_SHARED_LIBS=ON \
 	-Dprotobuf_BUILD_TESTS=OFF \
 	-Dprotobuf_BUILD_LIBPROTOC=ON
@@ -18,7 +18,6 @@ export CFLAGS = -DNDEBUG -O2
 export CXXFLAGS = -DNDEBUG -O2 -Wno-deprecated-declarations
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(PWD)/$$i; done
 
 post_build:
 	sed -i \

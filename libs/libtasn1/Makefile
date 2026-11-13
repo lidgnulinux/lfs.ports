@@ -4,17 +4,16 @@ REVISION = 0
 CATEGORIES = libs
 PKGNAME = libtasn1
 HOMEPAGE = https://www.gnu.org/software/libtasn1
-ARCHIVE = libtasn1-4.21.0.tar.gz
-LINK = https://ftp.gnu.org/gnu/libtasn1/libtasn1-4.21.0.tar.gz
+ARCHIVE = libtasn1-${VERSION}.tar.gz
+LINK = https://ftp.gnu.org/gnu/libtasn1/${ARCHIVE}
 SRCCD = archive
 BUILD = make
-BUILDDIR = libtasn1-4.21.0
+BUILDDIR = libtasn1-${VERSION}
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
-	--enable-shared=yes \
-	--build=x86_64-pc-linux-musl)
+	--enable-shared=yes)
 MAKEOPT =
 
 prepare:

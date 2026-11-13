@@ -12,9 +12,9 @@ BUILD = make
 BUILDDIR = graft-2.17
 MAKEOPT = PACKAGEDIR=/usr/pkg \
 	TARGETDIR=/ \
-	BIN="$(PWD)/package/usr/bin" \
-	MAN="$(PWD)/package/usr/share/man" \
-	DOC="$(PWD)/package/usr/share/doc"
+	BIN="$(CURDIR)/package/usr/bin" \
+	MAN="$(CURDIR)/package/usr/share/man" \
+	DOC="$(CURDIR)/package/usr/share/doc"
 STRIP = no
 
 prepare:

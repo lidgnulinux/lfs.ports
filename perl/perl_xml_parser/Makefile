@@ -19,7 +19,7 @@ prepare:
 	cd ${BUILDDIR}; PERL_MM_USE_DEFAULT=1 perl -I. Makefile.PL INSTALLDIRS=vendor
 
 post_build:
-	find $(PWD)/package \( -name perllocal.pod -o -name .packlist \) -delete
+	find $(CURDIR)/package \( -name perllocal.pod -o -name .packlist \) -delete
 
 post-install:
 
