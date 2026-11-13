@@ -21,7 +21,4 @@ post_build:
 
 post-install:
 
-test:
-	echo ${CFLAGS}
-
 include /usr/share/mk/lfs.port.mk
