@@ -14,8 +14,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--sysconfdir=/etc \
 	--libdir=/usr/lib \
 	--localstatedir=/var \
-	--with-cpp=/usr/bin/cpp \
-	--build=x86_64-pc-linux-musl)
+	--with-cpp=/usr/bin/cpp)
 MAKEOPT =
 
 prepare:
