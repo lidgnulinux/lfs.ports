@@ -1,0 +1,326 @@
+diff -urdN dwl/config.def.h dwl.edit/config.def.h
+--- dwl/config.def.h	2026-11-06 14:11:52.000000000 +0700
++++ dwl.edit/config.def.h	2026-11-06 18:43:30.804859869 +0700
+@@ -6,7 +6,13 @@
+ /* appearance */
+ static const int sloppyfocus               = 1;  /* focus follows mouse */
+ static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will disable idle tracking even if it's surface isn't visible  */
+-static const unsigned int borderpx         = 1;  /* border pixel of windows */
++static const int smartgaps                 = 0;  /* 1 means no outer gap when there is only one window */
++static const int monoclegaps               = 0;  /* 1 means outer gaps in monocle layout */
++static const unsigned int borderpx         = 2;  /* border pixel of windows */
++static const unsigned int gappih           = 5; /* horiz inner gap between windows */
++static const unsigned int gappiv           = 5; /* vert inner gap between windows */
++static const unsigned int gappoh           = 5; /* horiz outer gap between windows and screen edge */
++static const unsigned int gappov           = 5; /* vert outer gap between windows and screen edge */
+ static const unsigned int snap             = 32; /* snap pixel */
+ static const float rootcolor[]             = COLOR(0x222222ff);
+ static const float bordercolor[]           = COLOR(0x444444ff);
+@@ -104,6 +110,7 @@
+ 
+ /* If you want to use the windows key for MODKEY, use WLR_MODIFIER_LOGO */
+ #define MODKEY WLR_MODIFIER_ALT
++#define MOD4KEY WLR_MODIFIER_LOGO
+ 
+ #define TAGKEYS(KEY,TAG) \
+ 	{ MODKEY,                    KEY,            view,            {.ui = 1 << TAG} }, \
+@@ -128,6 +135,22 @@
+ 	{ MODKEY,                    XKB_KEY_d,           incnmaster,       {.i = -1} },
+ 	{ MODKEY,                    XKB_KEY_h,           setmfact,         {.f = -0.05f} },
+ 	{ MODKEY,                    XKB_KEY_l,           setmfact,         {.f = +0.05f} },
++	{ MODKEY|MOD4KEY,  XKB_KEY_h,          incgaps,       {.i = +1 } },
++	{ MODKEY|MOD4KEY,  XKB_KEY_l,          incgaps,       {.i = -1 } },
++	{ MODKEY|MOD4KEY|WLR_MODIFIER_SHIFT,   XKB_KEY_H,      incogaps,      {.i = +1 } },
++	{ MODKEY|MOD4KEY|WLR_MODIFIER_SHIFT,   XKB_KEY_L,      incogaps,      {.i = -1 } },
++	{ MODKEY|MOD4KEY|WLR_MODIFIER_CTRL,    XKB_KEY_h,      incigaps,      {.i = +1 } },
++	{ MODKEY|MOD4KEY|WLR_MODIFIER_CTRL,    XKB_KEY_l,      incigaps,      {.i = -1 } },
++	{ MODKEY|MOD4KEY,  XKB_KEY_0,          togglegaps,     {0} },
++	{ MODKEY|MOD4KEY|WLR_MODIFIER_SHIFT,   XKB_KEY_parenright,defaultgaps,    {0} },
++	{ MODKEY,                    XKB_KEY_y,          incihgaps,     {.i = +1 } },
++	{ MODKEY,                    XKB_KEY_o,          incihgaps,     {.i = -1 } },
++	{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_y,          incivgaps,     {.i = +1 } },
++	{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_o,          incivgaps,     {.i = -1 } },
++	{ MODKEY|MOD4KEY,  XKB_KEY_y,          incohgaps,     {.i = +1 } },
++	{ MODKEY|MOD4KEY,  XKB_KEY_o,          incohgaps,     {.i = -1 } },
++	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Y,          incovgaps,     {.i = +1 } },
++	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_O,          incovgaps,     {.i = -1 } },
+ 	{ MODKEY,                    XKB_KEY_Return,      zoom,             {0} },
+ 	{ MODKEY,                    XKB_KEY_Tab,         view,             {0} },
+ 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_c,           killclient,       {0} },
+@@ -165,9 +188,9 @@
+ };
+ 
+ static const Button buttons[] = {
+-	{ MODKEY, BTN_LEFT,   moveresize,     {.ui = CurMove} },
++	{ MOD4KEY, BTN_LEFT,   moveresize,     {.ui = CurMove} },
+ 	{ MODKEY, BTN_MIDDLE, togglefloating, {0} },
+-	{ MODKEY, BTN_RIGHT,  moveresize,     {.ui = CurResize} },
++	{ MODKEY, BTN_LEFT,  moveresize,     {.ui = CurResize} },
+ };
+ 
+ static const Axis axes[] = {
+diff -urdN dwl/dwl.c dwl.edit/dwl.c
+--- dwl/dwl.c	2026-11-06 14:11:52.000000000 +0700
++++ dwl.edit/dwl.c	2026-11-07 08:21:08.914260258 +0700
+@@ -221,6 +221,10 @@
+ 	struct wlr_box w; /* window area, layout-relative */
+ 	struct wl_list layers[4]; /* LayerSurface.link */
+ 	const Layout *lt[2];
++	int gappih;           /* horizontal gap between windows */
++	int gappiv;           /* vertical gap between windows */
++	int gappoh;           /* horizontal outer gaps */
++	int gappov;           /* vertical outer gaps */
+ 	unsigned int seltags;
+ 	unsigned int sellt;
+ 	uint32_t tagset[2];
+@@ -298,6 +302,7 @@
+ static void cursorconstrain(struct wlr_pointer_constraint_v1 *constraint);
+ static void cursorframe(struct wl_listener *listener, void *data);
+ static void cursorwarptohint(void);
++static void defaultgaps(const Arg *arg);
+ static void destroydecoration(struct wl_listener *listener, void *data);
+ static void destroydragicon(struct wl_listener *listener, void *data);
+ static void destroyidleinhibitor(struct wl_listener *listener, void *data);
+@@ -316,6 +321,13 @@
+ static void fullscreennotify(struct wl_listener *listener, void *data);
+ static void gpureset(struct wl_listener *listener, void *data);
+ static void handlesig(int signo);
++static void incgaps(const Arg *arg);
++static void incigaps(const Arg *arg);
++static void incihgaps(const Arg *arg);
++static void incivgaps(const Arg *arg);
++static void incogaps(const Arg *arg);
++static void incohgaps(const Arg *arg);
++static void incovgaps(const Arg *arg);
+ static void incnmaster(const Arg *arg);
+ static void inputdevice(struct wl_listener *listener, void *data);
+ static const Key *keybinding(uint32_t mods, xkb_keysym_t sym);
+@@ -351,6 +363,7 @@
+ static void setcursorshape(struct wl_listener *listener, void *data);
+ static void setfloating(Client *c, int floating);
+ static void setfullscreen(Client *c, int fullscreen);
++static void setgaps(int oh, int ov, int ih, int iv);
+ static void setlayout(const Arg *arg);
+ static void setmfact(const Arg *arg);
+ static void setmon(Client *c, Monitor *m, uint32_t newtags);
+@@ -367,6 +380,7 @@
+ static void tile(Monitor *m);
+ static void togglefloating(const Arg *arg);
+ static void togglefullscreen(const Arg *arg);
++static void togglegaps(const Arg *arg);
+ static void toggletag(const Arg *arg);
+ static void toggleview(const Arg *arg);
+ static void transactionapply(void);
+@@ -445,6 +459,8 @@
+ static Monitor *selmon;
+ static int consumed[KEY_MAX + 1];
+ 
++static int enablegaps = 1;   /* enables gaps, used by togglegaps */
++
+ /* Transactions: the scene graph is updated only once all visible clients have
+  * committed buffers with their new size, or after TRANSACTION_TIMEOUT ms */
+ #define TRANSACTION_TIMEOUT 100
+@@ -1216,6 +1232,11 @@
+ 	for (i = 0; i < LENGTH(m->layers); i++)
+ 		wl_list_init(&m->layers[i]);
+ 
++	m->gappih = gappih;
++	m->gappiv = gappiv;
++	m->gappoh = gappoh;
++	m->gappov = gappov;
++
+ 	wlr_output_state_init(&state);
+ 	/* Initialize monitor state using configured rules */
+ 	m->tagset[0] = m->tagset[1] = 1;
+@@ -1408,6 +1429,12 @@
+ }
+ 
+ void
++defaultgaps(const Arg *arg)
++{
++	setgaps(gappoh, gappov, gappih, gappiv);
++}
++
++void
+ destroydecoration(struct wl_listener *listener, void *data)
+ {
+ 	Client *c = wl_container_of(listener, c, destroy_decoration);
+@@ -1753,6 +1780,83 @@
+ }
+ 
+ void
++incgaps(const Arg *arg)
++{
++	setgaps(
++		selmon->gappoh + arg->i,
++		selmon->gappov + arg->i,
++		selmon->gappih + arg->i,
++		selmon->gappiv + arg->i
++	);
++}
++
++void
++incigaps(const Arg *arg)
++{
++	setgaps(
++		selmon->gappoh,
++		selmon->gappov,
++		selmon->gappih + arg->i,
++		selmon->gappiv + arg->i
++	);
++}
++
++void
++incihgaps(const Arg *arg)
++{
++	setgaps(
++		selmon->gappoh,
++		selmon->gappov,
++		selmon->gappih + arg->i,
++		selmon->gappiv
++	);
++}
++
++void
++incivgaps(const Arg *arg)
++{
++	setgaps(
++		selmon->gappoh,
++		selmon->gappov,
++		selmon->gappih,
++		selmon->gappiv + arg->i
++	);
++}
++
++void
++incogaps(const Arg *arg)
++{
++	setgaps(
++		selmon->gappoh + arg->i,
++		selmon->gappov + arg->i,
++		selmon->gappih,
++		selmon->gappiv
++	);
++}
++
++void
++incohgaps(const Arg *arg)
++{
++	setgaps(
++		selmon->gappoh + arg->i,
++		selmon->gappov,
++		selmon->gappih,
++		selmon->gappiv
++	);
++}
++
++void
++incovgaps(const Arg *arg)
++{
++	setgaps(
++		selmon->gappoh,
++		selmon->gappov + arg->i,
++		selmon->gappih,
++		selmon->gappiv
++	);
++}
++
++void
+ incnmaster(const Arg *arg)
+ {
+ 	if (!arg || !selmon)
+@@ -2054,8 +2158,12 @@
+ 	wl_list_for_each(c, &clients, link) {
+ 		if (!VISIBLEON(c, m) || c->isfloating || c->isfullscreen)
+ 			continue;
+-		resize(c, m->w, 0);
+ 		n++;
++		if (!monoclegaps)
++			resize(c, m->w, 0);
++		else
++			resize(c, (struct wlr_box){.x = m->w.x + gappoh, .y = m->w.y + gappov,
++				.width = m->w.width - 2 * gappoh, .height = m->w.height - 2 * gappov}, 0);
+ 	}
+ 	if (n)
+ 		snprintf(m->ltsymbol, LENGTH(m->ltsymbol), "[%d]", n);
+@@ -2627,6 +2735,16 @@
+ }
+ 
+ void
++setgaps(int oh, int ov, int ih, int iv)
++{
++	selmon->gappoh = MAX(oh, 0);
++	selmon->gappov = MAX(ov, 0);
++	selmon->gappih = MAX(ih, 0);
++	selmon->gappiv = MAX(iv, 0);
++	arrange(selmon);
++}
++
++void
+ setlayout(const Arg *arg)
+ {
+ 	if (!selmon)
+@@ -3054,7 +3172,7 @@
+ void
+ tile(Monitor *m)
+ {
+-	int i, n = 0, mw, my, ty;
++	int i, n = 0, mw, my, ty, h, r, oe = enablegaps, ie = enablegaps;
+ 	Client *c;
+ 
+ 	wl_list_for_each(c, &clients, link)
+@@ -3063,22 +3181,31 @@
+ 	if (n == 0)
+ 		return;
+ 
++	if (smartgaps == n) {
++		oe = 0; // outer gaps disabled
++	}
++
+ 	if (n > m->nmaster)
+-		mw = m->nmaster ? (int)roundf(m->w.width * m->mfact) : 0;
++		mw = m->nmaster ? (int)roundf((m->w.width + m->gappiv*ie) * m->mfact) : 0;
+ 	else
+-		mw = m->w.width;
+-	i = my = ty = 0;
++		mw = m->w.width - 2*m->gappov*oe + m->gappiv*ie;
++	i = 0;
++	my = ty = m->gappoh*oe;
+ 	wl_list_for_each(c, &clients, link) {
+ 		if (!VISIBLEON(c, m) || c->isfloating || c->isfullscreen)
+ 			continue;
+ 		if (i < m->nmaster) {
+-			resize(c, (struct wlr_box){.x = m->w.x, .y = m->w.y + my, .width = mw,
+-				.height = (m->w.height - my) / (MIN(n, m->nmaster) - i)}, 0);
+-			my += c->geom.height;
++			r = MIN(n, m->nmaster) - i;
++			h = (m->w.height - my - m->gappoh*oe - m->gappih*ie * (r - 1)) / r;
++			resize(c, (struct wlr_box){.x = m->w.x + m->gappov*oe, .y = m->w.y + my,
++				.width = mw - m->gappiv*ie, .height = h}, 0);
++			my += c->geom.height + m->gappih*ie;
+ 		} else {
+-			resize(c, (struct wlr_box){.x = m->w.x + mw, .y = m->w.y + ty,
+-				.width = m->w.width - mw, .height = (m->w.height - ty) / (n - i)}, 0);
+-			ty += c->geom.height;
++			r = n - i;
++			h = (m->w.height - ty - m->gappoh*oe - m->gappih*ie * (r - 1)) / r;
++			resize(c, (struct wlr_box){.x = m->w.x + mw + m->gappov*oe, .y = m->w.y + ty,
++				.width = m->w.width - mw - 2*m->gappov*oe, .height = h}, 0);
++			ty += c->geom.height + m->gappih*ie;
+ 		}
+ 		i++;
+ 	}
+@@ -3102,6 +3229,13 @@
+ }
+ 
+ void
++togglegaps(const Arg *arg)
++{
++	enablegaps = !enablegaps;
++	arrange(selmon);
++}
++
++void
+ toggletag(const Arg *arg)
+ {
+ 	uint32_t newtags;
