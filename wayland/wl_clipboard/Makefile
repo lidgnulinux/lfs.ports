@@ -1,18 +1,17 @@
 COMMENT = Command-line copy/paste utilities for Wayland
-VERSION = 2.2.1
+VERSION = 2.3.0
 REVISION = 0
 CATEGORIES = wayland
 PKGNAME = wl_clipboard
 HOMEPAGE = https://github.com/bugaevc/wl-clipboard
-ARCHIVE = wl-clipboard-2.2.1.tar.gz
-LINK = https://github.com/bugaevc/wl-clipboard/archive/v2.2.1/wl-clipboard-2.2.1.tar.gz
+ARCHIVE = wl-clipboard-${VERSION}.tar.gz
+LINK = https://github.com/bugaevc/wl-clipboard/archive/v${VERSION}/wl-clipboard-${VERSION}.tar.gz
 SRCCD = archive
 BUILD = meson
-BUILDDIR = wl-clipboard-2.2.1
+BUILDDIR = wl-clipboard-${VERSION}
 BUILD_OPTION =
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 post_build:
 
