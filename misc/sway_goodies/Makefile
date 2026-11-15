@@ -10,12 +10,10 @@ BUILD = custom
 BUILDDIR = sway-goodies
 
 prepare:
-	mkdir -p pkg/usr/bin
-	mkdir -p pkg/usr/share/doc/sway_goodies
 
 custom-build:
-	find ${BUILDDIR}/ -type f -executable -exec install -Dm755 {} -t pkg/usr/bin \;
-	cp -r ${BUILDDIR}/README.md pkg/usr/share/doc/sway_goodies/
+	find ${BUILDDIR}/ -maxdepth 1 -type f -executable -exec install -Dm755 {} -t pkg/usr/bin \;
+	install -Dm644 ${BUILDDIR}/README.md -t pkg/usr/share/doc/sway_goodies/
 
 post_build:
 
