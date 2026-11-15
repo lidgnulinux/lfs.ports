@@ -30,7 +30,11 @@ endif
 
 
 extract:
-	tar -xvf ${ARCHIVE} 
+ifeq ($(SRCCD),git)
+	echo "It's git source code type, no need to extract."
+else
+	tar -xf ${ARCHIVE}
+endif
 
 build:
 ifeq ($(BUILD),meson)
