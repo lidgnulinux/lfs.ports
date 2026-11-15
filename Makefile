@@ -16,6 +16,7 @@ ifeq ($(PORTSDIR),)
 else
 	for i in $$(find -maxdepth 1 -type d -not -path './.git' -not -path './man'| sed '1d'); \
 		do cp -r $$i ${PORTSDIR}; done
+	cp -rv Makefile ${PORTSDIR}
 endif
 
 amount:
