@@ -40,7 +40,7 @@ build:
 ifeq ($(BUILD),meson)
 	@echo "Mode: Build Meson"
 	meson setup -Dprefix=/usr -Dlibdir=/usr/lib ${BUILD_OPTION} build ${BUILDDIR}
-	meson compile -C build
+	meson compile -C build ${JOBS}
 else ifeq ($(BUILD),make)
 	@echo "Mode: Build Make"
 	${AUTO_CONF}
