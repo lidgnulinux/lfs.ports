@@ -66,7 +66,7 @@ remove:
 	@echo "Uninstalling package $(shell basename -s .list ${PKG})"
 	@echo "removing the $(shell basename -s .list ${PKG}) package files ..."
 	@echo ""
-	@xargs -P 2 rm -v < ${PKG}
+	@xargs -P 2 rm -f < ${PKG}
 	@echo ""
 	@echo "removing log file."
 	@rm -v ${PKG}
@@ -74,7 +74,7 @@ remove:
 upgrade:
 	@echo "Installing upgrade package archive ${PKG}"
 	@echo "removing previous package files."
-	@xargs -P 2 rm < $(LIST)
+	@xargs -P 2 rm -f < $(LIST)
 	@echo ""
 	@echo "removing log file."
 	@rm -v $(LIST)
