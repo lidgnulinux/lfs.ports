@@ -1,6 +1,6 @@
 COMMENT = Cross-platform open-source make system.
-VERSION = 4.4.4
-_V= 4.4
+VERSION = 4.5.0
+_V= 4.5
 REVISION = 0
 CATEGORIES = devel
 PKGNAME = cmake
@@ -16,6 +16,10 @@ prepare:
 	mkdir ${BUILDDIR}
 	cd ${BUILDDIR} && ../bootstrap \
 		--prefix=/usr \
+		--mandir=/share/man \
+		--datadir=/share/cmake \
+		--docdir=/share/doc/cmake \
+		--sphinx-man \
 		--system-libuv \
 		--system-expat \
 		--system-zlib \
