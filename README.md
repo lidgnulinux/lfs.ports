@@ -21,13 +21,12 @@ You could easily use it, but before that, you should have these requirements :
 - wget, to download source code. You could change it with your tool downloader.
 - build tools, like compiler (I use gcc mainly), make, meson, cmake, bmake, muon and zig.
 - tar, to create tar.gz package archive.
-- [graft](https://peters.gormand.com.au/Home/tools/graft) (will be deprecated soon), to do grafting.
 - text editor.
 - patch, to do patching (if needed)
 
 After you have those requirements, let's build our package !
 
-1. Copy `lfs.port.mk` & `strip.mk` to `/usr/share/mk` directory. For experimental use, you may copy `port.mk` to try to build package which suited for [mk-graftless](https://github.com/lidgnulinux/lfs.ports/blob/main/mk-graftless).
+1. Copy `lfs.port.mk` & `strip.mk` to `/usr/share/mk` directory.
 1. Pick a template package, for example `iceauth`.
 1. Run these commands :
 
@@ -50,7 +49,7 @@ After you have those requirements, let's build our package !
 1. Once the package's created, we can install it using [mk](https://github.com/lidgnulinux/lfs.ports/blob/main/mk) package manager.
 
 	```
-	$ sudo /path/to/mk a P=1 PKG=iceauth-1.0.10-0@xapps.tar.gz
+	$ sudo /path/to/mk a PKG=iceauth-1.0.10-0@xapps.tar.gz
 	```
 	
 	

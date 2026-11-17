@@ -2,6 +2,7 @@
 
 package=$(shell basename -s .tar.gz ${PKG})
 TAR=/usr/bin/tar
+LIST=$(wildcard /var/log/mk/$(shell basename -s .tar.gz ${PKG} | cut -d "-" -f 1)-*.list)
 
 list:
 	@find /var/lib/mk/ \
@@ -12,7 +13,7 @@ list:
 
 content:
 	@echo ""
-	@find /usr/pkg/${PKG}-* -printf '${PKG} : /%P\n'| sed 1d
+	@cat /var/log/mk/${PKG}-*list
 
 search:
 	@echo ""
@@ -29,6 +30,8 @@ view:
 
 help:
 	@echo -e "\n\
+   \033[1mA Makefile-based package manager.\033[0m \n\
+   \n\
    \033[1mhelp, h\033[0m			show this help. \n\
    \033[1mlist, l\033[0m			show installed packages. \n\
    \033[1mcontent, c PKG=package\033[0m	show package contents. \n\
@@ -41,24 +44,14 @@ help:
    \033[1minfo-archive, ia A=archive\033[0m	view archive info. \n"
 
 install:
-	echo "Installing package archive ${PKG}"
-	echo "make directory for $(shell basename -s .tar.gz ${PKG})"
-	mkdir /usr/pkg/$(shell basename -s .tar.gz ${PKG})
+	@echo "Installing package archive ${PKG}"
 
-	@echo "extracting & grafting package archive ${PKG}"
-	${TAR} -xf ${PKG} -C /usr/pkg/$(shell basename -s .tar.gz ${PKG})
-	@echo "before that, let's check if we need pruning for ${PKG}"
-ifeq ($(P),1)
-	@echo "Oh, P=1 is specified. Let's do pruning"
-	graft -p -D -u -t / /usr/pkg/$(shell basename -s .tar.gz ${PKG})
-else
-	@echo "P=1 isn't specified, no pruning performed."
-endif
-	graft -i -P -t / /usr/pkg/$(shell basename -s .tar.gz ${PKG})
-
+	@echo "extracting package archive ${PKG}"
+	@${TAR} -C / -xf ${PKG} --keep-directory-symlink
+	@echo ""
 	@echo "Run post-install target if available"
-	@if $(MAKE) -f /usr/pkg/${package}/var/lib/mk/${package}.mk -n post-install > /dev/null; then \
-		$(MAKE) -f /usr/pkg/${package}/var/lib/mk/${package}.mk post-install; \
+	@if $(MAKE) -f /var/lib/mk/${package}.mk -n post-install > /dev/null; then \
+		$(MAKE) -f /var/lib/mk/${package}.mk post-install; \
 	else \
 		echo "No post-install target available."; \
 	fi
@@ -70,39 +63,29 @@ info:
 		-exec $(MAKE) -f {} info-package -s \;
 
 remove:
-	@echo "Uninstalling package at ${PKG}"
-	@echo "Pruning any conflict ..."
-	graft -p -D -u -t / ${PKG} 
-
-	@echo "Disabling links ..."
-	graft -d -D -u -t / ${PKG}
-
-	@echo "removing the ${PKG} directory ..."
-	rm -rf ${PKG}
+	@echo "Uninstalling package $(shell basename -s .list ${PKG})"
+	@echo "removing the $(shell basename -s .list ${PKG}) package files ..."
+	@echo ""
+	@xargs -P 2 rm -f < ${PKG}
+	@echo ""
+	@echo "removing log file."
+	@rm -v ${PKG}
 
 upgrade:
-	@echo "Installing package archive ${PKG}"
-	@echo "Pruning any conflict from previous package ..."
-	graft -p -D -u -t / /usr/pkg/$(shell basename -s .tar.gz ${PKG} | cut -d "-" -f 1)-*
-
-	@echo "Disabling links ..."
-	graft -d -D -u -t / /usr/pkg/$(shell basename -s .tar.gz ${PKG} | cut -d "-" -f 1)-*
-
-	@echo "Removing previous package directory ..."
-	rm -rf /usr/pkg/$(shell basename -s .tar.gz ${PKG} | cut -d "-" -f 1)-*
-
-	@echo "Begin installing upgrade ..."
-	@echo "Installing package archive ${PKG}"
-	@echo "make directory for $(shell basename -s .tar.gz ${PKG})"
-	mkdir /usr/pkg/$(shell basename -s .tar.gz ${PKG})
-
-	@echo "extracting & grafting package archive ${PKG}"
-	${TAR} -xf ${PKG} -C /usr/pkg/$(shell basename -s .tar.gz ${PKG})
-	graft -i -P -t / /usr/pkg/$(shell basename -s .tar.gz ${PKG})
+	@echo "Installing upgrade package archive ${PKG}"
+	@echo "removing previous package files."
+	@xargs -P 2 rm -f < $(LIST)
+	@echo ""
+	@echo "removing log file."
+	@rm -v $(LIST)
+	@echo ""
+	@echo "extracting package archive ${PKG}"
+	@${TAR} -C / -xf ${PKG} --keep-directory-symlink
+	@echo ""
 
 	echo "Run post-install target if available"
-	@if $(MAKE) -f /usr/pkg/${package}/var/lib/mk/${package}.mk -n post-install > /dev/null; then \
-		$(MAKE) -f /usr/pkg/${package}/var/lib/mk/${package}.mk post-install; \
+	@if $(MAKE) -f /var/lib/mk/${package}.mk -n post-install > /dev/null; then \
+		$(MAKE) -f /var/lib/mk/${package}.mk post-install; \
 	else \
 		echo "No post-install target available."; \
 	fi

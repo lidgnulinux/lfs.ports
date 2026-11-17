@@ -6,9 +6,9 @@ mk \- Makefile-based package manager.
 .SH SYNOPSIS
 \f[B]mk\f[R] [\f[B]achilrsuv\f[R]] 
 
-[\f[B]content \f[I]PKG=package\f[R]] [\f[B]help\f[R]] [\f[B]install \f[I]PKG=<package archive>\f[R]] [\f[B]info \f[I]PKG=package\f[R]] [\f[B]list\f[R]] [\f[B]remove \f[I]PKG=<package path>\f[R]] [\f[B]search \f[I]q=query\f[R]] [\f[B]upgrade \f[I]PKG=<package archive>\f[R]] [\f[B]view \f[I]PKG=package\f[R]] [\f[B]info-archive \f[I]A=archive\f[R]]
+[\f[B]content \f[I]PKG=package\f[R]] [\f[B]help\f[R]] [\f[B]install \f[I]PKG=<package archive>\f[R]] [\f[B]info \f[I]PKG=package\f[R]] [\f[B]list\f[R]] [\f[B]remove \f[I]PKG=<package list file path>\f[R]] [\f[B]search \f[I]q=query\f[R]] [\f[B]upgrade \f[I]PKG=<package archive>\f[R]] [\f[B]view \f[I]PKG=package\f[R]] [\f[B]info-archive \f[I]A=archive\f[R]]
 .SH DESCRIPTION
-mk(1) is Makefile-based package manager, written in Makefile script. Its main function is to install package(s) which built using lfs.ports, show informations about package, like name, version, installed files, etc. I made it to check installed packages on LFS (Linux From Scratch) Musl.
+mk(1) is Makefile-based package manager, written in Makefile script. Its main function is to install package(s) which built using lfs.ports, show informations about package, like name, version, installed files, etc. I made it to check installed packages on LFS (Linux From Scratch).
 .SH OPTIONS
 The following are the options that mk(1) accepts.
 .TP
@@ -32,7 +32,7 @@ install package archive.
 show installed packages.
 .RE
 .TP
-\f[B]r \f[I]PKG=<package path>\f[R], \f[B]remove \f[I]PKG=<package path>\f[R]
+\f[B]r \f[I]PKG=<package list file path>\f[R], \f[B]remove \f[I]PKG=<package list file path>\f[R]
 remove package archive.
 .RE
 .TP
@@ -58,12 +58,7 @@ Before trying to use this package manager :
 1. It will cause a conflict with your current package manager.
 .RE
 .TP
-2. If you previously built a package from source, you need to pass P=1 env when installing package to prune any conflict.
-.RE
-	e.g \f[B]/path/to/mk a P=1 /path/to/package.tar.gz
-.RE
-.TP
-3. Make sure you already have busybox package as fallback utility.
+2. Make sure you already have busybox package as fallback utility.
 .TP
 
 .SH AUTHORS
