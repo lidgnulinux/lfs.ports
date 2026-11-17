@@ -1,0 +1,91 @@
+disable EVP_PKEY_param_check
+use old sk_num, ..., sk_value
+disable SSL_CONF_CTX
+
+... and resolve accordingly
+
+Index: src/plugins/tls/openssl/qsslsocket_openssl_symbols.cpp
+--- src/plugins/tls/openssl/qsslsocket_openssl_symbols.cpp.orig
++++ src/plugins/tls/openssl/qsslsocket_openssl_symbols.cpp
+@@ -115,14 +115,25 @@ DEFINEFUNC2(int, BN_is_word, BIGNUM *a, a, BN_ULONG w,
+ DEFINEFUNC(int, EVP_CIPHER_CTX_reset, EVP_CIPHER_CTX *c, c, return 0, return)
+ DEFINEFUNC(int, EVP_PKEY_up_ref, EVP_PKEY *a, a, return 0, return)
+ DEFINEFUNC2(EVP_PKEY_CTX *, EVP_PKEY_CTX_new, EVP_PKEY *pkey, pkey, ENGINE *e, e, return nullptr, return)
++#ifndef LIBRESSL_VERSION_NUMBER
+ DEFINEFUNC(int, EVP_PKEY_param_check, EVP_PKEY_CTX *ctx, ctx, return 0, return)
++#endif
+ DEFINEFUNC(void, EVP_PKEY_CTX_free, EVP_PKEY_CTX *ctx, ctx, return, return)
++#ifndef LIBRESSL_VERSION_NUMBER
+ DEFINEFUNC(int, OPENSSL_sk_num, OPENSSL_STACK *a, a, return -1, return)
+ DEFINEFUNC2(void, OPENSSL_sk_pop_free, OPENSSL_STACK *a, a, void (*b)(void*), b, return, DUMMYARG)
+ DEFINEFUNC(OPENSSL_STACK *, OPENSSL_sk_new_null, DUMMYARG, DUMMYARG, return nullptr, return)
+ DEFINEFUNC2(void, OPENSSL_sk_push, OPENSSL_STACK *a, a, void *b, b, return, DUMMYARG)
+ DEFINEFUNC(void, OPENSSL_sk_free, OPENSSL_STACK *a, a, return, DUMMYARG)
+ DEFINEFUNC2(void *, OPENSSL_sk_value, OPENSSL_STACK *a, a, int b, b, return nullptr, return)
++#else
++DEFINEFUNC(int, sk_num, STACK *a, a, return -1, return)
++DEFINEFUNC2(void, sk_pop_free, STACK *a, a, void (*b)(void*), b, return, DUMMYARG)
++DEFINEFUNC(_STACK *, sk_new_null, DUMMYARG, DUMMYARG, return nullptr, return)
++DEFINEFUNC2(void, sk_push, _STACK *a, a, void *b, b, return, DUMMYARG)
++DEFINEFUNC(void, sk_free, _STACK *a, a, return, DUMMYARG)
++DEFINEFUNC2(void *, sk_value, STACK *a, a, int b, b, return nullptr, return)
++#endif // LIBRESSL_VERSION_NUMBER
+ DEFINEFUNC(int, SSL_session_reused, SSL *a, a, return 0, return)
+ DEFINEFUNC2(qssloptions, SSL_CTX_set_options, SSL_CTX *ctx, ctx, qssloptions op, op, return 0, return)
+ using info_callback = void (*) (const SSL *ssl, int type, int val);
+@@ -291,12 +302,14 @@ DEFINEFUNC3(int, SSL_CTX_use_certificate_file, SSL_CTX
+ DEFINEFUNC2(int, SSL_CTX_use_PrivateKey, SSL_CTX *a, a, EVP_PKEY *b, b, return -1, return)
+ DEFINEFUNC3(int, SSL_CTX_use_PrivateKey_file, SSL_CTX *a, a, const char *b, b, int c, c, return -1, return)
+ DEFINEFUNC(X509_STORE *, SSL_CTX_get_cert_store, const SSL_CTX *a, a, return nullptr, return)
++#ifndef LIBRESSL_VERSION_NUMBER
+ DEFINEFUNC(SSL_CONF_CTX *, SSL_CONF_CTX_new, DUMMYARG, DUMMYARG, return nullptr, return);
+ DEFINEFUNC(void, SSL_CONF_CTX_free, SSL_CONF_CTX *a, a, return ,return);
+ DEFINEFUNC2(void, SSL_CONF_CTX_set_ssl_ctx, SSL_CONF_CTX *a, a, SSL_CTX *b, b, return, return);
+ DEFINEFUNC2(unsigned int, SSL_CONF_CTX_set_flags, SSL_CONF_CTX *a, a, unsigned int b, b, return 0, return);
+ DEFINEFUNC(int, SSL_CONF_CTX_finish, SSL_CONF_CTX *a, a, return 0, return);
+ DEFINEFUNC3(int, SSL_CONF_cmd, SSL_CONF_CTX *a, a, const char *b, b, const char *c, c, return 0, return);
++#endif
+ DEFINEFUNC(void, SSL_free, SSL *a, a, return, DUMMYARG)
+ DEFINEFUNC(STACK_OF(SSL_CIPHER) *, SSL_get_ciphers, const SSL *a, a, return nullptr, return)
+ DEFINEFUNC(const SSL_CIPHER *, SSL_get_current_cipher, SSL *a, a, return nullptr, return)
+@@ -885,14 +898,25 @@ bool q_resolveOpenSslSymbols()
+         RESOLVEFUNC(AUTHORITY_INFO_ACCESS_free)
+         RESOLVEFUNC(EVP_PKEY_up_ref)
+         RESOLVEFUNC(EVP_PKEY_CTX_new)
++#ifndef LIBRESSL_VERSION_NUMBER
+         RESOLVEFUNC(EVP_PKEY_param_check)
++#endif
+         RESOLVEFUNC(EVP_PKEY_CTX_free)
++#ifndef LIBRESSL_VERSION_NUMBER
+         RESOLVEFUNC(OPENSSL_sk_new_null)
+         RESOLVEFUNC(OPENSSL_sk_push)
+         RESOLVEFUNC(OPENSSL_sk_free)
+         RESOLVEFUNC(OPENSSL_sk_num)
+         RESOLVEFUNC(OPENSSL_sk_pop_free)
+         RESOLVEFUNC(OPENSSL_sk_value)
++#else
++        RESOLVEFUNC(sk_new_null)
++        RESOLVEFUNC(sk_push)
++        RESOLVEFUNC(sk_free)
++        RESOLVEFUNC(sk_num)
++        RESOLVEFUNC(sk_pop_free)
++        RESOLVEFUNC(sk_value)
++#endif
+         RESOLVEFUNC(SSL_CTX_set_options)
+         RESOLVEFUNC(SSL_set_info_callback)
+         RESOLVEFUNC(SSL_alert_type_string)
+@@ -1075,12 +1099,14 @@ bool q_resolveOpenSslSymbols()
+         RESOLVEFUNC(SSL_CTX_use_PrivateKey)
+         RESOLVEFUNC(SSL_CTX_use_PrivateKey_file)
+         RESOLVEFUNC(SSL_CTX_get_cert_store);
++#ifndef LIBRESSL_VERSION_NUMBER
+         RESOLVEFUNC(SSL_CONF_CTX_new);
+         RESOLVEFUNC(SSL_CONF_CTX_free);
+         RESOLVEFUNC(SSL_CONF_CTX_set_ssl_ctx);
+         RESOLVEFUNC(SSL_CONF_CTX_set_flags);
+         RESOLVEFUNC(SSL_CONF_CTX_finish);
+         RESOLVEFUNC(SSL_CONF_cmd);
++#endif
+         RESOLVEFUNC(SSL_accept)
+         RESOLVEFUNC(SSL_clear)
+         RESOLVEFUNC(SSL_connect)
