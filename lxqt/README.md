@@ -1,0 +1,57 @@
+# LXQT Desktop build order.
+
+This is lxqt build order :
+
+- libs/plasma_wayland_protocols
+- libs/kwindowsystem
+- libs/kconfig
+- libs/libplist
+- libs/libimobiledevice_glue
+- libs/libusbmuxd
+- libs/libtatsu
+- libs/libimobiledevice
+- libs/media_player_info
+- tool/keyutils
+- libs/libbytesize
+- libs/libatasmart
+- libs/libaio
+- tool/lvm2
+- tool/popt
+- tool/cryptsetup
+- libs/libtraceevent
+- libs/libtracefs
+- libs/ndctl
+- libs/liburing
+- libs/libnvme
+- libs/libblockdev
+- tool/udisks2
+- tool/solid
+- daemon/kidletime
+- libs/kwayland
+- libs/libkscreen
+- libs/libdbusmenu_lxqt
+- libs/libqtxdg
+- libs/polkit_qt
+- libs/liblxqt
+- libs/libsysstat
+- tool/qtxdg_tools
+- daemon/lxqt_globalkeys
+- libs/lxqt_qtplugin
+- misc/lxqt_themes
+- libs/libstatgrab
+- xapps/lxqt_panel
+- daemon/lxqt_powermanagement
+- xapps/lxqt_runner
+- tool/lxqt_admin
+- xapps/lxqt_about
+- xapps/lxqt_config
+- daemon/lxqt_policykit
+- sys/lxqt_sudo
+- tool/lxqt_openssh_askpass
+- tool/lxqt_session
+- wayland/lxqt_wayland_session
+- tool/xdg_desktop_portal_lxqt
+- x11/openbox
+- tool/obconf_qt
+- python/pylxml
+- icon/breeze_icons
