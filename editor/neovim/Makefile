@@ -1,6 +1,6 @@
 COMMENT = Vim-fork focused on extensibility and agility
-VERSION = 0.12.0
-REVISION = 0
+VERSION = 0.12.6
+REVISION = 1
 CATEGORIES = editor
 PKGNAME = neovim
 HOMEPAGE = https://neovim.io/
@@ -10,11 +10,12 @@ SRCCD = archive
 BUILD = make
 BUILDDIR = neovim-${VERSION}
 MAKEOPT = CMAKE_FLAGS="-D CI_BUILD=ON \
-	-D CMAKE_INSTALL_PREFIX:PATH=/opt \
+	-D CMAKE_INSTALL_PREFIX:PATH=/usr \
 	-DCMAKE_INSTALL_LIBDIR=lib"
+JOBS = -j3
 
 prepare:
-	make -C ${BUILDDIR} deps
+	make -C ${BUILDDIR} deps ${JOBS}
 
 post_build:
 
