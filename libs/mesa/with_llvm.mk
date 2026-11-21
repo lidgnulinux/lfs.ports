@@ -15,6 +15,7 @@ BUILD_OPTION = --buildtype=release -Dglx=dri \
 	-Dgallium-drivers=i915,crocus,nouveau \
 	-Dvulkan-drivers="" \
 	-Degl=enabled \
+	-Dlibunwind=enabled \
 	-Dgles1=enabled \
 	-Dgles2=enabled \
 	-Dopengl=true \
