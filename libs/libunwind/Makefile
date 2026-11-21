@@ -1,6 +1,6 @@
 COMMENT = Determine and manipulate the call-chain of a program
 VERSION = 1.8.3
-REVISION = 0
+REVISION = 1
 CATEGORIES = libs
 PKGNAME = libunwind
 HOMEPAGE = https://www.nongnu.org/libunwind/
@@ -11,9 +11,10 @@ BUILD = make
 BUILDDIR = libunwind-${VERSION}
 AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--prefix=/usr \
+	--libdir=/usr/lib/libunwind-${VERSION} \
 	--sysconfdir=/etc \
-	--localstatedir=/var \
-	--libdir=/usr/lib)
+	--includedir=/usr/include/libunwind-${VERSION} \
+	--localstatedir=/var)
 MAKEOPT =
 
 prepare:
