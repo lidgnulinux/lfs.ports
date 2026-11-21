@@ -1,38 +1,12 @@
-COMMENT = Mesa is an OpenGL compatible 3-D graphics library.
-VERSION = 25.2.3
-REVISION = 0
-CATEGORIES = libs
-PKGNAME = mesa
-HOMEPAGE = https://www.mesa3d.org/
-ARCHIVE = mesa-25.2.3.tar.xz
-LINK = https://mesa.freedesktop.org/archive/mesa-25.2.3.tar.xz
-SRCCD = archive
-BUILD = meson
-BUILDDIR = mesa-25.2.3
-BUILD_OPTION = --buildtype=release \
-	-Ddri-drivers-path=/usr/lib/dri \
-	-Dglx=dri \
-	-Dplatforms=x11,wayland \
-	-Dgallium-drivers=i915,crocus \
-	-Dvulkan-drivers="" \
-	-Dlmsensors=enabled \
-	-Degl=enabled \
-	-Dgles1=enabled \
-	-Dgles2=enabled \
-	-Dllvm=disabled \
-	-Dshared-llvm=disabled \
-	-Dvalgrind=disabled
-
-CFLAGS = -O2 -g1
-CXXFLAGS = -O2 -g1
-CPPFLAGS = -O2 -g1
-
-export CFLAGS CXXFLAGS CPPFLAGS
-
-prepare:
+ifeq ($(LLVM),1)
+	include with_llvm.mk
+else
+	include no.llvm.mk
+endif
 
 post_build:
-
-post-install:
-
-include /usr/share/mk/lfs.port.mk
+ifeq ($(LLVM),1)
+	install -Dm644 $(CURDIR)/with_llvm.mk build/package/var/lib/mk/${PACKAGE}.mk
+else
+	install -Dm644 $(CURDIR)/no.llvm.mk build/package/var/lib/mk/${PACKAGE}.mk
+endif

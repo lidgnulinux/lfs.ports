@@ -13,7 +13,7 @@ BUILD_OPTION = --buildtype=release \
 	-Ddri-drivers-path=/usr/lib/dri \
 	-Dglx=dri \
 	-Dplatforms=x11,wayland \
-	-Dgallium-drivers=i915,crocus,nouveau \
+	-Dgallium-drivers=i915,crocus \
 	-Dvulkan-drivers="" \
 	-Dlmsensors=enabled \
 	-Degl=enabled \
@@ -30,6 +30,7 @@ CPPFLAGS = -O2 -g1
 export CFLAGS CXXFLAGS CPPFLAGS
 
 prepare:
+	patch -p1 -d ${BUILDDIR} < glibc-2.44.patch
 
 post_build:
 
