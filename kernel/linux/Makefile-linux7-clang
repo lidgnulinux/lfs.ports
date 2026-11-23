@@ -1,0 +1,53 @@
+COMMENT = Linux Kernel
+VERSION = 7.3.5
+PREV_VERSION = 7.3.4
+_VERSION = 7.3.5
+REVISION = 0
+CATEGORIES = kernel
+PKGNAME = linux7
+HOMEPAGE = https://kernel.org
+ARCHIVE = linux-${VERSION}.tar.xz
+LINK = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-${PREV_VERSION}.tar.xz
+SRCCD = archive
+BUILDDIR = linux-${PREV_VERSION}
+PACKAGE = ${PKGNAME}-${VERSION}-${REVISION}@${CATEGORIES}
+PATCH = https://cdn.kernel.org/pub/linux/kernel/v7.x/incr/patch-${PREV_VERSION}-5.xz
+
+get_patch:
+	wget -c ${PATCH}
+	xz -d patch-${PREV_VERSION}-5.xz
+
+prepare:
+	patch -p1 -d ${BUILDDIR} < patch-7.3.4-5
+	make -C ${BUILDDIR} LLVM=1 mrproper
+	cp -r config-${PREV_VERSION} ${BUILDDIR}/.config
+
+configure:
+	make -C ${BUILDDIR} LLVM=1 menuconfig
+
+bzImage:
+	make -C ${BUILDDIR} -j4 LLVM=1 ARCH=x86_64 bzImage 
+
+modules:
+	make -C ${BUILDDIR} -j4 LLVM=1 ARCH=x86_64 modules	
+
+install-kernel:
+	make -C ${BUILDDIR} -j4 LLVM=1 ARCH=x86_64 modules_install
+	cp -iv ${BUILDDIR}/arch/x86/boot/bzImage /boot/vmlinuz-${_VERSION}-lfs-13.1
+	cp -iv ${BUILDDIR}/System.map /boot/System.map-${_VERSION}
+	cp -iv ${BUILDDIR}/.config /boot/config-${_VERSION} 
+	
+pack:
+	mkdir -p package/boot
+	make -C ${BUILDDIR} -j4 LLVM=1 ARCH=x86_64 INSTALL_MOD_PATH="../package" modules_install
+	cp -iv ${BUILDDIR}/arch/x86/boot/bzImage package/boot/vmlinuz-${_VERSION}-lfs-13.1
+	cp -iv ${BUILDDIR}/System.map package/boot/System.map-${_VERSION}
+	cp -iv ${BUILDDIR}/.config package/boot/config-${_VERSION} 
+	@cd $(CURDIR)/package; find . -type f | sed 's|^.||' | sed 's/ /\\ /g' > ../${PACKAGE}.list
+	@install -Dm644 $(CURDIR)/${PACKAGE}.list $(CURDIR)/package/var/log/mk/${PACKAGE}.list
+	install -Dm644 $(PWD)/Makefile $(PWD)/package/var/lib/mk/${PACKAGE}.mk
+	tar -C package -cvf ${PACKAGE}.tar.gz --owner=0 --group=0 .
+
+post-install:
+
+include /usr/share/mk/lfs.port.mk
