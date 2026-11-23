@@ -1,24 +1,23 @@
 COMMENT = Free peer-reviewed portable C++ source libraries
-VERSION = 1.84.0
+VERSION = 1.92.0
 REVISION = 0
 CATEGORIES = libs
 PKGNAME = boost
 HOMEPAGE = https://www.boost.org/
-ARCHIVE = boost_1_84_0.tar.bz2
-LINK = https://archives.boost.io/release/1.84.0/source/boost_1_84_0.tar.bz2
+ARCHIVE = boost-${VERSION}-b2-nodocs.tar.xz
+LINK = https://github.com/boostorg/boost/releases/download/boost-${VERSION}/${ARCHIVE}
 SRCCD = archive
 BUILD = custom
-BUILDDIR = boost_1_84_0
+BUILDDIR = boost-${VERSION}
 
 prepare:
-	for i in patch/*; do patch -p1 -d ${BUILDDIR} -i $(CURDIR)/$$i; done
 
 custom-build:
-	cd ${BUILDDIR}; ./bootstrap.sh --prefix=/usr --with-python=python3 
+	cd ${BUILDDIR}; ./bootstrap.sh --prefix=$(CURDIR)/pkg/usr --with-python=python3 
 	cd ${BUILDDIR}; ./b2 stage -j3 threading=multi link=shared
 	cd ${BUILDDIR}; ./b2 --includedir=$(CURDIR)/pkg/usr/include \
-		--libdir=$(CURDIR)/pkg/usr/lib \
-		install threading=multi link=shared
+		install threading=multi link=shared \
+		--libdir=$(CURDIR)/pkg/usr/lib
 
 post_build:
 
