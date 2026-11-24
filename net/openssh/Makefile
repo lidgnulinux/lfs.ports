@@ -1,11 +1,11 @@
 COMMENT = The OpenSSH suite.
-VERSION = 10.5p1
-REVISION = 0
+VERSION = 10.6p1
+REVISION = 2
 CATEGORIES = net
 PKGNAME = openssh
 HOMEPAGE = https://www.openssh.com
 ARCHIVE = openssh-${VERSION}.tar.gz
-LINK = https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-${VERSION}.tar.gz
+LINK = https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${ARCHIVE}
 SRCCD = archive
 BUILD = make
 BUILDDIR = openssh-${VERSION}
@@ -16,6 +16,7 @@ AUTO_CONF = (cd ${BUILDDIR} && ./configure \
 	--with-default-path=/usr/bin \
 	--with-superuser-path=/usr/sbin:/usr/bin \
 	--with-privsep-path=/var/lib/sshd \
+	--with-pam \
 	--with-pid-dir=/run)
 MAKEOPT =
 
@@ -26,10 +27,17 @@ post_build:
 	cp -p ${BUILDDIR}/contrib/ssh-copy-id "package/usr/bin"
 	chmod 755 "package/usr/bin/ssh-copy-id"
 
+	@echo "Install services & pam stuff."
+	install -Dm644 files/sshdgenkeys.service \
+		-t package/usr/lib/systemd/system/
+	install -Dm644 files/sshd.service \
+		-t package/usr/lib/systemd/system/
+	install -Dm644 files/sshd@.service \
+		-t package/usr/lib/systemd/system/
+	install -Dm644 files/ssh-agent.{service,socket} \
+		-t package/usr/lib/systemd/user/
+	install -Dm644 files/sshd.pam package/etc/pam.d/sshd
+
 post-install:
-	@echo -e "\n\
-		if you face error about /var/lib/sshd ownership, \n\
-		you may need to change the ownership to root. \n\
-		You could use 'chown root:root /var/lib/sshd' command. \n"
 
 include /usr/share/mk/lfs.port.mk
