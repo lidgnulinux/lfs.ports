@@ -19,9 +19,8 @@ search:
 	@echo ""
 	@find /var/lib/mk/ \
 		-name "*${q}*.mk" \
-		-printf '%f\n' \
-		| cut -d "-" -f 1,2 \
-		| awk -F "-" '{print $$1,$$2}'
+		-name "*${q}*.mk" \
+		-exec make -f {} --eval='print-var: ; @echo -e "\033[1m$$(PKGNAME) / $$(VERSION)\033[0m \n  $$(COMMENT) \n"' print-var -s \; && echo ""
 
 view:
 	@find /var/lib/mk/ \
