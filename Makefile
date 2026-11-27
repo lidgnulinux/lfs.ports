@@ -1,5 +1,5 @@
 search:
-	@find -name "*${PKG}*" -type d
+	@find -mindepth 2 -name "*${PKG}*" -type d -exec make -C {} --eval='print-var: ; @echo -e "\033[1m$$(PKGNAME) / $$(VERSION)\033[0m \n  $$(COMMENT) \n"' print-var -s \; && echo ""
 
 build:
 	@make -C ${DIR} download extract build
