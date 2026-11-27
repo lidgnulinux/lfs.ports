@@ -19,7 +19,6 @@ search:
 	@echo ""
 	@find /var/lib/mk/ \
 		-name "*${q}*.mk" \
-		-name "*${q}*.mk" \
 		-exec make -f {} --eval='print-var: ; @echo -e "\033[1m$$(PKGNAME) / $$(VERSION)\033[0m \n  $$(COMMENT) \n"' print-var -s \; && echo ""
 
 view:
